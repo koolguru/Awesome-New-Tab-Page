@@ -185,14 +185,17 @@
             "href"  : tab.url
           })
           .html( tab.title );
-        $("<span></span>").appendTo(rct_temp).html( "<img height='19px' width='19px' src='/images/ui-2/x.png' title='Close'>" )
-          .attr("data-rctm-id", id).addClass("rctm-close");
+        $("<span></span>").appendTo(rct_temp)
+          .attr({
+            "data-rctm-id": id,
+            "title"       : chrome.i18n.getMessage("rctm_remove")
+          }).addClass("rctm-close");
 
         rctm_html.push( rct_temp );
       });
 
       rctm_html.push(
-        $('<div class="rctm-reset-all" id="rctm_clear_all">' + chrome.i18n.getMessage("rctm_clear_all_text") + '</div>')
+        $('<div class="rctm-reset-all" id="rctm_clear_all">' + chrome.i18n.getMessage("rctm_clear_all") + '</div>')
       );
 
       $.each(rctm_html, function(i, e) {
@@ -230,7 +233,7 @@
   $(document).ready(function($) {
     var qtipShared = {
       show: 'mouseover',
-      hide: 'mouseout',
+      hide: { delay: 0 },
       style: {
         name: 'light',
         tip: 'topLeft'
@@ -239,7 +242,7 @@
 
     var qtipUI2 = {
       show: 'mouseover',
-      hide: 'mouseout',
+      hide: { delay: 0 },
       style: {
         name: 'light',
         tip: 'topMiddle'
