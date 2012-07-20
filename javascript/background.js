@@ -16,7 +16,9 @@
      */
 
 
-window.setTimeout(window.location.reload(true), 1*60*60*1000);
+window.setTimeout(function() {
+  window.location.reload(true);
+}, 1*60*60*1000);
 
 /* START :: Recently Closed Tabs & Tab Manager Widget */
   chrome.tabs.onRemoved.addListener( onRemoved );

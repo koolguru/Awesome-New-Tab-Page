@@ -161,8 +161,10 @@
   });
 
   function resetRecentlyClosedTabs() {
-    var recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
+    var
+      recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
       rctm_html = [];
+
     $("#recently-closed-tabs-menu").empty();
 
     if(recently_closed !== null) {
