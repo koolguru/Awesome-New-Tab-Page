@@ -294,14 +294,14 @@
   "rctm_clear_all_confirm": {
     "message": "Clearing the Recently Closed Tabs menu does not clear Chrome's browser history. This feature only clears this list."
   },
-  "ui_import_export_header": {
-    "message": "Import/Export"
-  },
   "ui_import_export_btn": {
     "message": "Import/Export"
   },
+  "ui_import_export_desc": {
+    "message": "Take your settings to other browsers or restore a backup."
+  },
   "ui_import_export_btn2": {
-    "message": "Hide"
+    "message": "Back"
   },
   "ui_import_export_btn_import": {
     "message": "Import"
@@ -310,6 +310,12 @@
     "message": "Export"
   },
   "ui_import_export_btn_import_run": {
-    "message": "Run Import"
+    "message": "Apply"
+  },
+  "ui_import_export_desc_export": {
+    "message": "Export: Generates a string that contains all of your preferences. This string can be saved for later as a backup or can be copied to other computers to automatically set them up like this one. Uploaded images are not exported; images on the web are."
+    },
+  "ui_import_export_desc_import": {
+    "message": "Import: Overwrites your current configuration with a valid exported string. <b>WARNING</b>: All of your current preferences will be irrevocably lost. There is no way to undo this operation. Uploaded images are not imported; images on the web are."
   }
 }
