@@ -1,5 +1,5 @@
 if(localStorage.getItem("StockNotepad") === null) {
-  localStorage.setItem("StockNotepad", chrome.i18n.getMessage("notepad_default") );
+  localStorage.setItem("StockNotepad", parent.chrome.i18n.getMessage("notepad_default") );
 }
 
 $(document).ready(function($) {
