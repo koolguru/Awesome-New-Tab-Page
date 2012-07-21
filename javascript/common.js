@@ -200,12 +200,12 @@ var widgets = JSON.parse(localStorage.getItem("widgets"));
 
 // if widget paths are old, update them to new one
 function updateOldPaths() {
-  var oldPathReg = /widgets\/(widget.([^.\/]*).[^\/]*)/, 
+  var oldPathReg = /widgets\/(widget.([^.\/]*).[^\/]*)/,
     pathChanged = false;
   for (var i in widgets) {
-    if (widgets[i].stock) {
+    if (widgets[i].name === "Awesome New Tab Page" || widgets[i].stock) {
       if (widgets[i].path || widgets[i].img || widgets[i].simg) {
-        var oPath = widgets[i].path || widgets[i].img || widgets[i].simg, 
+        var oPath = widgets[i].path || widgets[i].img || widgets[i].simg,
           result;
         result = oldPathReg.exec(oPath);
         if (result) {
@@ -223,8 +223,8 @@ function updateOldPaths() {
           }
         }
       }
-    }
-    else if (widgets[i].id = "tabs" && widgets[i].path == "widgets/tabs.html") {
+    } else if (widgets[i].id === "tabs" || widgets[i].path === "widgets/tabs.html"
+      || widgets[i].path === "chrome-extension://mgmiemnjjchgkmgbeljfocdjjnpjnmcg/widgets/tabs.html") {
       pathChanged = true;
       widgets[i].path = "widgets/tabs/tabs.html";
     }
