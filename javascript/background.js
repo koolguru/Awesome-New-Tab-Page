@@ -14,49 +14,56 @@
      -    http://www.gnu.org/licenses/gpl-3.0.txt
      -
      */
-window.setTimeout(' window.location = window.location; ', 1*60*60*1000);
+
+
+window.setTimeout(function() {
+  window.location.reload(true);
+}, 1*60*60*1000);
 
 /* START :: Recently Closed Tabs & Tab Manager Widget */
-var recently_closed = JSON.parse(localStorage.getItem("recently_closed"));
-chrome.tabs.onRemoved.addListener( onRemoved );
-function onRemoved(tabId) {
-  var tab = tabs.filter(function (tab) { return tab.id === tabId})[0];
+  chrome.tabs.onRemoved.addListener( onRemoved );
+  function onRemoved(tabId) {
+    var
+      recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
+      tab = tabs.filter(function (tab) { return tab.id === tabId})[0];
 
-  if (recently_closed === null ) {
-    recently_closed = [];
+    if (recently_closed === null ) {
+      recently_closed = [];
+    }
+
+    if ( !tab || tab.incognito === true
+      || tab.title === ""
+      || (tab.url).indexOf("chrome://" ) !== -1 ) {
+      return;
+    }
+
+    recently_closed.unshift({title: tab.title, url: tab.url});
+
+    if(recently_closed.length > 15) {
+      recently_closed.pop();
+    }
+
+    localStorage.setItem("recently_closed", JSON.stringify( recently_closed ));
+
+    getAllTabs();
   }
 
-  if ( !tab || tab.incognito === true
-    || tab.title === ""
-    || (tab.url).indexOf("chrome://" ) !== -1 ) {
-    return;
+  chrome.tabs.onMoved.addListener( getAllTabs );
+  chrome.tabs.onCreated.addListener( getAllTabs );
+  chrome.tabs.onUpdated.addListener( getAllTabs );
+  chrome.tabs.onHighlighted.addListener( getAllTabs );
+
+  var tabs = null;
+  function getAllTabs() {
+    chrome.tabs.getAllInWindow(null, getAllTabs_callback);
   }
-
-  recently_closed.unshift({title: tab.title, url: tab.url});
-
-  if(recently_closed.length > 15) {
-    recently_closed.pop();
+  function getAllTabs_callback(data) {
+    tabs = data;
+    localStorage.setItem("open_tabs", JSON.stringify( tabs ));
   }
+  chrome.tabs.getAllInWindow(null, getAllTabs);
 
-  localStorage.setItem("recently_closed", JSON.stringify( recently_closed ));
-
-  getAllTabs();
-}
-
-chrome.tabs.onMoved.addListener( getAllTabs );
-chrome.tabs.onCreated.addListener( getAllTabs );
-chrome.tabs.onUpdated.addListener( getAllTabs );
-chrome.tabs.onHighlighted.addListener( getAllTabs );
-
-var tabs = null;
-function getAllTabs() {
-  chrome.tabs.getAllInWindow(null, getAllTabs_callback);
-}
-function getAllTabs_callback(data) {
-  tabs = data;
-  localStorage.setItem("open_tabs", JSON.stringify( tabs ));
-}
-chrome.tabs.getAllInWindow(null, getAllTabs);
+  /* END :: Recently Closed Tabs */
 
 /* START :: Tab Manager Widget */
 
@@ -103,8 +110,6 @@ chrome.tabs.getAllInWindow(null, getAllTabs);
   });
 
   /* END :: Tab Manager Widget */
-
-/* END :: Recently Closed Tabs */
 
 /* START :: Get Installed Widgets */
 var extensions,

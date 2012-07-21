@@ -288,20 +288,23 @@
   "ui_resize_zoom": {
     "message": "Zoom"
   },
-  "rctm_clear_all_text": {
-    "message": "Clear Everything"
+  "rctm_remove": {
+    "message": "Remove"
+  },
+  "rctm_clear_all": {
+    "message": "Clear Recently Closed Tabs"
   },
   "rctm_clear_all_confirm": {
     "message": "Clearing the Recently Closed Tabs menu does not clear Chrome's browser history. This feature only clears this list."
   },
-  "ui_import_export_header": {
-    "message": "Import/Export"
-  },
   "ui_import_export_btn": {
     "message": "Import/Export"
   },
+  "ui_import_export_desc": {
+    "message": "Take your settings to other browsers or restore a backup."
+  },
   "ui_import_export_btn2": {
-    "message": "Hide"
+    "message": "Back"
   },
   "ui_import_export_btn_import": {
     "message": "Import"
@@ -310,6 +313,45 @@
     "message": "Export"
   },
   "ui_import_export_btn_import_run": {
-    "message": "Run Import"
+    "message": "Apply"
+  },
+  "ui_import_export_desc_export": {
+    "message": "Export: Generates a string that contains all of your preferences. This string can be saved for later as a backup or can be copied to other computers to automatically set them up like this one. Uploaded images are not exported; images on the web are."
+  },
+  "ui_import_export_desc_import": {
+    "message": "Import: Overwrites your current configuration with a valid exported string. <b>WARNING</b>: All of your current preferences will be irrevocably lost. There is no way to undo this operation. Uploaded images are not imported; images on the web are."
+  },
+  "ui_import_export_installed_warning": {
+    "message": "Installed apps, extensions, and widgets are not imported or exported. Extensions can't install other apps or extensions. Use <a href='http://support.google.com/chrome/bin/answer.py?answer=165139'>Chrome Sync</a> instead."
+  },
+  "ui_import_export_desc_restore": {
+    "message": "Restore: Allows you to undo the last Import. Your current state will be backed up for later restoration as well."
+  },
+  "ui_import_export_header": {
+    "message": "Import/Export"
+  },
+  "ui_import_export_confirm_restore": {
+    "message": "Do you want to restore? Your current settings would be lost."
+  },
+  "ui_import_export_msg_header": {
+    "message": "Import/Export"
+  },
+  "ui_import_export_restore_complete_msg": {
+    "message": "Restore complete."
+  },
+  "ui_import_export_no_restore_msg": {
+    "message": "Nothing to restore!"
+  },
+  "ui_import_export_complete_msg": {
+    "message": "Import complete."
+  },
+  "ui_import_export_empty_string_msg": {
+    "message": "Enter import string first!"
+  },
+  "ui_import_export_invalid_string_msg": {
+    "message": "Invalid import string!"
+  },
+  "ui_import_export_btn_restore": {
+    "message": "Restore"
   }
 }

@@ -388,7 +388,8 @@ IconResizing = {
       var newImgHeight = IconResizing.tileImg.height();
       if (newImgWidth != 0) {
         // if image is changed then reset its position and zoom level
-        if (IconResizing.id == previousId && (IconResizing.imgWidth != newImgWidth || IconResizing.imgHeight != newImgHeight)) {
+        if (IconResizing.id != previousId && !widgets[IconResizing.id].backgroundPos && !widgets[IconResizing.id].backgroundSize 
+          && (IconResizing.imgWidth != newImgWidth || IconResizing.imgHeight != newImgHeight)) {
           IconResizing.imgWidth = newImgWidth;
           IconResizing.imgHeight = newImgHeight;
           IconResizing.sizeRatio = IconResizing.imgWidth / IconResizing.imgHeight;

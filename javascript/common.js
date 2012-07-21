@@ -16,6 +16,7 @@
   *       relationship with the authors of this project or the project itself.
 ***/
 
+
 // Utility Functions
   var util = util || {};
 
@@ -196,6 +197,43 @@ if(localStorage.getItem("widgets") === null) {
 
 // Load widget settings
 var widgets = JSON.parse(localStorage.getItem("widgets"));
+
+// if widget paths are old, update them to new one
+function updateOldPaths() {
+  var oldPathReg = /widgets\/(widget.([^.\/]*).[^\/]*)/, 
+    pathChanged = false;
+  for (var i in widgets) {
+    if (widgets[i].stock) {
+      if (widgets[i].path || widgets[i].img || widgets[i].simg) {
+        var oPath = widgets[i].path || widgets[i].img || widgets[i].simg, 
+          result;
+        result = oldPathReg.exec(oPath);
+        if (result) {
+          var newPath = "/widgets/" + result[2] + "/" + result[1];
+          pathChanged = true;
+          //update path
+          if (widgets[i].path) {
+            widgets[i].path = newPath;
+          }
+          if (widgets[i].img) {
+            widgets[i].img = newPath;
+          }
+          if (widgets[i].simg) {
+            widgets[i].simg = newPath;
+          }
+        }
+      }
+    }
+    else if (widgets[i].id = "tabs" && widgets[i].path == "widgets/tabs.html") {
+      pathChanged = true;
+      widgets[i].path = "widgets/tabs/tabs.html";
+    }
+  }
+  if (pathChanged) {
+    localStorageSync(false);
+  }
+}
+updateOldPaths();
 
 // Clears localStorage
   $("#reset-button").live("click", function(){
