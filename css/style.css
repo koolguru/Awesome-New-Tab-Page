@@ -446,23 +446,11 @@ body {
 #import-export-contents {
   display: none;
 }
-
-#import-export-btn-import-run-div {
-  display: none;
+#import-export-contents .buttons {
+  margin-top: 10px;
 }
-
-#import-export-btn-import {
-  position: relative;
-  left: 60px;
-}
-
-#import-export-btn-export {
-  position: relative;
-  left: 70px;
-}
-
-#import-export-textarea-div {
-  display: none;
+#import-export-contents #import-btn{
+  margin-left: 40px;
 }
 
 /* UI-2 */
