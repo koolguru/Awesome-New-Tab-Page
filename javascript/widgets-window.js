@@ -168,7 +168,7 @@ function setupStockWidgets() {
           head: "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback"
         },
         sender: {
-          id: "mgmiemnjjchgkmgbeljfocdjjnpjnmcg",
+          id: chrome.app.getDetails().id,
           name: widget.name,
           stock: id,
           tab: null
