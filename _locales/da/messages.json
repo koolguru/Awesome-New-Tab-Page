@@ -1,0 +1,257 @@
+{
+	"ui_button_apps":{
+		"message":"Apps"
+	},
+	"ui_button_widgets":{
+		"message":"Widgets"
+	},
+	"ui_button_unlock":{
+		"message":"L\u00e5s op"
+	},
+	"ui_button_lock":{
+		"message":"L\u00e5s for at interagere med Apps og Widgets"
+	},
+	"ui_button_rct":{
+		"message":"Fornylig lukkede faner"
+	},
+	"ui_button_close":{
+		"message":"Luk"
+	},
+	"ui_button_about":{
+		"message":"Om"
+	},
+	"ui_config":{
+		"message":"Konfigur\u00e9r"
+	},
+	"ui_c_learnmore":{
+		"message":"L\u00e6r mere"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Skift baggrundsfarve"
+	},
+	"ui_te":{
+		"message":"Flise Editor"
+	},
+	"ui_te_name":{
+		"message":"Navn"
+	},
+	"ui_te_name_desc":{
+		"message":"Hvad vil du gerne kalde det?"
+	},
+	"ui_te_shname":{
+		"message":"Vis \/ Skjul navn"
+	},
+	"ui_te_pin":{
+		"message":"Pin med venstre klik"
+	},
+	"ui_te_url_desc":{
+		"message":"Angiv den URL-adresse, du gerne vil oprette et hyperlink til, s\u00e5som http:\/\/www.google.com\/"
+	},
+	"ui_te_url_tip":{
+		"message":"Tip: En gyldig URL-adresse indeholder en protokol - s\u00e5som \"http:\/\/\" - f\u00f8r dom\u00e6net. Genvejen fungerer ikke uden en gyldig protokol."
+	},
+	"ui_te_shfavicon":{
+		"message":"Vis \/ Skjul Favicon"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"\u00c5bn farvev\u00e6lgeren"
+	},
+	"ui_te_bg_transparent":{
+		"message":"Fuldst\u00e6ndig gennemsigtig baggrund"
+	},
+	"ui_te_bg_tip":{
+		"message":"Tip: Hvis du markerer dette afkrydsningsfelt, vil du m\u00e5ske ogs\u00e5 gerne skjule navn og favicon."
+	},
+	"ui_te_bg_note":{
+		"message":"Bem\u00e6rk: Denne indstilling har ingen indflydelse p\u00e5 indstillingerne for ikon & baggrund."
+	},
+	"ui_te_app_tip":{
+		"message":"Ikke alle indstillinger er tilg\u00e6ngelige for apps. Hvis du gerne vil have flere indstillinger, opret da en brugerdefineret genvej istedetfor. Klik blot p\u00e5 en tom flise n\u00e5r gitteret er l\u00e5st op for at g\u00f8re dette."
+	},
+	"ui_te_ib":{
+		"message":"Ikon & Baggrund"
+	},
+	"ui_te_ib_desc":{
+		"message":"Angiv en URL-adresse til et billede, brug Gennemse knappen eller tr\u00e6k & slip et billede over for at \u00e6ndre ikonet."
+	},
+	"ui_te_ib_browse":{
+		"message":"Gennemse"
+	},
+	"ui_te_ib_tip":{
+		"message":"Tip: Forlad tom for intet ikon."
+	},
+	"ui_te_ib_advanced":{
+		"message":"Avanceret: Skjul navnet og faviconet og brug et billede, der er 200px gange 200px for helt at kunne tilpasse en 1 x 1 flise."
+	},
+	"ui_config_general":{
+		"message":"Generelt"
+	},
+	"ui_config_shbmb":{
+		"message":"Vis \/ Gem Bogm\u00e6rke Bar"
+	},
+	"ui_config_shtlb":{
+		"message":"Vis knapperne til venstre i toppen kun ved at tr\u00e6kke musen over dem"
+	},
+	"ui_config_shtlb_desc":{
+		"message":"N\u00e5r denne indstillinger er sl\u00e5et til, vil alle knapperne til venstre i toppen glide v\u00e6k. For at f\u00e5 dem frem skal du bare smide din mus over hvor de plejer at v\u00e6re."
+	},
+	"ui_config_shgrid":{
+		"message":"Vis\/Skjul Gitter (n\u00e5r ul\u00e5st)"
+	},
+	"ui_config_amazonlocale":{
+		"message":"V\u00e6lg dit land til <i>standard<\/i> genvejen; Amazon."
+	},
+	"ui_config_reset":{
+		"message":"Nulstil"
+	},
+	"ui_config_reset_desc":{
+		"message":"Denne knap vil fortryde alle de \u00e6ndringer som du har foretaget ved Awesome New Tab Page."
+	},
+	"ui_confirm_reset":{
+		"message":"Er du sikker p\u00e5 at du vil nulstille alle widget, app og genvejs placeringer? Alle standard widget pr\u00e6cerencer (notesblok olign.) samt baggrunds pr\u00e6ferencer? Alt som er \u00e6ndret vil blive tabt uden at kunne blive erstattet."
+	},
+	"ui_config_bg":{
+		"message":"Baggrund"
+	},
+	"ui_config_bg_upload":{
+		"message":"Upload billede"
+	},
+	"ui_config_bgimg1":{
+		"message":"<b>Avanceret<\/b> (Shorthand Background CSS): Brug et billede p\u00e5 nettet."
+	},
+	"ui_config_bgimg3":{
+		"message":"Slet boksen for at bruge standardbaggrundsbilledet (solid farve)."
+	},
+	"ui_config_bgimg2":{
+		"message":"Eksempel (intet efterstillet semikolon!):"
+	},
+	"ui_about":{
+		"message":"Om"
+	},
+	"ui_about_contrib":{
+		"message":"Bidragydere"
+	},
+	"ui_about_contrib_desc":{
+		"message":"Dette projekt ville ikke eksistere uden det h\u00e5rde arbejde, feedback, ideer, overs\u00e6ttelser og st\u00f8tten fra et par grupper med nogle helt igennem fantastiske mennesker."
+	},
+	"ui_about_dev":{
+		"message":"Udviklere"
+	},
+	"ui_about_contrib_translators":{
+		"message":"Overs\u00e6ttere"
+	},
+	"ui_about_contrib_users":{
+		"message":"Brugere"
+	},
+	"ui_about_contrib_cta":{
+		"message":"Click p\u00e5 linksene ovenover for at se (og m\u00e5ske deltage dem) disse fantastiske mennesker i action!"
+	},
+	"ui_about_share":{
+		"message":"Del"
+	},
+	"ui_about_share1":{
+		"message":"Kan du godt lide Awesome New Tab Page? Hvorfor s\u00e5 ikke dele det med  venner og familie?"
+	},
+	"ui_about_rate":{
+		"message":"Vurder"
+	},
+	"ui_about_rate_desc":{
+		"message":"Kan du godt lide denne udvidelse? Brug et minuts tid til at give den et positivt review p\u00e5 Chrome Web Storen."
+	},
+	"ui_button_download":{
+		"message":"Hent Widgets"
+	},
+	"ui_button_downloadapps":{
+		"message":"Download apps"
+	},
+	"ui_confirm_uninstall":{
+		"message":"Er du sikker p\u00e5 at du vil afinstallere $app$?",
+		"placeholders":{
+			"app":{
+				"content":"$1",
+				"example":"Chrome Web Store"
+			}
+		}
+	},
+	"ui_bmb_ob":{
+		"message":"Andre bogm\u00e6rker"
+	},
+	"app_webstore":{
+		"message":"Chrome Web-butikken"
+	},
+	"tutorial_ui_next":{
+		"message":"N\u00e6ste"
+	},
+	"tutorial_ui_back":{
+		"message":"Tilbage"
+	},
+	"tutorial_1_welcome":{
+		"message":"Velkommen til"
+	},
+	"tutorial_1_desc1":{
+		"message":"En Ny Fane Side (NFS, eller NTP p\u00e5 engelsk) erstatning, som ikke stinker."
+	},
+	"tutorial_1_desc2":{
+		"message":"(... eller som ihvertfald fors\u00f8ger virkelig h\u00e5rdt ikke at g\u00f8re det.)"
+	},
+	"tutorial_1_desc3":{
+		"message":"Klik p\u00e5 <span class=\"ul\"> N\u00e6ste<\/span> for at f\u00e5 mere at vide."
+	},
+	"tutorial_2_title":{
+		"message":"Ikke l\u00e6ngere bare <span class=\"ul\">ikoner<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"Ikoner er for\u00e6ldede. Teknologien skynder sig fremad, med ekstremt kraftige, dynamiske og smukke widgets som findes i Android, Windows Phone 7 og (snart) ogs\u00e5 Windows 8."
+	},
+	"tutorial_2_desc2":{
+		"message":"Denne udvidelse er en start p\u00e5 at bringe den samme kraft til Chromes Ny Fane side."
+	},
+	"tutorial_2_desc3":{
+		"message":"Sig goddag til <span class=\"ul\"> widgets<\/span>."
+	},
+	"tutorial_3_title":{
+		"message":"F\u00e5 tingene til at passe til <span class=\"ul\">dine<\/span> behov"
+	},
+	"tutorial_3_desc1":{
+		"message":"Klik p\u00e5 l\u00e5s op og <span class=\"ul\">flyt<\/span> widgets og ikoner derhen, hvor du vil. <span class=\"ul\">Slet<\/span> ting, du ikke vil have (n\u00e5r de er l\u00e5st op)."
+	},
+	"tutorial_4_title":{
+		"message":"Dine Apps Er I Sikkerhed"
+	},
+	"tutorial_4_desc1":{
+		"message":"Bare rolig, dine apps er ikke v\u00e6k."
+	},
+	"tutorial_4_desc2":{
+		"message":"F\u00f8l dig fri til at l\u00e5se fliser op for derefter at tr\u00e6kke apps hen til din hjemmesk\u00e6rm."
+	},
+	"tutorial_4_desc3":{
+		"message":"Vis hvad du regelm\u00e6ssigt bruger, skjul alt andet."
+	},
+	"tutorial_5_title1":{
+		"message":"Nyd det"
+	},
+	"tutorial_5_desc1":{
+		"message":"Nyd det! Husk at give denne app 5 stjerner p\u00e5 Web-butikken."
+	},
+	"tutorial_5_desc2":{
+		"message":"Har du en id\u00e9 til denne udvidelse? Skriv det <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">her<\/a>."
+	},
+	"tutorial_5_title2":{
+		"message":"Er du en udvikler?"
+	},
+	"tutorial_5_desc3":{
+		"message":"Lav dine egne widgets! Find ud af hvordan her:"
+	},
+	"ui_shortcut_img":{
+		"message":"Billede URL skal v\u00e6re pr\u00e6cist 128px gange 128px, helst i PNG format med alpha gennemsigtighed. For at nulstille til standarden skal du bare slette alt i feltet."
+	},
+	"notepad_default":{
+		"message":"Skriv noget here. Alt hvad du skriver vil blive gemt!\n\nV\u00e6r dog forsigtig; der er INGEN backups og Nulstil knappen NULSTILLER denne widget!"
+	},
+	"ui_resize_reset":{
+		"message":"Nulstil"
+	},
+	"ui_import_export_btn2":{
+		"message":"Tilbage"
+	}
+}

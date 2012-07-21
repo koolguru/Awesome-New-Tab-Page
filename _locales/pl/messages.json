@@ -1,1 +1,257 @@
-{"ui_button_apps":{"message":"Dodatki"},"ui_button_widgets":{"message":"Widgety"},"ui_button_unlock":{"message":"Odblokuj"},"ui_button_lock":{"message":"Zablokuj by korzysta\u0107"},"ui_button_rct":{"message":"Ostatnio zamkni\u0119te karty"},"ui_button_close":{"message":"Zamknij"},"ui_button_about":{"message":"O dodatku"},"ui_config":{"message":"Konfiguracja"},"ui_config_bg_changecolor":{"message":"Zmiana koloru t\u0142a"},"ui_te":{"message":"Edytor kafelka"},"ui_te_name":{"message":"Nazwa"},"ui_te_bg_colorpicker":{"message":"Otw\u00f3rz Pr\u00f3bnik kolor\u00f3w"},"ui_te_ib_browse":{"message":"Przegl\u0105daj"},"ui_config_general":{"message":"Og\u00f3lne"},"ui_config_shgrid":{"message":"Poka\u017c \/ Ukryj Siatk\u0119 (kiedy odblokowane)"},"ui_config_bg":{"message":"T\u0142o"},"ui_config_bgimg3":{"message":"Wyczy\u015b\u0107 pole by przywr\u00f3ci\u0107 domy\u015blne t\u0142o (jeden kolor)."},"ui_config_bgimg2":{"message":"Przyk\u0142ad (BEZ \u015brednika na ko\u0144cu!):"},"ui_about":{"message":"O dodatku"},"ui_about_dev":{"message":"Programi\u015bci"},"ui_about_contrib_translators":{"message":"T\u0142umacze"},"ui_about_contrib_users":{"message":"U\u017cytkownicy"},"ui_about_share":{"message":"Podziel si\u0119"},"ui_about_rate":{"message":"Oce\u0144"},"ui_button_download":{"message":"Pobierz widgety"},"ui_confirm_uninstall":{"message":"Czy na pewno chcesz odinstalowa\u0107 dodatek $app$?","placeholders":{"app":{"content":"$1","example":"Chrome Web Store"}}},"ui_aw_lock_h":{"message":"Blokowanie i odblokowywanie"},"ui_aw_featured":{"message":"Wyr\u00f3\u017cnione"},"ui_aw_wotw":{"message":"Wid\u017cet tygodnia"},"ui_bmb_ob":{"message":"Inne zak\u0142adki"},"app_webstore":{"message":"Chrome Web Store"},"tutorial_ui_next":{"message":"Nast\u0119pny &raquo;"},"tutorial_ui_back":{"message":"&laquo; Poprzedni"},"tutorial_1_welcome":{"message":"Witaj w"},"tutorial_1_desc1":{"message":"Zast\u0119pstwo dla nowej karty (NTP), kt\u00f3re nie ssie tak jak poprzednie."},"tutorial_1_desc2":{"message":"(... a przynajmniej stara si\u0119.)"},"tutorial_1_desc3":{"message":"Kliknij <span class=\"ul\">Nast\u0119pny<\/span> aby dowiedzie\u0107 si\u0119 wi\u0119cej."},"tutorial_2_title":{"message":"To ju\u017c nie tylko <span class=\"ul\">Ikonki<\/span>"},"tutorial_2_desc2":{"message":"To rozszerzenie jest pocz\u0105tkiem w dostarczeniu podobnej mocy do nowej karty w Google Chrome."},"tutorial_2_desc3":{"message":"Przywitaj si\u0119 z <span class=\"ul\">widgetami<\/span>."},"tutorial_3_title":{"message":"Dopasuj rzeczy do <span class=\"ul\">swoich<\/span> potrzeb"},"tutorial_3_desc1":{"message":"Kliknij odblokuj i <span class=\"ul\">przesuwaj<\/span> widgety oraz ikonki gdziekolwiek zechcesz. <span class=\"ul\">Usu\u0144<\/span> rzeczy, kt\u00f3rych nie potrzebujesz."},"tutorial_4_title":{"message":"Twoje appsy s\u0105 bezpieczne"},"tutorial_4_desc1":{"message":"Nie martw si\u0119, Twoje aplikacje nie posz\u0142y na darmo."},"tutorial_4_desc2":{"message":"Mo\u017cesz spokojnie odblokowa\u0107 kafelki i przeci\u0105ga\u0107 widgety na Tw\u00f3j ekran domowy."},"tutorial_4_desc3":{"message":"Poka\u017c czego na og\u00f3\u0142 u\u017cywasz i ukryj wszystko inne."},"tutorial_5_title1":{"message":"Baw si\u0119"},"tutorial_5_desc1":{"message":"Baw si\u0119 dobrze! Pami\u0119taj by da\u0107 mi 5 gwiazdek w sklepiku Google Chrome."},"tutorial_5_desc2":{"message":"Masz pomys\u0142 na rozszerzenie? Zostaw go <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">tutaj<\/a>."},"tutorial_5_title2":{"message":"Jeste\u015b programist\u0105?"},"tutorial_5_desc3":{"message":"Stw\u00f3rz swoje w\u0142asne widgety! Dowiedz si\u0119 jak:"},"ui_shortcut_img":{"message":"Wskazywany obrazek musi by\u0107 dok\u0142adnie 128x128 pikseli, najlepiej w formacie PNG z przezroczysto\u015bci\u0105. Aby zresetowa\u0107, po prostu usu\u0144 wszystko w tym polu."},"notepad_default":{"message":"Wpisz tu cokolwiek. Wszystko co tu wpiszesz b\u0119dzie zapisane przy ka\u017cdym naci\u015bni\u0119ciu jakiegokolwiek klawisza.\n\nB\u0105d\u017a ostro\u017cny, gdy\u017c nie ma \u017cadnego backupu, a przycisk Resetuj\u0105cy ca\u0142e rozszerzenie usunie zawarto\u015b\u0107 tego widgeta!"}}
+{
+	"ui_button_apps":{
+		"message":"Dodatki"
+	},
+	"ui_button_widgets":{
+		"message":"Widgety"
+	},
+	"ui_button_unlock":{
+		"message":"Odblokuj"
+	},
+	"ui_button_lock":{
+		"message":"Zablokuj by korzysta\u0107"
+	},
+	"ui_button_rct":{
+		"message":"Ostatnio zamkni\u0119te karty"
+	},
+	"ui_button_close":{
+		"message":"Zamknij"
+	},
+	"ui_button_about":{
+		"message":"O dodatku"
+	},
+	"ui_config":{
+		"message":"Konfiguracja"
+	},
+	"ui_c_learnmore":{
+		"message":"Dowiedz si\u0119 wi\u0119cej"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Zmiana koloru t\u0142a"
+	},
+	"ui_te":{
+		"message":"Edytor kafelka"
+	},
+	"ui_te_name":{
+		"message":"Nazwa"
+	},
+	"ui_te_name_desc":{
+		"message":"Jak chcesz nazwa\u0107 skr\u00f3t?"
+	},
+	"ui_te_shname":{
+		"message":"Poka\u017c \/ ukryj nazw\u0119"
+	},
+	"ui_te_pin":{
+		"message":"przypnij kart\u0119 po otwarciu"
+	},
+	"ui_te_url_desc":{
+		"message":"Podaj adres do kt\u00f3rego chcesz linkowa\u0107, np. http:\/\/www.google.pl\/"
+	},
+	"ui_te_url_tip":{
+		"message":"Porada: Prwaid\u0142owy adres URL zawiera oznaczenie protoko\u0142u - takich jak np. \"http:\/\/\" - przed adresem domeny. Bez prawid\u0142owego oznaczenia protoko\u0142u, Tw\u00f3j skr\u00f3t nie b\u0119dzie dzia\u0142a\u0107."
+	},
+	"ui_te_shfavicon":{
+		"message":"Poka\u017c \/ ukryj favicon ikon\u0119 ulubionych"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"Otw\u00f3rz Pr\u00f3bnik kolor\u00f3w"
+	},
+	"ui_te_bg_transparent":{
+		"message":"Przezroczyste t\u0142o"
+	},
+	"ui_te_bg_tip":{
+		"message":"Porada: Je\u015bli zaznaczysz t\u0105 opcj\u0119, mo\u017cesz zechcie\u0107 ukry\u0107 nazw\u0119 i ikon\u0119 ulubionych."
+	},
+	"ui_te_bg_note":{
+		"message":"Uwaga: Ta opcja nie ma wp\u0142ywu na ustawienia ikon i t\u0142a."
+	},
+	"ui_te_app_tip":{
+		"message":"Nie wszystkie opcje s\u0105 dost\u0119pne dla aplikacji. Je\u015bli chcia\u0142by\u015b uzyska\u0107 wi\u0119cej opcji, stw\u00f3rz niestandardowy skr\u00f3t. Po prostu kliknij na wolne pole przy odblokowanej siatce."
+	},
+	"ui_te_ib":{
+		"message":"Ikony i t\u0142o"
+	},
+	"ui_te_ib_desc":{
+		"message":"Wprowad\u017a adres URL dla obrazka, skorzystaj z opcji \"Przegl\u0105daj\" lub przeci\u0105gnij i upu\u015b\u0107 aby zmieni\u0107 ikon\u0119."
+	},
+	"ui_te_ib_browse":{
+		"message":"Przegl\u0105daj"
+	},
+	"ui_te_ib_tip":{
+		"message":"Porada: Zostaw puste aby nie by\u0142o \u017cadnej ikony."
+	},
+	"ui_te_ib_advanced":{
+		"message":"Zaawansowane: Ukryj nazw\u0119 i ikon\u0119 ulubionych i u\u017cyj obrazka w rozdzielczo\u015bci 200 na 200 pikseli aby optymalnie dostosowa\u0107 wygl\u0105d w stosunku 1:1."
+	},
+	"ui_config_general":{
+		"message":"Og\u00f3lne"
+	},
+	"ui_config_shbmb":{
+		"message":"Poka\u017c \/ Ukryj Pasek Zak\u0142adek"
+	},
+	"ui_config_shtlb":{
+		"message":"Poka\u017c pasek przycisk\u00f3w po lewej stronie po najechaniu myszk\u0105"
+	},
+	"ui_config_shtlb_desc":{
+		"message":"Gdy ta opcja jest zaznaczona, przyciski w lewej cz\u0119\u015bci ekranu b\u0119d\u0105 si\u0119 chowa\u0107. Aby mie\u0107 do nich dost\u0119p najed\u017a w to miejsce kursorem myszy."
+	},
+	"ui_config_shgrid":{
+		"message":"Poka\u017c \/ Ukryj Siatk\u0119 (kiedy odblokowane)"
+	},
+	"ui_config_amazonlocale":{
+		"message":"Dla <i>domy\u015blnego<\/i> skrutu strony Amazon, wybierz sw\u00f3j kraj."
+	},
+	"ui_config_reset":{
+		"message":"Resetuj"
+	},
+	"ui_config_reset_desc":{
+		"message":"Ten przycisk umo\u017cliwi Ci cofni\u0119cie wszystkich zmian jakich dokona\u0142e\u015b w Awesome New Tab Page."
+	},
+	"ui_confirm_reset":{
+		"message":"Czy na pewno chcesz zresetowa\u0107 widget, aplikacj\u0119, skr\u00f3ty niestandardowe, ustawienia widget\u00f3w(notes, itp.)  oraz ustawienia t\u0142a? Wszystkie zapisane ustawienia zostan\u0105 utracone."
+	},
+	"ui_config_bg":{
+		"message":"T\u0142o"
+	},
+	"ui_config_bg_upload":{
+		"message":"Wy\u015blij obrazek"
+	},
+	"ui_config_bgimg1":{
+		"message":"<b>Zaawansowane<\/b> (skr\u00f3cone t\u0142o CSS): Wykorzystaj obraz z internetu."
+	},
+	"ui_config_bgimg3":{
+		"message":"Wyczy\u015b\u0107 pole by przywr\u00f3ci\u0107 domy\u015blne t\u0142o (jeden kolor)."
+	},
+	"ui_config_bgimg2":{
+		"message":"Przyk\u0142ad (BEZ \u015brednika na ko\u0144cu!):"
+	},
+	"ui_about":{
+		"message":"O dodatku"
+	},
+	"ui_about_contrib":{
+		"message":"Wsp\u00f3\u0142pracownicy"
+	},
+	"ui_about_contrib_desc":{
+		"message":"Ten projekt nie istnia\u0142by bez ci\u0119\u017ckiej pracy, opinii, pomys\u0142\u00f3w, t\u0142umacze\u0144 i wsparcia kilku grup bardzo fajnych ludzi."
+	},
+	"ui_about_dev":{
+		"message":"Programi\u015bci"
+	},
+	"ui_about_contrib_translators":{
+		"message":"T\u0142umacze"
+	},
+	"ui_about_contrib_users":{
+		"message":"U\u017cytkownicy"
+	},
+	"ui_about_contrib_cta":{
+		"message":"Kliknij w link powy\u017cej by zobaczy\u0107 (i by\u0107 mo\u017ce do\u0142\u0105czy\u0107 do) tych wspania\u0142ych ludzi w akcji!"
+	},
+	"ui_about_share":{
+		"message":"Podziel si\u0119"
+	},
+	"ui_about_share1":{
+		"message":"Lubisz Awesome New Tab Page? Dlaczego nie mia\u0142by\u015b powiedzie\u0107 o tym znajomym i rodzinie?"
+	},
+	"ui_about_rate":{
+		"message":"Oce\u0144"
+	},
+	"ui_about_rate_desc":{
+		"message":"Lubisz to rozszerzenie? Po\u015bwi\u0119\u0107 chwil\u0119 i dodaj pozytywn\u0105 ocen\u0119 w Chrome Web Store."
+	},
+	"ui_button_download":{
+		"message":"Pobierz widgety"
+	},
+	"ui_button_downloadapps":{
+		"message":"Pobierz Aplikacje"
+	},
+	"ui_confirm_uninstall":{
+		"message":"Czy na pewno chcesz odinstalowa\u0107 dodatek $app$?",
+		"placeholders":{
+			"app":{
+				"content":"$1",
+				"example":"Chrome Web Store"
+			}
+		}
+	},
+	"ui_bmb_ob":{
+		"message":"Inne zak\u0142adki"
+	},
+	"app_webstore":{
+		"message":"Chrome Web Store"
+	},
+	"tutorial_ui_next":{
+		"message":"Nast\u0119pny &raquo;"
+	},
+	"tutorial_ui_back":{
+		"message":"&laquo; Poprzedni"
+	},
+	"tutorial_1_welcome":{
+		"message":"Witaj w"
+	},
+	"tutorial_1_desc1":{
+		"message":"Zast\u0119pstwo dla nowej karty (NTP), kt\u00f3re nie ssie tak jak poprzednie."
+	},
+	"tutorial_1_desc2":{
+		"message":"(... a przynajmniej stara si\u0119.)"
+	},
+	"tutorial_1_desc3":{
+		"message":"Kliknij <span class=\"ul\">Nast\u0119pny<\/span> aby dowiedzie\u0107 si\u0119 wi\u0119cej."
+	},
+	"tutorial_2_title":{
+		"message":"To ju\u017c nie tylko <span class=\"ul\">Ikonki<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"Ikonki s\u0105 przestarza\u0142e Technologia idzie do przodu, pojawiaj\u0105 si\u0119 nowe, pot\u0119\u017cne i dynamiczne wid\u017cety tj te z Androida, Windows Phone 7 oraz (ju\u017c nied\u0142ugo) Windows 8."
+	},
+	"tutorial_2_desc2":{
+		"message":"To rozszerzenie jest pocz\u0105tkiem w dostarczeniu podobnej mocy do nowej karty w Google Chrome."
+	},
+	"tutorial_2_desc3":{
+		"message":"Przywitaj si\u0119 z <span class=\"ul\">widgetami<\/span>."
+	},
+	"tutorial_3_title":{
+		"message":"Dopasuj rzeczy do <span class=\"ul\">swoich<\/span> potrzeb"
+	},
+	"tutorial_3_desc1":{
+		"message":"Kliknij odblokuj i <span class=\"ul\">przesuwaj<\/span> widgety oraz ikonki gdziekolwiek zechcesz. <span class=\"ul\">Usu\u0144<\/span> rzeczy, kt\u00f3rych nie potrzebujesz."
+	},
+	"tutorial_4_title":{
+		"message":"Twoje appsy s\u0105 bezpieczne"
+	},
+	"tutorial_4_desc1":{
+		"message":"Nie martw si\u0119, Twoje aplikacje nie posz\u0142y na darmo."
+	},
+	"tutorial_4_desc2":{
+		"message":"Mo\u017cesz spokojnie odblokowa\u0107 kafelki i przeci\u0105ga\u0107 widgety na Tw\u00f3j ekran domowy."
+	},
+	"tutorial_4_desc3":{
+		"message":"Poka\u017c czego na og\u00f3\u0142 u\u017cywasz i ukryj wszystko inne."
+	},
+	"tutorial_5_title1":{
+		"message":"Baw si\u0119"
+	},
+	"tutorial_5_desc1":{
+		"message":"Baw si\u0119 dobrze! Pami\u0119taj by da\u0107 mi 5 gwiazdek w sklepiku Google Chrome."
+	},
+	"tutorial_5_desc2":{
+		"message":"Masz pomys\u0142 na rozszerzenie? Zostaw go <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">tutaj<\/a>."
+	},
+	"tutorial_5_title2":{
+		"message":"Jeste\u015b programist\u0105?"
+	},
+	"tutorial_5_desc3":{
+		"message":"Stw\u00f3rz swoje w\u0142asne widgety! Dowiedz si\u0119 jak:"
+	},
+	"ui_shortcut_img":{
+		"message":"Wskazywany obrazek musi by\u0107 dok\u0142adnie 128x128 pikseli, najlepiej w formacie PNG z przezroczysto\u015bci\u0105. Aby zresetowa\u0107, po prostu usu\u0144 wszystko w tym polu."
+	},
+	"notepad_default":{
+		"message":"Wpisz tu cokolwiek. Wszystko co tu wpiszesz b\u0119dzie zapisane przy ka\u017cdym naci\u015bni\u0119ciu jakiegokolwiek klawisza.\n\nB\u0105d\u017a ostro\u017cny, gdy\u017c nie ma \u017cadnego backupu, a przycisk Resetuj\u0105cy ca\u0142e rozszerzenie usunie zawarto\u015b\u0107 tego widgeta!"
+	},
+	"ui_resize_reset":{
+		"message":"Resetuj"
+	},
+	"ui_import_export_btn2":{
+		"message":"&laquo; Poprzedni"
+	}
+}

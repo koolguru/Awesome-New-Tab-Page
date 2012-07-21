@@ -1,1 +1,257 @@
-{"ui_button_apps":{"message":"\u1ee8ng d\u1ee5ng"},"ui_button_widgets":{"message":"Ti\u1ec7n \u00edch"},"ui_button_unlock":{"message":"M\u1edf kh\u00f3a"},"ui_button_lock":{"message":"Kh\u00f3a \u0111\u1ec3 s\u1eed d\u1ee5ng"},"ui_button_rct":{"message":"Tab \u0111\u00f3ng g\u1ea7n \u0111\u00e2y"},"ui_button_close":{"message":"\u0110\u00f3ng"},"ui_button_about":{"message":"Gi\u1edbi thi\u1ec7u"},"ui_config_general":{"message":"C\u00e0i \u0111\u1eb7t chung"},"ui_config_shgrid":{"message":"Hi\u1ec7n\/\u1ea8n chia \u00f4 (khi m\u1edf kh\u00f3a)"},"ui_config_bg":{"message":"N\u1ec1n"},"ui_config_bgimg3":{"message":"B\u1ecf tr\u1ed1ng \u0111\u1ec3 d\u00f9ng n\u1ec1n m\u1eb7c \u0111\u1ecbnh."},"ui_config_bgimg2":{"message":"V\u00ed d\u1ee5 d\u00f9ng h\u00ecnh n\u1ec1n:"},"ui_about":{"message":"Gi\u1edbi thi\u1ec7u"},"ui_button_download":{"message":"T\u1ea3i ti\u1ec7n \u00edch"},"ui_confirm_uninstall":{"message":"B\u1ea1n c\u00f3 ch\u1eafc mu\u1ed1n g\u1ee1 b\u1ecf $app$?","placeholders":{"app":{"content":"$1","example":"Chrome Web Store"}}},"ui_bmb_ob":{"message":"Bookmark kh\u00e1c"},"app_webstore":{"message":"Chrome Web Store"},"tutorial_ui_next":{"message":"Ti\u1ebfp"},"tutorial_ui_back":{"message":"Tr\u1edf l\u1ea1i"},"tutorial_1_welcome":{"message":"Ch\u00e0o m\u1eebng t\u1edbi"},"tutorial_1_desc1":{"message":"Gi\u1ea3i ph\u00e1p thay th\u1ebf trang tab m\u1edbi (NTP)."},"tutorial_1_desc2":{"message":"(... lu\u00f4n c\u1ed1 g\u1eafng \u0111\u1ec3 ho\u00e0n thi\u1ec7n)"},"tutorial_1_desc3":{"message":"B\u1ea5m <span class=\"ul\">Ti\u1ebfp<\/span> \u0111\u1ec3 xem th\u00eam."},"tutorial_2_title":{"message":"Ko c\u00f2n nh\u1eefng <span class=\"ul\">bi\u1ec3u t\u01b0\u1ee3ng<\/span>"},"tutorial_2_desc2":{"message":"Ph\u1ea7n m\u1edf r\u1ed9ng n\u00e0y l\u00e0 b\u01b0\u1edbc kh\u1edfi \u0111\u1ea7u mang \u0111\u1ebfn s\u1ee9c m\u1ea1nh cho tab m\u1edbi c\u1ee7a Chrome."},"tutorial_2_desc3":{"message":"H\u00e3y l\u00e0m quen v\u1edbi c\u00e1c <span class=\"ul\">\u00f4 ti\u1ec7n \u00edch<\/span>."},"tutorial_3_title":{"message":"T\u00f9y Bi\u1ebfn M\u1ecdi Th\u1ee9 Theo \u00dd <span class=\"ul\">B\u1ea1n<\/span> "},"tutorial_3_desc1":{"message":"B\u1ea5m m\u1edf kh\u00f3a v\u00e0 b\u1ea1n c\u00f3 th\u1ec3 <span class=\"ul\">di chuy\u1ec3n<\/span> \u00f4 ti\u1ec7n \u00edch hay bi\u1ec3u t\u01b0\u1ee3ng t\u1edbi v\u1ecb tr\u00ed b\u1ea1n mu\u1ed1n. Ho\u1eb7c <span class=\"ul\">x\u00f3a b\u1ecf<\/span> ch\u00fang n\u1ebfu c\u1ea7n. "},"tutorial_4_title":{"message":"C\u00e1c \u1ee8ng D\u1ee5ng V\u1eabn An To\u00e0n"},"tutorial_4_desc1":{"message":"\u0110\u1eebng lo, c\u00e1c \u1ee9ng d\u1ee5ng \u0111\u00e3 c\u00e0i v\u1eabn c\u00f2n."},"tutorial_4_desc2":{"message":"B\u1ea1n c\u00f3 th\u1ec3 m\u1edf kh\u00f3a v\u00e0 k\u00e9o th\u1ea3 c\u00e1c \u1ee9ng d\u1ee5ng l\u00ean trang ch\u00ednh."},"tutorial_4_desc3":{"message":"Ch\u1ec9 c\u1ea7n hi\u1ec3n th\u1ecb c\u00e1c \u1ee9ng d\u1ee5ng hay d\u00f9ng."},"tutorial_5_title1":{"message":"H\u00e3y t\u1eadn h\u01b0\u1edfng"},"tutorial_5_desc1":{"message":"V\u00e0 nh\u1edb \u0111\u00e1nh gi\u00e1 ti\u1ec7n \u00edch n\u00e0y tr\u00ean Web Store."},"tutorial_5_desc2":{"message":"C\u00f3 \u00fd t\u01b0\u1edfng mu\u1ed1n \u0111\u00f3ng g\u00f3p? H\u00e3y <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">Chia S\u1ebb<\/a>."},"tutorial_5_title2":{"message":"B\u1ea1n l\u00e0 l\u1eadp tr\u00ecnh vi\u00ean?"},"tutorial_5_desc3":{"message":"Mu\u1ed1n t\u1ef1 t\u1ea1o ti\u1ec7n \u00edch! T\u00ecm hi\u1ec3u t\u1ea1i \u0111\u00e2y:"},"ui_shortcut_img":{"message":"\u1ea2nh ph\u1ea3i c\u00f3 k\u00edch th\u01b0\u1edbc 128x128 pixel, khuy\u00ean d\u00f9ng \u0111\u1ecbnh d\u1ea1ng PNG. \u0110\u1ec3 d\u00f9ng h\u00ecnh m\u1eb7c \u0111\u1ecbnh, h\u00e3y \u0111\u1ec3 tr\u1ed1ng \u00f4 n\u00e0y."},"notepad_default":{"message":"G\u00f5 ghi ch\u00fa v\u00e0o \u0111\u00e2y. N\u1ed9i dung s\u1ebd \u0111\u01b0\u1ee3c t\u1ef1 \u0111\u1ed9ng l\u01b0u.\n\nH\u00e3y th\u1eadn tr\u1ecdng; Ko c\u00f3 sao l\u01b0u d\u1ef1 ph\u00f2ng, v\u00e0 ch\u1ee9c n\u0103ng \"Thi\u1ebft l\u1eadp l\u1ea1i\" s\u1ebd x\u00f3a to\u00e0n b\u1ed9 n\u1ed9i dung!"}}
+{
+	"ui_button_apps":{
+		"message":"\u1ee8ng d\u1ee5ng"
+	},
+	"ui_button_widgets":{
+		"message":"Ti\u1ec7n \u00edch"
+	},
+	"ui_button_unlock":{
+		"message":"M\u1edf kh\u00f3a"
+	},
+	"ui_button_lock":{
+		"message":"Kh\u00f3a \u0111\u1ec3 s\u1eed d\u1ee5ng"
+	},
+	"ui_button_rct":{
+		"message":"Tab \u0111\u00f3ng g\u1ea7n \u0111\u00e2y"
+	},
+	"ui_button_close":{
+		"message":"\u0110\u00f3ng"
+	},
+	"ui_button_about":{
+		"message":"V\u1ec1 \u1ee9ng d\u1ee5ng n\u00e0y"
+	},
+	"ui_config":{
+		"message":"C\u1ea5u h\u00ecnh"
+	},
+	"ui_c_learnmore":{
+		"message":"T\u00ecm hi\u1ec3u th\u00eam"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Ch\u1ec9nh m\u00e0u n\u1ec1n"
+	},
+	"ui_te":{
+		"message":"Ch\u1ec9nh s\u1eeda h\u1ecda ti\u1ebft"
+	},
+	"ui_te_name":{
+		"message":"T\u00ean"
+	},
+	"ui_te_name_desc":{
+		"message":"B\u1ea1n mu\u1ed1n g\u1ecdi n\u00f3 l\u00e0 g\u00ec?"
+	},
+	"ui_te_shname":{
+		"message":"Hi\u1ec7n \/ \u1ea8n t\u00ean"
+	},
+	"ui_te_pin":{
+		"message":"Ghim v\u00e0o khi b\u1ea5m chu\u1ed9t ph\u1ea3i"
+	},
+	"ui_te_url_desc":{
+		"message":"\u0110i\u1ec1n m\u1ed9t URL b\u1ea1n mu\u1ed1n tr\u1ecf t\u1edbi, v\u00ed d\u1ee5 nh\u01b0 http:\/\/www.google.com\/"
+	},
+	"ui_te_url_tip":{
+		"message":"M\u00e1ch nh\u1ecf: M\u1ed9t \u0111\u1ecba ch\u1ec9 h\u1ee3p l\u1ec7 ph\u1ea3i c\u00f3 m\u1ed9t t\u1eadp quy t\u1eafc protocol - nh\u01b0 \"http:\/\/\" - ph\u00eda tr\u01b0\u1edbc t\u00ean mi\u1ec1n. N\u1ebfu kh\u00f4ng c\u00f3 m\u1ed9t \u0111\u1ecba ch\u1ec9 \u0111\u00fang, \u0111\u01b0\u1eddng d\u1eabn c\u1ee7a b\u1ea1n s\u1ebd kh\u00f4ng ho\u1ea1t \u0111\u1ed9ng."
+	},
+	"ui_te_shfavicon":{
+		"message":"Hi\u1ec7n \/ \u1ea8n Bi\u1ec3u t\u01b0\u1ee3ng trang web"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"M\u1edf B\u1ed9 ch\u1ecdn m\u00e0u"
+	},
+	"ui_te_bg_transparent":{
+		"message":"N\u1ec1n trong su\u1ed1t ho\u00e0n to\u00e0n"
+	},
+	"ui_te_bg_tip":{
+		"message":"M\u00e1ch nh\u1ecf: N\u1ebfu b\u1ea1n ch\u1ecdn \u00f4 n\u00e0y, t\u01b0\u01a1ng \u0111\u01b0\u01a1ng v\u1edbi vi\u1ec7c b\u1ea1n ch\u1ecdn \u1ea9n c\u1ea3 t\u00ean l\u1eabn bi\u1ec3u t\u01b0\u1ee3ng web."
+	},
+	"ui_te_bg_note":{
+		"message":"L\u01b0u \u00fd: Tu\u1ef3 ch\u1ecdn n\u00e0y kh\u00f4ng \u1ea3nh h\u01b0\u1edfng t\u1edbi c\u00e1c thi\u1ebft \u0111\u1eb7t cho Bi\u1ec3u t\u01b0\u1ee3ng v\u00e0 N\u1ec1n."
+	},
+	"ui_te_app_tip":{
+		"message":"Kh\u00f4ng ph\u1ea3i m\u1ecdi thi\u1ebft \u0111\u1eb7t \u0111\u1ec1u \u0111\u01b0\u1ee3c \u00e1p d\u1ee5ng cho t\u1ea5t c\u1ea3 \u1ee9ng d\u1ee5ng. Thay v\u00e0o \u0111\u00f3, n\u1ebfu b\u1ea1n mu\u1ed1n c\u00f3 th\u00eam tu\u1ef3 ch\u1ecdn, h\u00e3y t\u1ea1o m\u1ed9t \u0111\u01b0\u1eddng d\u1eabn tu\u1ef3 th\u00edch. Nh\u1ea5n v\u00e0o m\u1ed9t \u00f4 tr\u1ed1ng tr\u00ean l\u01b0\u1edbi khi \u0111\u00e3 \u0111\u01b0\u1ee3c m\u1edf kho\u00e1."
+	},
+	"ui_te_ib":{
+		"message":"Bi\u1ec3u t\u01b0\u1ee3ng & N\u1ec1n"
+	},
+	"ui_te_ib_desc":{
+		"message":"\u0110i\u1ec1n \u0111\u1ecba ch\u1ec9 web tr\u1ecf t\u1edbi h\u00ecnh \u1ea3nh, d\u00f9ng n\u00fat Duy\u1ec7t, hay k\u00e9o th\u1ea3 h\u00ecnh \u1ea3nh v\u00e0o \u0111\u1ec3 thay \u0111\u1ed5i bi\u1ec3u t\u01b0\u1ee3ng hi\u1ec3n th\u1ecb."
+	},
+	"ui_te_ib_browse":{
+		"message":"Duy\u1ec7t"
+	},
+	"ui_te_ib_tip":{
+		"message":"M\u00e1ch nh\u1ecf: B\u1ecf tr\u1eafng m\u00e0 kh\u00f4ng d\u00f9ng bi\u1ec3u t\u01b0\u1ee3ng."
+	},
+	"ui_te_ib_advanced":{
+		"message":"N\u00e2ng cao: \u1ea8n t\u00ean v\u00e0 bi\u1ec3u t\u01b0\u1ee3ng v\u00e0 d\u00f9ng h\u00ecnh \u1ea3nh 200x200px \u0111\u1ec3 c\u00e1 nh\u00e2n ho\u00e1 \u00f4 vu\u00f4ng."
+	},
+	"ui_config_general":{
+		"message":"C\u00e0i \u0111\u1eb7t chung"
+	},
+	"ui_config_shbmb":{
+		"message":"Hi\u1ec7n \/ \u1ea8n Thanh \u0110\u00e1nh d\u1ea5u"
+	},
+	"ui_config_shtlb":{
+		"message":"Hi\u1ec7n n\u00fat c\u00f4ng c\u1ee5 ph\u00eda tr\u00ean b\u00ean tr\u00e1i khi \u0111\u01b0a chu\u1ed9t qua"
+	},
+	"ui_config_shtlb_desc":{
+		"message":"Khi l\u1ef1a ch\u1ecdn n\u00e0y \u0111\u00e3 \u0111\u01b0\u1ee3c ch\u1ecdn, nh\u1eefng n\u00fat \u1edf ph\u00eda tr\u00ean b\u00ean tr\u00e1i s\u1ebd t\u1ef1 \u0111\u1ed9ng \u1ea9n \u0111i. \u0110\u1ec3 l\u00e0m n\u00f3 hi\u1ec7n l\u00ean, ch\u1ec9 c\u1ea7n \u0111\u01b0a chu\u1ed9t qua v\u1ecb tr\u00ed n\u00e0y."
+	},
+	"ui_config_shgrid":{
+		"message":"Hi\u1ec7n\/\u1ea8n chia \u00f4 (khi m\u1edf kh\u00f3a)"
+	},
+	"ui_config_amazonlocale":{
+		"message":"D\u00e0nh cho \u0111\u01b0\u1eddng d\u1eabn t\u1edbi <i>kho h\u00e0ng<\/i> Amazon, ch\u1ecdn qu\u1ed1c gia c\u1ee7a b\u1ea1n."
+	},
+	"ui_config_reset":{
+		"message":"\u0110\u1eb7t l\u1ea1i"
+	},
+	"ui_config_reset_desc":{
+		"message":"N\u00fat n\u00e0y cho ph\u00e9p thu h\u1ed3i m\u1ecdi l\u1ec7nh s\u1eeda \u0111\u1ed5i c\u1ee7a b\u1ea1n \u0111\u1ed1i v\u1edbi Awesome New Tab Page."
+	},
+	"ui_confirm_reset":{
+		"message":"B\u1ea1n c\u00f3 ch\u1eafc mu\u1ed1n thi\u1ebft l\u1eadp l\u1ea1i t\u1ea5t c\u1ea3 ti\u1ec7n \u00edch, \u1ee9ng d\u1ee5ng, \u0111\u01b0\u1eddng d\u1eabn, thi\u1ebft \u0111\u1eb7t \u1ee9ng d\u1ee5ng (nh\u01b0 notepad v.v...) v\u00e0 c\u1ea3 h\u00ecnh n\u1ec1n n\u1eefa kh\u00f4ng? T\u1ea5t c\u1ea3 c\u00e1c thi\u1ebft \u0111\u1eb7t c\u1ee7a b\u1ea1n s\u1ebd b\u1ecb m\u1ea5t."
+	},
+	"ui_config_bg":{
+		"message":"H\u00ecnh n\u1ec1n"
+	},
+	"ui_config_bg_upload":{
+		"message":"T\u1ea3i \u1ea3nh l\u00ean"
+	},
+	"ui_config_bgimg1":{
+		"message":"<b>N\u00e2ng cao<\/b> (Ch\u1ec9nh h\u00ecnh n\u1ec1n CSS): D\u00f9ng h\u00ecnh \u1ea3nh c\u00f3 tr\u00ean web."
+	},
+	"ui_config_bgimg3":{
+		"message":"X\u00f3a \u00f4 \u0111\u1ec3 d\u00f9ng n\u1ec1n m\u1eb7c \u0111\u1ecbnh (m\u00e0u \u0111\u1ed3ng nh\u1ea5t)."
+	},
+	"ui_config_bgimg2":{
+		"message":"V\u00ed d\u1ee5 (KH\u00d4NG d\u00f9ng d\u1ea5u ch\u1ea5m ph\u1ea9y):"
+	},
+	"ui_about":{
+		"message":"V\u1ec1 \u1ee9ng d\u1ee5ng n\u00e0y"
+	},
+	"ui_about_contrib":{
+		"message":"C\u1ed9ng t\u00e1c"
+	},
+	"ui_about_contrib_desc":{
+		"message":"Ch\u01b0\u01a1ng tr\u00ecnh kh\u00f4ng th\u1ec3 c\u00f3 n\u1ebfu kh\u00f4ng c\u00f3 s\u1ef1 n\u1ed7 l\u1ef1c, \u0111\u00f3ng g\u00f3p, \u00fd t\u01b0\u1edfng, phi\u00ean d\u1ecbch v\u00e0 s\u1ef1 h\u1ed7 tr\u1ee3 c\u1ee7a nh\u00f3m c\u1ed9ng t\u00e1c vi\u00ean tuy\u1ec7t v\u1eddi."
+	},
+	"ui_about_dev":{
+		"message":"Nh\u00e0 ph\u00e1t tri\u1ec3n"
+	},
+	"ui_about_contrib_translators":{
+		"message":"Phi\u00ean d\u1ecbch"
+	},
+	"ui_about_contrib_users":{
+		"message":"Ng\u01b0\u1eddi d\u00f9ng"
+	},
+	"ui_about_contrib_cta":{
+		"message":"Nh\u1ea5n v\u00e0o li\u00ean k\u1ebft tr\u00ean \u0111\u1ec3 th\u1ea5y (v\u00e0 c\u00f3 th\u1ec3 tham gia) nh\u1eefng ng\u01b0\u1eddi \u0111ang l\u00e0m vi\u1ec7c!"
+	},
+	"ui_about_share":{
+		"message":"Chia s\u1ebb"
+	},
+	"ui_about_share1":{
+		"message":"N\u1ebfu b\u1ea1n th\u00edch Awesome New Tab Page, t\u1ea1i sao kh\u00f4ng chia s\u1ebb v\u1edbi b\u1ea1n b\u00e8 v\u00e0 gia \u0111\u00ecnh?"
+	},
+	"ui_about_rate":{
+		"message":"\u0110\u00e1nh gi\u00e1"
+	},
+	"ui_about_rate_desc":{
+		"message":"B\u1ea1n c\u00f3 th\u00edch ph\u1ea7n b\u1ed5 tr\u1ee3 n\u00e0y kh\u00f4ng? H\u00e3y d\u00e0nh ch\u00fat th\u1eddi gian \u0111\u1ec3 \u0111\u01b0a ra \u0111\u00f3ng g\u00f3p tr\u00ean Chrome Web Store."
+	},
+	"ui_button_download":{
+		"message":"T\u1ea3i ti\u1ec7n \u00edch"
+	},
+	"ui_button_downloadapps":{
+		"message":"T\u1ea3i \u1ee8ng d\u1ee5ng"
+	},
+	"ui_confirm_uninstall":{
+		"message":"B\u1ea1n c\u00f3 ch\u1eafc mu\u1ed1n g\u1ee1 b\u1ecf $app$?",
+		"placeholders":{
+			"app":{
+				"content":"$1",
+				"example":"Chrome Web Store"
+			}
+		}
+	},
+	"ui_bmb_ob":{
+		"message":"Bookmark kh\u00e1c"
+	},
+	"app_webstore":{
+		"message":"Chrome Web Store"
+	},
+	"tutorial_ui_next":{
+		"message":"Ti\u1ebfp"
+	},
+	"tutorial_ui_back":{
+		"message":"Tr\u1edf l\u1ea1i"
+	},
+	"tutorial_1_welcome":{
+		"message":"Ch\u00e0o m\u1eebng t\u1edbi"
+	},
+	"tutorial_1_desc1":{
+		"message":"S\u1ef1 thay th\u1ebf m\u1ed9t th\u1ebb m\u1edbi (NTP) kh\u00f4ng ph\u00f9 h\u1ee3p."
+	},
+	"tutorial_1_desc2":{
+		"message":"(... ho\u1eb7c \u00edt nh\u1ea5t ch\u00fang t\u00f4i \u0111\u00e3 r\u1ea5t n\u1ed7 l\u1ef1c.)"
+	},
+	"tutorial_1_desc3":{
+		"message":"B\u1ea5m <span class=\"ul\">Ti\u1ebfp theo<\/span> \u0111\u1ec3 t\u00ecm hi\u1ec3u th\u00eam."
+	},
+	"tutorial_2_title":{
+		"message":"<span class=\"ul\">Bi\u1ec3u t\u01b0\u1ee3ng<\/span> kh\u00f4ng c\u00f2n t\u1ed3n t\u1ea1i"
+	},
+	"tutorial_2_desc1":{
+		"message":"Nh\u1eefng bi\u1ec3u t\u01b0\u1ee3ng \u0111\u00e3 l\u1ed7i th\u1eddi. C\u00f4ng ngh\u1ec7 \u0111\u00e3 ti\u1ebfn th\u00eam m\u1ed9t b\u01b0\u1edbc, v\u1edbi s\u1ee9c m\u1ea1nh, \u0111\u1ed9ng l\u1ef1c, v\u00e0 ti\u1ec7n \u00edch \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y trong Android, Windows Phone 7, v\u00e0 Windows 8 (s\u1eafp t\u1edbi)."
+	},
+	"tutorial_2_desc2":{
+		"message":"Ph\u1ea7n m\u1edf r\u1ed9ng n\u00e0y l\u00e0 b\u01b0\u1edbc kh\u1edfi \u0111\u1ea7u mang \u0111\u1ebfn s\u1ee9c m\u1ea1nh cho tab m\u1edbi c\u1ee7a Chrome."
+	},
+	"tutorial_2_desc3":{
+		"message":"H\u00e3y l\u00e0m quen v\u1edbi c\u00e1c <span class=\"ul\">ti\u1ec7n \u00edch<\/span>."
+	},
+	"tutorial_3_title":{
+		"message":"H\u00e3y bi\u1ebfn m\u1ecdi th\u1ee9 theo \u00fd mu\u1ed1n c\u1ee7a <span class=\"ul\">B\u1ea1n<\/span>"
+	},
+	"tutorial_3_desc1":{
+		"message":"B\u1ea5m m\u1edf kh\u00f3a v\u00e0 b\u1ea1n c\u00f3 th\u1ec3 <span class=\"ul\">di chuy\u1ec3n<\/span> c\u00e1c ti\u1ec7n \u00edch hay bi\u1ec3u t\u01b0\u1ee3ng t\u1edbi v\u1ecb tr\u00ed b\u1ea1n mu\u1ed1n. Ho\u1eb7c <span class=\"ul\">x\u00f3a b\u1ecf<\/span> ch\u00fang n\u1ebfu c\u1ea7n (khi \u0111\u00e3 \u0111\u01b0\u1ee3c m\u1edf kh\u00f3a)."
+	},
+	"tutorial_4_title":{
+		"message":"C\u00e1c \u1ee8ng d\u1ee5ng \u0111\u00e3 c\u00e0i v\u1eabn t\u1ed3n t\u1ea1i"
+	},
+	"tutorial_4_desc1":{
+		"message":"\u0110\u1eebng lo, c\u00e1c \u1ee9ng d\u1ee5ng m\u00e0 b\u1ea1n \u0111\u00e3 c\u00e0i kh\u00f4ng b\u1ecb m\u1ea5t \u0111i \u0111\u00e2u h\u1ebft."
+	},
+	"tutorial_4_desc2":{
+		"message":"B\u1ea1n c\u00f3 th\u1ec3 t\u1ef1 do m\u1edf kh\u00f3a r\u1ed3i k\u00e9o c\u00e1c \u1ee9ng d\u1ee5ng v\u00e0o trang ch\u00ednh."
+	},
+	"tutorial_4_desc3":{
+		"message":"Ch\u1ec9 c\u1ea7n hi\u1ec3n th\u1ecb c\u00e1c \u1ee9ng d\u1ee5ng hay d\u00f9ng, \u1ea9n m\u1ecdi th\u1ee9 kh\u00e1c."
+	},
+	"tutorial_5_title1":{
+		"message":"H\u00e3y t\u1eadn h\u01b0\u1edfng"
+	},
+	"tutorial_5_desc1":{
+		"message":"T\u1eadn h\u01b0\u1edfng nh\u00e9! \u0110\u1eebng qu\u00ean ch\u1ea5m \u0111i\u1ec1m 5 sao cho ti\u1ec7n \u00edch n\u00e0y tr\u00ean Web Store."
+	},
+	"tutorial_5_desc2":{
+		"message":"B\u1ea1n mu\u1ed1n \u0111\u00f3ng g\u00f3p \u00fd t\u01b0\u1edfng? H\u00e3y Chia s\u1ebb ch\u00fang <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">T\u1ea0I \u0110\u00c2Y<\/a>."
+	},
+	"tutorial_5_title2":{
+		"message":"B\u1ea1n c\u00f3 ph\u1ea3i l\u00e0 m\u1ed9t nh\u00e0 ph\u00e1t tri\u1ec3n kh\u00f4ng?"
+	},
+	"tutorial_5_desc3":{
+		"message":"Mu\u1ed1n t\u1ef1 t\u1ea1o ti\u1ec7n \u00edch! T\u00ecm hi\u1ec3u t\u1ea1i \u0111\u00e2y:"
+	},
+	"ui_shortcut_img":{
+		"message":"\u1ea2nh ph\u1ea3i c\u00f3 k\u00edch th\u01b0\u1edbc 128x128 pixel, khuy\u00ean d\u00f9ng \u0111\u1ecbnh d\u1ea1ng PNG. \u0110\u1ec3 d\u00f9ng h\u00ecnh m\u1eb7c \u0111\u1ecbnh, h\u00e3y \u0111\u1ec3 tr\u1ed1ng \u00f4 n\u00e0y."
+	},
+	"notepad_default":{
+		"message":"G\u00f5 ghi ch\u00fa v\u00e0o \u0111\u00e2y. N\u1ed9i dung s\u1ebd \u0111\u01b0\u1ee3c t\u1ef1 \u0111\u1ed9ng l\u01b0u.\n\nH\u00e3y th\u1eadn tr\u1ecdng; Ko c\u00f3 sao l\u01b0u d\u1ef1 ph\u00f2ng, v\u00e0 ch\u1ee9c n\u0103ng \"Thi\u1ebft l\u1eadp l\u1ea1i\" s\u1ebd x\u00f3a to\u00e0n b\u1ed9 n\u1ed9i dung!"
+	},
+	"ui_resize_reset":{
+		"message":"\u0110\u1eb7t l\u1ea1i"
+	},
+	"ui_import_export_btn2":{
+		"message":"Tr\u1edf l\u1ea1i"
+	}
+}

@@ -1,0 +1,257 @@
+{
+	"ui_button_apps":{
+		"message":"Aplikacije"
+	},
+	"ui_button_widgets":{
+		"message":"Gradniki"
+	},
+	"ui_button_unlock":{
+		"message":"Odkleni"
+	},
+	"ui_button_lock":{
+		"message":"Zaklenite za uporabo aplikacij in gradnikov"
+	},
+	"ui_button_rct":{
+		"message":"Nedavno zaprti zavihki"
+	},
+	"ui_button_close":{
+		"message":"Zapri"
+	},
+	"ui_button_about":{
+		"message":"O raz\u0161iritvi"
+	},
+	"ui_config":{
+		"message":"Nastavitev"
+	},
+	"ui_c_learnmore":{
+		"message":"Preberite ve\u010d"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Spremeni barvo ozadja"
+	},
+	"ui_te":{
+		"message":"Urejevalnik plo\u0161\u010dic"
+	},
+	"ui_te_name":{
+		"message":"Ime"
+	},
+	"ui_te_name_desc":{
+		"message":"Kak\u0161no ime mu \u017eelite dati?"
+	},
+	"ui_te_shname":{
+		"message":"Poka\u017ei \/ skrij ime"
+	},
+	"ui_te_pin":{
+		"message":"Pritrdi z levim klikom"
+	},
+	"ui_te_url_desc":{
+		"message":"Vnesite naslov URL, ki ga \u017eelite povezati, kot http:\/\/www.google.com\/"
+	},
+	"ui_te_url_tip":{
+		"message":"Namig: Veljaven naslov URL vsebuje protokol - npr. \"http:\/\/\" - pred domeno. Brez veljavnega protokola va\u0161a bli\u017enjica ne bo delovala."
+	},
+	"ui_te_shfavicon":{
+		"message":"Poka\u017ei \/ skrij ikono zaznamka"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"Odpri izbirnik barv"
+	},
+	"ui_te_bg_transparent":{
+		"message":"Popolnoma prozorno ozadje"
+	},
+	"ui_te_bg_tip":{
+		"message":"Namig: V primeru, da odkljukate to polje boste verjetno \u017eeleli tudi skriti ime in ikono zaznamka."
+	},
+	"ui_te_bg_note":{
+		"message":"Opomba: Ta mo\u017enost nima u\u010dinka na nastavitev Ikone & Ozadja."
+	},
+	"ui_te_app_tip":{
+		"message":"Za aplikacije niso vse mo\u017enosti na voljo. V primeru, da \u017eelite ve\u010d mo\u017enosti, ustvarite bli\u017enjico po meri. Preprosto kliknite na prazno plo\u0161\u010dico pri odklenjeni mre\u017ei."
+	},
+	"ui_te_ib":{
+		"message":"Ikona & Ozadje"
+	},
+	"ui_te_ib_desc":{
+		"message":"Vnesite spletni naslov URL slike, uporabite gumb Prebrskaj ali povlecite in spustite sliko nanjo, \u010de \u017eelite zamenjati ikono."
+	},
+	"ui_te_ib_browse":{
+		"message":"Prebrskaj"
+	},
+	"ui_te_ib_tip":{
+		"message":"Namig: pustite prazno, da ne bo ikone."
+	},
+	"ui_te_ib_advanced":{
+		"message":"Napredno: Skrij ime in ikono zaznamka ter uporabi sliko, ki je 200px x 200px, za popolno prilagoditev plo\u0161\u010dice 1x1."
+	},
+	"ui_config_general":{
+		"message":"Splo\u0161no"
+	},
+	"ui_config_shbmb":{
+		"message":"Poka\u017ei \/ skrij vrstico zaznamkov"
+	},
+	"ui_config_shtlb":{
+		"message":"Poka\u017ei gumbe levo zgoraj samo ob premiku v obmo\u010dje"
+	},
+	"ui_config_shtlb_desc":{
+		"message":"Ko je ta mo\u017enost vklopljena, bodo gumbi levo zgoraj zdrsnili stran. Za dostop do njih preprosto postavite mi\u0161ko tja kjer so obi\u010dajno."
+	},
+	"ui_config_shgrid":{
+		"message":"Poka\u017ei \/ Skrij mre\u017eo (ko je odklenjeno)"
+	},
+	"ui_config_amazonlocale":{
+		"message":"Pri <i>privzeti<\/i> bli\u017enjici za Amazon izberite svojo dr\u017eavo."
+	},
+	"ui_config_reset":{
+		"message":"Ponastavi"
+	},
+	"ui_config_reset_desc":{
+		"message":"Ta gumb omogo\u010da razveljavitev vseh sprememb, ki ste jih naredili v raz\u0161iritvi Awesome New Tab Page."
+	},
+	"ui_confirm_reset":{
+		"message":"Ali ste prepri\u010dani, da \u017eelite ponastaviti postavitev gradnikov, aplikacij in prirejenih bli\u017enjic, nastavitve privzetih gradnikov (bele\u017enica, itd.) ter nastavitev ozadja? Vse prilagoditve bodo nepreklicno izgubljene."
+	},
+	"ui_config_bg":{
+		"message":"Ozadje"
+	},
+	"ui_config_bg_upload":{
+		"message":"Nalaganje slike"
+	},
+	"ui_config_bgimg1":{
+		"message":"<b>Napredno<\/b> (Blji\u017enica CSS ozadja): Uporabi sliko iz spleta."
+	},
+	"ui_config_bgimg3":{
+		"message":"Izbri\u0161ite vnosno polje, \u010de \u017eelite privzeto ozadje (polna barva)."
+	},
+	"ui_config_bgimg2":{
+		"message":"Primer (BREZ kon\u010dnega podpi\u010dja!):"
+	},
+	"ui_about":{
+		"message":"O raz\u0161iritvi"
+	},
+	"ui_about_contrib":{
+		"message":"Sodelavci"
+	},
+	"ui_about_contrib_desc":{
+		"message":"Tega projekta ne bi bilo brez trdega dela, povratnih informacij, idej, prevodov in podpore nekaj skupin izjemnih ljudi."
+	},
+	"ui_about_dev":{
+		"message":"Razvijalci"
+	},
+	"ui_about_contrib_translators":{
+		"message":"Prevajalci"
+	},
+	"ui_about_contrib_users":{
+		"message":"Uporabniki"
+	},
+	"ui_about_contrib_cta":{
+		"message":"Kliknite na zgornje povezave, da vidite kaj delajo ti izjemni ljudje (in se jim mogo\u010de pridru\u017eite)!"
+	},
+	"ui_about_share":{
+		"message":"Deli"
+	},
+	"ui_about_share1":{
+		"message":"Vam je v\u0161e\u010d Awesome New Tab Page? Zakaj je ne delite s prijatelji in dru\u017eino?"
+	},
+	"ui_about_rate":{
+		"message":"Ocena"
+	},
+	"ui_about_rate_desc":{
+		"message":"Vam je v\u0161e\u010d ta raz\u0161iritev? Vzemite si minuto in jo pozitivno ocenite v Spletni trgovini Chrome."
+	},
+	"ui_button_download":{
+		"message":"Prenos gradnikov"
+	},
+	"ui_button_downloadapps":{
+		"message":"Prenos aplikacij"
+	},
+	"ui_confirm_uninstall":{
+		"message":"Ali ste prepri\u010dani, da \u017eelite odstraniti $app$?",
+		"placeholders":{
+			"app":{
+				"content":"$1",
+				"example":"Chrome Web Store"
+			}
+		}
+	},
+	"ui_bmb_ob":{
+		"message":"Drugi zaznamki"
+	},
+	"app_webstore":{
+		"message":"Spletna trgovina Chrome"
+	},
+	"tutorial_ui_next":{
+		"message":"Naprej"
+	},
+	"tutorial_ui_back":{
+		"message":"Nazaj"
+	},
+	"tutorial_1_welcome":{
+		"message":"Dobrodo\u0161li v"
+	},
+	"tutorial_1_desc1":{
+		"message":"Zamenjavo za stran novega zavihka (NTP), ki ni zani\u010d."
+	},
+	"tutorial_1_desc2":{
+		"message":"(... ali vsaj to res sku\u0161a.)"
+	},
+	"tutorial_1_desc3":{
+		"message":"Kliknite na <span class=\"ul\">Naprej<\/span>, da preberete ve\u010d o tem."
+	},
+	"tutorial_2_title":{
+		"message":"Ni\u010d ve\u010d samo <span class=\"ul\">ikone<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"Ikone so zastarele. Tehnologija napreduje z ekstremno mo\u010dnimi, dinami\u010dnimi in lepimi gradniki, ki jih najdemo v sistemu Android, Windows Phone 7 in (kmalu) v Windows 8."
+	},
+	"tutorial_2_desc2":{
+		"message":"Ta raz\u0161iritev je za\u010detek, ki vna\u0161a v Chrome podobno zmogljivost na strani novega zavihka."
+	},
+	"tutorial_2_desc3":{
+		"message":"Pozdravite <span class=\"ul\">gradnike<\/span>."
+	},
+	"tutorial_3_title":{
+		"message":"Prilagodite stvari <span class=\"ul\">svojim<\/span> potrebam"
+	},
+	"tutorial_3_desc1":{
+		"message":"Kliknite odkleni in <span class=\"ul\">premaknite<\/span> gradnike in ikone kamor \u017eelite. <span class=\"ul\">Izbri\u0161ite<\/span> stvari, ki jih ne \u017eelite (ko so odklenjene)."
+	},
+	"tutorial_4_title":{
+		"message":"Va\u0161e aplikacije so varne"
+	},
+	"tutorial_4_desc1":{
+		"message":"Ne skrbite, va\u0161e aplikacije niso dale\u010d."
+	},
+	"tutorial_4_desc2":{
+		"message":"Mirno odklenite plo\u0161\u010dice in povlecite aplikacije na svojo doma\u010do stran."
+	},
+	"tutorial_4_desc3":{
+		"message":"Poka\u017eite, kar redno uporabljate, skrijte vse ostalo."
+	},
+	"tutorial_5_title1":{
+		"message":"U\u017eivajte"
+	},
+	"tutorial_5_desc1":{
+		"message":"U\u017eivajte! Spomnite se oceniti to aplikacijo v Spletni trgovini s 5 zvezdicami."
+	},
+	"tutorial_5_desc2":{
+		"message":"Imate idejo za to raz\u0161iritev? Zapi\u0161ite jo <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">sem<\/a>."
+	},
+	"tutorial_5_title2":{
+		"message":"Ali ste razvijalec?"
+	},
+	"tutorial_5_desc3":{
+		"message":"Ustvarite si svoje gradnike! Preberite kako tukaj:"
+	},
+	"ui_shortcut_img":{
+		"message":"URL mora kazati na sliko velikosti to\u010dno 128px x 128px, po mo\u017enosti v formatu PNG s prosojnostjo alpha. Izbri\u0161ite vse v polju, da ponastavite na privzeto."
+	},
+	"notepad_default":{
+		"message":"Sem lahko vtipkate karkoli. Vse kar vpi\u0161ete bo shranjeno ob vsakem pritisku na tipko. Ampak pazite; NOBENE varnostne kopije ni in gumb Ponastavi *RES* ponastavi ta gradnik!"
+	},
+	"ui_resize_reset":{
+		"message":"Ponastavi"
+	},
+	"ui_import_export_btn2":{
+		"message":"Nazaj"
+	}
+}
