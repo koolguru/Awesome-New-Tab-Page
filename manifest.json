@@ -30,6 +30,11 @@
   "default_locale": "en",
   "web_accessible_resources": [
     "ntp.html",
-    "options.html"
+    "options.html",
+    "/widgets/tabs/tabs.html",
+    "/widgets/tv/widget.tv.html",
+    "/widgets/google/widget.google.html",
+    "/widgets/clock/widget.clock.html",
+    "/widgets/tutorial/widget.tutorial.html"
   ]
 }
