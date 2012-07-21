@@ -35,6 +35,7 @@
     "/widgets/tv/widget.tv.html",
     "/widgets/google/widget.google.html",
     "/widgets/clock/widget.clock.html",
-    "/widgets/tutorial/widget.tutorial.html"
+    "/widgets/tutorial/widget.tutorial.html",
+    "/widgets/notepad/widget.notepad.html"
   ]
 }
