@@ -320,5 +320,8 @@
     },
   "ui_import_export_desc_import": {
     "message": "Import: Overwrites your current configuration with a valid exported string. <b>WARNING</b>: All of your current preferences will be irrevocably lost. There is no way to undo this operation. Uploaded images are not imported; images on the web are."
+  },
+  "ui_import_export_installed_warning": {
+    "message": "Installed apps, extensions, and widgets are not imported or exported. Extensions can't install other apps or extensions. Use <a href='http://support.google.com/chrome/bin/answer.py?answer=165139'>Chrome Sync</a> instead."
   }
 }

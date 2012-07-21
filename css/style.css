@@ -669,6 +669,9 @@ body {
   margin-left: 55px;
   margin-right: 55px;
 }
+.ui-2#config #import-export-contents a {
+  border-bottom: 1px dotted #CCC;
+}
 
 /* UI-2 Apps & Widgets */
 .ui-2#apps,
