@@ -52,12 +52,17 @@ $("#import-btn").bind("click", function() {
 
 // upon click on restore button
 $("#restore-btn").bind("click", function() {
-  var answer = confirm(chrome.i18n.getMessage("ui_import_export_confirm_restore"));
-  if (answer == false) {
-    return;
-  }
+    $.confirm({title: chrome.i18n.getMessage('ui_import_export_confirm_restore_title'),
+    message: chrome.i18n.getMessage('ui_import_export_confirm_restore'),
+      buttons: {
+        Yes: {'class': 'blue', action: restore},
+        No: {'class' : 'gray'}
+      }
+  });
+});
 
-  var restoreString = localStorage.backupBeforeImport;
+function restore() {
+var restoreString = localStorage.backupBeforeImport;
   if (restoreString) {
     if (importLocalStorage(restoreString)) {
       localStorage.importExportMsg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
@@ -68,7 +73,7 @@ $("#restore-btn").bind("click", function() {
   else {
     $.jGrowl(chrome.i18n.getMessage("ui_import_export_no_restore_msg"), { header: chrome.i18n.getMessage("ui_import_export_msg_header") });
   }
-});
+}
 
 // upon click on export button
 $("#export-btn").bind("click", function() {

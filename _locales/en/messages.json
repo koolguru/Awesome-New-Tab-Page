@@ -80,6 +80,12 @@
   "ui_te_ib_screenshot": {
     "message": "Use Screenshot"
   },
+  "ui_screenshot_confirm_title": {
+    "message": "Taking Screenshot"
+  },
+  "ui_screenshot_confirm": {
+    "message": "To take screenshot the website would opened in a new tab. Screenshot would be taken after the website has been completely loaded. It may take some time for website to be fully load so stay calm."
+  },
   "ui_te_ib_tip": {
     "message": "Tip: Leave blank for no icon."
   },
@@ -329,6 +335,9 @@
   },
   "ui_import_export_header": {
     "message": "Import/Export"
+  },
+  "ui_import_export_confirm_restore_title": {
+    "message": "Confirm Restore"
   },
   "ui_import_export_confirm_restore": {
     "message": "Do you want to restore? Your current settings would be lost."

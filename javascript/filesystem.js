@@ -105,48 +105,68 @@ $("#filesystem_icon_input").change(function() {
 
 // upon click on Use Screenshot button
 $("#filesystem_icon_screenshot_bt").click(function () {
+  $.confirm({title: chrome.i18n.getMessage('ui_screenshot_confirm_title'),
+    message: chrome.i18n.getMessage('ui_screenshot_confirm'),
+      buttons: {
+        Continue: {'class': 'blue', action: takeScreenshot},
+        Cancel: {'class' : 'gray'}
+      }
+  });
+});
+
+function takeScreenshot() {
   var shortcutURL = $("#shortcut_url").val();
   chrome.tabs.create({ url: shortcutURL }, function (tab) {
     chrome.tabs.onUpdated.addListener(function (tabid, tabInfo, tabToCapture) {   // wait until page is completely loaded
       if (tabid == tab.id && tabInfo.status == "complete") {
-        if (tabToCapture.active) {
-          chrome.tabs.captureVisibleTab(function (dataUrl) {
-            chrome.tabs.remove(tab.id, function() {
-              chrome.tabs.getCurrent(function(tab){
-                chrome.tabs.update(tab.id, {active: true});
-              });
-            });
-            saveImage(dataUrl, "jpeg", "shortcut");
-          });
-        }
-        else {
-          // if user switched to some other tab, activate the tab again to take screenshot
-          chrome.tabs.update(tab.id, { active: true }, function (tab) { 
-            var handler = setInterval(function () {    // wait 400ms before taking screenshot for page to render completely, otherwise blank page appears
-              chrome.tabs.get(tab.id, function (tab){
-                if (tab.active)
-                {
-                  clearInterval(handler);
-                  chrome.tabs.captureVisibleTab(function (dataUrl) {
-                    chrome.tabs.remove(tab.id, function() {
-                      chrome.tabs.getCurrent(function(tab){
-                        chrome.tabs.update(tab.id, {active: true});
-                      });
-                    });
-                    saveImage(dataUrl, "jpeg", "shortcut");
+        var waitHandler = setInterval(function() {
+          chrome.tabs.get(tabid, function(tabToCapture) {
+            if (tabToCapture.status != "complete") {
+              return;
+            }
+            else {
+              clearInterval(waitHandler);
+            }
+            if (tabToCapture.active) {
+              chrome.tabs.captureVisibleTab(function (dataUrl) {
+                chrome.tabs.remove(tab.id, function() {
+                  chrome.tabs.getCurrent(function(tab){
+                    chrome.tabs.update(tab.id, {active: true});
                   });
-                }
-                else{
-                  chrome.tabs.update(tab.id, { active: true });   // if tab is switched again, activate tab again
-                }
+                });
+                saveImage(dataUrl, "jpeg", "shortcut");
               });
-            }, 400);
+            }
+            else {
+              // if user switched to some other tab, activate the tab again to take screenshot
+              chrome.tabs.update(tab.id, { active: true }, function (tab) { 
+                var handler = setInterval(function () {    // wait 400ms before taking screenshot for page to render completely, otherwise blank page appears
+                  chrome.tabs.get(tab.id, function (tab){
+                    if (tab.active)
+                    {
+                      clearInterval(handler);
+                      chrome.tabs.captureVisibleTab(function (dataUrl) {
+                        chrome.tabs.remove(tab.id, function() {
+                          chrome.tabs.getCurrent(function(tab){
+                            chrome.tabs.update(tab.id, {active: true});
+                          });
+                        });
+                        saveImage(dataUrl, "jpeg", "shortcut");
+                      });
+                    }
+                    else{
+                      chrome.tabs.update(tab.id, { active: true });   // if tab is switched again, activate tab again
+                    }
+                  });
+                }, 400);
+              });
+            }
           });
-        }
+        }, 2000);
       }
     });
   });
-});
+}
 
 /**
  * When a file is dropped on the options window
@@ -277,6 +297,8 @@ function saveImage(dataURI, fileExtension, saveTo) {
         if (saveTo === "shortcut") {
           $("#img_url").val(fileEntry.toURL())
             .change();
+            IconResizing.resetTileIcon();
+            IconResizing.changeBackgroundSize("cover");
           } else if (saveTo === "background") {
           $("#bg-img-css").val( "url("+fileEntry.toURL()+")" )
             .change();
