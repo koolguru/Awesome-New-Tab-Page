@@ -119,8 +119,14 @@ function takeScreenshot() {
   chrome.tabs.create({ url: shortcutURL }, function (tab) {
     chrome.tabs.onUpdated.addListener(function (tabid, tabInfo, tabToCapture) {   // wait until page is completely loaded
       if (tabid == tab.id && tabInfo.status == "complete") {
-        setTimeout(function() {
+        var waitHandler = setInterval(function() {
           chrome.tabs.get(tabid, function(tabToCapture) {
+            if (tabToCapture.status != "complete") {
+              return;
+            }
+            else {
+              clearInterval(waitHandler);
+            }
             if (tabToCapture.active) {
               chrome.tabs.captureVisibleTab(function (dataUrl) {
                 chrome.tabs.remove(tab.id, function() {
@@ -291,6 +297,8 @@ function saveImage(dataURI, fileExtension, saveTo) {
         if (saveTo === "shortcut") {
           $("#img_url").val(fileEntry.toURL())
             .change();
+            IconResizing.resetTileIcon();
+            IconResizing.changeBackgroundSize("cover");
           } else if (saveTo === "background") {
           $("#bg-img-css").val( "url("+fileEntry.toURL()+")" )
             .change();
