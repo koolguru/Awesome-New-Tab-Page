@@ -215,12 +215,14 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
       pin = null;
     }
 
-    // set tile's background-position and background-size if any, (resizing/scaling shortcut icon)
-    if (widgets[id].backgroundPosition) {
-      stitch.css("background-position", widgets[id].backgroundPosition);
-    }
-    if (widgets[id].backgroundSize) {
-      stitch.css("background-size", widgets[id].backgroundSize);
+    if (type == "shortcut") {
+      // set tile's background-position and background-size if any, (resizing/scaling shortcut icon)
+      if (widgets[id].backgroundPosition) {
+        stitch.css("background-position", widgets[id].backgroundPosition);
+      }
+      if (widgets[id].backgroundSize) {
+        stitch.css("background-size", widgets[id].backgroundSize);
+      }
     }
 
     $(stitch).append(

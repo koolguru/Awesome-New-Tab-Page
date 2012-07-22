@@ -536,7 +536,7 @@ IconDragging = {
   init: function(){
     // to start dragging on mousedown (start dragging only if clicked on preview tile)
     $(document).mousedown(function(event) {
-      if (event.button == 0)
+      if (event.button == 0 && widgets[IconResizing.id].type == "shortcut")
       {
         var previewTile = $(event.target).parents("#preview-tile");
         if (previewTile.length > 0) // if user clicked within preview tile then start dragging
@@ -577,6 +577,7 @@ IconDragging = {
     dragging = false;
     $(document).unbind("mousemove");
     IconResizing.savePosition();
+    $("#preview-tile .iframe-mask").css("cursor", "auto");
   }
 }
 
