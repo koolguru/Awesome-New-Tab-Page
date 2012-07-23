@@ -134,7 +134,7 @@ function takeScreenshot() {
                     chrome.tabs.update(tab.id, {active: true});
                   });
                 });
-                saveImage(dataUrl, "jpeg", "shortcut");
+                saveImage(dataUrl, "jpeg", "shortcut", true);
               });
             }
             else {
@@ -151,7 +151,7 @@ function takeScreenshot() {
                             chrome.tabs.update(tab.id, {active: true});
                           });
                         });
-                        saveImage(dataUrl, "jpeg", "shortcut");
+                        saveImage(dataUrl, "jpeg", "shortcut", true);
                       });
                     }
                     else{
@@ -274,7 +274,7 @@ function extractExtension(filename) {
     return extension;
 }
 
-function saveImage(dataURI, fileExtension, saveTo) {
+function saveImage(dataURI, fileExtension, saveTo, setToCover) {
   var error,
     file_name;
 
@@ -297,8 +297,13 @@ function saveImage(dataURI, fileExtension, saveTo) {
         if (saveTo === "shortcut") {
           $("#img_url").val(fileEntry.toURL())
             .change();
-            IconResizing.resetTileIcon();
-            IconResizing.changeBackgroundSize("cover");
+            $("#preview-tile").css("background-size", "cover");
+            if (setToCover) {
+              IconResizing.resetTileIcon();
+              IconResizing.calculateVars(function() {
+                IconResizing.changeBackgroundSize("cover");
+              });
+            }
           } else if (saveTo === "background") {
           $("#bg-img-css").val( "url("+fileEntry.toURL()+")" )
             .change();
