@@ -77,6 +77,15 @@
 	"ui_te_ib_browse":{
 		"message":"Przegl\u0105daj"
 	},
+	"ui_te_ib_screenshot":{
+		"message":"U\u017cyj zrzutu ekranu"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Wykonywanie zrzutu ekranu"
+	},
+	"ui_screenshot_confirm":{
+		"message":"W celu wykonania zrzutu ekranu strony, strona zostanie otworzona w nowej karcie. Kiedy strona si\u0119 za\u0142aduje, karta si\u0119 zamknie automatycznie i powr\u00f3cisz do ANTP. Prosz\u0119 nie zamyka\u0107 kart i nie prze\u0142\u0105cza\u0107 na inne karty. To powinno zaj\u0105\u0107 nie wi\u0119cej jak kilka sekund."
+	},
 	"ui_te_ib_tip":{
 		"message":"Porada: Zostaw puste aby nie by\u0142o \u017cadnej ikony."
 	},
@@ -173,6 +182,27 @@
 			}
 		}
 	},
+	"ui_faw_unlock_drag":{
+		"message":"Odblokuj i Przeci\u0105gnij"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Odblokuj k\u0142\u00f3dk\u0119 i <b>przeci\u0105gnij<\/b> Twoje zainstalowane aplikacje na wolne pole."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Odblokuj k\u0142\u00f3dk\u0119 i <b>przeci\u0105gnij<\/b> Twoje zainstalowane Gad\u017cety na wolne pole."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Pobierz wi\u0119cej Aplikacji"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Pobierz wi\u0119cej aplikacji ze<a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Sklepu internetowego<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Pobierz wi\u0119cej gad\u017cet\u00f3w"
+	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Pobierz wi\u0119cej gad\u017cet\u00f3w ze <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Sklepu internetowego<\/a>."
+	},
 	"ui_bmb_ob":{
 		"message":"Inne zak\u0142adki"
 	},
@@ -251,7 +281,85 @@
 	"ui_resize_reset":{
 		"message":"Resetuj"
 	},
+	"ui_resize_center":{
+		"message":"\u015arodek"
+	},
+	"ui_resize_cover":{
+		"message":"Ok\u0142adka"
+	},
+	"ui_resize_contain":{
+		"message":"Zawarto\u015b\u0107"
+	},
+	"ui_resize_zoom":{
+		"message":"Powi\u0119ksz"
+	},
+	"rctm_remove":{
+		"message":"Usu\u0144"
+	},
+	"rctm_clear_all":{
+		"message":"Usu\u0144 z widoku ostatnio zamkni\u0119te karty"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"czyszczenie menu ostatnio zamkni\u0119tych kart nie usuwa historii przegl\u0105dania stron. Ta opcja czy\u015bci jedynie list\u0119."
+	},
+	"ui_import_export_btn":{
+		"message":"Import\/Eksport"
+	},
+	"ui_import_export_desc":{
+		"message":"Zabierz Twoje ustawienia do innych przegl\u0105darek lub zachowaj kopi\u0119 bezpiecze\u0144stwa."
+	},
 	"ui_import_export_btn2":{
 		"message":"&laquo; Poprzedni"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Import"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Eksport"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Zastosuj"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Eksport: Tworzy kopi\u0119 wrzystkich twoich ustawie\u0144. Mo\u017ce by\u0107 wykorzystany p\u00f3\u017aniej jako kopia zapasowa lub mo\u017ce zosta\u0107 skopiowana na inne komputery aby zastosowa\u0107 na nich styl taki sam jak na tym komputerze. Zdj\u0119cia z komputera nie b\u0119d\u0105 eksportowane; a zdj\u0119cia znajduj\u0105ce si\u0119 w sieci web b\u0119d\u0105."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Import: Nadpisuje Twoj\u0105 obecn\u0105 konfogujacj\u0119 prawid\u0142owo wyeksportowan\u0105 \u015bcie\u017ck\u0105. <b>UWAGA<\/b> Wszystki Twoje obecne ustawienia b\u0119d\u0105 nieodwracalnie utracone. Nie ma sposobu aby odwr\u00f3ci\u0107 t\u0105 operacj\u0119. Zdj\u0119cia z komputera nie b\u0119d\u0105 importowane; a zdj\u0119cia znajduj\u0105ce si\u0119 w sieci web b\u0119d\u0105."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Zainstalowane aplikacje, rozszerzenia, i gad\u017cety nie s\u0105 importowane lub eksportowane. Rozszerzenia nie mog\u0105 instalowa\u0107 innych aplikacji lub rozszerze\u0144. U\u017cyj <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Chrome Sync<\/a>."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Przywracanie: Pozwala odwr\u00f3ci\u0107 efekty ostatniego importu. Twoje obecne ustawienia r\u00f3wnie\u017c zostan\u0105 zapisane w kopi zapasowej w celu p\u00f3\u017aniejszego przywr\u00f3cenia."
+	},
+	"ui_import_export_header":{
+		"message":"Import\/Eksport"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Potwierdz przywr\u00f3cenie"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Czy na pewno chcesz przywr\u00f3ci\u0107? Twoje obecne ustawienia  b\u0119d\u0105 utracone."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Import\/Eksport"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Przywracanie zako\u0144czone."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Brak danych do przywr\u00f3cenia!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Zako\u0144czono importowanie."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Wprowad\u017a najpierw \u015bcie\u017ck\u0119 importu!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Z\u0142a \u015bcie\u017cka importu!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Przywr\u00f3\u0107"
 	}
 }

@@ -54,7 +54,7 @@
   var repeatCount = 0;
 
   function ScrollSmoothly(scrollPos, repeatTimes, direction) {
-    if(repeatCount < repeatTimes) {
+    if(repeatCount < repeatTimes)
       if(direction == 'right')
         window.scrollBy(scrollPos,0);
       else
@@ -69,7 +69,6 @@
       cTimeout = setTimeout(function() {
         ScrollSmoothly(scrollPos, repeatTimes,direction);
       }, 10);
-    }
   }
 
     /* Initialization code. */

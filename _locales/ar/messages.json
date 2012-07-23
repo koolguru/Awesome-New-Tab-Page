@@ -3,7 +3,7 @@
 		"message":"\ufeff\u062a\u0637\u0628\u064a\u0642\u0627\u062a"
 	},
 	"ui_button_widgets":{
-		"message":"\u0642\u0637\u0639"
+		"message":"\u0627\u0636\u0627\u0641\u0629"
 	},
 	"ui_button_unlock":{
 		"message":"\ufeff\u0625\u0644\u063a\u0627\u0621 \u0627\u0644\u0642\u0641\u0644"
@@ -12,7 +12,7 @@
 		"message":"\u0625\u063a\u0644\u0627\u0642"
 	},
 	"ui_button_about":{
-		"message":"\u062d\u0648\u0644"
+		"message":"\u0639\u0646"
 	},
 	"ui_config_bg_changecolor":{
 		"message":"\ufeff\u062a\u063a\u064a\u064a\u0631 \u0644\u0648\u0646 \u0627\u0644\u062e\u0644\u0641\u064a\u0629"
@@ -54,7 +54,7 @@
 		"message":"\u062a\u062d\u0645\u064a\u0644 \u0635\u0648\u0631\u0629"
 	},
 	"ui_about":{
-		"message":"\u062d\u0648\u0644"
+		"message":"\u0639\u0646"
 	},
 	"ui_about_dev":{
 		"message":"\u0627\u0644\u0645\u0637\u0648\u0631\u064a\u0646"
@@ -72,7 +72,7 @@
 		"message":"\u0627\u0644\u062a\u0642\u064a\u064a\u0645"
 	},
 	"ui_button_downloadapps":{
-		"message":"Manikganj"
+		"message":"\u062d\u0645\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642"
 	},
 	"app_webstore":{
 		"message":"\u0645\u062a\u062c\u0631 \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0643\u0631\u0648\u0645"

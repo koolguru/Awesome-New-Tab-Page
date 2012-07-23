@@ -199,15 +199,15 @@ $("#shortcut-edit").live("click", function(e){
   $(".ui-2#editor #editor-name, .ui-2#editor #preview-tile .app-name").html( widgets[id].name );
   $(".ui-2#editor #shortcut_name").val( widgets[id].name );
 
-  if( typeof( widgets[id] ) !== "undefined" && widgets[id].name_show && widgets[id].name_show === false) {
-    $(".ui-2#editor #shortcut_name_show").prop("checked", false);
-    $(".ui-2#editor .app-name").css("opacity", 0);
-  } else {
+  if( typeof widgets[id] !== "undefined" && typeof widgets[id].name_show && widgets[id].name_show === true) {
     $(".ui-2#editor #shortcut_name_show").prop("checked", true);
     $(".ui-2#editor .app-name").css("opacity", 1);
+  } else {
+    $(".ui-2#editor #shortcut_name_show").prop("checked", false);
+    $(".ui-2#editor .app-name").css("opacity", 0);
   }
 
-  if( typeof( widgets[id] ) !== "undefined" && widgets[id].pin && widgets[id].pin === true) {
+  if( typeof widgets[id] !== "undefined" && widgets[id].pin && widgets[id].pin === true) {
     $(".ui-2#editor #shortcut_pin").prop("checked", true);
   } else {
     $(".ui-2#editor #shortcut_pin").prop("checked", false);
@@ -353,13 +353,13 @@ function updateShortcut(e) {
 
 IconResizing = {
   id: null,
-  previewTile: null, 
+  previewTile: null,
   tileImg: null,
   tileWidth: null,
   tileHeight: null,
   imgWidth: null,
   imgHeight: null,
-  sizeRatio: null, 
+  sizeRatio: null,
 
   init: function() {
     // when reset button clicked
@@ -372,12 +372,12 @@ IconResizing = {
     $("#icon-resize-scale-controls #contain-bt").click(function () { IconResizing.changeBackgroundSize("contain"); });
     // on zoom
     $("#icon-resize-scale-controls #zoom-slider").change(IconResizing.changeZoomLevel);
-  }, 
+  },
 
   calculateVars: function (callback) {
     var previousId = IconResizing.id;
     IconResizing.id = $(".ui-2#editor").attr("active-edit-id");
-    IconResizing.previewTile = $(".ui-2#editor #preview-tile, #widget-holder #" + IconResizing.id), 
+    IconResizing.previewTile = $(".ui-2#editor #preview-tile, #widget-holder #" + IconResizing.id),
     IconResizing.tileImg = $("#invisible-tile-img");
     IconResizing.tileWidth = IconResizing.previewTile.filter(":eq(0)").width();
     IconResizing.tileHeight = IconResizing.previewTile.filter(":eq(0)").height();
@@ -388,7 +388,7 @@ IconResizing = {
       var newImgHeight = IconResizing.tileImg.height();
       if (newImgWidth != 0) {
         // if image is changed then reset its position and zoom level
-        if (IconResizing.id != previousId && !widgets[IconResizing.id].backgroundPos && !widgets[IconResizing.id].backgroundSize 
+        if (IconResizing.id != previousId && !widgets[IconResizing.id].backgroundPos && !widgets[IconResizing.id].backgroundSize
           || (IconResizing.id == previousId && (IconResizing.imgWidth != newImgWidth || IconResizing.imgHeight != newImgHeight))) {
           IconResizing.imgWidth = newImgWidth;
           IconResizing.imgHeight = newImgHeight;
@@ -406,11 +406,11 @@ IconResizing = {
         }
       }
     }, 50);
-  }, 
+  },
 
   previewTileUpdated: function(callback) {
     IconResizing.calculateVars(callback);
-  }, 
+  },
 
   // reset tile's background position to center and scale to 1
   resetTileIcon: function() {
@@ -423,13 +423,13 @@ IconResizing = {
       slider.val(slider.attr("min"));
     }
     IconResizing.savePosition();
-  }, 
+  },
 
   // change tile's background position to center
   centerTileIcon: function() {
     IconResizing.previewTile.css("background-position", "center center");
     IconResizing.savePosition();
-  }, 
+  },
 
 
   // change tile's background position to cover
@@ -453,7 +453,7 @@ IconResizing = {
       }
       else {
         imgHeight = IconResizing.tileHeight;
-        imgWidth = imgHeight * IconResizing.sizeRatio; 
+        imgWidth = imgHeight * IconResizing.sizeRatio;
       }
     }
 
@@ -461,7 +461,7 @@ IconResizing = {
 
     IconResizing.updateSlider();
     IconResizing.savePosition();
-  }, 
+  },
 
   // recalculates zoom slider position
   updateSlider: function() {
@@ -488,7 +488,7 @@ IconResizing = {
       }
       slider.val(step);
     }
-  }, 
+  },
 
   changeZoomLevel: function() {
     var step = this.value;
@@ -503,7 +503,7 @@ IconResizing = {
     var imgHeight = imgWidth / IconResizing.sizeRatio;
     IconResizing.previewTile.css("background-size", imgWidth + "px " + imgHeight + "px, 100% 100%");
     IconResizing.savePosition();
-  }, 
+  },
 
   getZoomPerStep: function(maxStep) {
     var zoomPerStep = (IconResizing.imgWidth - IconResizing.tileWidth) / maxStep;
@@ -511,7 +511,7 @@ IconResizing = {
       zoomPerStep = (IconResizing.tileWidth - IconResizing.imgWidth) / maxStep;
     }
     return zoomPerStep;
-  }, 
+  },
 
   // save tile's position and scale to localstorage
   savePosition: function() {
@@ -528,8 +528,8 @@ IconResizing.init();
  * Dragging image in preview tile to adjust its position
 */
 IconDragging = {
-  mouseStartPos: {}, 
-  backgroundPos: {}, 
+  mouseStartPos: {},
+  backgroundPos: {},
   tile: null, // save preview tile to avoid repeatedly searching it
   dragging: false, // true if dragging is in progress
 
@@ -553,7 +553,7 @@ IconDragging = {
         IconDragging.stopDragging();
       }
     });
-  }, 
+  },
 
   startDragging: function(event, previewTile) {
     previewTile.css("cursor", "move");
@@ -564,14 +564,14 @@ IconDragging = {
     IconDragging.dragging = true;
 
     $(document).mousemove(IconDragging.dragTile);  // start moving the tile on mousemove
-  }, 
+  },
 
   dragTile: function(event) {
     var newBackgroundPos = {};
     newBackgroundPos.X = (IconDragging.backgroundPos.X + event.clientX - IconDragging.mouseStartPos.X) + "px";
     newBackgroundPos.Y = (IconDragging.backgroundPos.Y + event.clientY - IconDragging.mouseStartPos.Y) + "px";
     IconDragging.tile.css("background-position", newBackgroundPos.X + " " + newBackgroundPos.Y + ", 100% 100%");
-  }, 
+  },
 
   stopDragging: function(event) {
     dragging = false;
@@ -584,7 +584,7 @@ IconDragging = {
 IconDragging.init();  // binds events for dragging
 
 function getBackgroundPos(element) {
-  var position = {}, 
+  var position = {},
     arr;
   var backgroundPos = element.css("background-position");
   // if background position is in percent then calculate background position manually
@@ -607,6 +607,6 @@ function getBackgroundPos(element) {
 }
 
 function extractNumber(value) {
-    var n = parseInt(value); 
+    var n = parseInt(value);
     return n == null || isNaN(n) ? 0 : n;
 }
