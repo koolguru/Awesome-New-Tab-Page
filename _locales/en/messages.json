@@ -84,7 +84,7 @@
     "message": "Taking Screenshot"
   },
   "ui_screenshot_confirm": {
-    "message": "To take screenshot the website would opened in a new tab. Screenshot would be taken after the website has been completely loaded. It may take some time for website to be fully load so stay calm."
+    "message": "In order to capture the screenshot, the website will be opened in a new tab. After the page has finished loading, the tab will automatically close and you'll be returned to Awesome New Tab Page. Please don't close or navigate away. This shouldn't take but a few seconds."
   },
   "ui_te_ib_tip": {
     "message": "Tip: Leave blank for no icon."
