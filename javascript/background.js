@@ -198,6 +198,10 @@ if ( localStorage.getItem("installed_widgets") === "[]" ) {
 // Attempts to establish a connection to all installed widgets
 function sayHelloToPotentialWidgets() {
   for (var i in extensions) {
+    chrome.extension.sendMessage(
+      extensions[i].id,
+      "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-poke"
+    );
     chrome.extension.sendRequest(
       extensions[i].id,
       "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-poke"
@@ -206,9 +210,10 @@ function sayHelloToPotentialWidgets() {
 };
 
 // Listens for responses
-chrome.extension.onRequestExternal.addListener( onRequestExternal );
-function onRequestExternal(request, sender, sendResponse) {
-  if(request.head) {
+chrome.extension.onMessageExternal.addListener( onMessageExternal );
+chrome.extension.onRequestExternal.addListener( onMessageExternal );
+function onMessageExternal(request, sender, sendResponse) {
+  if(request && request.head) {
     if(request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {
 
       var installed_widgets_temp = JSON.parse(localStorage.getItem("installed_widgets"));
