@@ -206,7 +206,7 @@
   $('.rctm-close').live("click", function(e) {
     var recently_closed = JSON.parse(localStorage.getItem("recently_closed"));
 
-    recently_closed.splice( $(e.target).parent().attr("data-rctm-id") , 1);
+    recently_closed.splice( $(e.target).attr("data-rctm-id") , 1);
 
     localStorage.setItem("recently_closed", JSON.stringify(recently_closed));
 
