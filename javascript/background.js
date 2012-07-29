@@ -86,12 +86,12 @@
 
     if ( e.originalEvent.key === "pin_toggle" ) {
       var id  = parseInt(localStorage.getItem("pin_toggle"));
-      if ( typeof(id) === "null" ) {
+      if ( typeof id === "null" ) {
         return false;
       }
 
       var tab = tabs.filter(function (tab) { return tab.id === id; })[0];
-      if ( typeof(tab) === "undefined" ) {
+      if ( typeof tab === "undefined" ) {
         console.error("Tab wasn't found");
         return false;
       }
@@ -143,7 +143,7 @@ function buildWidgetObject(_widget) {
   widget.pokeVersion = parseInt(_widget.request.body.poke);
   if (widget.pokeVersion === "NaN" || widget.pokeVersion < 1 || widget.pokeVersion > 3) {
     console.error("buildWidgetObject:", "Invalid poke version.");
-    return null; 
+    return null;
   }
   else if (widget.pokeVersion == 1) {
     console.error("buildWidgetObject:", "Support for poke version 1 has been discontinued. Use poke version 3 instead.");
@@ -171,14 +171,14 @@ function buildWidgetObject(_widget) {
 
   if (_widget.sender.name) {
     widget.name = _widget.sender.name;
-  } 
+  }
   else {
-    if ( typeof(_widget.sender.id) === "string" ) {
+    if ( typeof _widget.sender.id === "string" ) {
       widget.name = extensions.filter(function (ext) { return ext.id === _widget.sender.id })[0];
     }
 
-    if ( typeof(widget.name) !== "undefined"
-      && typeof(widget.name.name) === "string" ) {
+    if ( typeof widget.name !== "undefined"
+      && typeof widget.name.name === "string" ) {
       widget.name = widget.name.name;
     }
     else {
@@ -214,12 +214,12 @@ function buildWidgetObject(_widget) {
     widget.v2.resize = false;
   }
 
-  if (widget.pokeVersion == 3) {
-    if (typeof(_widget.request.body.v3) == "undefined") {
+  if ( widget.pokeVersion === 3 ) {
+    if (typeof _widget.request.body.v3  === "undefined") {
       console.error("buildWidgetObject:", "v3 property is missing. v3 property is required in poke version 3.")
       return;
     }
-    else if (typeof(_widget.request.body.v3.multi_placement) == "undefined") {
+    else if ( typeof _widget.request.body.v3.multi_placement === "undefined") {
       console.error("buildWidgetObject:", "v3.multi_placement property is missing. v3.multi_placement property is required in poke version 3.")
       return;
     }
@@ -270,8 +270,10 @@ function sayHelloToPotentialWidgets() {
 };
 
 // Listens for responses
-chrome.extension.onRequestExternal.addListener( onRequestExternal );
-function onRequestExternal(request, sender, sendResponse) {
+chrome.extension.onMessageExternal.addListener( onMessageExternal );
+chrome.extension.onRequestExternal.addListener( onMessageExternal );
+function onMessageExternal(request, sender, sendResponse) {
+  console.log(request, sender);
   if(request.head && request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {
     var widget = buildWidgetObject({ "request": request, "sender": sender});
     if (widget != null) {
