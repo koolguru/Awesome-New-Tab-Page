@@ -270,7 +270,6 @@ function sayHelloToPotentialWidgets() {
 };
 
 // Listens for responses
-chrome.extension.onMessageExternal.addListener( onMessageExternal );
 chrome.extension.onRequestExternal.addListener( onRequestExternal );
 function onRequestExternal(request, sender, sendResponse) {
   if(request.head && request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {

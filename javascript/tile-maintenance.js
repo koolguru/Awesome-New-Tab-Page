@@ -503,8 +503,9 @@ function addWidget(obj) {
     else {
       obj.instance_id = obj.widget;
     }
-    obj.widget_src += ("#" + obj.instance_id);
-    obj.widget_options += ("#" + obj.instance_id);
+    var idString = encodeURIComponent(JSON.stringify({"id": obj.instance_id}));
+    obj.widget_src += ("#" + idString);
+    obj.widget_options += ("#" + idString);
   }
 
     widgets[obj.instance_id] = {
