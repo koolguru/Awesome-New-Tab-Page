@@ -496,12 +496,10 @@ function addWidget(obj) {
     }
 
   var widgetIndex = obj.widget;
+  obj.instance_id = obj.widget;
   if (obj.poke == 3) {
     if (obj.multi_placement == true || obj.multi_placement == "true") {
       obj.instance_id = new_guid();
-    }
-    else {
-      obj.instance_id = obj.widget;
     }
     var idString = encodeURIComponent(JSON.stringify({"id": obj.instance_id}));
     obj.widget_src += ("#" + idString);

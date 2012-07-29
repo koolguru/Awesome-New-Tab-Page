@@ -17,7 +17,7 @@
 ***/
 
 
-$("#delete").live("click", function(){
+$(document).on("click", "#delete", function(){
   var to_delete = $(this).parent().parent();
   if(to_delete) {
     var id = $(to_delete).attr("id");
@@ -44,7 +44,7 @@ $("#delete").live("click", function(){
 });
 
 // Create shortcut on click
-$(".unlocked .empty.add-shortcut").bind("click", function() {
+$(document).on("click", ".unlocked .empty.add-shortcut", function() {
   var new_shortcut_id = new_guid();
 
   addShortcut(
@@ -78,13 +78,13 @@ $(".unlocked .empty.add-shortcut").bind("click", function() {
 });
 
 // Stop edit or delete buttons from interacting with the shortcut/app
-$("#delete,#shortcut-edit,#widget-config").live("mousedown mouseup move", function(e) {
+$(document).on("mousedown mouseup move", "#delete,#shortcut-edit,#widget-config", function(e) {
   e.stopPropagation();
   e.preventDefault();
 });
 
 // Edit shortcut or app
-$("#shortcut-edit").live("click", function(e){
+$(document).on("click", "#shortcut-edit",function(e){
   $("body > .ui-2").hide();
 
   var shortcut_parent = $(this).parent().parent()[0];
@@ -155,7 +155,7 @@ $("#shortcut-edit").live("click", function(e){
     $("#temporary-element-to-delete").remove();
   }
 
-   $(".swatch").live("click", function () {
+   $(document).on("click", ".swatch", function () {
      var id = $(".ui-2#editor").attr("active-edit-id");
      var r = $(this).data("r");
      var g = $(this).data("g");
@@ -265,7 +265,7 @@ function addShortcut(widget, top, left) {
 }
 
 // Update tile, localStorage, and previews for Tile Editor changes
-$(".ui-2#editor input").not("#zoom-slider").bind("keyup change", updateShortcut);
+$(".ui-2#editor input").not("#zoom-slider").on("keyup change", updateShortcut);
 
 function updateShortcut(e) {
   try {
@@ -562,7 +562,7 @@ IconDragging = {
     IconDragging.tile = IconResizing.previewTile;
     IconDragging.dragging = true;
 
-    $(document).mousemove(IconDragging.dragTile);  // start moving the tile on mousemove
+    $(document).on('mousemove', IconDragging.dragTile);  // start moving the tile on mousemove
   },
 
   dragTile: function(event) {
@@ -574,7 +574,7 @@ IconDragging = {
 
   stopDragging: function(event) {
     dragging = false;
-    $(document).unbind("mousemove");
+    $(document).off("mousemove");
     IconResizing.savePosition();
     $("#preview-tile .iframe-mask").css("cursor", "auto");
   }
