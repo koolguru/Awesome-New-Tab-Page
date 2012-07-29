@@ -323,16 +323,13 @@
   },
   "ui_import_export_desc_export": {
     "message": "Export: Generates a string that contains all of your preferences. This string can be saved for later as a backup or can be copied to other computers to automatically set them up like this one. Uploaded images are not exported; images on the web are."
-  },
+    },
   "ui_import_export_desc_import": {
     "message": "Import: Overwrites your current configuration with a valid exported string. <b>WARNING</b>: All of your current preferences will be irrevocably lost. There is no way to undo this operation. Uploaded images are not imported; images on the web are."
   },
   "ui_import_export_installed_warning": {
     "message": "Installed apps, extensions, and widgets are not imported or exported. Extensions can't install other apps or extensions. Use <a href='http://support.google.com/chrome/bin/answer.py?answer=165139'>Chrome Sync</a> instead."
-  },
-  "ui_import_export_desc_restore": {
-    "message": "Restore: Allows you to undo the last Import. Your current state will be backed up for later restoration as well."
-  },
+    },
   "ui_import_export_header": {
     "message": "Import/Export"
   },
@@ -340,7 +337,7 @@
     "message": "Confirm Restore"
   },
   "ui_import_export_confirm_restore": {
-    "message": "Do you want to restore? Your current settings would be lost."
+    "message": "Are you sure you want to restore? Your current settings would be lost."
   },
   "ui_import_export_msg_header": {
     "message": "Import/Export"

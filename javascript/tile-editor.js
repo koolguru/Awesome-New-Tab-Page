@@ -44,7 +44,7 @@ $("#delete").live("click", function(){
 });
 
 // Create shortcut on click
-$(".unlocked .empty.add-shortcut").live("click", function() {
+$(".unlocked .empty.add-shortcut").bind("click", function() {
   var new_shortcut_id = new_guid();
 
   addShortcut(
@@ -536,8 +536,7 @@ IconDragging = {
   init: function(){
     // to start dragging on mousedown (start dragging only if clicked on preview tile)
     $(document).mousedown(function(event) {
-      if (event.button == 0 && widgets[IconResizing.id].type == "shortcut")
-      {
+      if (IconResizing.id && event.button == 0 && widgets[IconResizing.id].type == "shortcut") {
         var previewTile = $(event.target).parents("#preview-tile");
         if (previewTile.length > 0) // if user clicked within preview tile then start dragging
         {

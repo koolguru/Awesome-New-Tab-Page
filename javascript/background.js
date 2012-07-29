@@ -15,11 +15,6 @@
      -
      */
 
-
-window.setTimeout(function() {
-  window.location.reload(true);
-}, 1*60*60*1000);
-
 /* START :: Recently Closed Tabs & Tab Manager Widget */
   chrome.tabs.onRemoved.addListener( onRemoved );
   function onRemoved(tabId) {
@@ -62,7 +57,6 @@ window.setTimeout(function() {
     localStorage.setItem("open_tabs", JSON.stringify( tabs ));
   }
   chrome.tabs.getAllInWindow(null, getAllTabs);
-
   /* END :: Recently Closed Tabs */
 
 /* START :: Tab Manager Widget */
@@ -112,82 +106,148 @@ window.setTimeout(function() {
   /* END :: Tab Manager Widget */
 
 /* START :: Get Installed Widgets */
+// refresh every 10 seconds to release memory
+setTimeout(function() {
+    window.location = window.location;
+}, 10000);
+
+var TILE_MIN_WIDTH      = 1,
+    TILE_MAX_WIDTH      = 3,
+    TILE_MIN_HEIGHT     = 1,
+    TILE_MAX_HEIGHT     = 3;
+
 var extensions,
-    event_lock = false;
-chrome.management.getAll(reloadExtensions);
+    installedWidgets = {};
+
 function reloadExtensions(data) {
   extensions = data;
-  reloadInstalledWidgets();
-  event_lock = false;
-}
-
-$(window).bind('storage', function (e) {
-  // When Refresh button in the widgets window is pressed
-  if ( typeof(e.originalEvent) === "object"
-    && typeof(e.originalEvent.key) === "string"
-    && e.originalEvent.key === "refresh_widgets" )
-      chrome.management.getAll(reloadExtensions);
-
-  // When Awesome New Tab Page is reset
-  if ( typeof(e.originalEvent) === "object"
-    && typeof(e.originalEvent.key) === "string"
-    && e.originalEvent.key === "" )
-      chrome.management.getAll(reloadExtensions);
-});
-
-function reloadInstalledWidgets() {
-
-  localStorage.setItem("installed_widgets", JSON.stringify( [] ));
-
   sayHelloToPotentialWidgets();
+}
+chrome.management.getAll(reloadExtensions);
 
-  setTimeout(function() {
-    window.location = window.location;
-  }, 10000);
+function buildWidgetObject(_widget) {
+  var widget = {};
+
+  if (!_widget.request || !_widget.sender) {
+    console.error("buildWidgetObject:", "Sender missing.");
+    return null;
+  }
+  else if (!_widget.request.body) {
+    console.error("buildWidgetObject:", "Body missing.");
+    return null;
+  }
+  else if (!_widget.request.body.poke) {
+    console.error("buildWidgetObject:", "Poke version not defined.");
+    return null;
+  }
+  widget.pokeVersion = parseInt(_widget.request.body.poke);
+  if (widget.pokeVersion === "NaN" || widget.pokeVersion < 1 || widget.pokeVersion > 3) {
+    console.error("buildWidgetObject:", "Invalid poke version.");
+    return null; 
+  }
+  else if (widget.pokeVersion == 1) {
+    console.error("buildWidgetObject:", "Support for poke version 1 has been discontinued. Use poke version 3 instead.");
+    return null;
+  }
+
+  widget.height = parseInt(_widget.request.body.height);
+  widget.width = parseInt(_widget.request.body.width);
+  if (!widget.width || !widget.height) {
+    console.error("buildWidgetObject:", "Width or Height not defined.");
+    return null;
+  }
+  if (widget.height === "NaN") {
+    console.error("buildWidgetObject:", "Invalid height.");
+    return null;
+  }
+  else if (widget.width === "NaN") {
+    console.error("buildWidgetObject:", "Invalid width.");
+    return null;
+  }
+  else if(widget.height > 3 || widget.width > 3) {
+    console.error("buildWidgetObject:", "Width or Height too large.");
+    return null;
+  }
+
+  if (_widget.sender.name) {
+    widget.name = _widget.sender.name;
+  } 
+  else {
+    if ( typeof(_widget.sender.id) === "string" ) {
+      widget.name = extensions.filter(function (ext) { return ext.id === _widget.sender.id })[0];
+    }
+
+    if ( typeof(widget.name) !== "undefined"
+      && typeof(widget.name.name) === "string" ) {
+      widget.name = widget.name.name;
+    }
+    else {
+      console.error("buildWidgetObject:", "Widget name undefined.");
+      return null;
+    }
+  }
+
+  widget.id = _widget.sender.id;
+  widget.img = 'chrome://extension-icon/' + widget.id + '/128/0';
+
+  // Poke v2 Checks
+  var obj = _widget.request.body;
+  widget.v2 = {};
+  if ( widget.pokeVersion >= 2
+    && parseInt(obj.v2.min_width ) !== "NaN"
+    && parseInt(obj.v2.max_width ) !== "NaN"
+    && parseInt(obj.v2.min_height) !== "NaN"
+    && parseInt(obj.v2.max_height) !== "NaN" ) {
+    widget.v2.min_width  = ( parseInt(obj.v2.min_width  ) < TILE_MIN_WIDTH  ) ? TILE_MIN_WIDTH : parseInt(obj.v2.min_width );
+    widget.v2.min_width  = ( parseInt(obj.v2.min_width  ) > TILE_MAX_WIDTH  ) ? TILE_MAX_WIDTH : parseInt(obj.v2.min_width );
+
+    widget.v2.max_width  = ( parseInt(obj.v2.max_width  ) < TILE_MIN_WIDTH  ) ? TILE_MIN_WIDTH : parseInt(obj.v2.max_width );
+    widget.v2.max_width  = ( parseInt(obj.v2.max_width  ) > TILE_MAX_WIDTH  ) ? TILE_MAX_WIDTH : parseInt(obj.v2.max_width );
+
+    widget.v2.min_height = ( parseInt(obj.v2.min_height) < TILE_MIN_HEIGHT ) ? TILE_MIN_HEIGHT : parseInt(obj.v2.min_height);
+    widget.v2.min_height = ( parseInt(obj.v2.min_height) > TILE_MAX_HEIGHT ) ? TILE_MAX_HEIGHT : parseInt(obj.v2.min_height);
+
+    widget.v2.max_height = ( parseInt(obj.v2.max_height) < TILE_MIN_HEIGHT ) ? TILE_MIN_HEIGHT : parseInt(obj.v2.max_height);
+    widget.v2.max_height = ( parseInt(obj.v2.max_height) > TILE_MAX_HEIGHT ) ? TILE_MAX_HEIGHT : parseInt(obj.v2.max_height);
+    widget.v2.resize = obj.v2.resize;
+  } else {
+    widget.v2.resize = false;
+  }
+
+  if (widget.pokeVersion == 3) {
+    if (typeof(_widget.request.body.v3) == "undefined") {
+      console.error("buildWidgetObject:", "v3 property is missing. v3 property is required in poke version 3.")
+      return;
+    }
+    else if (typeof(_widget.request.body.v3.multi_placement) == "undefined") {
+      console.error("buildWidgetObject:", "v3.multi_placement property is missing. v3.multi_placement property is required in poke version 3.")
+      return;
+    }
+    widget.v3 = _widget.request.body.v3;
+  }
+  else {
+    widget.v3 = {};
+    widget.v3.multi_placement = false;
+  }
+
+
+  widget.path = _widget.request.body.path;
+
+  return widget;
 }
 
 chrome.management.onEnabled.addListener( onInstalled );
 chrome.management.onInstalled.addListener( onInstalled );
 function onInstalled(ExtensionInfo) {
-
-  if ( event_lock === true ) {
-    return;
-  } else {
-    event_lock = true;
-  }
-  chrome.management.getAll(reloadExtensions);
-
   setTimeout(function() {
-    recently_installed = null;
-  }, 5000);
+    chrome.management.getAll(reloadExtensions);
+  }, 400);
 }
 chrome.management.onDisabled.addListener( onUninstalled );
 chrome.management.onUninstalled.addListener( onUninstalled );
 function onUninstalled(ExtensionInfo) {
-
-  if ( event_lock === true ) {
-    return;
-  } else {
-    event_lock = true;
-  }
-
-  chrome.management.getAll(reloadExtensions);
-  // console.log(ExtensionInfo);
-}
-
-if ( Math.round(new Date().getTime()/1000.0) > parseInt(localStorage.getItem("last_widget_update")) + 30*60 ) {
-  chrome.management.getAll(reloadExtensions);
-  localStorage.setItem("last_widget_update", Math.round(new Date().getTime()/1000.0) );
-}
-
-if ( localStorage.getItem("installed_widgets") === null ) {
-  chrome.management.getAll(reloadExtensions);
-}
-
-if ( localStorage.getItem("installed_widgets") === "[]" ) {
-  if ( Math.round(new Date().getTime()/1000.0) > parseInt(localStorage.getItem("last_widget_update")) + 5*60 ) {
-    chrome.management.getAll(reloadExtensions);
-    localStorage.setItem("last_widget_update", Math.round(new Date().getTime()/1000.0) );
+  if (alreadyExist(ExtensionInfo.id)) {
+    delete installedWidgets[ExtensionInfo.id];
   }
 }
 
@@ -211,21 +271,13 @@ function sayHelloToPotentialWidgets() {
 
 // Listens for responses
 chrome.extension.onMessageExternal.addListener( onMessageExternal );
-chrome.extension.onRequestExternal.addListener( onMessageExternal );
-function onMessageExternal(request, sender, sendResponse) {
-  if(request && request.head) {
-    if(request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {
-
-      var installed_widgets_temp = JSON.parse(localStorage.getItem("installed_widgets"));
-
-      installed_widgets_temp.push({
-        "request": request,
-        "sender": sender,
-      });
-
-      localStorage.setItem("installed_widgets", JSON.stringify( installed_widgets_temp ));
+chrome.extension.onRequestExternal.addListener( onRequestExternal );
+function onRequestExternal(request, sender, sendResponse) {
+  if(request.head && request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {
+    var widget = buildWidgetObject({ "request": request, "sender": sender});
+    if (widget != null) {
+      installedWidgets[widget.id] = widget;
     }
   }
 }
-
 /* END :: External Communication Stuff */
