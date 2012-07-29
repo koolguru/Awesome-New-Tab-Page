@@ -21,7 +21,6 @@ function reloadWidgets() {
   backgroundPage = chrome.extension.getBackgroundPage();
   setupInstalledWidgets();
   setupStockWidgets();
-  console.log('reloaded');
 }
 setInterval(reloadWidgets, 5000);
 
@@ -60,7 +59,7 @@ function setupStockWidgets() {
 
       widget.img = "icon128.png";
       widget.id = "mgmiemnjjchgkmgbeljfocdjjnpjnmcg";
-      
+
       setupDrawerWidget(stockWidget);
     }
   });
