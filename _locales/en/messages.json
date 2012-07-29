@@ -330,6 +330,9 @@
   "ui_import_export_installed_warning": {
     "message": "Installed apps, extensions, and widgets are not imported or exported. Extensions can't install other apps or extensions. Use <a href='http://support.google.com/chrome/bin/answer.py?answer=165139'>Chrome Sync</a> instead."
     },
+  "ui_import_export_desc_restore": {
+    "message": "Restore: Allows you to undo the last Import. Your current state will be backed up for later restoration as well."
+  },
   "ui_import_export_header": {
     "message": "Import/Export"
   },
