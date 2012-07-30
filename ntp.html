@@ -395,8 +395,12 @@
               {{'ui_te_shname' | i18n}}
             </p>
             <p>
-              <input id="shortcut_pin" type="checkbox" />
+              <input id="shortcut_pin" name="leftclick" value="pin" type="checkbox" />
               {{'ui_te_pin' | i18n}}
+            </p>
+            <p>
+              <input id="shortcut_newtab" name="leftclick" value="newtab" type="checkbox" />
+              {{'ui_te_newtab' | i18n}}
             </p>
           <div class="hide-if-app">
             <h3>URL</h3>
@@ -545,6 +549,7 @@
 
       <script type="text/javascript" src="/javascript/filesystem.js?nocache=11" async="async"></script>
       <script type="text/javascript" src="/javascript/import-export.js?nocache=11" async="async"></script>
+      <script type="text/javascript" src="/javascript/storage-updates.js?nocache=11"></script>
     </div>
   </body>
 </html>

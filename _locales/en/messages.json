@@ -44,6 +44,9 @@
   "ui_te_pin": {
     "message": "Pin on left click"
   },
+  "ui_te_newtab": {
+    "message": "Open in New Tab on left click"
+  }, 
   "ui_te_url_desc": {
     "message": "Enter the URL you'd like to link to, such as http://www.google.com/"
   },
@@ -362,5 +365,11 @@
   },
   "ui_import_export_btn_restore": {
     "message": "Restore"
+  }, 
+  "localStorage_updated_msg_header": {
+    "message": "Database Updated"
+  },
+  "localStorage_updated_msg": {
+    "message": "ANTP database just updated."
   }
 }

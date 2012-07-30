@@ -1,10 +1,3 @@
-// display messages to be displayed on page refresh
-var msg = localStorage.importExportMsg;
-if (msg) {
-  msg = JSON.parse(msg);
-  $.jGrowl(msg.message, { header: msg.title });
-  localStorage.removeItem("importExportMsg");
-}
 
 // hide import/export section when config window is opened
 $("#config-button, .ui-2.config").live("click", function(){
@@ -65,7 +58,7 @@ function restore() {
 var restoreString = localStorage.backupBeforeImport;
   if (restoreString) {
     if (importLocalStorage(restoreString)) {
-      localStorage.importExportMsg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
+      localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
         message: chrome.i18n.getMessage("ui_import_export_restore_complete_msg")});
       window.location.reload();
     }
@@ -119,7 +112,7 @@ $("#import-export-contents #run-import-btn").bind("click", function() {
   {
     if (importLocalStorage(inputStr)) {
       // to display message on page refresh, store it in localstorage
-      localStorage.importExportMsg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
+      localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
         message: chrome.i18n.getMessage("ui_import_export_complete_msg")});
       window.location.reload();
     }

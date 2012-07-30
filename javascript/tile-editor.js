@@ -207,10 +207,23 @@ $(document).on("click", "#shortcut-edit",function(e){
     $(".ui-2#editor .app-name").css("opacity", 0);
   }
 
-  if( typeof widgets[id] !== "undefined" && widgets[id].pin && widgets[id].pin === true) {
-    $(".ui-2#editor #shortcut_pin").prop("checked", true);
-  } else {
-    $(".ui-2#editor #shortcut_pin").prop("checked", false);
+  if( typeof widgets[id] !== "undefined" && typeof(widgets[id].onleftclick) !== "undefined" ) {
+    if (widgets[id].onleftclick === "pin") {
+      $(".ui-2#editor #shortcut_pin").prop("checked", true);
+      $(".ui-2#editor #shortcut_newtab").prop("checked", false);
+    }
+    else if (widgets[id].onleftclick === "newtab") {
+      $(".ui-2#editor #shortcut_pin").prop("checked", false);
+      $(".ui-2#editor #shortcut_newtab").prop("checked", true);
+    }
+    else {
+      $(".ui-2#editor #shortcut_pin").prop("checked", false);
+      $(".ui-2#editor #shortcut_newtab").prop("checked", false);
+    }
+  }
+  else {
+      $(".ui-2#editor #shortcut_pin").prop("checked", false);
+      $(".ui-2#editor #shortcut_newtab").prop("checked", false);
   }
 
   $(".ui-2#editor #img_url").val( widgets[id].img );
@@ -265,7 +278,20 @@ function addShortcut(widget, top, left) {
 }
 
 // Update tile, localStorage, and previews for Tile Editor changes
-$(".ui-2#editor input").not("#zoom-slider").on("keyup change", updateShortcut);
+$(".ui-2#editor input").not("#zoom-slider, #shortcut_pin, #shortcut_newtab").on("keyup change", updateShortcut);
+
+$(".ui-2#editor #shortcut_pin").change(function(e) {
+  if (this.checked == true) {
+    $(".ui-2#editor #shortcut_newtab").prop("checked", false);
+  }
+  updateShortcut(e);
+});
+$(".ui-2#editor #shortcut_newtab").change(function(e) {
+  if (this.checked == true) {
+    $(".ui-2#editor #shortcut_pin").prop("checked", false);
+  }
+  updateShortcut(e);
+});
 
 function updateShortcut(e) {
   try {
@@ -273,13 +299,19 @@ function updateShortcut(e) {
     var id   = $(".ui-2#editor").attr("active-edit-id");
     var type = $(".ui-2#editor").attr("active-edit-type")
     var name = $(".ui-2#editor #shortcut_name").val();
-    var pin  = $(".ui-2#editor #shortcut_pin").is(':checked')
     var url  = $(".ui-2#editor #shortcut_url").val();
     var img  = $(".ui-2#editor #img_url").val();
     var name_show  = $(".ui-2#editor #shortcut_name_show").is(':checked');
     var favicon_show  = $(".ui-2#editor #shortcut_favicon_show").is(':checked');
     var shortcut_background_transparent  = $(".ui-2#editor #shortcut_background_transparent").is(':checked');
     var is_shortcut = (widgets[id].type && widgets[id].type === "shortcut");
+    var onleftclick = null;
+    if ($(".ui-2#editor #shortcut_pin").is(":checked") == true) {
+      onleftclick = "pin";
+    }
+    else if ($(".ui-2#editor #shortcut_newtab").is(":checked") == true) {
+      onleftclick = "newtab";
+    }
 
 
     if ( $.inArray(id, ["webstore", "amazon", "fandango", "facebook", "twitter"]) !== -1 ) {
@@ -295,13 +327,20 @@ function updateShortcut(e) {
       $(".ui-2#editor .app-name, #widget-holder #"+id+" .app-name").css("opacity", 1);
     }
 
-    widgets[id].pin = pin;
-    if ( pin === true ) {
+    widgets[id].onleftclick = onleftclick;
+    if ( onleftclick === "pin" ) {
       $(".ui-2#editor #shortcut_pin").prop("checked", true);
-      $("#widget-holder #"+id+" .url").attr("pin", "pin");
-    } else {
+      $(".ui-2#editor #shortcut_newtab").prop("checked", false);
+      $("#widget-holder #"+id+" .url").attr("onleftclick", "pin");
+    } else if ( onleftclick == "newtab" ) {
       $(".ui-2#editor #shortcut_pin").prop("checked", false);
-      $("#widget-holder #"+id+" .url").attr("pin", null);
+      $(".ui-2#editor #shortcut_newtab").prop("checked", true);
+      $("#widget-holder #"+id+" .url").attr("onleftclick", "newtab");
+    }
+    else {
+      $(".ui-2#editor #shortcut_pin").prop("checked", false);
+      $(".ui-2#editor #shortcut_newtab").prop("checked", false);
+      $("#widget-holder #"+id+" .url").attr("onleftclick", null);
     }
 
     if ( type === "app" ) {

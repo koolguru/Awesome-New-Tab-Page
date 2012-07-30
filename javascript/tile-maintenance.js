@@ -196,19 +196,13 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
   }
 
   if ( type === "shortcut" || type === "app" ) {
-    var favicon, pin;
+    var favicon;
     if ( type === "shortcut"
       && widgets[id].favicon_show !== false
       && url.match("http") !== null ) {
       favicon = $("<img></img>").attr("src", "chrome://favicon/"+url).addClass("app-favicon");
     } else {
       favicon = $("<img></img>").attr("src", "chrome://favicon/"+url).addClass("app-favicon force-hide");
-    }
-
-    if ( widgets[id] && widgets[id].pin && widgets[id].pin === true ) {
-      pin = "pin";
-    } else {
-      pin = null;
     }
 
     if (type == "shortcut") {
@@ -227,7 +221,7 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
         "class"   : "url",
         "data-url":  url ,
         "href"    :  url ,
-        "pin"     :  pin
+        "onleftclick": widgets[id].onleftclick
       }),
       favicon
     );
