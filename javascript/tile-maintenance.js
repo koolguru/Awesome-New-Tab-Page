@@ -227,10 +227,15 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
     );
   }
 
+  var instanceParameters = "";
+  if (type === "iframe" && widgets[id].poke == 3) {
+      instanceParameters = "#" + encodeURIComponent(JSON.stringify({"id": widgets[id].instance_id}));
+  }
+
   if (type === "iframe") {
     $(stitch).append(
       $("<iframe></iframe>").attr({
-        "src"         : url,
+        "src"         : url + instanceParameters,
         "scrolling"   : "no",
         "frameborder" : "0",
         "align"       : "center",
@@ -297,7 +302,7 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
           $("<div></div").attr({
             "id" : "widget-config",
             "class" : "url",
-            "data-url": optionsUrl
+            "data-url": optionsUrl + instanceParameters
           })
         );
       }
@@ -495,9 +500,6 @@ function addWidget(obj) {
     if (obj.multi_placement == true || obj.multi_placement == "true") {
       obj.instance_id = new_guid();
     }
-    var idString = encodeURIComponent(JSON.stringify({"id": obj.instance_id}));
-    obj.widget_src += ("#" + idString);
-    obj.widget_options += ("#" + idString);
   }
 
     widgets[obj.instance_id] = {
