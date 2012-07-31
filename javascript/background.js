@@ -232,19 +232,14 @@
     return widget;
   }
 
-  chrome.management.onEnabled.addListener( onInstalled );
-  chrome.management.onInstalled.addListener( onInstalled );
-  function onInstalled(ExtensionInfo) {
+  chrome.management.onEnabled.addListener( onExtChange );
+  chrome.management.onInstalled.addListener( onExtChange );
+  chrome.management.onDisabled.addListener( onExtChange );
+  chrome.management.onUninstalled.addListener( onExtChange );
+  function onExtChange(ExtensionInfo) {
     setTimeout(function() {
       chrome.management.getAll(reloadExtensions);
-    }, 400);
-  }
-  chrome.management.onDisabled.addListener( onUninstalled );
-  chrome.management.onUninstalled.addListener( onUninstalled );
-  function onUninstalled(ExtensionInfo) {
-    if (alreadyExist(ExtensionInfo.id)) {
-      delete installedWidgets[ExtensionInfo.id];
-    }
+    }, 500);
   }
 
   /* END :: Get Installed Widgets */
@@ -277,4 +272,5 @@
       }
     }
   }
+
   /* END :: External Communication Stuff */

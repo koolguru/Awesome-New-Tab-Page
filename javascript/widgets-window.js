@@ -16,19 +16,27 @@
   *       relationship with the authors of this project or the project itself.
 ***/
 
+
+var backgroundPage = chrome.extension.getBackgroundPage();
+chrome.management.getAll(backgroundPage.reloadExtensions);
+
+$(".ui-2.widgets-refresh").live("click", function() {
+  $(".ui-2#widgets .widget").remove();
+  backgroundPage.installedWidgets = {};
+  chrome.management.getAll(backgroundPage.reloadExtensions);
+  setTimeout(reloadWidgets, 500);
+});
+
 function reloadWidgets() {
   $(".ui-2#widgets .widget").remove();
   backgroundPage = chrome.extension.getBackgroundPage();
   setupInstalledWidgets();
   setupStockWidgets();
 }
-setInterval(reloadWidgets, 5000);
-
-var backgroundPage = chrome.extension.getBackgroundPage();
-chrome.management.getAll(backgroundPage.reloadExtensions);  // call backround function to load extensions
+setInterval(reloadWidgets, 7500);
 
 $(document).ready(function() {
-  setTimeout(reloadWidgets, 600);
+  setTimeout(reloadWidgets, 1000);
 });
 
 function setupInstalledWidgets() {
@@ -84,13 +92,6 @@ function setupDrawerWidget(_widget) {
       /*  Poke: array                                       */  [_widget.pokeVersion, _widget.v2, _widget.v3]
     )).appendTo("#widget-drawer");
 }
-
-$(".ui-2.widgets-refresh").live("click", function() {
-  $(".ui-2#widgets .widget").remove();
-  backgroundPage.installedWidgets = {};
-  chrome.management.getAll(backgroundPage.reloadExtensions);
-  setTimeout(reloadWidgets, 500);
-});
 
 $("#widget-drawer-button").live("click", function(){
   _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
