@@ -86,7 +86,7 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
 
   if ( type === "widget-drawer" ) {
     if ( typeof(poke) === "object"
-      && poke[0] && poke[0] === 2
+      && poke[0] && poke[0] >= 2
       && poke[1] && poke[1].resize === true) {
       var resize_enabled = true;
     }
@@ -517,7 +517,7 @@ function addWidget(obj) {
         "max_width" : obj.max_width,
         "min_height": obj.min_height,
         "max_height": obj.max_height
-      }, 
+      },
       "instance_id": obj.instance_id
     };
   }
