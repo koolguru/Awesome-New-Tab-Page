@@ -89,6 +89,12 @@
   "ui_screenshot_confirm": {
     "message": "In order to capture the screenshot, the website will be opened in a new tab. After the page has finished loading, the tab will automatically close and you'll be returned to Awesome New Tab Page. Please don't close or navigate away. This shouldn't take but a few seconds."
   },
+  "ui_screenshot_permission_denied_title": {
+    "message": "Permission Denied"
+  },
+  "ui_screenshot_permission_denied": {
+    "message": "You declined to grant Awesome New Tab Page the permission necessary to allow it to capture screenshots. If you wish to take a screenshot, please try again and grant Awesome New Tab Page the necessary permission."
+  },
   "ui_te_ib_tip": {
     "message": "Tip: Leave blank for no icon."
   },

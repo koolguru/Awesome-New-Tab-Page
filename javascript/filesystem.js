@@ -105,12 +105,22 @@ $("#filesystem_icon_input").change(function() {
 
 // upon click on Use Screenshot button
 $("#filesystem_icon_screenshot_bt").click(function () {
-  $.confirm({title: chrome.i18n.getMessage('ui_screenshot_confirm_title'),
-    message: chrome.i18n.getMessage('ui_screenshot_confirm'),
-      buttons: {
-        Continue: {'class': 'blue', action: takeScreenshot},
-        Cancel: {'class' : 'gray'}
-      }
+  chrome.permissions.request({origins: ['*://*/*']}, function(result) {
+    if (result == true) {
+      $.confirm({title: chrome.i18n.getMessage('ui_screenshot_confirm_title'),
+        message: chrome.i18n.getMessage('ui_screenshot_confirm'),
+          buttons: {
+            Continue: {'class': 'blue', action: takeScreenshot},
+            Cancel: {'class' : 'gray'}
+          }
+      });
+    }
+    else {
+      $.confirm({title: chrome.i18n.getMessage('ui_screenshot_permission_denied_title'),
+        message: chrome.i18n.getMessage('ui_screenshot_permission_denied'),
+          buttons: { OK: {'class': 'blue'}}
+      });
+    }
   });
 });
 
