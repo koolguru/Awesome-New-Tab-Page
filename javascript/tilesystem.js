@@ -274,7 +274,7 @@ function setStuff() {
     resize_element = {};
     resize_element.element = false;
     // When a tile resize square is clicked
-    $(".resize-tile > div").bind("mousedown", function(e) {
+    $(".resize-tile > div").live("mousedown", function(e) {
       if ( lock === true ) {
         resize_element.element = false;
         return false;

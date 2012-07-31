@@ -85,14 +85,14 @@ function setupDrawerWidget(_widget) {
     )).appendTo("#widget-drawer");
 }
 
-$(".ui-2.widgets-refresh").bind("click", function() {
+$(".ui-2.widgets-refresh").live("click", function() {
   $(".ui-2#widgets .widget").remove();
   backgroundPage.installedWidgets = {};
   chrome.management.getAll(backgroundPage.reloadExtensions);
   setTimeout(reloadWidgets, 500);
 });
 
-$("#widget-drawer-button").bind("click", function(){
+$("#widget-drawer-button").live("click", function(){
   _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
 
   $(".ui-2#widgets").toggle();
