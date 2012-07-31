@@ -22,7 +22,7 @@
     "tabs",
     "storage",
     "unlimitedStorage",
-    "*://antp.co/*",
+    "*://*.antp.co/*",
     "chrome://favicon/*"
   ],
   "optional_permissions": [ "*://*/*" ],
