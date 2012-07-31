@@ -77,6 +77,15 @@
 	"ui_te_ib_browse":{
 		"message":"Parcourir"
 	},
+	"ui_te_ib_screenshot":{
+		"message":"Utiliser la capture d'\u00e9cran"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Prendre une capture d'\u00e9cran"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Afin de capturer la capture d'\u00e9cran, le site sera ouvert dans un nouvel onglet. Apr\u00e8s la fin du chargement de la page, l'onglet se fermera automatiquement et vous allez retourner sur Awesome New Tab Page. Veuillez ne pas fermer ou naviguer plus loin. Cela ne devrait pas prendre que quelques secondes."
+	},
 	"ui_te_ib_tip":{
 		"message":"Astuce : Laisser en blanc pour aucune ic\u00f4ne."
 	},
@@ -173,6 +182,27 @@
 			}
 		}
 	},
+	"ui_faw_unlock_drag":{
+		"message":"D\u00e9bloquez et faites glisser"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"D\u00e9verrouillez la grille et faites <b>glisser<\/b> vos applications install\u00e9es sur un emplacement vide."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"D\u00e9verrouillez la grille et <b>glissez<\/b> vos widgets install\u00e9s \u00e0 un emplacement vide."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Obtenir plus d'applications"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Obtenez plus d'applications \u00e0 partir du <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a> ."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Obtenir plus de widgets"
+	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Obtenir plus de widgets \u00e0 partir du <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a> ."
+	},
 	"ui_bmb_ob":{
 		"message":"Autres favoris"
 	},
@@ -251,7 +281,85 @@
 	"ui_resize_reset":{
 		"message":"R\u00e9initialiser"
 	},
+	"ui_resize_center":{
+		"message":"Centrer"
+	},
+	"ui_resize_cover":{
+		"message":"Couverture"
+	},
+	"ui_resize_contain":{
+		"message":"Contiennent des"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Supprimer"
+	},
+	"rctm_clear_all":{
+		"message":"Effacer onglets r\u00e9cemment ferm\u00e9s"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"Effacer le menu des onglets ferm\u00e9s r\u00e9cemment n'efface pas l'historique du navigateur de Chrome. Cette fonction efface cette liste uniquement."
+	},
+	"ui_import_export_btn":{
+		"message":"Importation\/exportation"
+	},
+	"ui_import_export_desc":{
+		"message":"Prenez vos param\u00e8tres \u00e0 d'autres navigateurs ou restaurer une sauvegarde."
+	},
 	"ui_import_export_btn2":{
 		"message":"Pr\u00e9c\u00e9dent"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importation"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Exportation"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Appliquer"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Exportation : G\u00e9n\u00e8re une cha\u00eene qui contient l'ensemble de vos pr\u00e9f\u00e9rences. Cette cha\u00eene peut \u00eatre sauv\u00e9e pour plus tard comme une sauvegarde ou peut \u00eatre copi\u00e9e sur d'autres ordinateurs pour d\u00e9finir automatiquement leur comme celle-ci. Images t\u00e9l\u00e9charg\u00e9es ne sont pas export\u00e9s ; sont des images sur le web."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Importation : Remplace votre configuration actuelle avec une cha\u00eene export\u00e9e valide. <b>Avertissement<\/b> : toutes vos pr\u00e9f\u00e9rences actuelles seront irr\u00e9m\u00e9diablement perdues. Il n'y a aucun moyen d'annuler cette op\u00e9ration. Images t\u00e9l\u00e9charg\u00e9es ne sont pas import\u00e9es ; sont des images sur le web."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Applications install\u00e9es, les extensions et des widgets ne sont pas import\u00e9s ou export\u00e9s. Les extensions ne peuvent pas installer d'autres applications ou extensions. Utilisez <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Sync Chrome<\/a> \u00e0 la place."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Restaurer: Permet d'annuler la derni\u00e8re importation. Votre \u00e9tat actuel sera sauvegard\u00e9 pour une restauration ult\u00e9rieure ainsi."
+	},
+	"ui_import_export_header":{
+		"message":"Importation\/exportation"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Confirmer la restauration"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Vous souhaitez restaurer ? Vos param\u00e8tres actuels seraient perdus."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Importation\/exportation"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Restauration termin\u00e9e."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Rien \u00e0 restaurer !"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Importation compl\u00e8te."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Entrez cha\u00eene importation d'abord !"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Cha\u00eene d'importation non valide !"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Restaurer"
 	}
 }

@@ -300,22 +300,22 @@
 		"message":"Usu\u0144 z widoku ostatnio zamkni\u0119te karty"
 	},
 	"rctm_clear_all_confirm":{
-		"message":"czyszczenie menu ostatnio zamkni\u0119tych kart nie usuwa historii przegl\u0105dania stron. Ta opcja czy\u015bci jedynie list\u0119."
+		"message":"Czyszczenie \"Ostatnio Zamkni\u0119tych Kart\" nie usuwa historii przegl\u0105dania stron przegl\u0105darki. Ta opcja czy\u015bci jedynie list\u0119 aplikacji."
 	},
 	"ui_import_export_btn":{
-		"message":"Import\/Eksport"
+		"message":"Importuj\/Eksportuj"
 	},
 	"ui_import_export_desc":{
-		"message":"Zabierz Twoje ustawienia do innych przegl\u0105darek lub zachowaj kopi\u0119 bezpiecze\u0144stwa."
+		"message":"Przenie\u015b ustawienia do innych przegl\u0105darek lub przywr\u00f3\u0107 kopi\u0119 bezpiecze\u0144stwa."
 	},
 	"ui_import_export_btn2":{
 		"message":"&laquo; Poprzedni"
 	},
 	"ui_import_export_btn_import":{
-		"message":"Import"
+		"message":"Importuj"
 	},
 	"ui_import_export_btn_export":{
-		"message":"Eksport"
+		"message":"Eksportuj"
 	},
 	"ui_import_export_btn_import_run":{
 		"message":"Zastosuj"
@@ -333,7 +333,7 @@
 		"message":"Przywracanie: Pozwala odwr\u00f3ci\u0107 efekty ostatniego importu. Twoje obecne ustawienia r\u00f3wnie\u017c zostan\u0105 zapisane w kopi zapasowej w celu p\u00f3\u017aniejszego przywr\u00f3cenia."
 	},
 	"ui_import_export_header":{
-		"message":"Import\/Eksport"
+		"message":"Importuj\/Eksportuj"
 	},
 	"ui_import_export_confirm_restore_title":{
 		"message":"Potwierdz przywr\u00f3cenie"
@@ -342,7 +342,7 @@
 		"message":"Czy na pewno chcesz przywr\u00f3ci\u0107? Twoje obecne ustawienia  b\u0119d\u0105 utracone."
 	},
 	"ui_import_export_msg_header":{
-		"message":"Import\/Eksport"
+		"message":"Importuj\/Eksportuj"
 	},
 	"ui_import_export_restore_complete_msg":{
 		"message":"Przywracanie zako\u0144czone."

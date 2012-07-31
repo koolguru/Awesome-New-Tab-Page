@@ -77,6 +77,15 @@
 	"ui_te_ib_browse":{
 		"message":"Prebrskaj"
 	},
+	"ui_te_ib_screenshot":{
+		"message":"Uporabi zajem zaslona"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Zajemanje zaslona"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Za zajem zaslona bo spletna stran odprta v novem zavihku. Ko bo stran nalo\u017eena se bo zavihek samodejno zaprl in vrnili se boste na Awesome New Tab Page. Prosim ne zapirajte ali brskate drugam. To ne bi smelo trajati ve\u010d kot nekaj sekund."
+	},
 	"ui_te_ib_tip":{
 		"message":"Namig: pustite prazno, da ne bo ikone."
 	},
@@ -173,6 +182,27 @@
 			}
 		}
 	},
+	"ui_faw_unlock_drag":{
+		"message":"Odklenite in povlecite"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Odklenite mre\u017eo in <b>povlecite<\/b> svoje name\u0161\u010dene aplikacije na prazno mesto."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Odklenite mre\u017eo in <b>povlecite<\/b> svoje name\u0161\u010dene gradnike na prazno mesto."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Pridobite aplikacije"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Pridobite aplikacije iz <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Spletne trgovine Chrome<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Pridobite gradnike"
+	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Pridobite grtadnike iz <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Spletne trgovine Chrome<\/a>."
+	},
 	"ui_bmb_ob":{
 		"message":"Drugi zaznamki"
 	},
@@ -251,7 +281,85 @@
 	"ui_resize_reset":{
 		"message":"Ponastavi"
 	},
+	"ui_resize_center":{
+		"message":"Sredinsko"
+	},
+	"ui_resize_cover":{
+		"message":"Pokrij"
+	},
+	"ui_resize_contain":{
+		"message":"Vsebuje"
+	},
+	"ui_resize_zoom":{
+		"message":"Pove\u010dano"
+	},
+	"rctm_remove":{
+		"message":"Odstrani"
+	},
+	"rctm_clear_all":{
+		"message":"Po\u010disti nedavno zaprte zavihke"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"Po\u010disti nedavno zaprte zavihke ne izbri\u0161e zgodovine v brskalniku Chrome. Ta mo\u017enost izbri\u0161e samo ta spisek."
+	},
+	"ui_import_export_btn":{
+		"message":"Uvoz\/Izvoz"
+	},
+	"ui_import_export_desc":{
+		"message":"Prenesite svoje nastavitve na druge brskalnike ali obnovite iz varnostne kopije."
+	},
 	"ui_import_export_btn2":{
 		"message":"Nazaj"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Uvoz"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Izvoz"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Uporabi"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Izvoz: ustvari niz, ki vsebuje vse va\u0161e nastavitve. Ta niz lahko shranite kot varnostno kopijo ali ga namestite na druge ra\u010dunalnike, da jih samodejno nastavite enako, kot je ta. Nalo\u017eene slike ne bodo izvo\u017eene, slike na spletu pa bodo."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Uvoz: Prekrije va\u0161o trenutno nastavitev z veljavnim nizom. <b>POZOR<\/b>: Vse ba\u0161e trenutne nastavotve bodo nepreklicno izgubljene. Tega dejanja ni mogo\u010de razveljaviti. Nalo\u017eene slike ne bodo uvo\u017eene, slike na spletu pa bodo."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Name\u0161\u010dene aplikacije, raz\u0161iritve in gradniki ne bodo uvo\u017eeni ali izvo\u017eeni. Raz\u0161iritve ne smejo namestiti drugih aplikacij ali raz\u0161iritev. Namesto tega uporabite <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Chrome Sync<\/a>."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Obnovitev: Omogo\u010da vam, da razveljavite zadnji uvoz. Va\u0161 trenutno stanje bo shranjeno za kasnej\u0161o obnovo."
+	},
+	"ui_import_export_header":{
+		"message":"Uvoz\/Izvoz"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Potrdi obnovitev"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Ali \u017eelite obnoviti? Va\u0161e trenutne nastavitve se bodo izgubile."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Uvoz\/Izvoz"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Obnovitev kon\u010dana."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Ni\u010d se ne da obnoviti!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Uvoz kon\u010dan."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Najprej vnesite uvozni niz!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Neveljaven uvozni niz!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Obnovitev"
 	}
 }
