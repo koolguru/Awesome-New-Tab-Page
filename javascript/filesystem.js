@@ -145,6 +145,7 @@ function takeScreenshot() {
                   });
                 });
                 saveImage(dataUrl, "jpeg", "shortcut", true);
+                chrome.permissions.remove({origins: ['*://*/*']});
               });
             }
             else {
@@ -162,6 +163,7 @@ function takeScreenshot() {
                           });
                         });
                         saveImage(dataUrl, "jpeg", "shortcut", true);
+                        chrome.permissions.remove({origins: ['*://*/*']});
                       });
                     }
                     else{
