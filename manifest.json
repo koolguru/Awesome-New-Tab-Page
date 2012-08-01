@@ -1,5 +1,7 @@
 {
   "update_url":"http://clients2.google.com/service/update2/crx",
+  "minimum_chrome_version": "20",
+  "default_locale": "en",
   "background": {
     "scripts": [
       "/javascript/jquery.js",
@@ -12,22 +14,20 @@
   "options_page": "options.html",
   "name": "Awesome New Tab Page",
   "description": "Enhance your New Tab Page with ultimate customizability and power. Awesome, like you. [ANTP]",
-  "version": "2012.129.1.70",
+  "version": "2012.131.0.3",
   "icons": {
     "128": "icon128.png"
   },
+  "optional_permissions": [ "*://*/*" ],
   "permissions": [
     "management",
     "bookmarks",
     "tabs",
     "storage",
     "unlimitedStorage",
-    "<all_urls>"
+    "chrome://favicon/",
+    "*://*.antp.co/*"
   ],
-  "minimum_chrome_version": "20",
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com https://platform.twitter.com https://api.flattr.com; object-src 'self'",
-  "default_locale": "en",
   "web_accessible_resources": [
     "ntp.html",
     "options.html",
@@ -37,5 +37,7 @@
     "/widgets/clock/widget.clock.html",
     "/widgets/tutorial/widget.tutorial.html",
     "/widgets/notepad/widget.notepad.html"
-  ]
+  ],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com https://platform.twitter.com https://api.flattr.com; object-src 'self'"
 }

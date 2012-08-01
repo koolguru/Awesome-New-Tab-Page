@@ -86,9 +86,8 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
 
   if ( type === "widget-drawer" ) {
     if ( typeof(poke) === "object"
-      && poke[0] && poke[0] === 2
-      && poke[1] && poke[1] === true
-      && poke[2] && typeof(poke[2]) === "object" ) {
+      && poke[0] && poke[0] >= 2
+      && poke[1] && poke[1].resize === true) {
       var resize_enabled = true;
     }
   }
@@ -120,10 +119,6 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
       poke.max_width  = widgets[id].max_width ;
 
     }
-  }
-
-  if(img === "id") {
-    img = "chrome://extension-icon/" + id + "/128/0";
   }
 
   if (type === "app-drawer") {
@@ -184,12 +179,13 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
 
     $(stitch).attr({"app-source": "from-drawer"});
 
-    if        ( type === "widget-drawer" ) {
+    if ( type === "widget-drawer" ) {
       $(stitch).attr({
         "tile-widget"     : "true",
         "tile-widget-src" : url,
         "tile-stock"      : id,
-        "tile-poke"       : poke[0]
+        "tile-poke"       : poke[0],
+        "multi_placement" : poke[2].multi_placement
       });
     } else if ( type === "app-drawer" ) {
       $(stitch).attr({
@@ -200,19 +196,13 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
   }
 
   if ( type === "shortcut" || type === "app" ) {
-    var favicon, pin;
+    var favicon;
     if ( type === "shortcut"
       && widgets[id].favicon_show !== false
       && url.match("http") !== null ) {
       favicon = $("<img></img>").attr("src", "chrome://favicon/"+url).addClass("app-favicon");
     } else {
       favicon = $("<img></img>").attr("src", "chrome://favicon/"+url).addClass("app-favicon force-hide");
-    }
-
-    if ( widgets[id] && widgets[id].pin && widgets[id].pin === true ) {
-      pin = "pin";
-    } else {
-      pin = null;
     }
 
     if (type == "shortcut") {
@@ -231,16 +221,21 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
         "class"   : "url",
         "data-url":  url ,
         "href"    :  url ,
-        "pin"     :  pin
+        "onleftclick": widgets[id].onleftclick
       }),
       favicon
     );
   }
 
+  var instanceParameters = "";
+  if (type === "iframe" && widgets[id].poke == 3) {
+      instanceParameters = "#" + encodeURIComponent(JSON.stringify({"id": widgets[id].instance_id}));
+  }
+
   if (type === "iframe") {
     $(stitch).append(
       $("<iframe></iframe>").attr({
-        "src"         : url,
+        "src"         : url + instanceParameters,
         "scrolling"   : "no",
         "frameborder" : "0",
         "align"       : "center",
@@ -275,11 +270,11 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
 
       if ( resize_enabled === true ) {
         $(stitch).attr({
-          "resize"      : poke[1],
-          "min_height"  : poke[2].min_height,
-          "max_height"  : poke[2].max_height,
-          "min_width"   : poke[2].min_width,
-          "max_width"   : poke[2].max_width,
+          "resize"      : poke[1].resize,
+          "min_height"  : poke[1].min_height,
+          "max_height"  : poke[1].max_height,
+          "min_width"   : poke[1].min_width,
+          "max_width"   : poke[1].max_width,
         });
       }
     }
@@ -307,7 +302,7 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
           $("<div></div").attr({
             "id" : "widget-config",
             "class" : "url",
-            "data-url": optionsUrl
+            "data-url": optionsUrl + instanceParameters
           })
         );
       }
@@ -499,7 +494,15 @@ function addWidget(obj) {
       obj.poke = 1;
     }
 
-    widgets[obj.widget] = {
+  var widgetIndex = obj.widget;
+  obj.instance_id = obj.widget;
+  if (obj.poke == 3) {
+    if (obj.multi_placement == true || obj.multi_placement == "true") {
+      obj.instance_id = new_guid();
+    }
+  }
+
+    widgets[obj.instance_id] = {
       "where" : [obj.top,obj.left],
       "size"  : [obj.height,obj.width],
       "type"  : "iframe",
@@ -516,7 +519,8 @@ function addWidget(obj) {
         "max_width" : obj.max_width,
         "min_height": obj.min_height,
         "max_height": obj.max_height
-      }
+      },
+      "instance_id": obj.instance_id
     };
   }
 

@@ -195,45 +195,18 @@ if(localStorage.getItem("widgets") === null) {
   localStorage.setItem("widgets", JSON.stringify( stock_widgets ));
 }
 
+// display messages to be displayed on page refresh
+var msg = localStorage.msg;
+if (msg) {
+  msg = JSON.parse(msg);
+  setTimeout(function() {
+    $.jGrowl(msg.message, { header: msg.title });
+  }, 500);
+  localStorage.removeItem("msg");
+}
+
 // Load widget settings
 var widgets = JSON.parse(localStorage.getItem("widgets"));
-
-// if widget paths are old, update them to new one
-function updateOldPaths() {
-  var oldPathReg = /widgets\/(widget.([^.\/]*).[^\/]*)/,
-    pathChanged = false;
-  for (var i in widgets) {
-    if (widgets[i].name === "Awesome New Tab Page" || widgets[i].stock) {
-      if (widgets[i].path || widgets[i].img || widgets[i].simg) {
-        var oPath = widgets[i].path || widgets[i].img || widgets[i].simg,
-          result;
-        result = oldPathReg.exec(oPath);
-        if (result) {
-          var newPath = "/widgets/" + result[2] + "/" + result[1];
-          pathChanged = true;
-          //update path
-          if (widgets[i].path) {
-            widgets[i].path = newPath;
-          }
-          if (widgets[i].img) {
-            widgets[i].img = newPath;
-          }
-          if (widgets[i].simg) {
-            widgets[i].simg = newPath;
-          }
-        }
-      }
-    } else if (widgets[i].id === "tabs" || widgets[i].path === "widgets/tabs.html"
-      || widgets[i].path === "chrome-extension://mgmiemnjjchgkmgbeljfocdjjnpjnmcg/widgets/tabs.html") {
-      pathChanged = true;
-      widgets[i].path = "widgets/tabs/tabs.html";
-    }
-  }
-  if (pathChanged) {
-    localStorageSync(false);
-  }
-}
-updateOldPaths();
 
 // Clears localStorage
   $("#reset-button").live("click", function(){
@@ -326,11 +299,14 @@ function _e(_eNum) {
 
       if ( e.shiftKey !== true ) {
         if ( e.which === 1 ) {
-          if ( $(this).attr("pin") === "pin" ) {
+          if ( $(this).attr("onleftclick") === "pin" ) {
             chrome.tabs.getCurrent(function(tab) {
               chrome.tabs.create({ url: (url), pinned: true });
               chrome.tabs.remove( tab.id );
             });
+          } else if ($(this).attr("onleftclick") === "newtab") {
+            $(this).attr("href", "#");
+            chrome.tabs.create({ url: (url), active: false });
           } else if ( url.match(/^(http:|https:|chrome-extension:)/) ) {
             window.location = url;
           } else {

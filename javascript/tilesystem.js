@@ -18,7 +18,7 @@
 
 
 $(document).ready(function($) {
-  $("#toggle-grid,#grid-holder").live("click", updateGridOpacity);
+  $("#toggle-grid,#grid-holder").bind("click", updateGridOpacity);
 
   if(localStorage.getItem("perm-grid") === null) {
     localStorage.setItem("perm-grid", "yes");
@@ -623,34 +623,37 @@ function setStuff() {
               src       = $(this).attr("tile-widget-src"),
               width     = $(this).attr("tile-width"),
               height    = $(this).attr("tile-height"),
-              poke      = $(this).attr("poke"),
-              stock     = stock_widgets[$(this).attr("stock")];
+              poke      = $(this).attr("tile-poke"),
+              stock     = stock_widgets[$(this).attr("stock")],
+              multi_placement = $(this).attr("multi_placement");
         } else if ( $(this).attr("app-source") === "from-drawer" && $(this).attr("widget") === undefined ) {
           var is_widget = false,
               src       = undefined,
               width     = 1,
               height    = 1,
               poke      = undefined,
-              stock     = $(this).attr("stock");
+              stock     = $(this).attr("stock"),
+              multi_placement = false;
         }
 
         if ( $(this).attr("app-source") === "from-drawer" ) {
           addWidget({
-            "is_widget" : is_widget,
-            "widget"    : $(this).attr("id"),
-            "top"       : $(closestElm).attr("land-top"),
-            "left"      : $(closestElm).attr("land-left"),
-            "src"       : src,
-            "width"     : width,
-            "height"    : height,
-            "stock"     : stock,
-            "poke"      : poke,
-            "resize"    : $(this).attr("resize"),
-            "min_width" : parseInt($(this).attr("min_width")),
-            "max_width" : parseInt($(this).attr("max_width")),
-            "min_height": parseInt($(this).attr("min_height")),
-            "max_height": parseInt($(this).attr("max_height"))
-          })
+            "is_widget"   : is_widget,
+            "widget"      : $(this).attr("id"),
+            "top"         : $(closestElm).attr("land-top"),
+            "left"        : $(closestElm).attr("land-left"),
+            "src"         :  src,
+            "width"       : width,
+            "height"      : height,
+            "stock"       : stock,
+            "poke"        : poke,
+            "resize"      : $(this).attr("resize"),
+            "min_width"   : parseInt($(this).attr("min_width")),
+            "max_width"   : parseInt($(this).attr("max_width")),
+            "min_height"  : parseInt($(this).attr("min_height")),
+            "max_height"  : parseInt($(this).attr("max_height")),
+            "multi_placement": multi_placement
+          });
         }
 
         if ( $(this).attr("app-source") !== "from-drawer" ) {
