@@ -363,8 +363,8 @@ function placeWidgets() {
         /*  Type: str [app, widget, app-drawer, widget-drawer]*/  "app",
         /*  Ext. ID: str [mgmiemnjjchgkmgbeljfocdjjnpjnmcg]   */  id,
         /*  Ext. Name: str [Awesome New Tab Page]             */  widget.name,
-        /*  URL: str, can be iframe or app url                */  widget.url ,
-        /*  Img: str, full path or [id]                       */  ( img || "id" ),
+        /*  URL: str, can be iframe or app url                */  widget.url,
+        /*  Img: str, full path or [id]                       */  widget.img,
         /*  Height: int [1, 2, 3]                             */  widget.size[0],
         /*  Width: int [1, 2, 3]                              */  widget.size[1],
         /*  Top: int                                          */  widget.where[0],
@@ -462,12 +462,12 @@ function addWidget(obj) {
     obj.widget_name = obj.new_ext_data.name;
   }
 
-  if ( obj.widget === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg") {
+  if ( obj.widget === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg" ) {
     obj.widget = new_guid();
   }
 
   if(obj.is_widget === false) {
-    widgets[obj.widget] = {
+    widgets[new_guid()] = {
       where: [obj.top,obj.left],
       size: [1,1],
       isApp: true,
