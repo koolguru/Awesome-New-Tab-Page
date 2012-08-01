@@ -1,5 +1,7 @@
 {
   "update_url":"http://clients2.google.com/service/update2/crx",
+  "minimum_chrome_version": "20",
+  "default_locale": "en",
   "background": {
     "scripts": [
       "/javascript/jquery.js",
@@ -16,20 +18,16 @@
   "icons": {
     "128": "icon128.png"
   },
+  "optional_permissions": [ "*://*/*" ],
   "permissions": [
     "management",
     "bookmarks",
     "tabs",
     "storage",
     "unlimitedStorage",
-    "*://*.antp.co/*",
-    "chrome://favicon/*"
+    "chrome://favicon/",
+    "*://*.antp.co/*"
   ],
-  "optional_permissions": [ "*://*/*" ],
-  "minimum_chrome_version": "20",
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com https://platform.twitter.com https://api.flattr.com; object-src 'self'",
-  "default_locale": "en",
   "web_accessible_resources": [
     "ntp.html",
     "options.html",
@@ -39,5 +37,7 @@
     "/widgets/clock/widget.clock.html",
     "/widgets/tutorial/widget.tutorial.html",
     "/widgets/notepad/widget.notepad.html"
-  ]
+  ],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com https://platform.twitter.com https://api.flattr.com; object-src 'self'"
 }
