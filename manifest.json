@@ -14,7 +14,7 @@
   "options_page": "options.html",
   "name": "Awesome New Tab Page",
   "description": "Enhance your New Tab Page with ultimate customizability and power. Awesome, like you. [ANTP]",
-  "version": "2012.131.0.4",
+  "version": "2012.131.0.5",
   "icons": {
     "128": "icon128.png"
   },
