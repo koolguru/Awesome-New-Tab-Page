@@ -36,7 +36,6 @@ var
     };
   });
 
-
   // Usage: <i18n message-id="message_id" />
   // Notes: Supports HTML
   ajsd.directive('i18n', function() {

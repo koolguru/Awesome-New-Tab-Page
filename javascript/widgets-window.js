@@ -21,7 +21,6 @@ var backgroundPage = chrome.extension.getBackgroundPage();
 chrome.management.getAll(backgroundPage.reloadExtensions);
 
 $(".ui-2.widgets-refresh").live("click", function() {
-  $(".ui-2#widgets .widget").remove();
   backgroundPage.installedWidgets = {};
   chrome.management.getAll(backgroundPage.reloadExtensions);
   setTimeout(reloadWidgets, 500);
@@ -92,14 +91,3 @@ function setupDrawerWidget(_widget) {
       /*  Poke: array                                       */  [_widget.pokeVersion, _widget.v2, _widget.v3]
     )).appendTo("#widget-drawer");
 }
-
-$("#widget-drawer-button").live("click", function(){
-  _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
-
-  $(".ui-2#widgets").toggle();
-  $(".ui-2#apps").hide();
-  $(".ui-2#config").hide();
-  $("#recently-closed-tabs-menu").hide();
-  $(".ui-2#about").hide();
-  $(".ui-2#editor").hide();
-});

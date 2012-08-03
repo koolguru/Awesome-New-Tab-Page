@@ -57,6 +57,14 @@
     $(".ui-2#config").toggle();
   });
 
+$("#widget-drawer-button").live("click", function(){
+  _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
+
+  closeButton(".ui-2#widgets");
+  $(".ui-2#widgets").toggle();
+});
+
+
   $("#logo-button,.ui-2.logo").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "About" ]);
 
