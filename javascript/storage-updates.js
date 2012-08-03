@@ -6,7 +6,6 @@ function checkLocalStorageVersion() {
     updateOldPaths();
     onLeftClickUpdate();
     localStorage.storageVersion = "1.0";
-    localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("localStorage_updated_msg_header"), message: chrome.i18n.getMessage("localStorage_updated_msg")});
     window.location.reload();
   }
 }
