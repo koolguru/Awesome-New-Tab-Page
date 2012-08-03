@@ -90,16 +90,6 @@ body {
   top: 0;
   left: 0;
 }
-#top-buttons {
-  position: fixed;
-  top: -2px;
-  left: -2px;
-  text-decoration: none;
-  cursor: pointer;
-  z-index: 900;
-  width: 35px;
-  height: 100%;
-}
 #widget-holder > .widget {
   margin: 3px;
   padding: 0px;
@@ -352,7 +342,16 @@ body {
 .colorpicker {
   z-index: 1000
 }
-.side-button {
+#top-buttons {
+  position: fixed;
+  top: -2px;
+  left: -2px;
+  text-decoration: none;
+  z-index: 900;
+  width: 35px;
+  height: 100%;
+}
+#top-buttons > div {
   margin-left: 5px;
   width: 32px;
   height: 32px;
@@ -361,6 +360,7 @@ body {
   margin-bottom: 2px;
   display: block;
   opacity: .75;
+  cursor: pointer;
 
   position: relative;
 }
