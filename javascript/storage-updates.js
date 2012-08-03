@@ -1,18 +1,31 @@
-checkLocalStorageVersion();
-function checkLocalStorageVersion() {
-  var storageVersion = localStorage.storageVersion;
-  if (typeof(storageVersion) === "undefined") {
-    // apply changes in storageVersion 1
-    updateOldPaths();
-    onLeftClickUpdate();
-    localStorage.storageVersion = "1.0";
-    window.location.reload();
-  }
-}
+(function() {
+  var
+    storageVersion = parseFloat(localStorage.getItem("storageVersion")),
+    reload = false;
 
-function onLeftClickUpdate() {
+  if ( isNaN(storageVersion) )
+    storageVersion = 0;
+
+  // Prevent unnecessary checks
+  // Must be updated with future storage updates
+  if ( storageVersion === 1 )
+    return;
+
+  if ( storageVersion < 1 ) {
+    storageFunctions.updateOldPaths();
+    storageFunctions.onLeftClickUpdate();
+    localStorage.setItem("storageVersion") = "1";
+  }
+
+  if ( reload === true )
+    window.location.reload();
+})();
+
+storageFunctions = {};
+
+storageFunctions.onLeftClickUpdate = function() {
   for (var i in widgets) {
-    if ( (typeof(widgets[i].type) !== "undefined" && (widgets[i].type === "shortcut" || widgets[i].type === "app")) 
+    if ( (typeof(widgets[i].type) !== "undefined" && (widgets[i].type === "shortcut" || widgets[i].type === "app"))
       || (typeof(widgets[i].isApp) !== "undefined" && widgets[i].isApp == true)) {
       if (typeof(widgets[i].pin) !== "undefined" && widgets[i].pin == true) {
         widgets[i].onleftclick = "pin";
@@ -26,7 +39,7 @@ function onLeftClickUpdate() {
 }
 
 // if widget paths are old, update them to new one
-function updateOldPaths() {
+storageFunctions.updateOldPaths = function() {
   var oldPathReg = /widgets\/(widget.([^.\/]*).[^\/]*)/;
   for (var i in widgets) {
     if (widgets[i].name === "Awesome New Tab Page" || widgets[i].stock) {
