@@ -14,7 +14,9 @@
   if ( storageVersion < 1 ) {
     storageFunctions.updateOldPaths();
     storageFunctions.onLeftClickUpdate();
+
     localStorage.setItem("storageVersion") = "1";
+    reload = true;
   }
 
   if ( reload === true )
