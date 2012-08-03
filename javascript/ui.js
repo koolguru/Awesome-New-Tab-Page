@@ -306,10 +306,6 @@ $("#widget-drawer-button").live("click", function(){
       $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_rct") })
     );
 
-    $("#tmp-contest").qtip(
-      $.extend({}, qtipShared, { content: "Giveaway of Awesomeness" })
-    );
-
   });
 
   /* END :: Tooltips */
