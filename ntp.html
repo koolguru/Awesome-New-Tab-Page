@@ -314,7 +314,7 @@
       </div>
     </div>
 
-    <div id="widgets" class="ui-2 container">
+    <div id="widgets" class="ui-2 container" ng-controller="windowWidgetsCtrl">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>
@@ -339,7 +339,7 @@
       </div>
 
       <div class="ui-2 contents" id="widget-drawer">
-        <div class="drawer-app ui-2 ilb faw-box" ng-controller="windowWidgetsCtrl">
+        <div class="drawer-app ui-2 ilb faw-box" >
           <div class="faw-wrapper faw-icon-information">
             <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
             <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_widgets" /></div>
@@ -355,8 +355,6 @@
         <!-- Start Widgets -->
 
         <span>{{ test }}</span>
-
-        <div>
 
       </div>
 
