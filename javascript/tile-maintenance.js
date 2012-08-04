@@ -183,7 +183,6 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
       $(stitch).attr({
         "tile-widget"     : "true",
         "tile-widget-src" : url,
-        "tile-stock"      : id,
         "tile-poke"       : poke[0],
         "multi_placement" : poke[2].multi_placement
       });
@@ -289,7 +288,7 @@ function stitch(type, id, name, url, img, height, width, top, left, poke) {
 
   if ( type === "app" || type === "shortcut"  || type === "iframe" ) {
     $(stitch).append(
-      $("<div></div").addClass("iframe-mask hidden")
+      $("<div></div").addClass("iframe-mask")
     );
 
     $(stitch).find(".iframe-mask").append(

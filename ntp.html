@@ -51,7 +51,7 @@
       <div id="app-drawer-button" class="side-button">&nbsp;</div>
       <div id="widget-drawer-button" class="side-button">&nbsp;</div>
       <div id="recently-closed-tabs" class="side-button">&nbsp;</div>
-      <div id="lock-button" class="side-button hidden">&nbsp;</div>
+      <div id="lock-button" class="side-button">&nbsp;</div>
       <div id="unlock-button" class="side-button">&nbsp;</div>
     </div>
 
@@ -314,7 +314,7 @@
       </div>
     </div>
 
-    <div id="widgets" class="ui-2 container">
+    <div id="widgets" class="ui-2 container" ng-controller="windowWidgetsCtrl">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>
@@ -330,7 +330,6 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 widgets-refresh"></div>
           <div class="ui-2 config"></div>
           <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
           <div class="ui-2 vr"></div>
@@ -351,6 +350,29 @@
             <div class="faw-body"><i18n message-id="ui_faw_get_more_widgets_body" /></div>
           </div>
         </div>
+
+        <!-- Start Widgets -->
+
+        <div ng-repeat="widget in widgets"
+          id="{{widget.id}}"
+          class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
+          tile-width="{{widget.width}}"
+          tile-height="{{widget.height}}"
+          tile-widget="true"
+          tile-widget-src="{{widget.path}}"
+          tile-poke="{{widget.pokeVersion}}"
+          resize="{{widget.v2.resize}}"
+          min_height="{{widget.v2.min_height}}"
+          max_height="{{widget.v2.max_height}}"
+          min_width="{{widget.v2.min_width}}"
+          max_width="{{widget.v2.max_width}}"
+          multi_placement="{{widget.v3.multi_placement}}" >
+            <img class="ui-2 ilb" ng-src="{{widget.img}}">
+            <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
+            <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
+            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">Uninstall</div>
+        </div>
+
       </div>
 
     </div>
@@ -511,7 +533,6 @@
       <script type="text/javascript" src="/javascript/base64.js?nocache=11" async="async"></script>
 
       <script type="text/javascript" src="/javascript/apps-window.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/widgets-window.js?nocache=11" async="async"></script>
       <script type="text/javascript" src="/javascript/tile-editor.js?nocache=11" async="async"></script>
 
       <script type="text/javascript" src="/javascript/bookmarkbar.js"></script>

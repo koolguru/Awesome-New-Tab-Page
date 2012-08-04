@@ -754,9 +754,11 @@ function setStuff() {
   /* START :: Lock */
     $(document).ready(function() {
       if(localStorage.getItem("lock") === "false") {
-        $('#unlock-button').trigger('click');
+        $("#unlock-button").trigger("click");
       } else {
         $("body").addClass("locked").removeClass("unlocked");
+        $("#lock-button").hide();
+        $(".iframe-mask").hide();
       }
     });
 
@@ -767,7 +769,7 @@ function setStuff() {
         lock = false;
         $("body").addClass("unlocked").removeClass("locked");
         localStorage.setItem("lock", false );
-        $(".iframe-mask").removeClass("hidden");
+        $(".iframe-mask").show();
         $("#lock-button").css("display", "block");
         $("#unlock-button").css("display", "none");
         $(".tile").addClass("tile-grid");
@@ -790,7 +792,7 @@ function setStuff() {
 
         $("body").addClass("locked").removeClass("unlocked");
         localStorage.setItem("lock", true );
-        $(".iframe-mask").addClass("hidden");
+        $(".iframe-mask").hide();
         $("#unlock-button").css("display", "block");
         $("#lock-button").css("display", "none");
         $(".tile").removeClass("tile-grid");

@@ -411,6 +411,8 @@ body {
   background-position: 0 -160px;
   background-repeat: no-repeat;
   border-color: transparent;
+
+  display: none;
 }
 #recently-closed-tabs {
   background-color: transparent;
@@ -424,7 +426,7 @@ body {
   opacity: 1 !important;
 }
 .hidden {
-  display: none
+  display: none;
 }
 .scroll-helper {
   z-index: -5;
