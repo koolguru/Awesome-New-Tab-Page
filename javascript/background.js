@@ -116,7 +116,8 @@
       installedWidgets = {};
 
   function reloadExtensions(data) {
-    extensions = data;
+    extensions = data,
+    installedWidgets = {};
     sayHelloToPotentialWidgets();
   }
   chrome.management.getAll(reloadExtensions);
