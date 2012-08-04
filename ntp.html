@@ -51,7 +51,7 @@
       <div id="app-drawer-button" class="side-button">&nbsp;</div>
       <div id="widget-drawer-button" class="side-button">&nbsp;</div>
       <div id="recently-closed-tabs" class="side-button">&nbsp;</div>
-      <div id="lock-button" class="side-button hidden">&nbsp;</div>
+      <div id="lock-button" class="side-button">&nbsp;</div>
       <div id="unlock-button" class="side-button">&nbsp;</div>
     </div>
 
@@ -330,7 +330,6 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 widgets-refresh"></div>
           <div class="ui-2 config"></div>
           <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
           <div class="ui-2 vr"></div>
@@ -339,7 +338,7 @@
       </div>
 
       <div class="ui-2 contents" id="widget-drawer">
-        <div class="drawer-app ui-2 ilb faw-box" >
+        <div class="drawer-app ui-2 ilb faw-box">
           <div class="faw-wrapper faw-icon-information">
             <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
             <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_widgets" /></div>
@@ -354,7 +353,25 @@
 
         <!-- Start Widgets -->
 
-        <span>{{ test }}</span>
+        <div ng-repeat="widget in widgets"
+          id="{{widget.id}}"
+          class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
+          tile-width="{{widget.width}}"
+          tile-height="{{widget.height}}"
+          tile-widget="true"
+          tile-widget-src="{{widget.path}}"
+          tile-poke="{{widget.pokeVersion}}"
+          resize="{{widget.v2.resize}}"
+          min_height="{{widget.v2.min_height}}"
+          max_height="{{widget.v2.max_height}}"
+          min_width="{{widget.v2.min_width}}"
+          max_width="{{widget.v2.max_width}}"
+          multi_placement="{{widget.v3.multi_placement}}" >
+            <img class="ui-2 ilb" src="{{widget.img}}">
+            <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
+            <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
+            <div class="ui-2 drawer-app-uninstall ilb">Uninstall</div>
+        </div>
 
       </div>
 

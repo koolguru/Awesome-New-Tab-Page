@@ -55,11 +55,31 @@ var
 
   function windowWidgetsCtrl($scope) {
 
-    console.log("windowWidgetsCtrl");
+    $scope.widgets = {};
+    $scope.widgetsCount = 0;
 
-    $scope.test = function() {
-      return "test";
+    $scope.update = function() {
+      var bp = chrome.extension.getBackgroundPage();
+      chrome.management.getAll( bp.reloadExtensions );
+
+      setTimeout(function() {
+        $scope.widgets = bp.installedWidgets;
+        $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
+
+        if ( $scope.widgetsCount === 0 )
+          setTimeout($scope.update, 30000);
+
+        $scope.$apply();
+
+      }, 1000);
     };
+
+    setTimeout($scope.update, 1000);
+
+    chrome.management.onEnabled.addListener( $scope.update );
+    chrome.management.onInstalled.addListener( $scope.update );
+    chrome.management.onDisabled.addListener( $scope.update );
+    chrome.management.onUninstalled.addListener( $scope.update );
 
   }
 
