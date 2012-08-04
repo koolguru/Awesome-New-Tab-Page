@@ -72,7 +72,7 @@ $(document).on("click", ".unlocked .empty.add-shortcut", function() {
     "width": "200",
     "height": "200",
     "zIndex": "1"
-  }).find(".iframe-mask").removeClass("hidden").find("#shortcut-edit").trigger("click");
+  }).find(".iframe-mask").show().find("#shortcut-edit").trigger("click");
 
   $(this).removeClass("add-shortcut").removeClass("empty");
 });
