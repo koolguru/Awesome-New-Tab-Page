@@ -56,7 +56,6 @@ var
 
     $scope.stock_widgets = {};
     $scope.widgets = {};
-    $scope.widgetsCount = 0;
 
     $scope.update = function() {
       var bp = chrome.extension.getBackgroundPage();
@@ -64,10 +63,10 @@ var
 
       setTimeout(function() {
         $scope.widgets = Object.merge(bp.installedWidgets, $scope.stock_widgets);
-        $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
+        // $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
 
-        if ( $scope.widgetsCount === 0 )
-          setTimeout($scope.update, 30000);
+        // Update every 30 seconds
+        setTimeout($scope.update, 30000);
 
         $scope.$apply();
 
@@ -81,6 +80,7 @@ var
     chrome.management.onDisabled.addListener( $scope.update );
     chrome.management.onUninstalled.addListener( $scope.update );
 
+    // Save $scope.stock_widgets
     setTimeout(function() {
       var stockWidgets = {};
       angular.forEach(stock_widgets, function(widget, id) {
@@ -105,6 +105,7 @@ var
 
           widget.stock = true;
 
+          // Starts with z so that they're always displayed last
           stockWidgets["zStock_" + id] = widget;
         }
         $scope.stock_widgets = stockWidgets;
