@@ -57,12 +57,12 @@
     $(".ui-2#config").toggle();
   });
 
-$("#widget-drawer-button").live("click", function(){
-  _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
+  $("#widget-drawer-button").live("click", function(){
+    _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
 
-  closeButton(".ui-2#widgets");
-  $(".ui-2#widgets").toggle();
-});
+    closeButton(".ui-2#widgets");
+    $(".ui-2#widgets").toggle();
+  });
 
 
   $("#logo-button,.ui-2.logo").live("click", function(){
@@ -147,20 +147,20 @@ $("#widget-drawer-button").live("click", function(){
 
   /* END :: Top Left Buttons */
 
-/* START :: Recently Closed Tabs */
+/* START :: Recently Closed Tabs Menu */
 
-  $("#recently-closed-tabs-menu").live('mouseleave', function() {
+  $("#recently-closed-tabs-menu").live("mouseleave", function() {
     $(this).css("display", "none");
   });
 
-  $("#recently-closed-tabs").live('click', function() {
-    _gaq.push([ '_trackEvent', 'Window', "Recently Closed Tabs" ]);
+  $("#recently-closed-tabs").live("click", function() {
+    _gaq.push([ "_trackEvent", "Window", "Recently Closed Tabs" ]);
 
     closeButton("#recently-closed-tabs-menu");
     $("#recently-closed-tabs-menu").toggle();
   });
 
-  $(window).bind('storage', function (e) {
+  $(window).bind("storage", function (e) {
     if ( typeof(e.originalEvent) === "object"
       && typeof(e.originalEvent.key) === "string"
       && e.originalEvent.key === "recently_closed" )
@@ -230,10 +230,10 @@ $("#widget-drawer-button").live("click", function(){
   });
 
   $(document).ready(function($) {
-    setTimeout(resetRecentlyClosedTabs, 500);
+    setTimeout(resetRecentlyClosedTabs, 1000);
   });
 
-  /* END :: Recently Closed Tabs */
+  /* END :: Recently Closed Tabs Menu */
 
 /* START :: Tooltips */
 
