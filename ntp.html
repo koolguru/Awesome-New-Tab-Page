@@ -370,7 +370,7 @@
             <img class="ui-2 ilb" ng-src="{{widget.img}}">
             <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
             <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
-            <div class="ui-2 drawer-app-uninstall ilb">Uninstall</div>
+            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">Uninstall</div>
         </div>
 
       </div>
