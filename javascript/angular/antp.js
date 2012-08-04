@@ -16,7 +16,6 @@
   *       relationship with the authors of this project or the project itself.
 ***/
 
-
 var
   ajs = angular.module('antp', ['antp.filters', 'antp.directives']),
   ajsf = angular.module('antp.filters', []),
@@ -55,6 +54,7 @@ var
 
   function windowWidgetsCtrl($scope) {
 
+    $scope.stock_widgets = {};
     $scope.widgets = {};
     $scope.widgetsCount = 0;
 
@@ -63,7 +63,7 @@ var
       chrome.management.getAll( bp.reloadExtensions );
 
       setTimeout(function() {
-        $scope.widgets = bp.installedWidgets;
+        $scope.widgets = Object.merge(bp.installedWidgets, $scope.stock_widgets);
         $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
 
         if ( $scope.widgetsCount === 0 )
@@ -81,7 +81,36 @@ var
     chrome.management.onDisabled.addListener( $scope.update );
     chrome.management.onUninstalled.addListener( $scope.update );
 
-  }
+    setTimeout(function() {
+      var stockWidgets = {};
+      angular.forEach(stock_widgets, function(widget, id) {
+        if(widget.isApp === false && widget.type !== "shortcut" && widget.type !== "app") {
+          widget.height = widget.size[0];
+          widget.width = widget.size[1];
+          if (!widget.poke) {
+            widget.poke = 1;
+            widget.v2 = {};
+            widget.v2.resize = false;
 
+            widget.v3 = {};
+            widget.v3.multi_placement = false;
+          } else if (widget.poke === 2) {
+            widget.v3 = {};
+            widget.v3.multi_placement = false;
+          }
+          widget.pokeVersion = widget.poke;
+
+          widget.img = "icon128.png";
+          widget.id = "mgmiemnjjchgkmgbeljfocdjjnpjnmcg";
+
+          widget.stock = true;
+
+          stockWidgets["zStock_" + id] = widget;
+        }
+        $scope.stock_widgets = stockWidgets;
+      });
+    }, 900);
+
+  }
 
   /* END :: Widgets Window */

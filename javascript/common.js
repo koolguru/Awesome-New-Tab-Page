@@ -247,6 +247,15 @@ function new_guid() {
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 
+// Function to merge all of the properties from one object into another
+// Object.merge(object, object)
+if (typeof Object.merge !== "function") {
+  Object.merge = function (o1, o2) {
+    for(var i in o2) { o1[i] = o2[i]; }
+    return o1;
+  };
+}
+
 function _e(_eNum) {
   console.log("Error #"+_eNum);
   _gaq.push(['_trackEvent', 'Error', _eNum]);
