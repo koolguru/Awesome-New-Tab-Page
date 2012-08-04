@@ -339,7 +339,7 @@
       </div>
 
       <div class="ui-2 contents" id="widget-drawer">
-        <div class="drawer-app ui-2 ilb faw-box">
+        <div class="drawer-app ui-2 ilb faw-box" ng-controller="windowWidgetsCtrl">
           <div class="faw-wrapper faw-icon-information">
             <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
             <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_widgets" /></div>
@@ -351,6 +351,13 @@
             <div class="faw-body"><i18n message-id="ui_faw_get_more_widgets_body" /></div>
           </div>
         </div>
+
+        <!-- Start Widgets -->
+
+        <span>{{ test }}</span>
+
+        <div>
+
       </div>
 
     </div>
@@ -511,7 +518,6 @@
       <script type="text/javascript" src="/javascript/base64.js?nocache=11" async="async"></script>
 
       <script type="text/javascript" src="/javascript/apps-window.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/widgets-window.js?nocache=11" async="async"></script>
       <script type="text/javascript" src="/javascript/tile-editor.js?nocache=11" async="async"></script>
 
       <script type="text/javascript" src="/javascript/bookmarkbar.js"></script>

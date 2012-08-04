@@ -22,7 +22,6 @@ var
   ajsf = angular.module('antp.filters', []),
   ajsd = angular.module('antp.directives', []);
 
-
 /* START :: i18n */
 
   // Usage: {{ "message_id" | i18n }}
@@ -51,3 +50,18 @@ var
   });
 
   /* END :: i18n */
+
+/* START :: Widgets Window */
+
+  function windowWidgetsCtrl($scope) {
+
+    console.log("windowWidgetsCtrl");
+
+    $scope.test = function() {
+      return "test";
+    };
+
+  }
+
+
+  /* END :: Widgets Window */
