@@ -569,17 +569,6 @@ body {
   right: 70px;
   top: 36px;
 }
-.ui-2.widgets-refresh {
-  background: url("/images/ui-2/refresh.png");
-  width: 24px;
-  height: 24px;
-
-  cursor: pointer;
-
-  position: absolute;
-  right: 100px;
-  top: 36px;
-}
 .ui-2.vr {
   width: 1px;
   height: 72px;
