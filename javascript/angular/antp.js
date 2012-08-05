@@ -50,19 +50,37 @@ var
 
   /* END :: i18n */
 
-/* START :: Widgets Window */
+/* START :: Apps/Widgets Window */
 
-  function windowWidgetsCtrl($scope) {
+  function windowAppsWidgetsCtrl($scope) {
 
+    $scope.stock_apps = []
     $scope.stock_widgets = {};
+
+    $scope.apps = [];
     $scope.widgets = {};
 
     $scope.update = function() {
+      // Refresh widgets
       var bp = chrome.extension.getBackgroundPage();
       chrome.management.getAll( bp.reloadExtensions );
 
+      // Refresh apps
+      chrome.management.getAll(function(all){
+        $scope.apps = [];
+        angular.forEach(all, function(extension, id){
+          if ( extension.isApp === true ) {
+            extension.img = "chrome://extension-icon/"+extension.id+"/128/0";
+            $scope.apps.push(extension);
+          }
+        });
+      });
+
       setTimeout(function() {
+        $scope.apps = $scope.apps.concat($scope.stock_apps);
         $scope.widgets = Object.merge(bp.installedWidgets, $scope.stock_widgets);
+
+        // $scope.appsCount = $scope.apps.length;
         // $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
 
         // Update every 30 seconds
@@ -80,7 +98,7 @@ var
     chrome.management.onDisabled.addListener( $scope.update );
     chrome.management.onUninstalled.addListener( $scope.update );
 
-    // Save $scope.stock_widgets
+    // Save $scope.stock_widgets and $scope.stock_apps
     setTimeout(function() {
       var stockWidgets = {};
       angular.forEach(stock_widgets, function(widget, id) {
@@ -107,6 +125,11 @@ var
 
           // Starts with z so that they're always displayed last
           stockWidgets["zStock_" + id] = widget;
+        } else if ( widget.isApp === true
+          && widget.type === "app"
+          && widget.enabled === true ) {
+          widget.mayDisable = false;
+          $scope.stock_apps.push(widget);
         }
         $scope.stock_widgets = stockWidgets;
       });
@@ -114,57 +137,4 @@ var
 
   }
 
-  /* END :: Widgets Window */
-
-/* START :: Apps Window */
-
-  function windowAppsCtrl($scope) {
-
-    $scope.stock_apps = [];
-    $scope.apps = [];
-
-    $scope.update = function() {
-      chrome.management.getAll(function(all){
-        $scope.apps = [];
-        angular.forEach(all, function(extension, id){
-          if ( extension.isApp === true ) {
-            extension.img = "chrome://extension-icon/"+extension.id+"/128/0";
-            $scope.apps.push(extension);
-          }
-        });
-      });
-
-      setTimeout(function() {
-        $scope.apps = $scope.apps.concat($scope.stock_apps);
-        // $scope.appsCount = $scope.apps.length;
-
-        // Update every 30 seconds
-        setTimeout($scope.update, 30000);
-
-        $scope.$apply();
-
-      }, 1000);
-    };
-
-    setTimeout($scope.update, 1000);
-
-    chrome.management.onEnabled.addListener( $scope.update );
-    chrome.management.onInstalled.addListener( $scope.update );
-    chrome.management.onDisabled.addListener( $scope.update );
-    chrome.management.onUninstalled.addListener( $scope.update );
-
-    // Save $scope.stock_widgets
-    setTimeout(function() {
-      angular.forEach(stock_widgets, function(widget, id) {
-        if ( widget.isApp === true
-          && widget.type === "app"
-          && widget.enabled === true ) {
-          widget.mayDisable = false;
-          $scope.stock_apps.push(widget);
-        }
-      });
-    }, 900);
-
-  }
-
-  /* END :: Apps Window */
+  /* END :: Apps/Widgets Window */
