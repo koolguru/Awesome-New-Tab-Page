@@ -208,22 +208,11 @@ if (msg) {
 // Load widget settings
 var widgets = JSON.parse(localStorage.getItem("widgets"));
 
-// Clears localStorage
-  $("#reset-button").live("click", function(){
-    var reset = confirm( chrome.i18n.getMessage("ui_confirm_reset") );
-    if ( reset === true ) {
-      deleteShortcuts();
-      deleteRoot();
-      localStorage.clear();
-      _gaq.push(['_trackEvent', 'Reset', chrome.app.getDetails().version]);
-
-      setTimeout(function() {
-        reload();
-      }, 250);
-    } else {
-      $.jGrowl("Whew! Crisis aborted!", { header: "Reset Cancelled" });
-    }
-  });
+var extensions;
+// Get all installed extensions and apps
+chrome.management.getAll( function(data) {
+  extensions = data;
+});
 
 // Reload page
 function reload() {

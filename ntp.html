@@ -275,7 +275,7 @@
       </div>
     </div>
 
-    <div id="apps" class="ui-2 container">
+    <div id="apps" class="ui-2 container" ng-controller="windowAppsCtrl">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>
@@ -310,6 +310,21 @@
             <div class="faw-head"><i18n message-id="ui_faw_get_more_apps" /></div>
             <div class="faw-body"><i18n message-id="ui_faw_get_more_apps_body" /></div>
           </div>
+        </div>
+
+        <!-- Start Apps -->
+
+        <div ng-repeat="app in apps"
+        id="{{app.id}}"
+        class="widget app drawer-app ui-2 ilb"
+        tile-width="1"
+        tile-height="1"
+        app-source="from-drawer">
+          <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
+          <div class="ui-2 drawer-app-name ilb url" data-url="https://drive.google.com/" href="{{app.appLaunchUrl}}">
+            {{app.name}}
+          </div>
+          <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">Uninstall</div>
         </div>
       </div>
     </div>
@@ -532,7 +547,6 @@
       <script type="text/javascript" src="/javascript/ui.js?nocache=11" async="async"></script>
       <script type="text/javascript" src="/javascript/base64.js?nocache=11" async="async"></script>
 
-      <script type="text/javascript" src="/javascript/apps-window.js?nocache=11" async="async"></script>
       <script type="text/javascript" src="/javascript/tile-editor.js?nocache=11" async="async"></script>
 
       <script type="text/javascript" src="/javascript/bookmarkbar.js"></script>

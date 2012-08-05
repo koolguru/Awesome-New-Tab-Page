@@ -57,6 +57,13 @@
     $(".ui-2#config").toggle();
   });
 
+  $("#app-drawer-button").live("click", function(){
+    _gaq.push([ '_trackEvent', 'Window', "Apps" ]);
+
+    closeButton(".ui-2#apps");
+    $(".ui-2#apps").toggle();
+  });
+
   $("#widget-drawer-button").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
 
@@ -91,6 +98,20 @@
         s.parentNode.insertBefore(twitterScriptTag, s);
       })();
     }
+  });
+
+  $(".ui-2 .drawer-app-uninstall").live("click", function(e){
+    var to_delete = null;
+    var to_delete_name = null;
+    to_delete = $(this).parent();
+    to_delete_name = $(to_delete).find(".drawer-app-name").html();
+
+    var r=confirm("Are you sure you want to uninstall " + to_delete_name + "?");
+    if (r==true) {
+      chrome.management.uninstall($(to_delete).attr("id"), reload() );
+    }
+
+    return false;
   });
 
   /* END :: Windows */
@@ -393,6 +414,23 @@
     }
 
     localStorage.setItem("bg-img-css", $(this).val() );
+  });
+
+  // Clears localStorage
+  $("#reset-button").live("click", function(){
+    var reset = confirm( chrome.i18n.getMessage("ui_confirm_reset") );
+    if ( reset === true ) {
+      deleteShortcuts();
+      deleteRoot();
+      localStorage.clear();
+      _gaq.push(['_trackEvent', 'Reset', chrome.app.getDetails().version]);
+
+      setTimeout(function() {
+        reload();
+      }, 250);
+    } else {
+      $.jGrowl("Whew! Crisis aborted!", { header: "Reset Cancelled" });
+    }
   });
 
   /* END :: Configure */

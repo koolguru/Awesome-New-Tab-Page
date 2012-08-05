@@ -84,17 +84,17 @@ var
     setTimeout(function() {
       var stockWidgets = {};
       angular.forEach(stock_widgets, function(widget, id) {
-        if(widget.isApp === false && widget.type !== "shortcut" && widget.type !== "app") {
+        if ( widget.isApp === false && widget.type !== "shortcut" && widget.type !== "app" ) {
           widget.height = widget.size[0];
           widget.width = widget.size[1];
-          if (!widget.poke) {
+          if ( !widget.poke ) {
             widget.poke = 1;
             widget.v2 = {};
             widget.v2.resize = false;
 
             widget.v3 = {};
             widget.v3.multi_placement = false;
-          } else if (widget.poke === 2) {
+          } else if ( widget.poke === 2 ) {
             widget.v3 = {};
             widget.v3.multi_placement = false;
           }
@@ -115,3 +115,56 @@ var
   }
 
   /* END :: Widgets Window */
+
+/* START :: Apps Window */
+
+  function windowAppsCtrl($scope) {
+
+    $scope.stock_apps = [];
+    $scope.apps = [];
+
+    $scope.update = function() {
+      chrome.management.getAll(function(all){
+        $scope.apps = [];
+        angular.forEach(all, function(extension, id){
+          if ( extension.isApp === true ) {
+            extension.img = "chrome://extension-icon/"+extension.id+"/128/0";
+            $scope.apps.push(extension);
+          }
+        });
+      });
+
+      setTimeout(function() {
+        $scope.apps = $scope.apps.concat($scope.stock_apps);
+        // $scope.appsCount = $scope.apps.length;
+
+        // Update every 30 seconds
+        setTimeout($scope.update, 30000);
+
+        $scope.$apply();
+
+      }, 1000);
+    };
+
+    setTimeout($scope.update, 1000);
+
+    chrome.management.onEnabled.addListener( $scope.update );
+    chrome.management.onInstalled.addListener( $scope.update );
+    chrome.management.onDisabled.addListener( $scope.update );
+    chrome.management.onUninstalled.addListener( $scope.update );
+
+    // Save $scope.stock_widgets
+    setTimeout(function() {
+      angular.forEach(stock_widgets, function(widget, id) {
+        if ( widget.isApp === true
+          && widget.type === "app"
+          && widget.enabled === true ) {
+          widget.mayDisable = false;
+          $scope.stock_apps.push(widget);
+        }
+      });
+    }, 900);
+
+  }
+
+  /* END :: Apps Window */
