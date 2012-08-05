@@ -321,9 +321,7 @@
         tile-height="1"
         app-source="from-drawer">
           <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
-          <div class="ui-2 drawer-app-name ilb url" data-url="https://drive.google.com/" href="{{app.appLaunchUrl}}">
-            {{app.name}}
-          </div>
+          <div class="ui-2 drawer-app-name ilb url" data-url="https://drive.google.com/" href="{{app.appLaunchUrl}}">{{app.name}}</div>
           <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">Uninstall</div>
         </div>
       </div>
