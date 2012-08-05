@@ -322,7 +322,7 @@
         app-source="from-drawer">
           <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
           <div class="ui-2 drawer-app-name ilb url" data-url="https://drive.google.com/" href="{{app.appLaunchUrl}}">{{app.name}}</div>
-          <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">Uninstall</div>
+          <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">{{ "ui_uninstall" | i18n }}</div>
         </div>
       </div>
     </div>
@@ -383,7 +383,7 @@
             <img class="ui-2 ilb" ng-src="{{widget.img}}">
             <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
             <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
-            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">Uninstall</div>
+            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">{{ "ui_uninstall" | i18n }}</div>
         </div>
 
       </div>

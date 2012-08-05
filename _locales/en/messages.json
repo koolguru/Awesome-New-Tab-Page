@@ -183,6 +183,9 @@
   "ui_button_downloadapps": {
     "message": "Download Apps"
   },
+  "ui_uninstall": {
+    "message": "Uninstall"
+  },
   "ui_confirm_uninstall": {
     "message": "Are you sure you want to uninstall $app$?",
     "placeholders": {
