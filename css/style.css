@@ -685,8 +685,8 @@ body > .widget-drawer-app img {
 }
 .ui-2#apps > .contents,
 .ui-2#widgets > .contents {
-  margin-left: 55px;
-  margin-right: 55px;
+  padding-left: 55px;
+  padding-right: 55px;
 }
 .ui-2#apps .drawer-app,
 .ui-2#widgets .drawer-app {
