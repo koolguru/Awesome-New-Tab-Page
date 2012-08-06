@@ -368,7 +368,7 @@ body {
   margin-top: 0px;
   margin-bottom: 4px;
 }
-.side-button:hover {
+#top-buttons > div:hover {
   opacity: 1;
 }
 #logo-button {
