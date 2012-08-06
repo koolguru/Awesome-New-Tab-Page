@@ -440,11 +440,6 @@ body {
   text-align: center;
 }
 
-.qtip.qtip-dark {
-  width: auto !important;
-}
-
-
 #import-export-contents {
   display: none;
 }

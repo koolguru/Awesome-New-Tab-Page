@@ -259,74 +259,13 @@
 /* START :: Tooltips */
 
   $(document).ready(function($) {
-    var qtipShared = {
-      show: 'mouseover',
-      hide: { delay: 0 },
-      style: {
-        name: 'light',
-        tip: 'topLeft'
-      }
-    };
-
-    var qtipUI2 = {
-      show: 'mouseover',
-      hide: { delay: 0 },
-      style: {
-        name: 'light',
-        tip: 'topMiddle'
-      },
-      position: {
-        corner: {
-           target: 'bottomMiddle',
-           tooltip: 'topMiddle'
-        },
-        adjust: {
-          screen: true
+    setTimeout(function() {
+      $('div[title]').qtip({
+        style: {
+          classes: 'ui-tooltip-light ui-tooltip-shadow ui-tooltip-bootstrap'
         }
-      }
-    };
-
-    $(".ui-2.widgets-refresh").qtip(
-      $.extend({}, qtipUI2, { content: "Widgets not showing up? Refresh manually." })
-    );
-    $(".ui-2.x").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_button_close") })
-    );
-    $(".ui-2.help").qtip(
-      $.extend({}, qtipUI2, { content: "Help" })
-    );
-
-    $(".ui-2.config,#config-button").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_config") })
-    );
-
-    $(".ui-2#apps .download").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_button_downloadapps") })
-    );
-
-    $(".ui-2#widgets .download").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_button_download") })
-    );
-
-    $("#logo-button").qtip(
-      $.extend({}, qtipShared, { content: "About" })
-    );
-    $("#app-drawer-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_apps") })
-    );
-    $("#widget-drawer-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_widgets") })
-    );
-    $("#unlock-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_unlock") })
-    );
-    $("#lock-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_lock") })
-    );
-    $("#recently-closed-tabs").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_rct") })
-    );
-
+      });
+    }, 1000);
   });
 
   /* END :: Tooltips */

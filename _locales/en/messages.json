@@ -23,6 +23,9 @@
   "ui_config": {
     "message": "Configure"
   },
+  "ui_button_help": {
+    "message": "Help & Feedback"
+  },
   "ui_c_learnmore": {
     "message": "Learn more"
   },
@@ -176,12 +179,6 @@
   },
   "ui_about_rate_desc": {
     "message": "Do you like this extension? Take a minute to give a positive review on the Chrome Web Store."
-  },
-  "ui_button_download": {
-    "message": "Download Widgets"
-  },
-  "ui_button_downloadapps": {
-    "message": "Download Apps"
   },
   "ui_uninstall": {
     "message": "Uninstall"
