@@ -223,7 +223,7 @@ function getCovered(tile) {
 }
 
 function setStuff() {
-  $(".widget").each(function(ind, elem){
+  $("#widget-holder > .widget").each(function(ind, elem){
     $(elem).css({
       "width" : $(elem).attr("tile-width")  * 200 + (makeZero($(elem).attr("tile-width")  - 1) * 6),
       "height": $(elem).attr("tile-height") * 200 + (makeZero($(elem).attr("tile-height") - 1) * 6),
