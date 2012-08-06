@@ -24,6 +24,23 @@
     return Array.prototype.slice.call(list || [], 0);
   };
 
+// localStorage shortcuts
+  var store = {
+    // store.set("key", "obj")
+    set: function(key, obj) {
+      return localStorage.setItem(
+        key,
+        JSON.stringify(obj)
+      );
+    },
+    // store.get("key")
+    get: function(key) {
+      return JSON.parse(
+        localStorage.getItem(key)
+      );
+    }
+  }
+
 // Variables that are relatively static
 
   var stock_widgets = {

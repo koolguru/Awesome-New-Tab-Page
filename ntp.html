@@ -31,9 +31,6 @@
     <link rel="stylesheet" href="/css/jquery.confirm.css" type="text/css" media="screen">
 
     <link rel="stylesheet" href="/css/style.css?nocache=11" type="text/css" media="screen">
-
-    <script type="text/javascript" src="/javascript/angular/angular.js?nocache=11"></script>
-    <script type="text/javascript" src="/javascript/angular/antp.js?nocache=11"></script>
   </head>
 
   <body class="bg-color">
@@ -56,7 +53,18 @@
       <div id="unlock-button" title="{{ 'ui_button_unlock' | i18n}}"></div>
     </div>
 
-    <div id="recently-closed-tabs-menu"></div>
+    <div id="recently-closed-tabs-menu" ng-controller="RCTMCtrl">
+      <div>{{ 'ui_button_rct' | i18n}}</div>
+
+      <div class="rctm-item" ng-repeat="rct in recently_closed">
+        <img class="rctm-icon" ng-src="chrome://favicon/{{rct.url}}">
+        <a class="rctm-link" id="{{rct}}" title="{{rct.title}}"
+          href="{{rct.url}}">{{rct.title}}</a>
+        <div ng-click="removeTab(rct)" title="{{ 'rctm_remove' | i18n }}" class="rctm-close"></div>
+      </div>
+
+      <div ng-show="recently_closed" class="rctm-reset-all" ng-click="clear()">{{ "rctm_clear_all" | i18n }}</div>
+    </div>
 
     <div id="about" class="ui-2 container">
       <div class="ui-2 header">
@@ -535,6 +543,9 @@
       <script type="text/javascript" src="/javascript/common.js?nocache=11"></script>
       <script type="text/javascript" src="/javascript/tilesystem.js?nocache=11"></script>
       <script type="text/javascript" src="/javascript/hscroll.js"></script>
+
+      <script type="text/javascript" src="/javascript/angular/angular.js?nocache=11"></script>
+      <script type="text/javascript" src="/javascript/angular/antp.js?nocache=11"></script>
 
       <script type="text/javascript" src="/javascript/jquery.qtip.min.js"></script>
       <script type="text/javascript" src="/javascript/jquery.jgrowl.js" async="async"></script>

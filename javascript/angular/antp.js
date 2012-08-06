@@ -138,3 +138,42 @@ var
   }
 
   /* END :: Apps/Widgets Window */
+
+/* START :: Recently Closed Tabs Menu */
+
+  function RCTMCtrl($scope) {
+
+    $scope.recently_closed = [];
+
+    $scope.clear = function() {
+      $scope.recently_closed = [];
+      store.set("recently_closed", []);
+
+      $scope.$apply();
+    };
+
+    $scope.removeTab = function(tabToRemove) {
+      var index = this.recently_closed.indexOf(tabToRemove);
+      this.recently_closed.splice(index, 1);
+      store.set("recently_closed", this.recently_closed);
+    };
+
+    $scope.update = function() {
+      $scope.recently_closed = store.get("recently_closed");
+
+      $scope.$apply();
+
+    };
+
+    setTimeout($scope.update, 1000);
+
+    $(window).bind("storage", function (e) {
+      if ( typeof(e.originalEvent) === "object"
+        && typeof(e.originalEvent.key) === "string"
+        && e.originalEvent.key === "recently_closed" ) {}
+          $scope.update();
+    });
+
+  }
+
+  /* END :: Recently Closed Tabs Menu */

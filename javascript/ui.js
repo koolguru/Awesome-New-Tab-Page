@@ -71,6 +71,18 @@
     $(".ui-2#widgets").toggle();
   });
 
+  $("#recently-closed-tabs-menu").live("mouseleave", function() {
+    $(this).css("display", "none");
+  });
+
+  $("#recently-closed-tabs").live("click", function() {
+    _gaq.push([ "_trackEvent", "Window", "Recently Closed Tabs" ]);
+
+    closeButton("#recently-closed-tabs-menu");
+    $("#recently-closed-tabs-menu").toggle();
+  });
+
+
 
   $("#logo-button,.ui-2.logo").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "About" ]);
@@ -121,14 +133,14 @@
   function moveLeftButtons() {
     if ( localStorage.getItem("hideLeftButtons") === "yes" &&
       localStorage.getItem("lock") !== "false" ) {
-      $(".side-button").css("left", "-50px");
+      $("#top-buttons > div").css("left", "-50px");
       $("#widget-holder,#grid-holder").css("left", "0px");
     }
     if ( localStorage.getItem("hideLeftButtons") === "yes") {
       $("#hideLeftButtons").attr('checked', 'checked');
     }
     if ( localStorage.getItem("hideLeftButtons") !== "yes" ) {
-      $(".side-button").css("left", "0px");
+      $("#top-buttons > div").css("left", "0px");
       $("#widget-holder,#grid-holder").css("left", "27px");
     }
   }
@@ -151,7 +163,7 @@
     mouseenter: function() {
       if ( localStorage.getItem("hideLeftButtons") === "yes" ) {
 
-        $(".side-button").css("left", "0px");
+        $("#top-buttons > div").css("left", "0px");
         $("#widget-holder,#grid-holder").css("left", "27px");
       }
 
@@ -160,101 +172,13 @@
       if ( localStorage.getItem("hideLeftButtons") === "yes"
         && localStorage.getItem("lock") === "true" ) {
 
-        $(".side-button").css("left", "-50px");
+        $("#top-buttons > div").css("left", "-50px");
         $("#widget-holder,#grid-holder").css("left", "0px");
       }
     }
   });
 
   /* END :: Top Left Buttons */
-
-/* START :: Recently Closed Tabs Menu */
-
-  $("#recently-closed-tabs-menu").live("mouseleave", function() {
-    $(this).css("display", "none");
-  });
-
-  $("#recently-closed-tabs").live("click", function() {
-    _gaq.push([ "_trackEvent", "Window", "Recently Closed Tabs" ]);
-
-    closeButton("#recently-closed-tabs-menu");
-    $("#recently-closed-tabs-menu").toggle();
-  });
-
-  $(window).bind("storage", function (e) {
-    if ( typeof(e.originalEvent) === "object"
-      && typeof(e.originalEvent.key) === "string"
-      && e.originalEvent.key === "recently_closed" )
-        resetRecentlyClosedTabs();
-  });
-
-  function resetRecentlyClosedTabs() {
-    var
-      recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
-      rctm_html = [];
-
-    $("#recently-closed-tabs-menu").empty();
-
-    if(recently_closed !== null) {
-      $.each(recently_closed, function(id, tab) {
-
-        var rct_temp  = $("<div></div>").addClass("rctm-item");
-        $("<img></img>").appendTo(rct_temp).addClass("rctm-icon")
-          .attr({
-            "src"   : "chrome://favicon/" + tab.url,
-            "height": 16,
-            "width" : 16
-          });
-
-        $("<a></a>").appendTo(rct_temp).addClass("rctm-link")
-          .attr({
-            "id"    : id   ,
-            "title" : tab.title,
-            "href"  : tab.url
-          })
-          .html( tab.title );
-        $("<span></span>").appendTo(rct_temp)
-          .attr({
-            "data-rctm-id": id,
-            "title"       : chrome.i18n.getMessage("rctm_remove")
-          }).addClass("rctm-close");
-
-        rctm_html.push( rct_temp );
-      });
-
-      rctm_html.push(
-        $('<div class="rctm-reset-all" id="rctm_clear_all">' + chrome.i18n.getMessage("rctm_clear_all") + '</div>')
-      );
-
-      $.each(rctm_html, function(i, e) {
-        $(e).appendTo("#recently-closed-tabs-menu");
-      });
-    }
-  }
-
-  $('.rctm-close').live("click", function(e) {
-    var recently_closed = JSON.parse(localStorage.getItem("recently_closed"));
-
-    recently_closed.splice( $(e.target).attr("data-rctm-id") , 1);
-
-    localStorage.setItem("recently_closed", JSON.stringify(recently_closed));
-
-    resetRecentlyClosedTabs();
-  });
-
-  $('#rctm_clear_all').live("click", function(e) {
-    if (confirm(chrome.i18n.getMessage("rctm_clear_all_confirm")))
-    {
-      localStorage.removeItem("recently_closed");
-    }
-    resetRecentlyClosedTabs();
-  });
-
-  $(document).ready(function($) {
-    setTimeout(resetRecentlyClosedTabs, 1000);
-  });
-
-  /* END :: Recently Closed Tabs Menu */
 
 /* START :: Tooltips */
 
