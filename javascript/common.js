@@ -93,27 +93,27 @@
       type: "iframe",
       isApp: false,
       stock: true,
-      name: "Google (Wide) (Stock)",
+      name: "Google (Wide)",
       id: "google",
       path: "widgets/google/widget.google.html"
     },
-    fandango: {
-      where: [2,1],
+    amazoninstantvideo: {
+      where: [1,2],
       size: [1,1],
       type: "app",
       isApp: true,
       enabled: true,
       stock: true,
-      name: "Fandango (Stock)",
+      name: "Amazon Instant Video",
       name_show: false,
       color: "rgba(255, 51, 0,  1)",
-      img: "/widgets/fandango/widget.fandango.png",
-      simg: "/widgets/fandango/widget.fandango.png",
-      appLaunchUrl: "http://gan.doubleclick.net/gan_click?lid=41000000032569141&amp;pubid=21000000000503246",
-      id: "fandango"
+      img: "/widgets/amazoninstantvideo/widget.aiv.png",
+      simg: "/widgets/amazoninstantvideo/widget.aiv.png",
+      appLaunchUrl: "http://www.amazon.com/Instant-Video/b?ie=UTF8&tag=sntp-20&node=2858778011",
+      id: "amazoninstantvideo"
     },
     amazon: {
-      where: [1,2],
+      where: [2,1],
       size: [1,1],
       type: "app",
       isApp: true,
@@ -241,7 +241,7 @@ function localStorageSync(refresh) {
   localStorage.setItem("widgets", JSON.stringify( widgets ));
 
   if(refresh === true) {
-    reload();
+    $(window).trigger("antp-widgets");
   }
 }
 
@@ -304,7 +304,11 @@ function _e(_eNum) {
       &&   localStorage["amazon-locale"] !== null
       &&   localStorage["amazon-locale"] !== ""
       &&   typeof(localStorage["amazon-locale"]) !== "undefined" ) {
-        url = "http://www." + localStorage["amazon-locale"] + "/?tag=sntp-20";
+        if ( url.match("Instant-Video") === null ) {
+          url = "http://www." + localStorage["amazon-locale"] + "/?tag=sntp-20";
+        } else {
+          url = "http://www.amazon.com/Instant-Video/b?ie=UTF8&tag=sntp-20&node=2858778011"
+        }
       }
 
       // Ctrl + Click = Open in new tab

@@ -41,7 +41,74 @@
 
     <div id="grid-holder"></div>
 
-    <div id="widget-holder"></div>
+    <div id="widget-holder" ng-controller="tileCtrl">
+
+      <!-- Widgets -->
+      <div id="{{widget.id}}" ng-repeat="widget in widgets"
+        class="widget ng-cloak"
+        tile-height="{{widget.size.0}}" tile-width="{{widget.size.1}}"
+        tile-init-top="{{widget.where.0}}" tile-init-left="{{widget.where.1}}"
+        style="height: {{widget.css.height}}px; width: {{widget.css.width}}px;
+          top: {{widget.css.top}}px; left: {{widget.css.left}}px;">
+        <iframe ng-src="{{widget.path}}#{{widget.hash}}" scrolling="no" frameborder="0" align="center" height="100%" width="100%"></iframe>
+        <div class="iframe-mask" ng-switch on="widget.resize">
+          <div id="delete"></div>
+          <div id="widget-config" class="url" data-url="{{widget.optionsUrl}}#{{widget.hash}}" ng-show="widget.optionsUrl"></div>
+          <div class="resize-tile" ng-switch-when="true">
+            <div class="resize-tile-top"></div>
+            <div class="resize-tile-bottom"></div>
+            <div class="resize-tile-left"></div>
+            <div class="resize-tile-right"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installed Apps -->
+      <div id="{{app.id}}" ng-repeat="app in apps"
+      class="widget app"
+      tile-height="{{app.size.0}}" tile-width="{{app.size.1}}"
+      tile-init-top="{{app.where.0}}" tile-init-left="{{app.where.1}}"
+      style="{{app.css.bg}};
+          height: {{app.css.height}}px; width: {{app.css.width}}px;
+          top: {{app.css.top}}px; left: {{app.css.left}}px;">
+        <div class="app-name" ng-hide="!app.name_show">{{app.name}}</div>
+        <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}"></a>
+        <div class="iframe-mask" ng-switch on="widget.resize">
+          <div id="delete"></div>
+          <div id="shortcut-edit"></div>
+          <div class="resize-tile" style="display: none; " ng-switch-when="true">
+            <div class="resize-tile-top"></div>
+            <div class="resize-tile-bottom"></div>
+            <div class="resize-tile-left"></div>
+            <div class="resize-tile-right"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Shortcuts -->
+      <div id="{{shortcut.id}}" ng-repeat="shortcut in custom_shortcuts"
+      class="widget app shortcut"
+      tile-height="{{shortcut.size.0}}" tile-width="{{shortcut.size.1}}"
+      tile-init-top="{{shortcut.where.0}}" tile-init-left="{{shortcut.where.1}}"
+      style="{{shortcut.css.bg}};
+          height: {{shortcut.css.height}}px; width: {{shortcut.css.width}}px;
+          top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;">
+        <div class="app-name" ng-hide="!shortcut.name_show">{{shortcut.name}}</div>
+        <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}"></a>
+        <img ng-src="chrome://favicon/{{shortcut.appLaunchUrl}}" class="app-favicon" ng-hide="!shortcut.favicon_show" />
+        <div class="iframe-mask" ng-switch on="widget.resize">
+          <div id="delete"></div>
+          <div id="shortcut-edit"></div>
+          <div class="resize-tile" style="display: none; " ng-switch-when="true">
+            <div class="resize-tile-top"></div>
+            <div class="resize-tile-bottom"></div>
+            <div class="resize-tile-left"></div>
+            <div class="resize-tile-right"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
     <div id="top-buttons">
       <div id="logo-button" title="{{ 'ui_about' | i18n}}"></div>
@@ -328,9 +395,10 @@
         class="widget app drawer-app ui-2 ilb"
         tile-width="1"
         tile-height="1"
-        app-source="from-drawer">
+        app-source="from-drawer"
+        stock="{{app.id}}">
           <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
-          <div class="ui-2 drawer-app-name ilb url" data-url="https://drive.google.com/" href="{{app.appLaunchUrl}}">{{app.name}}</div>
+          <div class="ui-2 drawer-app-name ilb url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}">{{app.name}}</div>
           <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">{{ "ui_uninstall" | i18n }}</div>
         </div>
       </div>

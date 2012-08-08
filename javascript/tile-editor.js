@@ -53,26 +53,13 @@ $(document).on("click", ".unlocked .empty.add-shortcut", function() {
     $(this).attr("land-left")
   );
 
-  $(stitch(
-    /*  Type: str [app, widget, app-drawer, widget-drawer]*/  "shortcut",
-    /*  Ext. ID: str [mgmiemnjjchgkmgbeljfocdjjnpjnmcg]   */  new_shortcut_id,
-    /*  Ext. Name: str [Awesome New Tab Page]             */  "Google",
-    /*  URL: str, can be iframe or app url                */  "http://www.google.com/",
-    /*  Img: str, full path or [id]                       */  "core.shortcut.blank2.png",
-    /*  Height: int [1, 2, 3]                             */  1,
-    /*  Width: int [1, 2, 3]                              */  1,
-    /*  Top: int                                          */  $(this).attr("data-land-top"),
-    /*  Left: int                                         */  $(this).attr("data-land-left"),
-    /*  Poke: int                                         */  null
-  )).appendTo("#widget-holder");
-
   $("#" + new_shortcut_id).css({
     "left": $(this).position().left,
     "top": $(this).position().top,
     "width": "200",
     "height": "200",
     "zIndex": "1"
-  }).find(".iframe-mask").show().find("#shortcut-edit").trigger("click");
+  }).find(".iframe-mask").find("#shortcut-edit").trigger("click");
 
   $(this).removeClass("add-shortcut").removeClass("empty");
 });
@@ -100,7 +87,7 @@ $(document).on("click", "#shortcut-edit",function(e){
   var is_shortcut = (widgets[id].type && widgets[id].type === "shortcut");
 
   var stock_app = false;
-  if ( $.inArray(id, ["webstore", "amazon", "fandango", "facebook", "twitter"]) !== -1 ) {
+  if ( $.inArray(id, ["webstore", "amazon", "amazoninstantvideo", "facebook", "twitter"]) !== -1 ) {
     widgets[id].img = stock_widgets[id].simg;
     stock_app = true;
   }
@@ -271,10 +258,13 @@ function addShortcut(widget, top, left) {
     id: widget,
     img: "core.shortcut.blank2.png",
     appLaunchUrl: "http://www.google.com/",
-    url: "http://www.google.com/"
+    url: "http://www.google.com/",
+    color: palette[Math.floor(Math.random() * palette.length)],
+    name_show: true,
+    favicon_show: true
   };
 
-  localStorageSync(false);
+  localStorageSync(true);
 }
 
 // Update tile, localStorage, and previews for Tile Editor changes
@@ -314,7 +304,7 @@ function updateShortcut(e) {
     }
 
 
-    if ( $.inArray(id, ["webstore", "amazon", "fandango", "facebook", "twitter"]) !== -1 ) {
+    if ( $.inArray(id, ["webstore", "amazon", "amazoninstantvideo", "facebook", "twitter"]) !== -1 ) {
       widgets[id].img = stock_widgets[id].simg;
     }
 

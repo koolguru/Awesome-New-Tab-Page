@@ -50,6 +50,107 @@ var
 
   /* END :: i18n */
 
+/* START :: Widgets/Apps/Custom Shortcuts */
+
+  function tileCtrl($scope) {
+
+    $scope.widgets = [];
+    $scope.apps = {};
+    $scope.custom_shortcuts = {};
+
+    $scope.revisionCount = 0;
+
+    $scope.update = function() {
+      var tiles = store.get("widgets");
+
+      $scope.widgets = [];
+      $scope.apps = {};
+      $scope.custom_shortcuts = {};
+
+      angular.forEach(tiles, function(tile, id) {
+        if ( tile.isApp === true ) {
+          tile.type = "app";
+        }
+
+        tile.ext = tile.id;
+        tile.id = id;
+
+        tile.css = {};
+        tile.css.height = ( tile.size[0] * 200 ) + ( ( tile.size[0] - 1 ) * 6 );
+        tile.css.width  = ( tile.size[1] * 200 ) + ( ( tile.size[1] - 1 ) * 6 );
+        tile.css.top    = tile.where[0] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+        tile.css.left   = tile.where[1] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+
+        if ( tiles[tile.id].optionsUrl ) {
+          tile.optionsUrl = tiles[tile.id].optionsUrl;
+        }
+
+        if ( tile.type === "app" || tile.type === "shortcut" ) {
+          if ( tile.shortcut_background_transparent === true ) {
+            tile.css.bg = "background-image: url("+tile.img+"); background-color: transparent;";
+          } else {
+            tile.css.bg = "background-image: url("+tile.img+"), -webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(255, 255, 255, 0.04)), from(rgba(255, 255, 255, 0.35))); background-color: "+tile.color+";";
+          }
+        }
+
+        if ( tile.img && (tile.type === "app" || tile.type === "shortcut") ) {
+          tile.css.bgimg = "background-image: url("+tile.img+")";
+        }
+
+        switch ( tile.type ) {
+          case "iframe":
+            if ( tile.instance_id ) {
+              tile.hash = encodeURIComponent(JSON.stringify({"id": tile.instance_id}));
+            }
+            $scope.widgets.push(tile);
+            break;
+          case "app":
+            $scope.apps[id] = tile;
+            break;
+          case "shortcut":
+            $scope.custom_shortcuts[id] = tile;
+            break;
+        }
+
+      });
+
+      setTimeout(function(){
+        var tiles = $("#grid-holder > .tile");
+        $("#grid-holder > .tile").addClass("empty");
+        $("#widget-holder > div").each(function(ind, elem){
+          var tiles = getCovered(this);
+          $(tiles.tiles).each(function(ind, elem){
+            $(elem).removeClass("empty");
+          });
+        });
+      }, 250);
+
+
+      // To prevent an onload error
+      if ( $scope.revisionCount !== 0 ) {
+        $scope.$apply();
+      }
+
+      $scope.revisionCount++;
+    };
+
+    $scope.update();
+
+    $(window).bind("storage antp-widgets", function (e) {
+      if ( typeof(e.originalEvent) === "object"
+        && typeof(e.originalEvent.key) === "string"
+        && e.originalEvent.key === "widgets" )
+          $scope.update();
+      else if ( e.type === "antp-widgets" )
+        $scope.update();
+    });
+
+    // todo: setup stock widget check and setup (initialize localStorage)
+
+  }
+
+  /* END :: Widgets/Apps/Custom Shortcuts */
+
 /* START :: Apps/Widgets Window */
 
   function windowAppsWidgetsCtrl($scope) {
@@ -170,7 +271,7 @@ var
     $(window).bind("storage", function (e) {
       if ( typeof(e.originalEvent) === "object"
         && typeof(e.originalEvent.key) === "string"
-        && e.originalEvent.key === "recently_closed" ) {}
+        && e.originalEvent.key === "recently_closed" )
           $scope.update();
     });
 
