@@ -300,7 +300,17 @@ function setStuff() {
       resize_element.element = $(this).closest(".widget")[0];
       var id = $(resize_element.element).attr("id");
 
-      console.log(widgets[id]);
+      // Ensure apps/custom shortcuts are resizable
+      if ( widgets[id].type
+      && (widgets[id].type === "shortcut" || widgets[id].type === "app") ) {
+        widgets[id].resize = true;
+        widgets[id].v2 = {};
+        widgets[id].v2.min_width  = 1;
+        widgets[id].v2.max_width  = 2;
+        widgets[id].v2.min_height = 1;
+        widgets[id].v2.max_height = 2;
+      }
+
       if ( typeof(widgets[id]) === "object"
         && typeof(widgets[id].resize) === "boolean"
         && typeof(widgets[id].v2) === "object"

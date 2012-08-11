@@ -1,28 +1,3 @@
-(function() {
-  var
-    storageVersion = parseFloat(localStorage.getItem("storageVersion")),
-    reload = false;
-
-  if ( isNaN(storageVersion) )
-    storageVersion = 0;
-
-  // Prevent unnecessary checks
-  // Must be updated with future storage updates
-  if ( storageVersion === 1 )
-    return;
-
-  if ( storageVersion < 1 ) {
-    storageFunctions.updateOldPaths();
-    storageFunctions.onLeftClickUpdate();
-
-    localStorage.setItem("storageVersion") = "1";
-    reload = true;
-  }
-
-  if ( reload === true )
-    window.location.reload();
-})();
-
 storageFunctions = {};
 
 storageFunctions.onLeftClickUpdate = function() {
@@ -38,7 +13,7 @@ storageFunctions.onLeftClickUpdate = function() {
       }
     }
   }
-}
+};
 
 // if widget paths are old, update them to new one
 storageFunctions.updateOldPaths = function() {
@@ -71,4 +46,30 @@ storageFunctions.updateOldPaths = function() {
     }
   }
   localStorageSync(false);
-}
+};
+
+
+(function() {
+  var
+    storageVersion = parseFloat(store.get("storageVersion")),
+    reload = false;
+
+  if ( isNaN(storageVersion) )
+    storageVersion = 0;
+
+  // Prevent unnecessary checks
+  // Must be updated with future storage updates
+  if ( storageVersion === 1 )
+    return;
+
+  if ( storageVersion < 1 ) {
+    storageFunctions.updateOldPaths();
+    storageFunctions.onLeftClickUpdate();
+
+    store.set("storageVersion", 1);
+    reload = true;
+  }
+
+  if ( reload === true )
+    window.location.reload();
+})();

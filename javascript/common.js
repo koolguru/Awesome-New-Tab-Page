@@ -47,6 +47,7 @@
     webstore: {
       where: [2,3],
       size: [1,1],
+      type: "app",
       isApp: true,
       enabled: true,
       name: "Chrome Web Store",
@@ -98,11 +99,11 @@
       path: "widgets/google/widget.google.html"
     },
     amazoninstantvideo: {
-      where: [1,2],
+      where: [2,1],
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
+      enabled: false,
       stock: true,
       name: "Amazon Instant Video",
       name_show: false,
@@ -113,11 +114,10 @@
       id: "amazoninstantvideo"
     },
     amazon: {
-      where: [2,1],
+      where: [1,2],
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
       stock: true,
       name: "Amazon (Stock)",
       name_show: false,
@@ -132,7 +132,6 @@
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
       stock: true,
       name: "Facebook (Stock)",
       name_show: false,
@@ -147,7 +146,6 @@
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
       stock: true,
       name: "Twitter (Stock)",
       name_show: false,
@@ -207,9 +205,18 @@
   var _gaq = _gaq || [];
 
 // Check if there are stored widgets
-if(localStorage.getItem("widgets") === null) {
+if( localStorage.getItem("widgets") === null ) {
   // If not, use stock widgets
-  localStorage.setItem("widgets", JSON.stringify( stock_widgets ));
+
+  // Remove disabled widgets
+  var _stock_widgets = {};
+  for ( var w in stock_widgets ) {
+    if ( stock_widgets[w].enabled !== false ) {
+      _stock_widgets[w] = stock_widgets[w];
+    }
+  }
+
+  store.set("widgets", _stock_widgets );
 }
 
 // display messages to be displayed on page refresh

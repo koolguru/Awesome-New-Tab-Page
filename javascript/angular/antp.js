@@ -70,31 +70,45 @@ var
       angular.forEach(tiles, function(tile, id) {
         if ( tile.isApp === true ) {
           tile.type = "app";
+          tiles[id].type = "app";
+          store.set("widgets", tiles);
         }
 
         tile.ext = tile.id;
         tile.id = id;
 
-        tile.css = {};
-        tile.css.height = ( tile.size[0] * 200 ) + ( ( tile.size[0] - 1 ) * 6 );
-        tile.css.width  = ( tile.size[1] * 200 ) + ( ( tile.size[1] - 1 ) * 6 );
-        tile.css.top    = tile.where[0] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
-        tile.css.left   = tile.where[1] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
-
         if ( tiles[tile.id].optionsUrl ) {
           tile.optionsUrl = tiles[tile.id].optionsUrl;
         }
 
-        if ( tile.type === "app" || tile.type === "shortcut" ) {
-          if ( tile.shortcut_background_transparent === true ) {
-            tile.css.bg = "background-image: url("+tile.img+"); background-color: transparent;";
-          } else {
-            tile.css.bg = "background-image: url("+tile.img+"), -webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(255, 255, 255, 0.04)), from(rgba(255, 255, 255, 0.35))); background-color: "+tile.color+";";
-          }
-        }
+        /* Start :: CSS */
 
-        if ( tile.img && (tile.type === "app" || tile.type === "shortcut") ) {
-          tile.css.bgimg = "background-image: url("+tile.img+")";
+          tile.css = {};
+          tile.css.height = ( tile.size[0] * 200 ) + ( ( tile.size[0] - 1 ) * 6 );
+          tile.css.width  = ( tile.size[1] * 200 ) + ( ( tile.size[1] - 1 ) * 6 );
+          tile.css.top    = tile.where[0] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+          tile.css.left   = tile.where[1] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+
+          if ( tile.type === "app" || tile.type === "shortcut" ) {
+            if ( tile.shortcut_background_transparent === true ) {
+              tile.css.bg = "background-image: url("+tile.img+"); background-color: transparent;";
+            } else {
+              tile.css.bg = "background-image: url("+tile.img+"), -webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(255, 255, 255, 0.04)), from(rgba(255, 255, 255, 0.35))); background-color: "+tile.color+";";
+            }
+          }
+
+          if ( tile.img && (tile.type === "app" || tile.type === "shortcut") ) {
+            tile.css.bgimg = "background-image: url("+tile.img+")";
+          }
+
+          /* END :: CSS */
+
+        // Defaults
+        if ( tile.favicon_show === undefined ) {
+          tile.favicon_show = true;
+        }
+        if ( tile.name_show === undefined ) {
+          tile.name_show = true;
         }
 
         switch ( tile.type ) {
@@ -105,9 +119,11 @@ var
             $scope.widgets.push(tile);
             break;
           case "app":
+            tile.resize = true;
             $scope.apps[id] = tile;
             break;
           case "shortcut":
+            tile.resize = true;
             $scope.custom_shortcuts[id] = tile;
             break;
         }
@@ -203,7 +219,7 @@ var
     setTimeout(function() {
       var stockWidgets = {};
       angular.forEach(stock_widgets, function(widget, id) {
-        if ( widget.isApp === false && widget.type !== "shortcut" && widget.type !== "app" ) {
+        if ( widget.type !== "shortcut" && widget.type !== "app" ) {
           widget.height = widget.size[0];
           widget.width = widget.size[1];
           if ( !widget.poke ) {
@@ -227,8 +243,7 @@ var
           // Starts with z so that they're always displayed last
           stockWidgets["zStock_" + id] = widget;
         } else if ( widget.isApp === true
-          && widget.type === "app"
-          && widget.enabled === true ) {
+          && widget.type === "app" ) {
           widget.mayDisable = false;
           $scope.stock_apps.push(widget);
         }

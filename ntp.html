@@ -49,7 +49,8 @@
         tile-height="{{widget.size.0}}" tile-width="{{widget.size.1}}"
         tile-init-top="{{widget.where.0}}" tile-init-left="{{widget.where.1}}"
         style="height: {{widget.css.height}}px; width: {{widget.css.width}}px;
-          top: {{widget.css.top}}px; left: {{widget.css.left}}px;">
+          top: {{widget.css.top}}px; left: {{widget.css.left}}px;
+          background-size: {{widget.backgroundSize}}; background-position: {{widget.backgroundPosition}}">
         <iframe ng-src="{{widget.path}}#{{widget.hash}}" scrolling="no" frameborder="0" align="center" height="100%" width="100%"></iframe>
         <div class="iframe-mask" ng-switch on="widget.resize">
           <div id="delete"></div>
@@ -70,13 +71,14 @@
       tile-init-top="{{app.where.0}}" tile-init-left="{{app.where.1}}"
       style="{{app.css.bg}};
           height: {{app.css.height}}px; width: {{app.css.width}}px;
-          top: {{app.css.top}}px; left: {{app.css.left}}px;">
+          top: {{app.css.top}}px; left: {{app.css.left}}px;
+          background-size: {{app.backgroundSize}}; background-position: {{app.backgroundPosition}}">
         <div class="app-name" ng-hide="!app.name_show">{{app.name}}</div>
         <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}"></a>
-        <div class="iframe-mask" ng-switch on="widget.resize">
+        <div class="iframe-mask">
           <div id="delete"></div>
           <div id="shortcut-edit"></div>
-          <div class="resize-tile" style="display: none; " ng-switch-when="true">
+          <div class="resize-tile" style="display: none; ">
             <div class="resize-tile-top"></div>
             <div class="resize-tile-bottom"></div>
             <div class="resize-tile-left"></div>
@@ -92,14 +94,15 @@
       tile-init-top="{{shortcut.where.0}}" tile-init-left="{{shortcut.where.1}}"
       style="{{shortcut.css.bg}};
           height: {{shortcut.css.height}}px; width: {{shortcut.css.width}}px;
-          top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;">
+          top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;
+          background-size: {{shortcut.backgroundSize}}; background-position: {{shortcut.backgroundPosition}}">
         <div class="app-name" ng-hide="!shortcut.name_show">{{shortcut.name}}</div>
         <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}"></a>
         <img ng-src="chrome://favicon/{{shortcut.appLaunchUrl}}" class="app-favicon" ng-hide="!shortcut.favicon_show" />
-        <div class="iframe-mask" ng-switch on="widget.resize">
+        <div class="iframe-mask">
           <div id="delete"></div>
           <div id="shortcut-edit"></div>
-          <div class="resize-tile" style="display: none; " ng-switch-when="true">
+          <div class="resize-tile" style="display: none; ">
             <div class="resize-tile-top"></div>
             <div class="resize-tile-bottom"></div>
             <div class="resize-tile-left"></div>
@@ -550,7 +553,7 @@
                 <img id="invisible-tile-img" style="display: none;"/> <!-- this element is to just get width and height of tile icon -->
                 <div class="app-name"></div>
                 <img class="app-favicon"></img>
-                <div class="iframe-mask"></div>
+                <div class="iframe-mask" style="display: block;"></div>
               </div>
               <div class="fake-tile" id="ft0"></div>
               <div class="fake-tile" id="ft1"></div>
