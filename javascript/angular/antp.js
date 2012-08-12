@@ -194,6 +194,16 @@ var
       });
 
       setTimeout(function() {
+        $scope.apps.sort(function(a, b){
+          var
+            nameA=a.name.toLowerCase(),
+            nameB=b.name.toLowerCase();
+          if (nameA < nameB)
+            return -1;
+          if (nameA > nameB)
+            return 1;
+          return 0
+        });
         $scope.apps = $scope.apps.concat($scope.stock_apps);
         $scope.widgets = Object.merge(bp.installedWidgets, $scope.stock_widgets);
 
