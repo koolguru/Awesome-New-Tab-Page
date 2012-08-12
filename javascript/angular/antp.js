@@ -186,7 +186,7 @@ var
       chrome.management.getAll(function(all){
         $scope.apps = [];
         angular.forEach(all, function(extension, id){
-          if ( extension.isApp === true ) {
+          if ( extension.isApp === true && extension.enabled === true ) {
             extension.img = "chrome://extension-icon/"+extension.id+"/128/0";
             $scope.apps.push(extension);
           }
