@@ -219,6 +219,23 @@
       $("#bookmarksBar").css("display", "none");
     }
 
+  $("#toggleBmb").live("click", function(){
+    if ($(this).is(':checked')) {
+      if ( bookmark_bar_rendered === false ) {
+        bookmark_bar_rendered = true;
+        chrome.bookmarks.getTree(getBookmarks);
+      }
+
+      $("#bookmarksBar").show();
+      localStorage.setItem("showbmb", "yes");
+      moveGrid({ "animate_top": true });
+    } else {
+      $("#bookmarksBar").hide();
+      localStorage.setItem("showbmb", "no");
+      moveGrid({ "animate_top": true });
+    }
+  });
+
     if(localStorage.getItem("bg-img-css") && localStorage.getItem("bg-img-css") !== "") {
       $("body").css("background", localStorage.getItem("bg-img-css") );
       $("#bg-img-css").val( localStorage.getItem("bg-img-css") );
@@ -250,22 +267,6 @@
 
   $(".bg-color").css("background-color", "#" + (localStorage.getItem("color-bg") || "221f20"));
 
-  $("#toggleBmb").live("click", function(){
-    if ($(this).is(':checked')) {
-      if ( bookmark_bar_rendered === false ) {
-        bookmark_bar_rendered = true;
-        chrome.bookmarks.getTree(getBookmarks);
-      }
-
-      $("#bookmarksBar").show();
-      localStorage.setItem("showbmb", "yes");
-      moveGrid({ "animate_top": true });
-    } else {
-      $("#bookmarksBar").hide();
-      localStorage.setItem("showbmb", "no");
-      moveGrid({ "animate_top": true });
-    }
-  });
 
   $("#bg-img-css").live("keyup change", function() {
     $("body").css("background", "" );

@@ -35,8 +35,8 @@ $(document).ready(function($) {
 
 var GRID_MIN_HEIGHT     = 3,
     GRID_MIN_WIDTH      = 7,
-    GRID_MARGIN_TOP     = localStorage.getItem("showbmb") === "yes" ? 27 : 0,
-    GRID_MARGIN_LEFT    = localStorage.getItem("hideLeftButtons") === "yes" ? 0 : 27,
+    GRID_MARGIN_TOP     = function(){ return localStorage.getItem("showbmb") === "yes" ? 27 : 0 },
+    GRID_MARGIN_LEFT    = function(){ return localStorage.getItem("hideLeftButtons") === "yes" ? 0 : 27},
     GRID_TILE_SIZE      = 200,  // NEVER CHANGE
     GRID_TILE_PADDING   = 3,    // NEVER CHANGE
 
@@ -71,8 +71,8 @@ function moveGrid(pref) {
   }
 
   $("#widget-holder,#grid-holder").css({
-    "top" : GRID_MARGIN_TOP,
-    "left": GRID_MARGIN_LEFT
+    "top" : GRID_MARGIN_TOP(),
+    "left": GRID_MARGIN_LEFT()
   });
 
   updateGridOpacity();
@@ -88,8 +88,8 @@ function placeGrid() {
   // Ensure window is filled with grid tiles
   if ( typeof(window.innerHeight) !== "undefined"
     && typeof(window.innerWidth) !== "undefined" ) {
-    var res_height = Math.floor( ( window.innerHeight - GRID_MARGIN_TOP  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
-    var res_width  = Math.floor( ( window.innerWidth  - GRID_MARGIN_LEFT ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
+    var res_height = Math.floor( ( window.innerHeight - GRID_MARGIN_TOP()  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
+    var res_width  = Math.floor( ( window.innerWidth  - GRID_MARGIN_LEFT() ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
 
     if(res_height > height) {
       height = res_height;
@@ -101,8 +101,8 @@ function placeGrid() {
 
   if ( typeof(screen.width) !== "undefined"
     && typeof(screen.height) !== "undefined" ) {
-    var res_height2 = Math.floor( ( screen.height - 180 - GRID_MARGIN_TOP  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
-    var res_width2  = Math.floor( ( screen.width        - GRID_MARGIN_LEFT ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
+    var res_height2 = Math.floor( ( screen.height - 180 - GRID_MARGIN_TOP()  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
+    var res_width2  = Math.floor( ( screen.width        - GRID_MARGIN_LEFT() ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
 
     if(res_height2 > height) {
       height = res_height2;
@@ -733,8 +733,8 @@ function setStuff() {
             held_top  = held_element.offsetY_required;
 
           $(held_element.element).css({
-            "left": e.pageX - held_left - GRID_MARGIN_LEFT,
-            "top" : e.pageY - held_top  - GRID_MARGIN_TOP
+            "left": e.pageX - held_left - GRID_MARGIN_LEFT(),
+            "top" : e.pageY - held_top  - GRID_MARGIN_TOP()
           });
         }
 
