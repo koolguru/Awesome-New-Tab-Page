@@ -17,15 +17,13 @@
 ***/
 
 var
-  ajs = angular.module('antp', ['antp.filters', 'antp.directives']),
-  ajsf = angular.module('antp.filters', []),
-  ajsd = angular.module('antp.directives', []);
+  ajs = angular.module('antp', []);
 
 /* START :: i18n */
 
   // Usage: {{ "message_id" | i18n }}
   // Notes: Does NOT support HTML
-  ajsf.filter('i18n', function() {
+  ajs.filter('i18n', function() {
     return function(messageId) {
       if (chrome.i18n)
         return chrome.i18n.getMessage(messageId);
@@ -36,7 +34,7 @@ var
 
   // Usage: <i18n message-id="message_id" />
   // Notes: Supports HTML
-  ajsd.directive('i18n', function() {
+  ajs.directive('i18n', function() {
     return {
       restrict: 'E',
       link: function(scope, element, attrs) {
