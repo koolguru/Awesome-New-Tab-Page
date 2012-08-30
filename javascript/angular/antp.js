@@ -66,11 +66,8 @@ var
       $scope.custom_shortcuts = {};
 
       angular.forEach(tiles, function(tile, id) {
-        if ( tile.isApp === true ) {
+        if ( tile.isApp === true )
           tile.type = "app";
-          tiles[id].type = "app";
-          store.set("widgets", tiles);
-        }
 
         tile.ext = tile.id;
         tile.id = id;
