@@ -254,16 +254,11 @@
         extensions[i].id,
         "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-poke"
       );
-      chrome.extension.sendRequest(
-        extensions[i].id,
-        "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-poke"
-      );
     }
   };
 
   // Listens for responses
   chrome.extension.onMessageExternal.addListener( onMessageExternal );
-  chrome.extension.onRequestExternal.addListener( onMessageExternal );
   function onMessageExternal(request, sender, sendResponse) {
     console.log(request, sender);
     if(request.head && request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {
