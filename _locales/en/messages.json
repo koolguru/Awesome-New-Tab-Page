@@ -5,6 +5,9 @@
   "ui_button_widgets": {
     "message": "Widgets"
   },
+  "ui_button_widget_browser": {
+    "message": "Widget Browser"
+  },
   "ui_button_unlock": {
     "message": "Unlock"
   },
@@ -180,6 +183,9 @@
   "ui_about_rate_desc": {
     "message": "Do you like this extension? Take a minute to give a positive review on the Chrome Web Store."
   },
+  "ui_install": {
+    "message": "Install"
+  },
   "ui_uninstall": {
     "message": "Uninstall"
   },
@@ -211,7 +217,19 @@
     "message": "Get More Widgets"
   },
   "ui_faw_get_more_widgets_body": {
-    "message": "Get more widgets from the <a href='https://chrome.google.com/webstore/search/%22Awesome New Tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Chrome Web Store</a>."
+    "message": "Find more widgets."
+  },
+  "ui_faw_pick": {
+    "message": "Pick"
+  },
+  "ui_faw_pick_body": {
+    "message": "Pick widgets below that you'd like to install."
+  },
+  "ui_faw_install": {
+    "message": "Install"
+  },
+  "ui_faw_install_body": {
+    "message": "Smack the install button to add it Chrome and to the widgets window."
   },
   "ui_bmb_ob": {
     "message": "Other Bookmarks"

@@ -82,6 +82,16 @@
     $("#recently-closed-tabs-menu").toggle();
   });
 
+  $("#widget-browser-button").live("click", function() {
+    _gaq.push([ "_trackEvent", "Window", "Widget Browser" ]);
+
+    $(window).trigger("antp-widget-browser");
+
+    closeButton("#widget-browser");
+    $("#widget-browser").toggle();
+  });
+
+
 
 
   $("#logo-button,.ui-2.logo").live("click", function(){

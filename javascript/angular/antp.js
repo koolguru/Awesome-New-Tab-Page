@@ -260,6 +260,47 @@ var
 
   /* END :: Apps/Widgets Window */
 
+/* START :: Widget Browser */
+
+  function windowWidgetBrowserCtrl($scope) {
+    $scope.widgets = [];
+    $scope.loading_message = "Loading widget data... Hold on a sec.";
+
+    $scope.update = function() {
+      $.getJSON('http://cdn.antp.co/api/widgets/json/', function(widgets) {
+
+        // Star display helper
+        // var i = widgets.length; while(i--) {
+        //   var stars = widgets[i].stars;
+        //   widgets[i]._star = [];
+        //   var five = 5; while(five--) {
+        //     if (stars >= 1)
+        //       widgets[i]._star[-five+4] = "full";
+        //     else if (stars >= .5)
+        //       widgets[i]._star[-five+4] = "half";
+        //     else
+        //       widgets[i]._star[-five+4] = "none";
+        //     stars--;
+        //   }
+        // }
+
+        $scope.widgets = widgets;
+        $scope.loading_message = false;
+        $scope.$apply();
+      })
+      .error(function() {
+        $scope.loading_message = "Something went wrong. Try again in a few minutes."
+      });
+    }
+
+    $(window).bind("antp-widget-browser", function (e) {
+      if ( e.type === "antp-widget-browser" )
+        $scope.update();
+    });
+  }
+
+  /* END :: Widget Browser */
+
 /* START :: Recently Closed Tabs Menu */
 
   function RCTMCtrl($scope) {
