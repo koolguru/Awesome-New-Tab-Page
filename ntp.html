@@ -74,7 +74,7 @@
           top: {{app.css.top}}px; left: {{app.css.left}}px;
           background-size: {{app.backgroundSize}}; background-position: {{app.backgroundPosition}}">
         <div class="app-name" ng-hide="!app.name_show">{{app.name}}</div>
-        <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}"></a>
+        <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}" onleftclick="{{app.onleftclick}}"></a>
         <div class="iframe-mask">
           <div id="delete"></div>
           <div id="shortcut-edit"></div>
@@ -97,7 +97,7 @@
           top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;
           background-size: {{shortcut.backgroundSize}}; background-position: {{shortcut.backgroundPosition}}">
         <div class="app-name" ng-hide="!shortcut.name_show">{{shortcut.name}}</div>
-        <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}"></a>
+        <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}" onleftclick="{{shortcut.onleftclick}}"></a>
         <img ng-src="chrome://favicon/{{shortcut.appLaunchUrl}}" class="app-favicon" ng-hide="!shortcut.favicon_show" />
         <div class="iframe-mask">
           <div id="delete"></div>
