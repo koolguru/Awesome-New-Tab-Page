@@ -829,9 +829,6 @@ function addWidget(widget_id, tile_location) {
     else if ( widget.size[1] < TILE_MIN_WIDTH )
       widget.size[1] = TILE_MIN_WIDTH;
 
-  if ( widget.id === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg" )
-    widget.id = new_guid();
-
   if (!widget.isApp) {
     widget.path = "chrome-extension://"+obj.id+"/" + obj.path.replace(/\s+/g, '');
     widget.optionsUrl = obj.optionsUrl;
@@ -842,6 +839,8 @@ function addWidget(widget_id, tile_location) {
     if (obj.v2 && obj.v2.resize)
       widget.resize = obj.v2.resize;
     widget.v2 = obj.v2;
+    if ( widget.id === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg" )
+      widget.id = widget_id.replace("zStock_", "");
 
     // assing new id to multiplacable widgets
     var widgetIndex = widget.id;
@@ -865,7 +864,7 @@ function addWidget(widget_id, tile_location) {
         "min_height": 1,
         "max_height": 2
       }
-    widgets[new_guid()] = widget;
+    widgets[widget.id] = widget;
   }
 
   localStorageSync(true);
