@@ -648,22 +648,9 @@ function setStuff() {
         }
 
         if ( $(this).attr("app-source") === "from-drawer" ) {
-          addWidget({
-            "is_widget"   : is_widget,
-            "widget"      : $(this).attr("id"),
-            "top"         : $(closestElm).attr("land-top"),
-            "left"        : $(closestElm).attr("land-left"),
-            "src"         : src,
-            "width"       : width,
-            "height"      : height,
-            "stock"       : stock,
-            "poke"        : poke,
-            "resize"      : $(this).attr("resize"),
-            "min_width"   : parseInt($(this).attr("min_width")),
-            "max_width"   : parseInt($(this).attr("max_width")),
-            "min_height"  : parseInt($(this).attr("min_height")),
-            "max_height"  : parseInt($(this).attr("max_height")),
-            "multi_placement": multi_placement
+          addWidget($(this).attr("id"), { 
+            top: $(closestElm).attr("land-top"), 
+            left: $(closestElm).attr("land-left")
           });
         }
 
@@ -813,3 +800,109 @@ function setStuff() {
     });
 
     /* END :: Lock */
+
+
+// Add widget to localStorage then refresh
+function addWidget(widget_id, tile_location) {
+  widgets = JSON.parse(localStorage.getItem("widgets"));
+  
+  var scope = angular.element("#widgets").scope(),
+      installedWidgets = scope.widgets, 
+      installedApps = scope.apps, 
+      obj = installedWidgets[widget_id] || installedApps.filter(function (app) { return app.id === widget_id; })[0], 
+      widget = {id: obj.id, name: obj.name, where: [tile_location.top, tile_location.left], size: [obj.height, obj.width], img: obj.img, isApp: obj.isApp || false}, 
+      stock;
+
+  if ( typeof(widget.size[0]) === "undefined" )
+    widget.size[0] = 1;
+  else
+    if ( widget.size[0] > TILE_MAX_HEIGHT )
+      widget.size[0] = TILE_MAX_HEIGHT;
+    else if ( widget.size[0] < TILE_MIN_HEIGHT )
+      widget.size[0] = TILE_MIN_HEIGHT;
+
+  if ( typeof(widget.size[1]) === "undefined" )
+    widget.size[1] = 1;
+  else
+    if ( widget.size[1] > TILE_MAX_WIDTH )
+      widget.size.width = TILE_MAX_WIDTH;
+    else if ( widget.size[1] < TILE_MIN_WIDTH )
+      widget.size[1] = TILE_MIN_WIDTH;
+
+  if ( widget.id === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg" )
+    widget.id = new_guid();
+
+  if (!widget.isApp) {
+    widget.path = "chrome-extension://"+obj.id+"/" + obj.path.replace(/\s+/g, '');
+    widget.optionsUrl = obj.optionsUrl;
+    widget.poke = obj.poke;
+    widget.isApp = false;
+    widget.resize = false;
+    widget.type = "iframe";
+    if (obj.v2 && obj.v2.resize)
+      widget.resize = obj.v2.resize;
+    widget.v2 = obj.v2;
+
+    // assing new id to multiplacable widgets
+    var widgetIndex = widget.id;
+    widget.instance_id = widget.id;
+    if (obj.pokeVersion == 3)
+      if (obj.v3.multi_placement == true)
+        widget.instance_id = new_guid();
+
+    widgets[widget.instance_id] = widget;
+  }
+  else {
+    widget.appLaunchUrl = widget.url = obj.appLaunchUrl;
+    widget.type = "app";
+    widget.name_show = obj.stock ? false : true; // default false for stock tiles ONLY
+    widget.favicon_show = obj.stock ? false : true; // default false for stock tiles ONLY
+    widget.color = palette[Math.floor(Math.random() * palette.length)];
+    widget.resize = true;
+    widget.v2 = {
+        "min_width" : 1,
+        "max_width" : 2,
+        "min_height": 1,
+        "max_height": 2
+      }
+    widgets[new_guid()] = widget;
+  }
+
+  localStorageSync(true);
+}
+
+// Delete widget; no refresh
+function removeWidget(widget) {
+    widgets = JSON.parse(localStorage.getItem("widgets"));
+
+    delete widgets[widget];
+
+    localStorageSync(false);
+}
+
+// Updates widgets
+function updateWidget(obj) {
+  if ( typeof(obj.id) !== "string" ) return;
+
+  widgets = JSON.parse(localStorage.getItem("widgets"));
+  if ( !widgets[obj.id] ) return;
+
+  if ( obj.top !== undefined )
+    widgets[obj.id].where[0] = obj.top;
+  if ( obj.left !== undefined )
+    widgets[obj.id].where[1] = obj.left;
+
+
+  if ( obj.height !== undefined ) {
+    if ( $.inArray( parseInt(obj.height), [1, 2, 3] ) !== -1 ) {
+      widgets[obj.id].size[0] = parseInt(obj.height);
+    }
+  }
+  if (  obj.width !== undefined ) {
+    if ( $.inArray( parseInt(obj.width ), [1, 2, 3] ) !== -1 ) {
+      widgets[obj.id].size[1] = parseInt(obj.width );
+    }
+  }
+
+  localStorageSync();
+}

@@ -228,7 +228,9 @@
     }
 
 
+    var ext = extensions.filter(function(ext) { return ext.id === widget.id; });
     widget.path = _widget.request.body.path;
+    widget.optionsUrl = ext.optionsUrl;
 
     return widget;
   }

@@ -448,8 +448,8 @@
 
         <!-- Start Widgets -->
 
-        <div ng-repeat="widget in widgets"
-          id="{{widget.id}}"
+        <div ng-repeat="(key, widget) in widgets"
+          id="{{key}}"
           class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
           tile-width="{{widget.width}}"
           tile-height="{{widget.height}}"
@@ -692,7 +692,6 @@
       <script type="text/javascript" src="/javascript/center.js"></script>
       <script type="text/javascript" src="/colorpicker/js/colorpicker.js"></script>
 
-      <script type="text/javascript" src="/javascript/tile-maintenance.js?nocache=12"></script>
       <script type="text/javascript" src="/javascript/ui.js?nocache=12" async="async"></script>
       <script type="text/javascript" src="/javascript/base64.js?nocache=12" async="async"></script>
 
