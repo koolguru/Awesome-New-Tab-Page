@@ -52,9 +52,10 @@
   var options_init = true;
   $("#config-button, .ui-2.config").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "Config" ]);
-
     closeButton(".ui-2#config");
     $(".ui-2#config").toggle();
+    requiredColorPicker();
+    required('/javascript/import-export.js?nocache=12');
   });
 
   $("#app-drawer-button").live("click", function(){
@@ -190,19 +191,6 @@
 
   /* END :: Top Left Buttons */
 
-/* START :: Tooltips */
-
-  $(document).ready(function($) {
-    setTimeout(function() {
-      $('div[title]').qtip({
-        style: {
-          classes: 'ui-tooltip-light ui-tooltip-shadow ui-tooltip-bootstrap'
-        }
-      });
-    }, 1000);
-  });
-
-  /* END :: Tooltips */
 
 /* START :: Configure */
 
@@ -223,17 +211,21 @@
     if(localStorage.getItem("showbmb") === "yes") {
       $("#toggleBmb").attr('checked', 'checked');
       bookmark_bar_rendered = true;
-      chrome.bookmarks.getTree(getBookmarks);
-      $("#bookmarksBar").css("display", "block");
+      required('bookmarkbar', function() {
+        chrome.bookmarks.getTree(getBookmarks);
+        $("#bookmarksBar").show();
+      });
     } else {
-      $("#bookmarksBar").css("display", "none");
+      $("#bookmarksBar").hide();
     }
 
   $("#toggleBmb").live("click", function(){
     if ($(this).is(':checked')) {
       if ( bookmark_bar_rendered === false ) {
         bookmark_bar_rendered = true;
-        chrome.bookmarks.getTree(getBookmarks);
+        required('bookmarkbar', function() {
+          chrome.bookmarks.getTree(getBookmarks);
+        });
       }
 
       $("#bookmarksBar").show();
@@ -256,22 +248,6 @@
     $("#amazon-locale-selection").val(localStorage.getItem("amazon-locale") || "amazon.com");
     $("#amazon-locale-selection").change(function() {
       localStorage.setItem("amazon-locale", $(this).val());
-    });
-
-    $("#colorselector-bg").ColorPicker({
-      color: '#' + ( localStorage.getItem("color-bg") || "221f20") ,
-      onShow: function (colpkr) {
-        $(colpkr).fadeIn(500);
-        return false;
-      },
-      onHide: function (colpkr) {
-        $(colpkr).fadeOut(500);
-        return false;
-      },
-      onChange: function (hsb, hex, rgb) {
-        $(".bg-color").css('background-color', '#' + hex);
-        localStorage.setItem("color-bg", hex);
-      }
     });
   });
 
@@ -309,3 +285,22 @@
 
   /* END :: Configure */
 
+
+function colorPickerLoaded() {
+  // background color picker
+  $("#colorselector-bg").ColorPicker({
+    color: '#' + ( localStorage.getItem("color-bg") || "221f20") ,
+    onShow: function (colpkr) {
+      $(colpkr).fadeIn(500);
+      return false;
+    },
+    onHide: function (colpkr) {
+      $(colpkr).fadeOut(500);
+      return false;
+    },
+    onChange: function (hsb, hex, rgb) {
+      $(".bg-color").css('background-color', '#' + hex);
+      localStorage.setItem("color-bg", hex);
+    }
+  });
+}

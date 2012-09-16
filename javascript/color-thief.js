@@ -25,6 +25,7 @@
 	It also simplifies some of the canvas context manipulation
 	with a set of helper functions.
 */
+
 var CanvasImage = function(image){
 	// If jquery object is passed in, get html element
 	this.imgEl = (image.jquery)? image[0]: image;

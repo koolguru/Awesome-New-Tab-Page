@@ -802,6 +802,36 @@ function setStuff() {
     /* END :: Lock */
 
 
+  /* Start :: Tile-Editor UI Interaction */
+  $(document).on("click", "#delete", function(){
+    var self = this;
+    required('/javascript/tile-editor.js?nocache=12', function() {
+      removeFromTile(self);
+    });
+  });
+
+  $(document).on("click", ".unlocked .empty.add-shortcut", function() {
+    var self = this;
+    required('/javascript/tile-editor.js?nocache=12', function() {
+      createShortcut(self);
+    });
+  });
+
+  $(document).on("click", "#shortcut-edit",function(e){
+    var self = this;
+    required('/javascript/tile-editor.js?nocache=12', function() {
+      editShortcut(e, self);
+    });
+  });
+
+  // Stop edit or delete buttons from interacting with the shortcut/app
+  $(document).on("mousedown mouseup move", "#delete,#shortcut-edit,#widget-config", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  /* End :: Tile-Editor UI Interaction */
+
+
 // Add widget to localStorage then refresh
 function addWidget(widget_id, tile_location) {
   widgets = JSON.parse(localStorage.getItem("widgets"));

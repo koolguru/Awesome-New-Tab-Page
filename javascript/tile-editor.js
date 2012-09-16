@@ -17,8 +17,9 @@
 ***/
 
 
-$(document).on("click", "#delete", function(){
-  var to_delete = $(this).parent().parent();
+
+function removeFromTile(tile) {
+  var to_delete = $(tile).parent().parent();
   if(to_delete) {
     var id = $(to_delete).attr("id");
     if ( widgets[id]
@@ -41,41 +42,35 @@ $(document).on("click", "#delete", function(){
 
     $(to_delete).remove();
   }
-});
+}
 
 // Create shortcut on click
-$(document).on("click", ".unlocked .empty.add-shortcut", function() {
+function createShortcut(tile) {
   var new_shortcut_id = new_guid();
 
   addShortcut(
     new_shortcut_id,
-    $(this).attr("land-top"),
-    $(this).attr("land-left")
+    $(tile).attr("land-top"),
+    $(tile).attr("land-left")
   );
 
   $("#" + new_shortcut_id).css({
-    "left": $(this).position().left,
-    "top": $(this).position().top,
+    "left": $(tile).position().left,
+    "top": $(tile).position().top,
     "width": "200",
     "height": "200",
     "zIndex": "1"
   }).find(".iframe-mask").find("#shortcut-edit").trigger("click");
 
-  $(this).removeClass("add-shortcut").removeClass("empty");
-});
-
-// Stop edit or delete buttons from interacting with the shortcut/app
-$(document).on("mousedown mouseup move", "#delete,#shortcut-edit,#widget-config", function(e) {
-  e.stopPropagation();
-  e.preventDefault();
-});
+  $(tile).removeClass("add-shortcut").removeClass("empty");
+}
 
 // Edit shortcut or app
-$(document).on("click", "#shortcut-edit",function(e){
+function editShortcut(e, tile) {
   $("body > .ui-2").hide();
 
-  var shortcut_parent = $(this).parent().parent()[0];
-  if(!shortcut_parent) { console.warn("!shortcut_parent", this, shortcut_parent); return; }
+  var shortcut_parent = $(tile).parent().parent()[0];
+  if(!shortcut_parent) { console.warn("!shortcut_parent", tile, shortcut_parent); return; }
 
   widgets = JSON.parse(localStorage.getItem("widgets"));
 
@@ -120,26 +115,30 @@ $(document).on("click", "#shortcut-edit",function(e){
   $("#swatches").html("").hide();
   if ( is_app === true && stock_app === false ) {
     var image = widgets[id].img;
-    var medianPalette = createPalette(
-      $("<img />").attr({
-        "src": image,
-        "id" : "temporary-element-to-delete"
-      }).css({
-        "display": "none"
-      }).appendTo("body")
-    , 5);
-    $.each(medianPalette, function(index, value) {
-      var swatchEl = $('<div>')
-      .css("background-color","rgba(" +value[0]+ "," +value[1]+  "," +value[2]+ ", 1)")
-      .data({
-        "r": value[0],
-        "g": value[1],
-        "b": value[2]
-      }).addClass("swatch");
-      $("#swatches").append(swatchEl).show();
-    });
+    required("quantize", function() {
+      required("color-thief", function() {
+        var medianPalette = createPalette(
+          $("<img />").attr({
+            "src": image,
+            "id" : "temporary-element-to-delete"
+          }).css({
+            "display": "none"
+          }).appendTo("body")
+        , 5);
+        $.each(medianPalette, function(index, value) {
+          var swatchEl = $('<div>')
+          .css("background-color","rgba(" +value[0]+ "," +value[1]+  "," +value[2]+ ", 1)")
+          .data({
+            "r": value[0],
+            "g": value[1],
+            "b": value[2]
+          }).addClass("swatch");
+          $("#swatches").append(swatchEl).show();
+        });
 
-    $("#temporary-element-to-delete").remove();
+        $("#temporary-element-to-delete").remove();
+      });
+    });
   }
 
    $(document).on("click", ".swatch", function () {
@@ -217,33 +216,34 @@ $(document).on("click", "#shortcut-edit",function(e){
 
   $(".ui-2#editor #shortcut_url").val( widgets[id].url || widgets[id].appLaunchUrl );
 
-  var rgb = [];
-  rgb = (widgets[$(".ui-2#editor").attr("active-edit-id")].color).match(/(rgba?)|(\d+(\.\d+)?%?)|(\.\d+)/g);
+  requiredColorPicker(function() {
+    var rgb = [];
+    rgb = (widgets[$(".ui-2#editor").attr("active-edit-id")].color).match(/(rgba?)|(\d+(\.\d+)?%?)|(\.\d+)/g);
 
-  $(".ui-2#editor #shortcut_colorpicker").ColorPicker({
-    color: ( ({ r: rgb[1], g: rgb[2], b: rgb[3] }) || "#309492") ,
-    onShow: function (colpkr) {
-      widgets  = JSON.parse(localStorage.getItem("widgets"));
-      $(colpkr).fadeIn(500);
-      return false;
-    },
-    onHide: function (colpkr) {
-      $(colpkr).fadeOut(500);
-      return false;
-    },
-    onChange: function (hsb, hex, rgb) {
-      widgets  = JSON.parse(localStorage.getItem("widgets"));
-      var id = $(".ui-2#editor").attr("active-edit-id");
-      $("#"+id).css('backgroundColor', "rgba("+rgb.r+","+rgb.g+","+rgb.b+", 1)" );
-      $(".ui-2#editor .fake-tile#preview-tile").css('backgroundColor', "rgba("+rgb.r+","+rgb.g+","+rgb.b+", 1)" );
-      widgets[id].color = "rgba("+rgb.r+","+rgb.g+","+rgb.b+",  1)";
-      localStorageSync(false);
-      updateShortcut();
-    }
+    $(".ui-2#editor #shortcut_colorpicker").ColorPicker({
+      color: ( ({ r: rgb[1], g: rgb[2], b: rgb[3] }) || "#309492") ,
+      onShow: function (colpkr) {
+        widgets  = JSON.parse(localStorage.getItem("widgets"));
+        $(colpkr).fadeIn(500);
+        return false;
+      },
+      onHide: function (colpkr) {
+        $(colpkr).fadeOut(500);
+        return false;
+      },
+      onChange: function (hsb, hex, rgb) {
+        widgets  = JSON.parse(localStorage.getItem("widgets"));
+        var id = $(".ui-2#editor").attr("active-edit-id");
+        $("#"+id).css('backgroundColor', "rgba("+rgb.r+","+rgb.g+","+rgb.b+", 1)" );
+        $(".ui-2#editor .fake-tile#preview-tile").css('backgroundColor', "rgba("+rgb.r+","+rgb.g+","+rgb.b+", 1)" );
+        widgets[id].color = "rgba("+rgb.r+","+rgb.g+","+rgb.b+",  1)";
+        localStorageSync(false);
+        updateShortcut();
+      }
+    });
+    $(".ui-2#editor #shortcut_colorpicker").ColorPickerSetColor( ({ r: rgb[1], g: rgb[2], b: rgb[3] }) );
   });
-
-  $(".ui-2#editor #shortcut_colorpicker").ColorPickerSetColor( ({ r: rgb[1], g: rgb[2], b: rgb[3] }) );
-});
+}
 
 // Adds shortcut
 function addShortcut(widget, top, left) {
@@ -565,7 +565,7 @@ IconDragging = {
   init: function(){
     // to start dragging on mousedown (start dragging only if clicked on preview tile)
     $(document).mousedown(function(event) {
-      if (IconResizing.id && event.button == 0 && widgets[IconResizing.id].type == "shortcut") {
+      if (IconResizing.id && event.button == 0 && widgets[IconResizing.id] && widgets[IconResizing.id].type == "shortcut") {
         var previewTile = $(event.target).parents("#preview-tile");
         if (previewTile.length > 0) // if user clicked within preview tile then start dragging
         {

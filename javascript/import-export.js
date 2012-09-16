@@ -1,3 +1,4 @@
+required("/javascript/base64.js?nocache=12");
 
 // hide import/export section when config window is opened
 $("#config-button, .ui-2.config").live("click", function(){
@@ -12,7 +13,6 @@ function clearImportExportForm() {
 function hideImportExportSection() {
   $("#config-contents>div:not(#import-export-contents)").show();
   $("#import-export-contents").hide();
-  clearImportExportForm();
 }
 
 // select export-textarea's text on focus
@@ -25,6 +25,7 @@ $("#export-textarea").bind("focus mousedown mouseup", function(e) {
 $("#import-export-btn").bind("click", function() {
   $("#config-contents>div:not(#import-export-contents)").slideUp(700);
   $("#import-export-contents").slideDown(700);
+  clearImportExportForm();
 });
 
 // hide import/export section when hide button clicked
