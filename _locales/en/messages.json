@@ -5,6 +5,9 @@
   "ui_button_widgets": {
     "message": "Widgets"
   },
+  "ui_button_widget_browser": {
+    "message": "Widget Browser"
+  },
   "ui_button_unlock": {
     "message": "Unlock"
   },
@@ -22,6 +25,9 @@
   },
   "ui_config": {
     "message": "Configure"
+  },
+  "ui_button_help": {
+    "message": "Help & Feedback"
   },
   "ui_c_learnmore": {
     "message": "Learn more"
@@ -46,7 +52,7 @@
   },
   "ui_te_newtab": {
     "message": "Open in New Tab on left click"
-  }, 
+  },
   "ui_te_url_desc": {
     "message": "Enter the URL you'd like to link to, such as http://www.google.com/"
   },
@@ -177,11 +183,11 @@
   "ui_about_rate_desc": {
     "message": "Do you like this extension? Take a minute to give a positive review on the Chrome Web Store."
   },
-  "ui_button_download": {
-    "message": "Download Widgets"
+  "ui_install": {
+    "message": "Install"
   },
-  "ui_button_downloadapps": {
-    "message": "Download Apps"
+  "ui_uninstall": {
+    "message": "Uninstall"
   },
   "ui_confirm_uninstall": {
     "message": "Are you sure you want to uninstall $app$?",
@@ -211,7 +217,19 @@
     "message": "Get More Widgets"
   },
   "ui_faw_get_more_widgets_body": {
-    "message": "Get more widgets from the <a href='https://chrome.google.com/webstore/search/%22Awesome New Tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Chrome Web Store</a>."
+    "message": "Find more widgets."
+  },
+  "ui_faw_pick": {
+    "message": "Pick"
+  },
+  "ui_faw_pick_body": {
+    "message": "Pick widgets below that you'd like to install."
+  },
+  "ui_faw_install": {
+    "message": "Install"
+  },
+  "ui_faw_install_body": {
+    "message": "Smack the install button to add it Chrome and to the widgets window."
   },
   "ui_bmb_ob": {
     "message": "Other Bookmarks"
@@ -371,11 +389,5 @@
   },
   "ui_import_export_btn_restore": {
     "message": "Restore"
-  }, 
-  "localStorage_updated_msg_header": {
-    "message": "Database Updated"
-  },
-  "localStorage_updated_msg": {
-    "message": "ANTP database just updated."
   }
 }

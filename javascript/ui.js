@@ -26,11 +26,11 @@
       $(".ui-2.container").center();
     });
 
-    (function() {
+    setTimeout(function(){
       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
       po.src = 'https://apis.google.com/js/plusone.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
+    }, 2000);
   });
 
   $(".close,.ui-2.x").live("click", closeButton);
@@ -52,10 +52,48 @@
   var options_init = true;
   $("#config-button, .ui-2.config").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "Config" ]);
-
     closeButton(".ui-2#config");
     $(".ui-2#config").toggle();
+    requiredColorPicker();
+    required('/javascript/import-export.js?nocache=12');
   });
+
+  $("#app-drawer-button").live("click", function(){
+    _gaq.push([ '_trackEvent', 'Window', "Apps" ]);
+
+    closeButton(".ui-2#apps");
+    $(".ui-2#apps").toggle();
+  });
+
+  $("#widget-drawer-button").live("click", function(){
+    _gaq.push([ '_trackEvent', 'Window', "Widgets" ]);
+
+    closeButton(".ui-2#widgets");
+    $(".ui-2#widgets").toggle();
+  });
+
+  $("#recently-closed-tabs-menu").live("mouseleave", function() {
+    $(this).css("display", "none");
+  });
+
+  $("#recently-closed-tabs").live("click", function() {
+    _gaq.push([ "_trackEvent", "Window", "Recently Closed Tabs" ]);
+
+    closeButton("#recently-closed-tabs-menu");
+    $("#recently-closed-tabs-menu").toggle();
+  });
+
+  $("#widget-browser-button").live("click", function() {
+    _gaq.push([ "_trackEvent", "Window", "Widget Browser" ]);
+
+    $(window).trigger("antp-widget-browser");
+
+    closeButton("#widget-browser");
+    $("#widget-browser").toggle();
+  });
+
+
+
 
   $("#logo-button,.ui-2.logo").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "About" ]);
@@ -85,6 +123,20 @@
     }
   });
 
+  $(".ui-2 .drawer-app-uninstall").live("click", function(e){
+    var to_delete = null;
+    var to_delete_name = null;
+    to_delete = $(this).parent();
+    to_delete_name = $(to_delete).find(".drawer-app-name").html();
+
+    var r=confirm("Are you sure you want to uninstall " + to_delete_name + "?");
+    if (r==true) {
+      chrome.management.uninstall($(to_delete).attr("id"), reload() );
+    }
+
+    return false;
+  });
+
   /* END :: Windows */
 
 /* START :: Top Left Buttons */
@@ -92,14 +144,14 @@
   function moveLeftButtons() {
     if ( localStorage.getItem("hideLeftButtons") === "yes" &&
       localStorage.getItem("lock") !== "false" ) {
-      $(".side-button").css("left", "-50px");
+      $("#top-buttons > div").css("left", "-50px");
       $("#widget-holder,#grid-holder").css("left", "0px");
     }
     if ( localStorage.getItem("hideLeftButtons") === "yes") {
       $("#hideLeftButtons").attr('checked', 'checked');
     }
     if ( localStorage.getItem("hideLeftButtons") !== "yes" ) {
-      $(".side-button").css("left", "0px");
+      $("#top-buttons > div").css("left", "0px");
       $("#widget-holder,#grid-holder").css("left", "27px");
     }
   }
@@ -122,7 +174,7 @@
     mouseenter: function() {
       if ( localStorage.getItem("hideLeftButtons") === "yes" ) {
 
-        $(".side-button").css("left", "0px");
+        $("#top-buttons > div").css("left", "0px");
         $("#widget-holder,#grid-holder").css("left", "27px");
       }
 
@@ -131,7 +183,7 @@
       if ( localStorage.getItem("hideLeftButtons") === "yes"
         && localStorage.getItem("lock") === "true" ) {
 
-        $(".side-button").css("left", "-50px");
+        $("#top-buttons > div").css("left", "-50px");
         $("#widget-holder,#grid-holder").css("left", "0px");
       }
     }
@@ -139,172 +191,6 @@
 
   /* END :: Top Left Buttons */
 
-/* START :: Recently Closed Tabs */
-
-  $("#recently-closed-tabs-menu").live('mouseleave', function() {
-    $(this).css("display", "none");
-  });
-
-  $("#recently-closed-tabs").live('click', function() {
-    _gaq.push([ '_trackEvent', 'Window', "Recently Closed Tabs" ]);
-
-    closeButton("#recently-closed-tabs-menu");
-    $("#recently-closed-tabs-menu").toggle();
-  });
-
-  $(window).bind('storage', function (e) {
-    if ( typeof(e.originalEvent) === "object"
-      && typeof(e.originalEvent.key) === "string"
-      && e.originalEvent.key === "recently_closed" )
-        resetRecentlyClosedTabs();
-  });
-
-  function resetRecentlyClosedTabs() {
-    var
-      recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
-      rctm_html = [];
-
-    $("#recently-closed-tabs-menu").empty();
-
-    if(recently_closed !== null) {
-      $.each(recently_closed, function(id, tab) {
-
-        var rct_temp  = $("<div></div>").addClass("rctm-item");
-        $("<img></img>").appendTo(rct_temp).addClass("rctm-icon")
-          .attr({
-            "src"   : "chrome://favicon/" + tab.url,
-            "height": 16,
-            "width" : 16
-          });
-
-        $("<a></a>").appendTo(rct_temp).addClass("rctm-link")
-          .attr({
-            "id"    : id   ,
-            "title" : tab.title,
-            "href"  : tab.url
-          })
-          .html( tab.title );
-        $("<span></span>").appendTo(rct_temp)
-          .attr({
-            "data-rctm-id": id,
-            "title"       : chrome.i18n.getMessage("rctm_remove")
-          }).addClass("rctm-close");
-
-        rctm_html.push( rct_temp );
-      });
-
-      rctm_html.push(
-        $('<div class="rctm-reset-all" id="rctm_clear_all">' + chrome.i18n.getMessage("rctm_clear_all") + '</div>')
-      );
-
-      $.each(rctm_html, function(i, e) {
-        $(e).appendTo("#recently-closed-tabs-menu");
-      });
-    }
-  }
-
-  $('.rctm-close').live("click", function(e) {
-    var recently_closed = JSON.parse(localStorage.getItem("recently_closed"));
-
-    recently_closed.splice( $(e.target).attr("data-rctm-id") , 1);
-
-    localStorage.setItem("recently_closed", JSON.stringify(recently_closed));
-
-    resetRecentlyClosedTabs();
-  });
-
-  $('#rctm_clear_all').live("click", function(e) {
-    if (confirm(chrome.i18n.getMessage("rctm_clear_all_confirm")))
-    {
-      localStorage.removeItem("recently_closed");
-    }
-    resetRecentlyClosedTabs();
-  });
-
-  $(document).ready(function($) {
-    setTimeout(resetRecentlyClosedTabs, 500);
-  });
-
-  /* END :: Recently Closed Tabs */
-
-/* START :: Tooltips */
-
-  $(document).ready(function($) {
-    var qtipShared = {
-      show: 'mouseover',
-      hide: { delay: 0 },
-      style: {
-        name: 'light',
-        tip: 'topLeft'
-      }
-    };
-
-    var qtipUI2 = {
-      show: 'mouseover',
-      hide: { delay: 0 },
-      style: {
-        name: 'light',
-        tip: 'topMiddle'
-      },
-      position: {
-        corner: {
-           target: 'bottomMiddle',
-           tooltip: 'topMiddle'
-        },
-        adjust: {
-          screen: true
-        }
-      }
-    };
-
-    $(".ui-2.widgets-refresh").qtip(
-      $.extend({}, qtipUI2, { content: "Widgets not showing up? Refresh manually." })
-    );
-    $(".ui-2.x").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_button_close") })
-    );
-    $(".ui-2.help").qtip(
-      $.extend({}, qtipUI2, { content: "Help" })
-    );
-
-    $(".ui-2.config,#config-button").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_config") })
-    );
-
-    $(".ui-2#apps .download").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_button_downloadapps") })
-    );
-
-    $(".ui-2#widgets .download").qtip(
-      $.extend({}, qtipUI2, { content: chrome.i18n.getMessage("ui_button_download") })
-    );
-
-    $("#logo-button").qtip(
-      $.extend({}, qtipShared, { content: "About" })
-    );
-    $("#app-drawer-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_apps") })
-    );
-    $("#widget-drawer-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_widgets") })
-    );
-    $("#unlock-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_unlock") })
-    );
-    $("#lock-button").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_lock") })
-    );
-    $("#recently-closed-tabs").qtip(
-      $.extend({}, qtipShared, { content: chrome.i18n.getMessage("ui_button_rct") })
-    );
-
-    $("#tmp-contest").qtip(
-      $.extend({}, qtipShared, { content: "Giveaway of Awesomeness" })
-    );
-
-  });
-
-  /* END :: Tooltips */
 
 /* START :: Configure */
 
@@ -325,11 +211,32 @@
     if(localStorage.getItem("showbmb") === "yes") {
       $("#toggleBmb").attr('checked', 'checked');
       bookmark_bar_rendered = true;
-      chrome.bookmarks.getTree(getBookmarks);
-      $("#bookmarksBar").css("display", "block");
+      required('bookmarkbar', function() {
+        chrome.bookmarks.getTree(getBookmarks);
+        $("#bookmarksBar").show();
+      });
     } else {
-      $("#bookmarksBar").css("display", "none");
+      $("#bookmarksBar").hide();
     }
+
+  $("#toggleBmb").live("click", function(){
+    if ($(this).is(':checked')) {
+      if ( bookmark_bar_rendered === false ) {
+        bookmark_bar_rendered = true;
+        required('bookmarkbar', function() {
+          chrome.bookmarks.getTree(getBookmarks);
+        });
+      }
+
+      $("#bookmarksBar").show();
+      localStorage.setItem("showbmb", "yes");
+      moveGrid({ "animate_top": true });
+    } else {
+      $("#bookmarksBar").hide();
+      localStorage.setItem("showbmb", "no");
+      moveGrid({ "animate_top": true });
+    }
+  });
 
     if(localStorage.getItem("bg-img-css") && localStorage.getItem("bg-img-css") !== "") {
       $("body").css("background", localStorage.getItem("bg-img-css") );
@@ -342,42 +249,10 @@
     $("#amazon-locale-selection").change(function() {
       localStorage.setItem("amazon-locale", $(this).val());
     });
-
-    $("#colorselector-bg").ColorPicker({
-      color: '#' + ( localStorage.getItem("color-bg") || "221f20") ,
-      onShow: function (colpkr) {
-        $(colpkr).fadeIn(500);
-        return false;
-      },
-      onHide: function (colpkr) {
-        $(colpkr).fadeOut(500);
-        return false;
-      },
-      onChange: function (hsb, hex, rgb) {
-        $(".bg-color").css('background-color', '#' + hex);
-        localStorage.setItem("color-bg", hex);
-      }
-    });
   });
 
   $(".bg-color").css("background-color", "#" + (localStorage.getItem("color-bg") || "221f20"));
 
-  $("#toggleBmb").live("click", function(){
-    if ($(this).is(':checked')) {
-      if ( bookmark_bar_rendered === false ) {
-        bookmark_bar_rendered = true;
-        chrome.bookmarks.getTree(getBookmarks);
-      }
-
-      $("#bookmarksBar").show();
-      localStorage.setItem("showbmb", "yes");
-      moveGrid({ "animate_top": true });
-    } else {
-      $("#bookmarksBar").hide();
-      localStorage.setItem("showbmb", "no");
-      moveGrid({ "animate_top": true });
-    }
-  });
 
   $("#bg-img-css").live("keyup change", function() {
     $("body").css("background", "" );
@@ -391,5 +266,41 @@
     localStorage.setItem("bg-img-css", $(this).val() );
   });
 
+  // Clears localStorage
+  $("#reset-button").live("click", function(){
+    var reset = confirm( chrome.i18n.getMessage("ui_confirm_reset") );
+    if ( reset === true ) {
+      deleteShortcuts();
+      deleteRoot();
+      localStorage.clear();
+      _gaq.push(['_trackEvent', 'Reset', chrome.app.getDetails().version]);
+
+      setTimeout(function() {
+        reload();
+      }, 250);
+    } else {
+      $.jGrowl("Whew! Crisis aborted!", { header: "Reset Cancelled" });
+    }
+  });
+
   /* END :: Configure */
 
+
+function colorPickerLoaded() {
+  // background color picker
+  $("#colorselector-bg").ColorPicker({
+    color: '#' + ( localStorage.getItem("color-bg") || "221f20") ,
+    onShow: function (colpkr) {
+      $(colpkr).fadeIn(500);
+      return false;
+    },
+    onHide: function (colpkr) {
+      $(colpkr).fadeOut(500);
+      return false;
+    },
+    onChange: function (hsb, hex, rgb) {
+      $(".bg-color").css('background-color', '#' + hex);
+      localStorage.setItem("color-bg", hex);
+    }
+  });
+}

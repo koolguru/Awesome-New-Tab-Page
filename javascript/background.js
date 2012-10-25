@@ -116,7 +116,8 @@
       installedWidgets = {};
 
   function reloadExtensions(data) {
-    extensions = data;
+    extensions = data,
+    installedWidgets = {};
     sayHelloToPotentialWidgets();
   }
   chrome.management.getAll(reloadExtensions);
@@ -227,7 +228,9 @@
     }
 
 
+    var ext = extensions.filter(function(ext) { return ext.id === widget.id; });
     widget.path = _widget.request.body.path;
+    widget.optionsUrl = ext.optionsUrl;
 
     return widget;
   }
@@ -253,16 +256,11 @@
         extensions[i].id,
         "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-poke"
       );
-      chrome.extension.sendRequest(
-        extensions[i].id,
-        "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-poke"
-      );
     }
   };
 
   // Listens for responses
   chrome.extension.onMessageExternal.addListener( onMessageExternal );
-  chrome.extension.onRequestExternal.addListener( onMessageExternal );
   function onMessageExternal(request, sender, sendResponse) {
     console.log(request, sender);
     if(request.head && request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {

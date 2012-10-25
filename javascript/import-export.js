@@ -1,3 +1,4 @@
+required("/javascript/base64.js?nocache=12");
 
 // hide import/export section when config window is opened
 $("#config-button, .ui-2.config").live("click", function(){
@@ -12,7 +13,6 @@ function clearImportExportForm() {
 function hideImportExportSection() {
   $("#config-contents>div:not(#import-export-contents)").show();
   $("#import-export-contents").hide();
-  clearImportExportForm();
 }
 
 // select export-textarea's text on focus
@@ -25,6 +25,7 @@ $("#export-textarea").bind("focus mousedown mouseup", function(e) {
 $("#import-export-btn").bind("click", function() {
   $("#config-contents>div:not(#import-export-contents)").slideUp(700);
   $("#import-export-contents").slideDown(700);
+  clearImportExportForm();
 });
 
 // hide import/export section when hide button clicked
@@ -41,6 +42,7 @@ $("#import-btn").bind("click", function() {
   $importTextarea.show();
   $importTextarea.focus();
   $("#run-import-btn").show();
+  _gaq.push([ "_trackEvent", "Window", "Import/Export" ]);
 });
 
 // upon click on restore button
@@ -58,7 +60,7 @@ function restore() {
 var restoreString = localStorage.backupBeforeImport;
   if (restoreString) {
     if (importLocalStorage(restoreString)) {
-      localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
+      localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"),
         message: chrome.i18n.getMessage("ui_import_export_restore_complete_msg")});
       window.location.reload();
     }
@@ -98,7 +100,7 @@ function buildExportString() {
   var dateVal = dateObj.getDate();
   if (dateVal<10) {dateVal='0'+dateVal;}
   if (monthVal<10) {monthVal='0'+monthVal;}
-  
+
   var exportString = '[ANTP_EXPORT|' + fullYearVal + '-' + monthVal + '-' + dateVal + '|' + chrome.app.getDetails().version + '|' + base64str + ']';
   return exportString;
 }
@@ -112,7 +114,7 @@ $("#import-export-contents #run-import-btn").bind("click", function() {
   {
     if (importLocalStorage(inputStr)) {
       // to display message on page refresh, store it in localstorage
-      localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"), 
+      localStorage.msg = JSON.stringify({title: chrome.i18n.getMessage("ui_import_export_msg_header"),
         message: chrome.i18n.getMessage("ui_import_export_complete_msg")});
       window.location.reload();
     }

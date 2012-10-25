@@ -22,19 +22,17 @@
     <title>New Tab</title>
     <link rel="canonical" href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg" />
     <link rel="publisher" href="https://plus.google.com/101062285048075360930" />
-    <link rel="shortcut icon" href="/images/favicon.png?20120409">
+    <link rel="shortcut icon" href="/images/favicon.png?20120409" />
 
-    <link rel="stylesheet" href="/css/core.bookmarkbar.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/colorpicker/css/colorpicker.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/css/jquery.jgrowl.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/css/jquery.confirm.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/css/core.bookmarkbar.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/colorpicker/css/colorpicker.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/jquery.jgrowl.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/jquery.qtip.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/jquery.confirm.css" type="text/css" media="screen" />
 
-    <link rel="stylesheet" href="/css/style.css?nocache=11" type="text/css" media="screen">
+    <link rel="stylesheet" href="/css/style.css?nocache=12" type="text/css" media="screen" />
 
-    <script type="text/javascript" src="/javascript/angular/angular.js?nocache=11"></script>
-    <script type="text/javascript" src="/javascript/angular/modules/filters.js?nocache=11"></script>
-    <script type="text/javascript" src="/javascript/angular/modules/directives.js?nocache=11"></script>
-    <script type="text/javascript" src="/javascript/angular/modules/antp.js?nocache=11"></script>
+    <meta name="google" value="notranslate" />
   </head>
 
   <body class="bg-color">
@@ -45,20 +43,100 @@
 
     <div id="grid-holder"></div>
 
-    <div id="widget-holder"></div>
+    <div id="widget-holder" ng-controller="tileCtrl">
 
-    <div id="top-buttons">
-      <div id="logo-button" class="side-button">&nbsp;</div>
-      <div id="config-button" class="side-button">&nbsp;</div>
-      <div id="app-drawer-button" class="side-button">&nbsp;</div>
-      <div id="widget-drawer-button" class="side-button">&nbsp;</div>
-      <div id="recently-closed-tabs" class="side-button">&nbsp;</div>
-      <div id="lock-button" class="side-button hidden">&nbsp;</div>
-      <div id="unlock-button" class="side-button">&nbsp;</div>
-      <div id="tmp-contest" class="side-button" style="display: none;">&nbsp;</div>
+      <!-- Widgets -->
+      <div id="{{widget.id}}" ng-repeat="widget in widgets"
+        class="widget ng-cloak"
+        tile-height="{{widget.size.0}}" tile-width="{{widget.size.1}}"
+        tile-init-top="{{widget.where.0}}" tile-init-left="{{widget.where.1}}"
+        style="height: {{widget.css.height}}px; width: {{widget.css.width}}px;
+          top: {{widget.css.top}}px; left: {{widget.css.left}}px;
+          background-size: {{widget.backgroundSize}}; background-position: {{widget.backgroundPosition}}">
+        <iframe ng-src="{{widget.path}}#{{widget.hash}}" scrolling="no" frameborder="0" align="center" height="100%" width="100%"></iframe>
+        <div class="iframe-mask" ng-switch on="widget.resize">
+          <div id="delete"></div>
+          <div id="widget-config" class="url" data-url="{{widget.optionsUrl}}#{{widget.hash}}" ng-show="widget.optionsUrl"></div>
+          <div class="resize-tile" ng-switch-when="true">
+            <div class="resize-tile-top"></div>
+            <div class="resize-tile-bottom"></div>
+            <div class="resize-tile-left"></div>
+            <div class="resize-tile-right"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installed Apps -->
+      <div id="{{app.id}}" ng-repeat="app in apps"
+      class="widget app"
+      tile-height="{{app.size.0}}" tile-width="{{app.size.1}}"
+      tile-init-top="{{app.where.0}}" tile-init-left="{{app.where.1}}"
+      style="{{app.css.bg}};
+          height: {{app.css.height}}px; width: {{app.css.width}}px;
+          top: {{app.css.top}}px; left: {{app.css.left}}px;
+          background-size: {{app.backgroundSize}}; background-position: {{app.backgroundPosition}}">
+        <div class="app-name" ng-hide="!app.name_show">{{app.name}}</div>
+        <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}" onleftclick="{{app.onleftclick}}"></a>
+        <div class="iframe-mask">
+          <div id="delete"></div>
+          <div id="shortcut-edit"></div>
+          <div class="resize-tile" style="display: none; ">
+            <div class="resize-tile-top"></div>
+            <div class="resize-tile-bottom"></div>
+            <div class="resize-tile-left"></div>
+            <div class="resize-tile-right"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Shortcuts -->
+      <div id="{{shortcut.id}}" ng-repeat="shortcut in custom_shortcuts"
+      class="widget app shortcut"
+      tile-height="{{shortcut.size.0}}" tile-width="{{shortcut.size.1}}"
+      tile-init-top="{{shortcut.where.0}}" tile-init-left="{{shortcut.where.1}}"
+      style="{{shortcut.css.bg}};
+          height: {{shortcut.css.height}}px; width: {{shortcut.css.width}}px;
+          top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;
+          background-size: {{shortcut.backgroundSize}}; background-position: {{shortcut.backgroundPosition}}">
+        <div class="app-name" ng-hide="!shortcut.name_show">{{shortcut.name}}</div>
+        <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}" onleftclick="{{shortcut.onleftclick}}"></a>
+        <img ng-src="chrome://favicon/{{shortcut.appLaunchUrl}}" class="app-favicon" ng-hide="!shortcut.favicon_show" />
+        <div class="iframe-mask">
+          <div id="delete"></div>
+          <div id="shortcut-edit"></div>
+          <div class="resize-tile" style="display: none; ">
+            <div class="resize-tile-top"></div>
+            <div class="resize-tile-bottom"></div>
+            <div class="resize-tile-left"></div>
+            <div class="resize-tile-right"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div id="recently-closed-tabs-menu"></div>
+    <div id="top-buttons">
+      <div id="logo-button" title="{{ 'ui_about' | i18n}}"></div>
+      <div id="config-button" title="{{ 'ui_config' | i18n}}"></div>
+      <div id="app-drawer-button" title="{{ 'ui_button_apps' | i18n}}"></div>
+      <div id="widget-drawer-button" title="{{ 'ui_button_widgets' | i18n}}"></div>
+      <div id="recently-closed-tabs" title="{{ 'ui_button_rct' | i18n}}"></div>
+      <div id="lock-button" title="{{ 'ui_button_lock' | i18n}}" style="display: none;"></div>
+      <div id="unlock-button" title="{{ 'ui_button_unlock' | i18n}}"></div>
+    </div>
+
+    <div id="recently-closed-tabs-menu" ng-controller="RCTMCtrl">
+      <div>{{ 'ui_button_rct' | i18n}}</div>
+
+      <div class="rctm-item" ng-repeat="rct in recently_closed">
+        <img class="rctm-icon" ng-src="chrome://favicon/{{rct.url}}">
+        <a class="rctm-link" id="{{rct}}" title="{{rct.title}}"
+          href="{{rct.url}}">{{rct.title}}</a>
+        <div ng-click="removeTab(rct)" title="{{ 'rctm_remove' | i18n }}" class="rctm-close"></div>
+      </div>
+
+      <div ng-show="recently_closed" class="rctm-reset-all" ng-click="clear()">{{ "rctm_clear_all" | i18n }}</div>
+    </div>
 
     <div id="about" class="ui-2 container">
       <div class="ui-2 header">
@@ -74,10 +152,10 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 config"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
           <div class="ui-2 vr"></div>
-          <div class="ui-2 x"></div>
+          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
         </div>
       </div>
 
@@ -172,10 +250,10 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 config"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
           <div class="ui-2 vr"></div>
-          <div class="ui-2 x"></div>
+          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
         </div>
       </div>
 
@@ -278,7 +356,7 @@
       </div>
     </div>
 
-    <div id="apps" class="ui-2 container">
+    <div id="apps" class="ui-2 container" ng-controller="windowAppsWidgetsCtrl">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>
@@ -294,10 +372,10 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 config"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
           <div class="ui-2 vr"></div>
-          <div class="ui-2 x"></div>
+          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
         </div>
       </div>
 
@@ -314,10 +392,24 @@
             <div class="faw-body"><i18n message-id="ui_faw_get_more_apps_body" /></div>
           </div>
         </div>
+
+        <!-- Start Apps -->
+
+        <div ng-repeat="app in apps"
+        id="{{app.id}}"
+        class="widget app drawer-app ui-2 ilb"
+        tile-width="1"
+        tile-height="1"
+        app-source="from-drawer"
+        stock="{{app.id}}">
+          <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
+          <div class="ui-2 drawer-app-name ilb url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}">{{app.name}}</div>
+          <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">{{ "ui_uninstall" | i18n }}</div>
+        </div>
       </div>
     </div>
 
-    <div id="widgets" class="ui-2 container">
+    <div id="widgets" class="ui-2 container" ng-controller="windowAppsWidgetsCtrl">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>
@@ -333,11 +425,10 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 widgets-refresh"></div>
-          <div class="ui-2 config"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
           <div class="ui-2 vr"></div>
-          <div class="ui-2 x"></div>
+          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
         </div>
       </div>
 
@@ -351,11 +442,102 @@
         <div class="drawer-app ui-2 ilb faw-box">
           <div class="faw-wrapper faw-icon-download">
             <div class="faw-head"><i18n message-id="ui_faw_get_more_widgets" /></div>
-            <div class="faw-body"><i18n message-id="ui_faw_get_more_widgets_body" /></div>
+            <div class="faw-body">
+              <u id="widget-browser-button"><i18n message-id="ui_faw_get_more_widgets_body" /></u> <sup>NEW!</sup>
+            </div>
           </div>
+        </div>
+
+        <!-- Start Widgets -->
+
+        <div ng-repeat="(key, widget) in widgets"
+          id="{{key}}"
+          class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
+          tile-width="{{widget.width}}"
+          tile-height="{{widget.height}}"
+          tile-widget="true"
+          tile-widget-src="{{widget.path}}"
+          tile-poke="{{widget.pokeVersion}}"
+          resize="{{widget.v2.resize}}"
+          min_height="{{widget.v2.min_height}}"
+          max_height="{{widget.v2.max_height}}"
+          min_width="{{widget.v2.min_width}}"
+          max_width="{{widget.v2.max_width}}"
+          multi_placement="{{widget.v3.multi_placement}}" >
+            <img class="ui-2 ilb" ng-src="{{widget.img}}">
+            <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
+            <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
+            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">{{ "ui_uninstall" | i18n }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="widget-browser" class="ui-2 container" ng-controller="windowWidgetBrowserCtrl">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname">
+              {{'ui_button_widget_browser' | i18n}}
+            </span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
         </div>
       </div>
 
+      <div class="ui-2 contents" id="widget-drawer">
+        <div class="drawer-app ui-2 ilb faw-box">
+          <div class="faw-wrapper faw-icon-information">
+            <div class="faw-head"><i18n message-id="ui_faw_pick" /></div>
+            <div class="faw-body"><i18n message-id="ui_faw_pick_body" /></div>
+          </div>
+        </div>
+        <div class="drawer-app ui-2 ilb faw-box">
+          <div class="faw-wrapper faw-icon-download">
+            <div class="faw-head"><i18n message-id="ui_faw_install" /></div>
+            <div class="faw-body"><i18n message-id="ui_faw_install_body" /></u></div>
+          </div>
+        </div>
+        <p ng-show="loading_message">{{loading_message}}</p>
+
+        <!-- Start Widgets in Widget Browser -->
+
+        <div ng-repeat="widget in widgets"
+          id="{{widget.id}}"
+          class="app drawer-app ui-2 ilb">
+            <img class="ui-2 ilb" ng-src="http://cdn.antp.co/dev/icons/{{widget.id}}.png">
+            <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
+            <div class="ui-2 drawer-app-wh ilb">
+              <span ng-show="widget.resizable" title="Resizable">[R]</span>
+              <span ng-show="widget.multiplacement" title="Multi-Placeable">[M]</span>
+            </div>
+            <div class="ui-2 drawer-app-install ilb" ng-hide="widget.installed">
+              <a href="https://chrome.google.com/webstore/detail/{{widget.id}}">{{ "ui_install" | i18n }}</a>
+            </div>
+        </div>
+
+        <div>
+          <p>
+            If any of the above widgets don't work or if this listing doesn't load, please make a ticket by clicking the Contact button <a href="https://ntp.uservoice.com/" target="_blank">here</a>.
+          </p>
+          <p>
+            If you are a developer and would like to add your widget to this listing, please visit <a href="http://dev.antp.co/" target="_blank">dev.antp.co</a>.
+          </p>
+          <p>
+            If you'd like to instead search the Chrome Web Store for widgets (warning: not all widgets found there may work!), click <a href="https://chrome.google.com/webstore/search/%22Awesome New Tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page" target="_blank">here</a>.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div id="editor" class="ui-2 container">
@@ -378,10 +560,10 @@
           </div>
         </div>
         <div class="ui-2 right">
-          <div class="ui-2 config"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
           <div class="ui-2 vr"></div>
-          <div class="ui-2 x"></div>
+          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
         </div>
       </div>
 
@@ -441,7 +623,7 @@
                 <img id="invisible-tile-img" style="display: none;"/> <!-- this element is to just get width and height of tile icon -->
                 <div class="app-name"></div>
                 <img class="app-favicon"></img>
-                <div class="iframe-mask"></div>
+                <div class="iframe-mask" style="display: block;"></div>
               </div>
               <div class="fake-tile" id="ft0"></div>
               <div class="fake-tile" id="ft1"></div>
@@ -495,61 +677,35 @@
       </div>
     </div>
 
-    <div id="contest" class="ui-2 container" style="display: none;">
-      <div class="ui-2 header">
-        <div class="ui-2 left">
-          <div class="ui-2 logo"></div>
-          <div class="ui-2 name">
-            Awesome New Tab Page
-            <span class="ui-2 crumb">&nbsp;</span>
-            <span class="ui-2 subname">Contest</span>
-          </div>
-          <div class="ui-2 plus-share">
-            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
-          </div>
-        </div>
-        <div class="ui-2 right">
-          <div class="ui-2 config"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
-          <div class="ui-2 vr"></div>
-          <div class="ui-2 x"></div>
-        </div>
-      </div>
-
-      <div class="ui-2 contents" style="overflow: none;">
-      </div>
-    </div>
-
     <!-- Helps keep Chrome's Developer Tools / Elements tab pretty -->
     <div id="script_holder">
       <script type="text/javascript" src="/javascript/jquery.js"></script>
 
-      <script type="text/javascript" src="/javascript/common.js?nocache=11"></script>
-      <script type="text/javascript" src="/javascript/tilesystem.js?nocache=11"></script>
+      <script type="text/javascript" src="/javascript/common.js?nocache=12"></script>
+      <script type="text/javascript" src="/javascript/tilesystem.js?nocache=12"></script>
       <script type="text/javascript" src="/javascript/hscroll.js"></script>
 
-      <script type="text/javascript" src="/javascript/jquery.qtip-1.0.0-rc3.min.js"></script>
+      <script type="text/javascript" src="/javascript/angular/angular.js?nocache=12"></script>
+      <script type="text/javascript" src="/javascript/angular/antp.js?nocache=12"></script>
+
+      <!--<script type="text/javascript" src="/javascript/jquery.qtip.min.js"></script>-->
       <script type="text/javascript" src="/javascript/jquery.jgrowl.js" async="async"></script>
-      <script type="text/javascript" src="/javascript/jquery.confirm.js" async="async"></script>
       <script type="text/javascript" src="/javascript/center.js"></script>
-      <script type="text/javascript" src="/colorpicker/js/colorpicker.js"></script>
 
-      <script type="text/javascript" src="/javascript/tile-maintenance.js?nocache=11"></script>
-      <script type="text/javascript" src="/javascript/ui.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/base64.js?nocache=11" async="async"></script>
+      <script type="text/javascript" data-main="/javascript/delayed-loader" src="/javascript/require.js"></script>
 
-      <script type="text/javascript" src="/javascript/apps-window.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/widgets-window.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/tile-editor.js?nocache=11" async="async"></script>
+      <!--<script type="text/javascript" src="/javascript/ui.js?nocache=12" async="async"></script>-->
+      <!--<script type="text/javascript" src="/javascript/base64.js?nocache=12" async="async"></script>-->
 
-      <script type="text/javascript" src="/javascript/bookmarkbar.js"></script>
-      <script type="text/javascript" src="/javascript/color-thief.js" async="async"></script>
-      <script type="text/javascript" src="/javascript/quantize.js" async="async"></script>
-      <script type="text/javascript" src="/javascript/google-analytics.js" async="async"></script>
+      <!--<script type="text/javascript" src="/javascript/tile-editor.js?nocache=12" async="async"></script>-->
 
-      <script type="text/javascript" src="/javascript/filesystem.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/import-export.js?nocache=11" async="async"></script>
-      <script type="text/javascript" src="/javascript/storage-updates.js?nocache=11"></script>
+      <!--<script type="text/javascript" src="/javascript/color-thief.js" async="async"></script>-->
+      <!--<script type="text/javascript" src="/javascript/quantize.js" async="async"></script>-->
+      <!--<script type="text/javascript" src="/javascript/google-analytics.js" async="async"></script>-->
+
+      <!--<script type="text/javascript" src="/javascript/filesystem.js?nocache=12" async="async"></script>-->
+      <!--<script type="text/javascript" src="/javascript/import-export.js?nocache=12" async="async"></script>-->
+      <!--<script type="text/javascript" src="/javascript/storage-updates.js?nocache=12" async="async"></script>-->
     </div>
   </body>
 </html>

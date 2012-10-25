@@ -11,3 +11,9 @@ $(document).ready(function($) {
     localStorage.setItem("StockNotepad", $(this).val() );
   });
 });
+
+  $(window).bind("storage", function (e) {
+    if ( e.originalEvent.key === "StockNotepad" ) {
+      $("#notepad").val( localStorage.getItem("StockNotepad") );
+    }
+  });

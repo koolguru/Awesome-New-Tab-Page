@@ -24,12 +24,30 @@
     return Array.prototype.slice.call(list || [], 0);
   };
 
+// localStorage shortcuts
+  var store = {
+    // store.set("key", "obj")
+    set: function(key, obj) {
+      return localStorage.setItem(
+        key,
+        JSON.stringify(obj)
+      );
+    },
+    // store.get("key")
+    get: function(key) {
+      return JSON.parse(
+        localStorage.getItem(key)
+      );
+    }
+  }
+
 // Variables that are relatively static
 
   var stock_widgets = {
     webstore: {
       where: [2,3],
       size: [1,1],
+      type: "app",
       isApp: true,
       enabled: true,
       name: "Chrome Web Store",
@@ -46,7 +64,7 @@
       type: "iframe",
       isApp: false,
       stock: true,
-      name: "Tutorial (Stock)",
+      name: "Tutorial",
       id: "tutorial",
       path: "widgets/tutorial/widget.tutorial.html"
     },
@@ -56,7 +74,7 @@
       type: "iframe",
       isApp: false,
       stock: true,
-      name: "Clock (Stock)",
+      name: "Clock",
       id: "clock",
       path: "widgets/clock/widget.clock.html"
     },
@@ -66,7 +84,7 @@
       type: "iframe",
       isApp: false,
       stock: true,
-      name: "Notepad (Stock)",
+      name: "Notepad",
       id: "notepad",
       path: "widgets/notepad/widget.notepad.html"
     },
@@ -76,33 +94,32 @@
       type: "iframe",
       isApp: false,
       stock: true,
-      name: "Google (Wide) (Stock)",
+      name: "Google",
       id: "google",
       path: "widgets/google/widget.google.html"
     },
-    fandango: {
+    amazoninstantvideo: {
       where: [2,1],
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
+      enabled: false,
       stock: true,
-      name: "Fandango (Stock)",
+      name: "Amazon Instant Video",
       name_show: false,
       color: "rgba(255, 51, 0,  1)",
-      img: "/widgets/fandango/widget.fandango.png",
-      simg: "/widgets/fandango/widget.fandango.png",
-      appLaunchUrl: "http://gan.doubleclick.net/gan_click?lid=41000000032569141&amp;pubid=21000000000503246",
-      id: "fandango"
+      img: "/widgets/amazoninstantvideo/widget.aiv.png",
+      simg: "/widgets/amazoninstantvideo/widget.aiv.png",
+      appLaunchUrl: "http://www.amazon.com/Instant-Video/b?ie=UTF8&tag=sntp-20&node=2858778011",
+      id: "amazoninstantvideo"
     },
     amazon: {
       where: [1,2],
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
       stock: true,
-      name: "Amazon (Stock)",
+      name: "Amazon",
       name_show: false,
       color: "rgba(168, 84, 0,  1)",
       img: "/widgets/amazon/widget.amazon.png",
@@ -115,9 +132,8 @@
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
       stock: true,
-      name: "Facebook (Stock)",
+      name: "Facebook",
       name_show: false,
       color: "rgba(19, 54, 131,  1)",
       img: "/widgets/facebook/widget.facebook.png",
@@ -130,9 +146,8 @@
       size: [1,1],
       type: "app",
       isApp: true,
-      enabled: true,
       stock: true,
-      name: "Twitter (Stock)",
+      name: "Twitter",
       name_show: false,
       color: "rgba(51, 204, 255,  1)",
       img: "/widgets/twitter/widget.twitter.png",
@@ -146,14 +161,14 @@
       type: "iframe",
       isApp: false,
       stock: true,
-      name: "Hulu / Netflix (Stock)",
+      name: "Hulu / Netflix",
       id: "tv",
       path: "widgets/tv/widget.tv.html"
     },
     tabs: {
       id: "tabs",
       isApp: false,
-      name: "Tab Manager (Stock)",
+      name: "Tab Manager",
       path: "widgets/tabs/tabs.html",
       poke: 2,
       resize: true,
@@ -190,9 +205,18 @@
   var _gaq = _gaq || [];
 
 // Check if there are stored widgets
-if(localStorage.getItem("widgets") === null) {
+if( localStorage.getItem("widgets") === null ) {
   // If not, use stock widgets
-  localStorage.setItem("widgets", JSON.stringify( stock_widgets ));
+
+  // Remove disabled widgets
+  var _stock_widgets = {};
+  for ( var w in stock_widgets ) {
+    if ( stock_widgets[w].enabled !== false ) {
+      _stock_widgets[w] = stock_widgets[w];
+    }
+  }
+
+  store.set("widgets", _stock_widgets );
 }
 
 // display messages to be displayed on page refresh
@@ -208,22 +232,11 @@ if (msg) {
 // Load widget settings
 var widgets = JSON.parse(localStorage.getItem("widgets"));
 
-// Clears localStorage
-  $("#reset-button").live("click", function(){
-    var reset = confirm( chrome.i18n.getMessage("ui_confirm_reset") );
-    if ( reset === true ) {
-      deleteShortcuts();
-      deleteRoot();
-      localStorage.clear();
-      _gaq.push(['_trackEvent', 'Reset', chrome.app.getDetails().version]);
-
-      setTimeout(function() {
-        reload();
-      }, 250);
-    } else {
-      $.jGrowl("Whew! Crisis aborted!", { header: "Reset Cancelled" });
-    }
-  });
+var extensions;
+// Get all installed extensions and apps
+chrome.management.getAll( function(data) {
+  extensions = data;
+});
 
 // Reload page
 function reload() {
@@ -235,7 +248,7 @@ function localStorageSync(refresh) {
   localStorage.setItem("widgets", JSON.stringify( widgets ));
 
   if(refresh === true) {
-    reload();
+    $(window).trigger("antp-widgets");
   }
 }
 
@@ -245,6 +258,15 @@ function new_guid() {
     return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
+// Function to merge all of the properties from one object into another
+// Object.merge(object, object)
+if (typeof Object.merge !== "function") {
+  Object.merge = function (o1, o2) {
+    for(var i in o2) { o1[i] = o2[i]; }
+    return o1;
+  };
 }
 
 function _e(_eNum) {
@@ -289,7 +311,11 @@ function _e(_eNum) {
       &&   localStorage["amazon-locale"] !== null
       &&   localStorage["amazon-locale"] !== ""
       &&   typeof(localStorage["amazon-locale"]) !== "undefined" ) {
-        url = "http://www." + localStorage["amazon-locale"] + "/?tag=sntp-20";
+        if ( url.match("Instant-Video") === null ) {
+          url = "http://www." + localStorage["amazon-locale"] + "/?tag=sntp-20";
+        } else {
+          url = "http://www.amazon.com/Instant-Video/b?ie=UTF8&tag=sntp-20&node=2858778011"
+        }
       }
 
       // Ctrl + Click = Open in new tab

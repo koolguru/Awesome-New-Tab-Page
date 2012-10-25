@@ -150,7 +150,7 @@ function takeScreenshot() {
             }
             else {
               // if user switched to some other tab, activate the tab again to take screenshot
-              chrome.tabs.update(tab.id, { active: true }, function (tab) { 
+              chrome.tabs.update(tab.id, { active: true }, function (tab) {
                 var handler = setInterval(function () {    // wait 400ms before taking screenshot for page to render completely, otherwise blank page appears
                   chrome.tabs.get(tab.id, function (tab){
                     if (tab.active)

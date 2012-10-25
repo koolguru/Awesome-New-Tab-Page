@@ -30,13 +30,13 @@ $(document).ready(function($) {
   }
 
   placeGrid();
-  placeWidgets();
+  // placeWidgets();
 });
 
 var GRID_MIN_HEIGHT     = 3,
     GRID_MIN_WIDTH      = 7,
-    GRID_MARGIN_TOP     = function() { return localStorage.getItem("showbmb") === "yes" ? 27 : 0; },
-    GRID_MARGIN_LEFT    = function() { return localStorage.getItem("hideLeftButtons") === "yes" ? 0 : 27; },
+    GRID_MARGIN_TOP     = function(){ return localStorage.getItem("showbmb") === "yes" ? 27 : 0 },
+    GRID_MARGIN_LEFT    = function(){ return localStorage.getItem("hideLeftButtons") === "yes" ? 0 : 27},
     GRID_TILE_SIZE      = 200,  // NEVER CHANGE
     GRID_TILE_PADDING   = 3,    // NEVER CHANGE
 
@@ -88,8 +88,8 @@ function placeGrid() {
   // Ensure window is filled with grid tiles
   if ( typeof(window.innerHeight) !== "undefined"
     && typeof(window.innerWidth) !== "undefined" ) {
-    var res_height = Math.floor( ( window.innerHeight - GRID_MARGIN_TOP() ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
-    var res_width  = Math.floor( ( window.innerWidth  - GRID_MARGIN_LEFT()  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
+    var res_height = Math.floor( ( window.innerHeight - GRID_MARGIN_TOP()  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
+    var res_width  = Math.floor( ( window.innerWidth  - GRID_MARGIN_LEFT() ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
 
     if(res_height > height) {
       height = res_height;
@@ -102,7 +102,7 @@ function placeGrid() {
   if ( typeof(screen.width) !== "undefined"
     && typeof(screen.height) !== "undefined" ) {
     var res_height2 = Math.floor( ( screen.height - 180 - GRID_MARGIN_TOP()  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) );
-    var res_width2  = Math.floor( ( screen.width        - GRID_MARGIN_LEFT()  ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
+    var res_width2  = Math.floor( ( screen.width        - GRID_MARGIN_LEFT() ) / ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) ) + 3;
 
     if(res_height2 > height) {
       height = res_height2;
@@ -223,7 +223,7 @@ function getCovered(tile) {
 }
 
 function setStuff() {
-  $(".widget").each(function(ind, elem){
+  $("#widget-holder > .widget").each(function(ind, elem){
     $(elem).css({
       "width" : $(elem).attr("tile-width")  * 200 + (makeZero($(elem).attr("tile-width")  - 1) * 6),
       "height": $(elem).attr("tile-height") * 200 + (makeZero($(elem).attr("tile-height") - 1) * 6),
@@ -299,6 +299,17 @@ function setStuff() {
 
       resize_element.element = $(this).closest(".widget")[0];
       var id = $(resize_element.element).attr("id");
+
+      // Ensure apps/custom shortcuts are resizable
+      if ( widgets[id].type
+      && (widgets[id].type === "shortcut" || widgets[id].type === "app") ) {
+        widgets[id].resize = true;
+        widgets[id].v2 = {};
+        widgets[id].v2.min_width  = 1;
+        widgets[id].v2.max_width  = 2;
+        widgets[id].v2.min_height = 1;
+        widgets[id].v2.max_height = 2;
+      }
 
       if ( typeof(widgets[id]) === "object"
         && typeof(widgets[id].resize) === "boolean"
@@ -637,22 +648,9 @@ function setStuff() {
         }
 
         if ( $(this).attr("app-source") === "from-drawer" ) {
-          addWidget({
-            "is_widget"   : is_widget,
-            "widget"      : $(this).attr("id"),
-            "top"         : $(closestElm).attr("land-top"),
-            "left"        : $(closestElm).attr("land-left"),
-            "src"         :  src,
-            "width"       : width,
-            "height"      : height,
-            "stock"       : stock,
-            "poke"        : poke,
-            "resize"      : $(this).attr("resize"),
-            "min_width"   : parseInt($(this).attr("min_width")),
-            "max_width"   : parseInt($(this).attr("max_width")),
-            "min_height"  : parseInt($(this).attr("min_height")),
-            "max_height"  : parseInt($(this).attr("max_height")),
-            "multi_placement": multi_placement
+          addWidget($(this).attr("id"), { 
+            top: $(closestElm).attr("land-top"), 
+            left: $(closestElm).attr("land-left")
           });
         }
 
@@ -754,9 +752,10 @@ function setStuff() {
   /* START :: Lock */
     $(document).ready(function() {
       if(localStorage.getItem("lock") === "false") {
-        $('#unlock-button').trigger('click');
+        $("#unlock-button").trigger("click");
       } else {
         $("body").addClass("locked").removeClass("unlocked");
+        $("#lock-button").hide();
       }
     });
 
@@ -767,7 +766,6 @@ function setStuff() {
         lock = false;
         $("body").addClass("unlocked").removeClass("locked");
         localStorage.setItem("lock", false );
-        $(".iframe-mask").removeClass("hidden");
         $("#lock-button").css("display", "block");
         $("#unlock-button").css("display", "none");
         $(".tile").addClass("tile-grid");
@@ -790,7 +788,6 @@ function setStuff() {
 
         $("body").addClass("locked").removeClass("unlocked");
         localStorage.setItem("lock", true );
-        $(".iframe-mask").addClass("hidden");
         $("#unlock-button").css("display", "block");
         $("#lock-button").css("display", "none");
         $(".tile").removeClass("tile-grid");
@@ -803,3 +800,138 @@ function setStuff() {
     });
 
     /* END :: Lock */
+
+
+  /* Start :: Tile-Editor UI Interaction */
+  $(document).on("click", "#delete", function(){
+    var self = this;
+    required('/javascript/tile-editor.js?nocache=12', function() {
+      removeFromTile(self);
+    });
+  });
+
+  $(document).on("click", ".unlocked .empty.add-shortcut", function() {
+    var self = this;
+    required('/javascript/tile-editor.js?nocache=12', function() {
+      createShortcut(self);
+    });
+  });
+
+  $(document).on("click", "#shortcut-edit",function(e){
+    var self = this;
+    required('/javascript/tile-editor.js?nocache=12', function() {
+      editShortcut(e, self);
+    });
+  });
+
+  // Stop edit or delete buttons from interacting with the shortcut/app
+  $(document).on("mousedown mouseup move", "#delete,#shortcut-edit,#widget-config", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  /* End :: Tile-Editor UI Interaction */
+
+
+// Add widget to localStorage then refresh
+function addWidget(widget_id, tile_location) {
+  widgets = JSON.parse(localStorage.getItem("widgets"));
+  
+  var scope = angular.element("#widgets").scope(),
+      installedWidgets = scope.widgets, 
+      installedApps = scope.apps, 
+      obj = installedWidgets[widget_id] || installedApps.filter(function (app) { return app.id === widget_id; })[0], 
+      widget = {id: obj.id, name: obj.name, where: [tile_location.top, tile_location.left], size: [obj.height, obj.width], img: obj.img, isApp: obj.isApp || false}, 
+      stock;
+
+  if ( typeof(widget.size[0]) === "undefined" )
+    widget.size[0] = 1;
+  else
+    if ( widget.size[0] > TILE_MAX_HEIGHT )
+      widget.size[0] = TILE_MAX_HEIGHT;
+    else if ( widget.size[0] < TILE_MIN_HEIGHT )
+      widget.size[0] = TILE_MIN_HEIGHT;
+
+  if ( typeof(widget.size[1]) === "undefined" )
+    widget.size[1] = 1;
+  else
+    if ( widget.size[1] > TILE_MAX_WIDTH )
+      widget.size.width = TILE_MAX_WIDTH;
+    else if ( widget.size[1] < TILE_MIN_WIDTH )
+      widget.size[1] = TILE_MIN_WIDTH;
+
+  if (!widget.isApp) {
+    widget.path = "chrome-extension://"+obj.id+"/" + obj.path.replace(/\s+/g, '');
+    widget.optionsUrl = obj.optionsUrl;
+    widget.poke = obj.poke;
+    widget.isApp = false;
+    widget.resize = false;
+    widget.type = "iframe";
+    if (obj.v2 && obj.v2.resize)
+      widget.resize = obj.v2.resize;
+    widget.v2 = obj.v2;
+    if ( widget.id === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg" )
+      widget.id = widget_id.replace("zStock_", "");
+
+    // assing new id to multiplacable widgets
+    var widgetIndex = widget.id;
+    widget.instance_id = widget.id;
+    if (obj.pokeVersion == 3)
+      if (obj.v3.multi_placement == true)
+        widget.instance_id = new_guid();
+
+    widgets[widget.instance_id] = widget;
+  }
+  else {
+    widget.appLaunchUrl = widget.url = obj.appLaunchUrl;
+    widget.type = "app";
+    widget.name_show = obj.stock ? false : true; // default false for stock tiles ONLY
+    widget.favicon_show = obj.stock ? false : true; // default false for stock tiles ONLY
+    widget.color = palette[Math.floor(Math.random() * palette.length)];
+    widget.resize = true;
+    widget.v2 = {
+        "min_width" : 1,
+        "max_width" : 2,
+        "min_height": 1,
+        "max_height": 2
+      }
+    widgets[widget.id] = widget;
+  }
+
+  localStorageSync(true);
+}
+
+// Delete widget; no refresh
+function removeWidget(widget) {
+    widgets = JSON.parse(localStorage.getItem("widgets"));
+
+    delete widgets[widget];
+
+    localStorageSync(false);
+}
+
+// Updates widgets
+function updateWidget(obj) {
+  if ( typeof(obj.id) !== "string" ) return;
+
+  widgets = JSON.parse(localStorage.getItem("widgets"));
+  if ( !widgets[obj.id] ) return;
+
+  if ( obj.top !== undefined )
+    widgets[obj.id].where[0] = obj.top;
+  if ( obj.left !== undefined )
+    widgets[obj.id].where[1] = obj.left;
+
+
+  if ( obj.height !== undefined ) {
+    if ( $.inArray( parseInt(obj.height), [1, 2, 3] ) !== -1 ) {
+      widgets[obj.id].size[0] = parseInt(obj.height);
+    }
+  }
+  if (  obj.width !== undefined ) {
+    if ( $.inArray( parseInt(obj.width ), [1, 2, 3] ) !== -1 ) {
+      widgets[obj.id].size[1] = parseInt(obj.width );
+    }
+  }
+
+  localStorageSync();
+}

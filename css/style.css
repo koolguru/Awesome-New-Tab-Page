@@ -1,15 +1,21 @@
-/*
- *
- * Awesome New Tab Page
- *   Copyright 2011 Michael Hart (http://h4r7.me/).
- *
- * Want to make it even more awesome?
- *   https://github.com/michaelhart/Awesome-New-Tab-Page/
- *
- * Licensed under GPL v3:
- *   http://www.gnu.org/licenses/gpl-3.0.txt
- *
- */
+/** Awesome New Tab Page
+  *   antp.co
+  *   Copyright 2011-2012 Michael Hart (h4r7.me)
+  * Want to make it even more awesome?
+  *   github.antp.co
+  *
+  * Licensed under GPL v3:
+  *   http://www.gnu.org/licenses/gpl-3.0.txt
+  *   Further Restrictions:
+  *     To make use of or modify the below code in any way:
+  *     - You agree to leave this copyright and license notice intact without
+  *       modification; and
+  *     - You agree to mark your modified versions as modified from the original
+  *       version; and
+  *     - You agree not to misrepresent the origin of this material or your
+  *       relationship with the authors of this project or the project itself.
+***/
+
 
 a:link,
 a:visited,
@@ -90,19 +96,11 @@ body {
   top: 0;
   left: 0;
 }
-#top-buttons {
-  position: fixed;
-  top: -2px;
-  left: -2px;
-  text-decoration: none;
-  cursor: pointer;
-  z-index: 900;
-  width: 35px;
-  height: 100%;
-}
 #widget-holder > .widget {
   margin: 3px;
   padding: 0px;
+  position: absolute;
+  z-index: 1;
 }
 .iframe-mask {
   background-color: transparent;
@@ -110,6 +108,10 @@ body {
   position: absolute;
   top: 0; right: 0;
   bottom: 0; left: 0;
+  display: none;
+}
+.unlocked #widget-holder .iframe-mask {
+  display: block !important;
 }
 #delete {
   width: 48px;
@@ -274,20 +276,25 @@ body {
   margin-top: 35px;
   z-index: 1100;
   min-width: 275px;
+  min-height: 150px;
   display: none;
-  padding-top: 5px;
   padding-bottom: 5px;
   background-color: #FDFCFA;
   box-shadow: 0px 0px 40px 2px rgba(200, 200, 200, .5);
 }
+#recently-closed-tabs-menu div:first-child {
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 2px;
+}
 .rctm-close {
-  background-image: url(/images/ui-2/rctm_x_b.png);
+  background-image: url(/images/ui-2/x.png);
   background-size: 19px;
   background-repeat: no-repeat;
   width: 19px;
   height: 19px;
   display: inline-block;
-  opacity: .25;
+  opacity: .5;
 }
 .rctm-close:hover {
   opacity: 1;
@@ -314,6 +321,10 @@ body {
 .rctm-item:hover {
   background-color: #C7C6BF;
 }
+.rctm-icon {
+  width: 16px;
+  height: 16px;
+}
 .rctm-icon,
 .rctm-link {
   display: inline-block;
@@ -335,6 +346,9 @@ body {
   cursor: pointer;
   width: 315px;
 }
+.rctm-close {
+  cursor: pointer;
+}
 #colorselector-bg {
   cursor: pointer;
 }
@@ -352,7 +366,16 @@ body {
 .colorpicker {
   z-index: 1000
 }
-.side-button {
+#top-buttons {
+  position: fixed;
+  top: -2px;
+  left: -2px;
+  text-decoration: none;
+  z-index: 900;
+  width: 35px;
+  height: 100%;
+}
+#top-buttons > div {
   margin-left: 5px;
   width: 32px;
   height: 32px;
@@ -361,6 +384,7 @@ body {
   margin-bottom: 2px;
   display: block;
   opacity: .75;
+  cursor: pointer;
 
   position: relative;
 }
@@ -368,7 +392,7 @@ body {
   margin-top: 0px;
   margin-bottom: 4px;
 }
-.side-button:hover {
+#top-buttons > div:hover {
   opacity: 1;
 }
 #logo-button {
@@ -411,6 +435,8 @@ body {
   background-position: 0 -160px;
   background-repeat: no-repeat;
   border-color: transparent;
+
+  display: none;
 }
 #recently-closed-tabs {
   background-color: transparent;
@@ -424,7 +450,7 @@ body {
   opacity: 1 !important;
 }
 .hidden {
-  display: none
+  display: none;
 }
 .scroll-helper {
   z-index: -5;
@@ -437,11 +463,6 @@ body {
 .center {
   text-align: center;
 }
-
-.qtip.qtip-dark {
-  width: auto !important;
-}
-
 
 #import-export-contents {
   display: none;
@@ -567,17 +588,6 @@ body {
   right: 70px;
   top: 36px;
 }
-.ui-2.widgets-refresh {
-  background: url("/images/ui-2/refresh.png");
-  width: 24px;
-  height: 24px;
-
-  cursor: pointer;
-
-  position: absolute;
-  right: 100px;
-  top: 36px;
-}
 .ui-2.vr {
   width: 1px;
   height: 72px;
@@ -663,7 +673,8 @@ body {
 
 /* UI-2 Apps & Widgets */
 .ui-2#apps,
-.ui-2#widgets {
+.ui-2#widgets,
+.ui-2#widget-browser {
   display: none;
 }
 body > .ui-2.drawer-app,
@@ -678,16 +689,19 @@ body > .widget-drawer-app img {
   height: 128px;
 }
 .ui-2#apps .ilb,
-.ui-2#widgets .ilb {
+.ui-2#widgets .ilb,
+.ui-2#widget-browser .ilb {
   margin: 5px 10px 5px 0px;
 }
 .ui-2#apps > .contents,
-.ui-2#widgets > .contents {
-  margin-left: 55px;
-  margin-right: 55px;
+.ui-2#widgets > .contents,
+.ui-2#widget-browser > .contents {
+  padding-left: 55px;
+  padding-right: 55px;
 }
 .ui-2#apps .drawer-app,
-.ui-2#widgets .drawer-app {
+.ui-2#widgets .drawer-app,
+.ui-2#widget-browser .drawer-app {
   background-color: #E2E1DF;
   width: 215px;
   height: 75px;
@@ -701,17 +715,13 @@ body > .widget-drawer-app img {
     -o-transition: background-color 250ms linear;
 }
 .ui-2#apps .drawer-app:hover,
-.ui-2#widgets .drawer-app:hover {
+.ui-2#widgets .drawer-app:hover,
+.ui-2#widget-browser .drawer-app:hover {
   background-color: #C7C6BF;
 }
 .ui-2#apps .drawer-app img,
-.ui-2#widgets .drawer-app img {
-  height: 65px;
-  width: 65px;
-  margin: 5px;
-}
-.ui-2#apps .drawer-app img,
-.ui-2#widgets .drawer-app img {
+.ui-2#widgets .drawer-app img,
+.ui-2#widget-browser .drawer-app img {
   height: 65px;
   width: 65px;
   margin: 5px;
@@ -719,7 +729,8 @@ body > .widget-drawer-app img {
   top: 0;
 }
 .ui-2#apps .drawer-app-name,
-.ui-2#widgets .drawer-app-name {
+.ui-2#widgets .drawer-app-name,
+.ui-2#widget-browser .drawer-app-name {
   position: absolute;
   width: 130px;
   height: 50px;
@@ -740,11 +751,22 @@ body > .widget-drawer-app img {
   -webkit-transform: rotate(-90deg);
   margin: 0;
 }
+.ui-2#widget-browser .drawer-app-install {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  text-align: right;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0;
+}
 .unlocked .ui-2#apps .drawer-app-uninstall,
-.unlocked .ui-2#widgets .drawer-app-uninstall {
+.unlocked .ui-2#widgets .drawer-app-uninstall,
+.unlocked .ui-2#widget-browser .drawer-app-uninstall {
   display: none;
 }
-.ui-2#widgets .drawer-app-wh {
+.ui-2#widgets .drawer-app-wh,
+.ui-2#widget-browser .drawer-app-wh {
   position: absolute;
   top: 58px;
   text-align: right;
@@ -754,17 +776,33 @@ body > .widget-drawer-app img {
   cursor: pointer;
   margin: 0;
 }
+.ui-2#widget-browser .drawer-app-wh {
+  cursor: default;
+}
+.ui-2#widget-browser a {
+  border-bottom: 1px dotted black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /* Apps/Widgets Header Boxes */
-.faw-box a {
+.faw-box sup {
+  color: red;
+  font-size: 10px;
+}
+.faw-box a,
+.faw-box u {
   border-bottom: 1px dotted white;
+  text-decoration: none;
+  cursor: pointer;
 }
 .ui-2#apps .faw-box,
-.ui-2#widgets .faw-box {
+.ui-2#widgets .faw-box,
+.ui-2#widget-browser .faw-box {
   width: 328px;
   height: 90px;
   background-color: #C7C6BF;
-  margin: 4px 6px 2px 0px;
+  margin: 4px 5px 2px 0px;
 }
 .faw-box .faw-wrapper {
   position: absolute;
