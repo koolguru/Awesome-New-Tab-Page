@@ -20,7 +20,11 @@
   function onRemoved(tabId) {
     var
       recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
-      tab = tabs.filter(function (tab) { return tab.id === tabId})[0];
+      tabs = localStorage.getItem("open_tabs"), 
+      tab;
+
+    tabs = tabs == null ? [] : JSON.parse(tabs);
+    tab = tabs.filter(function (tab) { return tab.id === tabId})[0];
 
     if (recently_closed === null ) {
       recently_closed = [];
@@ -46,17 +50,16 @@
   chrome.tabs.onMoved.addListener( getAllTabs );
   chrome.tabs.onCreated.addListener( getAllTabs );
   chrome.tabs.onUpdated.addListener( getAllTabs );
-  chrome.tabs.onHighlighted.addListener( getAllTabs );
+  //chrome.tabs.onHighlighted.addListener( getAllTabs );
 
-  var tabs = null;
   function getAllTabs() {
     chrome.tabs.getAllInWindow(null, getAllTabs_callback);
   }
-  function getAllTabs_callback(data) {
-    tabs = data;
+  function getAllTabs_callback(tabs) {
     localStorage.setItem("open_tabs", JSON.stringify( tabs ));
   }
-  chrome.tabs.getAllInWindow(null, getAllTabs);
+  chrome.tabs.getAllInWindow(null, getAllTabs_callback);
+  
   /* END :: Recently Closed Tabs */
 
 /* START :: Tab Manager Widget */
@@ -90,6 +93,8 @@
         return false;
       }
 
+      var tabs = localStorage.getItem("open_tabs");
+      tabs = tabs == null ? [] : JSON.parse(tabs);
       var tab = tabs.filter(function (tab) { return tab.id === id; })[0];
       if ( typeof tab === "undefined" ) {
         console.error("Tab wasn't found");
@@ -103,7 +108,7 @@
     }
   });
 
-  /* END :: Tab Manager Widget */
+  /* END :: Tab Manager Widget */ 
 
 /* START :: Get Installed Widgets */
 
@@ -233,16 +238,6 @@
     widget.optionsUrl = ext.optionsUrl;
 
     return widget;
-  }
-
-  chrome.management.onEnabled.addListener( onExtChange );
-  chrome.management.onInstalled.addListener( onExtChange );
-  chrome.management.onDisabled.addListener( onExtChange );
-  chrome.management.onUninstalled.addListener( onExtChange );
-  function onExtChange(ExtensionInfo) {
-    setTimeout(function() {
-      chrome.management.getAll(reloadExtensions);
-    }, 500);
   }
 
   /* END :: Get Installed Widgets */
