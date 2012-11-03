@@ -334,9 +334,7 @@ function dataURItoBlob(dataURI) {
   for (var i = 0; i < byteString.length; i++) {
     ia[i] = byteString.charCodeAt(i);
   }
-  var bb = new window.WebKitBlobBuilder();
-  bb.append(ab);
-  return bb.getBlob(mimeString);
+  return new window.Blob([ab], {type: mimeString});
 }
 
 function errorHandler(e) {
