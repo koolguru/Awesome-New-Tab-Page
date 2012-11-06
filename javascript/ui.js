@@ -38,11 +38,11 @@
   function closeButton(exclude) {
 
     if ( exclude && typeof(exclude) === "string" ) {
-      $("body > .ui-2,#recently-closed-tabs-menu")
+      $("body > .ui-2, .ui-2#apps, .ui-2#widgets, #recently-closed-tabs-menu")
         .not(exclude)
         .hide();
     } else {
-      $("body > .ui-2,#recently-closed-tabs-menu").hide();
+      $("body > .ui-2, .ui-2#apps, .ui-2#widgets, #recently-closed-tabs-menu").hide();
     }
 
     window.location.hash = "";
