@@ -233,7 +233,7 @@
     }
 
 
-    var ext = extensions.filter(function(ext) { return ext.id === widget.id; });
+    var ext = extensions.filter(function(ext) { return ext.id === widget.id; })[0];
     widget.path = _widget.request.body.path;
     widget.optionsUrl = ext.optionsUrl;
 
