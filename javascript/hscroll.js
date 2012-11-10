@@ -25,9 +25,9 @@
 
   function handle(delta) {
     if (delta < 0)
-      ScrollSmoothly(8, 8, "right");
+      ScrollSmoothly(25, 3, "right");
     else if (delta > 0)
-      ScrollSmoothly(8, 8, "left");
+      ScrollSmoothly(25, 3, "left");
   }
 
   function wheel(event){
@@ -54,29 +54,36 @@
   var repeatCount = 0;
 
   function ScrollSmoothly(scrollPos, repeatTimes, direction) {
-    if(repeatCount < repeatTimes)
-      if(direction == 'right')
-        window.scrollBy(scrollPos,0);
+    console.log("scroll")
+    if(repeatCount < repeatTimes) {
+      if(direction === "right")
+        window.scrollBy(scrollPos, 0);
       else
-        window.scrollBy(-scrollPos,0);
-      else
-      {
+        window.scrollBy(-scrollPos, 0);
+    } else {
         repeatCount = 0;
         clearTimeout(cTimeout);
         return;
-      }
-      repeatCount++;
-      cTimeout = setTimeout(function() {
-        ScrollSmoothly(scrollPos, repeatTimes,direction);
-      }, 10);
+    }
+
+    repeatCount++;
+    cTimeout = setTimeout(function() {
+      ScrollSmoothly(scrollPos, repeatTimes, direction);
+    }, 15);
+
   }
 
-    /* Initialization code. */
-    if (window.addEventListener) {
-      window.addEventListener('DOMMouseScroll', wheel, false);
-    }
-    window.onmousewheel = document.onmousewheel = wheel;
-    $(document).live("mousewheel", function(e) {
-      wheel(e.originalEvent);
-    })
+  console.log("Oh hai. SUCCESS 2!")
+
+  /* Initialization code. */
+
+  if (window.addEventListener) {
+    window.addEventListener('DOMMouseScroll', wheel, false);
+  }
+
+  window.onmousewheel = document.onmousewheel = wheel;
+
+  $(document).live("mousewheel", function(e) {
+    wheel(e.originalEvent);
+  });
 
