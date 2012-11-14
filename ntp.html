@@ -444,7 +444,9 @@
             <div class="faw-wrapper faw-icon-download">
               <div class="faw-head"><i18n message-id="ui_faw_get_more_widgets" /></div>
               <div class="faw-body">
-                <u id="widget-browser-button"><i18n message-id="ui_faw_get_more_widgets_body" /></u> <sup>NEW!</sup>
+                <a href="http://dev.antp.co/widgets">
+                  <u id="widget-browser-button"><i18n message-id="ui_faw_get_more_widgets_body" /></u>
+                </a> <sup>NEW!</sup>
               </div>
             </div>
           </div>
@@ -470,74 +472,6 @@
               <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
               <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">{{ "ui_uninstall" | i18n }}</div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="widget-browser" class="ui-2 container">
-      <div class="ui-2 header">
-        <div class="ui-2 left">
-          <div class="ui-2 logo"></div>
-          <div class="ui-2 name">
-            Awesome New Tab Page
-            <span class="ui-2 crumb">&nbsp;</span>
-            <span class="ui-2 subname">
-              {{'ui_button_widget_browser' | i18n}}
-            </span>
-          </div>
-          <div class="ui-2 plus-share">
-            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
-          </div>
-        </div>
-        <div class="ui-2 right">
-          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
-          <div class="ui-2 vr"></div>
-          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
-        </div>
-      </div>
-
-      <div class="ui-2 contents" id="widget-drawer">
-        <div class="drawer-app ui-2 ilb faw-box">
-          <div class="faw-wrapper faw-icon-information">
-            <div class="faw-head"><i18n message-id="ui_faw_pick" /></div>
-            <div class="faw-body"><i18n message-id="ui_faw_pick_body" /></div>
-          </div>
-        </div>
-        <div class="drawer-app ui-2 ilb faw-box">
-          <div class="faw-wrapper faw-icon-download">
-            <div class="faw-head"><i18n message-id="ui_faw_install" /></div>
-            <div class="faw-body"><i18n message-id="ui_faw_install_body" /></u></div>
-          </div>
-        </div>
-        <p ng-show="loading_message">{{loading_message}}</p>
-
-        <!-- Start Widgets in Widget Browser -->
-
-        <div ng-repeat="widget in widgets"
-          id="{{widget.id}}"
-          class="app drawer-app ui-2 ilb">
-            <img class="ui-2 ilb" ng-src="http://cdn.antp.co/dev/icons/{{widget.id}}.png">
-            <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
-            <div class="ui-2 drawer-app-wh ilb">
-              <span ng-show="widget.resizable" title="Resizable">[R]</span>
-              <span ng-show="widget.multiplacement" title="Multi-Placeable">[M]</span>
-            </div>
-            <div class="ui-2 drawer-app-install ilb" ng-hide="widget.installed">
-              <a href="https://chrome.google.com/webstore/detail/{{widget.id}}">{{ "ui_install" | i18n }}</a>
-            </div>
-        </div>
-
-        <div>
-          <p>
-            If any of the above widgets don't work or if this listing doesn't load, please make a ticket by clicking the Contact button <a href="https://ntp.uservoice.com/" target="_blank">here</a>.
-          </p>
-          <p>
-            If you are a developer and would like to add your widget to this listing, please visit <a href="http://dev.antp.co/" target="_blank">dev.antp.co</a>.
-          </p>
-          <p>
-            If you'd like to instead search the Chrome Web Store for widgets (warning: not all widgets found there may work!), click <a href="https://chrome.google.com/webstore/search/%22Awesome New Tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page" target="_blank">here</a>.
-          </p>
         </div>
       </div>
     </div>
