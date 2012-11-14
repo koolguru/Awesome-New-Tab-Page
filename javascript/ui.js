@@ -25,12 +25,6 @@
     $(window).bind('resize scroll', function() {
       $(".ui-2.container").center();
     });
-
-    setTimeout(function(){
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    }, 2000);
   });
 
   $(".close,.ui-2.x").live("click", closeButton);
@@ -83,18 +77,6 @@
     $("#recently-closed-tabs-menu").toggle();
   });
 
-  $("#widget-browser-button").live("click", function() {
-    _gaq.push([ "_trackEvent", "Window", "Widget Browser" ]);
-
-    $(window).trigger("antp-widget-browser");
-
-    closeButton("#widget-browser");
-    $("#widget-browser").toggle();
-  });
-
-
-
-
   $("#logo-button,.ui-2.logo").live("click", function(){
     _gaq.push([ '_trackEvent', 'Window', "About" ]);
 
@@ -119,6 +101,12 @@
         twitterScriptTag.src = 'https://platform.twitter.com/widgets.js';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(twitterScriptTag, s);
+      })();
+
+      (function(){
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })();
     }
   });
