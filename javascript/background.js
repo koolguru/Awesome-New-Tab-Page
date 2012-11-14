@@ -20,7 +20,7 @@
   function onRemoved(tabId) {
     var
       recently_closed = JSON.parse(localStorage.getItem("recently_closed")),
-      tabs = localStorage.getItem("open_tabs"), 
+      tabs = localStorage.getItem("open_tabs"),
       tab;
 
     tabs = tabs == null ? [] : JSON.parse(tabs);
@@ -59,7 +59,7 @@
     localStorage.setItem("open_tabs", JSON.stringify( tabs ));
   }
   chrome.tabs.getAllInWindow(null, getAllTabs_callback);
-  
+
   /* END :: Recently Closed Tabs */
 
 /* START :: Tab Manager Widget */
@@ -108,7 +108,7 @@
     }
   });
 
-  /* END :: Tab Manager Widget */ 
+  /* END :: Tab Manager Widget */
 
 /* START :: Get Installed Widgets */
 
@@ -257,7 +257,6 @@
   // Listens for responses
   chrome.extension.onMessageExternal.addListener( onMessageExternal );
   function onMessageExternal(request, sender, sendResponse) {
-    console.log(request, sender);
     if(request.head && request.head === "mgmiemnjjchgkmgbeljfocdjjnpjnmcg-pokeback") {
       var widget = buildWidgetObject({ "request": request, "sender": sender});
       if (widget != null) {
