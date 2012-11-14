@@ -73,8 +73,6 @@
 
   }
 
-  console.log("Oh hai. SUCCESS 2!")
-
   /* Initialization code. */
 
   if (window.addEventListener) {
