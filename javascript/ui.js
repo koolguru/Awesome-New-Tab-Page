@@ -38,11 +38,11 @@
   function closeButton(exclude) {
 
     if ( exclude && typeof(exclude) === "string" ) {
-      $("body > .ui-2,#recently-closed-tabs-menu")
+      $("body > .ui-2, .ui-2#apps, .ui-2#widgets, #recently-closed-tabs-menu")
         .not(exclude)
         .hide();
     } else {
-      $("body > .ui-2,#recently-closed-tabs-menu").hide();
+      $("body > .ui-2, .ui-2#apps, .ui-2#widgets, #recently-closed-tabs-menu").hide();
     }
 
     window.location.hash = "";
@@ -304,3 +304,38 @@ function colorPickerLoaded() {
     }
   });
 }
+
+// drag/drop bookmarks to empty tiles
+$(".tile").bind({
+  "dragover": function(e) {
+    var srcElement = $(e.srcElement);
+    if (srcElement.filter(".tile.empty.tile-grid").length == 1) {
+      srcElement.addClass("filesystem-drop-area");
+    }
+    return false;
+  },
+  "dragleave": function(e) {
+    var srcElement = $(e.srcElement);
+    srcElement.removeClass("filesystem-drop-area");
+    return false;
+  },
+  "drop": function(e) {
+    var srcElement = $(e.srcElement);
+    srcElement.removeClass("filesystem-drop-area");
+    if (srcElement.filter(".tile.empty.tile-grid").length == 1) {
+      if (e.originalEvent.dataTransfer.items.length > 0) {
+        var url = e.originalEvent.dataTransfer.getData("URL");
+        if (url !== null && url !== "") {
+          required('/javascript/tile-editor.js?nocache=12', function() {  // ensure tile-editor.js is loaded
+            createShortcut(e.srcElement);
+            $("#editor #shortcut_url").val(url);
+            $("#editor #shortcut_name").val("");
+            $("#editor #shortcut_name").focus();
+            updateShortcut();
+          });
+        }
+      }
+    }
+    return false;
+  }
+});

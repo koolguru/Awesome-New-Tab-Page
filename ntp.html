@@ -356,123 +356,125 @@
       </div>
     </div>
 
-    <div id="apps" class="ui-2 container" ng-controller="windowAppsWidgetsCtrl">
-      <div class="ui-2 header">
-        <div class="ui-2 left">
-          <div class="ui-2 logo"></div>
-          <div class="ui-2 name">
-            Awesome New Tab Page
-            <span class="ui-2 crumb">&nbsp;</span>
-            <span class="ui-2 subname">
-              {{'ui_button_apps' | i18n}}
-            </span>
-          </div>
-          <div class="ui-2 plus-share">
-            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
-          </div>
-        </div>
-        <div class="ui-2 right">
-          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
-          <div class="ui-2 vr"></div>
-          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
-        </div>
-      </div>
-
-      <div class="ui-2 contents">
-        <div class="drawer-app ui-2 ilb faw-box">
-          <div class="faw-wrapper faw-icon-information">
-            <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
-            <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_apps" /></div>
-          </div>
-        </div>
-        <div class="drawer-app ui-2 ilb faw-box">
-          <div class="faw-wrapper faw-icon-download">
-            <div class="faw-head"><i18n message-id="ui_faw_get_more_apps" /></div>
-            <div class="faw-body"><i18n message-id="ui_faw_get_more_apps_body" /></div>
-          </div>
-        </div>
-
-        <!-- Start Apps -->
-
-        <div ng-repeat="app in apps"
-        id="{{app.id}}"
-        class="widget app drawer-app ui-2 ilb"
-        tile-width="1"
-        tile-height="1"
-        app-source="from-drawer"
-        stock="{{app.id}}">
-          <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
-          <div class="ui-2 drawer-app-name ilb url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}">{{app.name}}</div>
-          <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">{{ "ui_uninstall" | i18n }}</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="widgets" class="ui-2 container" ng-controller="windowAppsWidgetsCtrl">
-      <div class="ui-2 header">
-        <div class="ui-2 left">
-          <div class="ui-2 logo"></div>
-          <div class="ui-2 name">
-            Awesome New Tab Page
-            <span class="ui-2 crumb">&nbsp;</span>
-            <span class="ui-2 subname">
-              {{'ui_button_widgets' | i18n}}
-            </span>
-          </div>
-          <div class="ui-2 plus-share">
-            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
-          </div>
-        </div>
-        <div class="ui-2 right">
-          <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
-          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
-          <div class="ui-2 vr"></div>
-          <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
-        </div>
-      </div>
-
-      <div class="ui-2 contents" id="widget-drawer">
-        <div class="drawer-app ui-2 ilb faw-box">
-          <div class="faw-wrapper faw-icon-information">
-            <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
-            <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_widgets" /></div>
-          </div>
-        </div>
-        <div class="drawer-app ui-2 ilb faw-box">
-          <div class="faw-wrapper faw-icon-download">
-            <div class="faw-head"><i18n message-id="ui_faw_get_more_widgets" /></div>
-            <div class="faw-body">
-              <u id="widget-browser-button"><i18n message-id="ui_faw_get_more_widgets_body" /></u> <sup>NEW!</sup>
+    <div ng-controller="windowAppsWidgetsCtrl">
+      <div id="apps" class="ui-2 container" ng-controller="windowAppsWidgetsCtrl">
+        <div class="ui-2 header">
+          <div class="ui-2 left">
+            <div class="ui-2 logo"></div>
+            <div class="ui-2 name">
+              Awesome New Tab Page
+              <span class="ui-2 crumb">&nbsp;</span>
+              <span class="ui-2 subname">
+                {{'ui_button_apps' | i18n}}
+              </span>
+            </div>
+            <div class="ui-2 plus-share">
+              <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
             </div>
           </div>
+          <div class="ui-2 right">
+            <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+            <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
+            <div class="ui-2 vr"></div>
+            <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
+          </div>
         </div>
 
-        <!-- Start Widgets -->
+        <div class="ui-2 contents">
+          <div class="drawer-app ui-2 ilb faw-box">
+            <div class="faw-wrapper faw-icon-information">
+              <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
+              <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_apps" /></div>
+            </div>
+          </div>
+          <div class="drawer-app ui-2 ilb faw-box">
+            <div class="faw-wrapper faw-icon-download">
+              <div class="faw-head"><i18n message-id="ui_faw_get_more_apps" /></div>
+              <div class="faw-body"><i18n message-id="ui_faw_get_more_apps_body" /></div>
+            </div>
+          </div>
 
-        <div ng-repeat="(key, widget) in widgets"
-          id="{{key}}"
-          class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
-          tile-width="{{widget.width}}"
-          tile-height="{{widget.height}}"
-          tile-widget="true"
-          tile-widget-src="{{widget.path}}"
-          tile-poke="{{widget.pokeVersion}}"
-          resize="{{widget.v2.resize}}"
-          min_height="{{widget.v2.min_height}}"
-          max_height="{{widget.v2.max_height}}"
-          min_width="{{widget.v2.min_width}}"
-          max_width="{{widget.v2.max_width}}"
-          multi_placement="{{widget.v3.multi_placement}}" >
-            <img class="ui-2 ilb" ng-src="{{widget.img}}">
-            <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
-            <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
-            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">{{ "ui_uninstall" | i18n }}</div>
+          <!-- Start Apps -->
+
+          <div ng-repeat="app in apps"
+          id="{{app.id}}"
+          class="widget app drawer-app ui-2 ilb"
+          tile-width="1"
+          tile-height="1"
+          app-source="from-drawer"
+          stock="{{app.id}}">
+            <img class="ui-2 ilb url" ng-src="{{app.img}}" data-url="{{app.appLaunchUrl}}">
+            <div class="ui-2 drawer-app-name ilb url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}">{{app.name}}</div>
+            <div class="ui-2 drawer-app-uninstall ilb" ng-hide="!app.mayDisable">{{ "ui_uninstall" | i18n }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="widgets" class="ui-2 container">
+        <div class="ui-2 header">
+          <div class="ui-2 left">
+            <div class="ui-2 logo"></div>
+            <div class="ui-2 name">
+              Awesome New Tab Page
+              <span class="ui-2 crumb">&nbsp;</span>
+              <span class="ui-2 subname">
+                {{'ui_button_widgets' | i18n}}
+              </span>
+            </div>
+            <div class="ui-2 plus-share">
+              <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+            </div>
+          </div>
+          <div class="ui-2 right">
+            <div class="ui-2 config" title="{{ 'ui_config' | i18n}}"></div>
+            <div class="ui-2 help url" data-url="https://ntp.uservoice.com/" title="{{ 'ui_button_help' | i18n }}"></div>
+            <div class="ui-2 vr"></div>
+            <div class="ui-2 x" title="{{ 'ui_button_close' | i18n }}"></div>
+          </div>
+        </div>
+
+        <div class="ui-2 contents" id="widget-drawer">
+          <div class="drawer-app ui-2 ilb faw-box">
+            <div class="faw-wrapper faw-icon-information">
+              <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
+              <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_widgets" /></div>
+            </div>
+          </div>
+          <div class="drawer-app ui-2 ilb faw-box">
+            <div class="faw-wrapper faw-icon-download">
+              <div class="faw-head"><i18n message-id="ui_faw_get_more_widgets" /></div>
+              <div class="faw-body">
+                <u id="widget-browser-button"><i18n message-id="ui_faw_get_more_widgets_body" /></u> <sup>NEW!</sup>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Widgets -->
+
+          <div ng-repeat="(key, widget) in widgets"
+            id="{{key}}"
+            class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
+            tile-width="{{widget.width}}"
+            tile-height="{{widget.height}}"
+            tile-widget="true"
+            tile-widget-src="{{widget.path}}"
+            tile-poke="{{widget.pokeVersion}}"
+            resize="{{widget.v2.resize}}"
+            min_height="{{widget.v2.min_height}}"
+            max_height="{{widget.v2.max_height}}"
+            min_width="{{widget.v2.min_width}}"
+            max_width="{{widget.v2.max_width}}"
+            multi_placement="{{widget.v3.multi_placement}}" >
+              <img class="ui-2 ilb" ng-src="{{widget.img}}">
+              <div class="ui-2 drawer-app-name ilb">{{widget.name}}</div>
+              <div class="ui-2 drawer-app-wh ilb">{{widget.width}} Wide, {{widget.height}} Tall</div>
+              <div class="ui-2 drawer-app-uninstall ilb" ng-hide="widget.stock">{{ "ui_uninstall" | i18n }}</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="widget-browser" class="ui-2 container" ng-controller="windowWidgetBrowserCtrl">
+    <div id="widget-browser" class="ui-2 container">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>

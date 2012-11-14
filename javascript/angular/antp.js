@@ -174,43 +174,44 @@ var
 
     $scope.update = function() {
       // Refresh widgets
-      var bp = chrome.extension.getBackgroundPage();
-      chrome.management.getAll( bp.reloadExtensions );
+      chrome.runtime.getBackgroundPage(function(bp) {
+        chrome.management.getAll( bp.reloadExtensions );
 
-      // Refresh apps
-      chrome.management.getAll(function(all){
-        $scope.apps = [];
-        angular.forEach(all, function(extension, id){
-          if ( extension.isApp === true && extension.enabled === true ) {
-            extension.img = "chrome://extension-icon/"+extension.id+"/128/0";
-            $scope.apps.push(extension);
-          }
+        // Refresh apps
+        chrome.management.getAll(function(all){
+          $scope.apps = [];
+          angular.forEach(all, function(extension, id){
+            if ( extension.isApp === true && extension.enabled === true ) {
+              extension.img = "chrome://extension-icon/"+extension.id+"/128/0";
+              $scope.apps.push(extension);
+            }
+          });
         });
+
+        setTimeout(function() {
+          $scope.apps.sort(function(a, b){
+            var
+              nameA=a.name.toLowerCase(),
+              nameB=b.name.toLowerCase();
+            if (nameA < nameB)
+              return -1;
+            if (nameA > nameB)
+              return 1;
+            return 0
+          });
+          $scope.apps = $scope.apps.concat($scope.stock_apps);
+          $scope.widgets = Object.merge(bp.installedWidgets, $scope.stock_widgets);
+
+          // $scope.appsCount = $scope.apps.length;
+          // $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
+
+          // Update every 30 seconds
+          setTimeout($scope.update, 30000);
+
+          $scope.$apply();
+
+        }, 1000);
       });
-
-      setTimeout(function() {
-        $scope.apps.sort(function(a, b){
-          var
-            nameA=a.name.toLowerCase(),
-            nameB=b.name.toLowerCase();
-          if (nameA < nameB)
-            return -1;
-          if (nameA > nameB)
-            return 1;
-          return 0
-        });
-        $scope.apps = $scope.apps.concat($scope.stock_apps);
-        $scope.widgets = Object.merge(bp.installedWidgets, $scope.stock_widgets);
-
-        // $scope.appsCount = $scope.apps.length;
-        // $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
-
-        // Update every 30 seconds
-        setTimeout($scope.update, 30000);
-
-        $scope.$apply();
-
-      }, 1000);
     };
 
     setTimeout($scope.update, 1000);

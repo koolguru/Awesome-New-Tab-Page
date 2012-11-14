@@ -7,7 +7,8 @@
     "scripts": [
       "/javascript/jquery.js",
       "/javascript/background.js"
-    ]
+    ],
+    "persistent": false
   },
   "chrome_url_overrides" : {
     "newtab": "ntp.html"
@@ -15,7 +16,7 @@
   "options_page": "options.html",
   "name": "Awesome New Tab Page",
   "description": "Enhance your New Tab Page with ultimate customizability and power. Awesome, like you. [ANTP]",
-  "version": "2012.135.7.2",
+  "version": "2012.145.0.7",
   "icons": {
     "128": "icon128.png"
   },
