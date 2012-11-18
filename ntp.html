@@ -47,7 +47,7 @@
 
       <!-- Widgets -->
       <div id="{{widget.id}}" ng-repeat="widget in widgets"
-        class="widget ng-cloak"
+        class="widget ng-cloak search-not-active"
         tile-height="{{widget.size.0}}" tile-width="{{widget.size.1}}"
         tile-init-top="{{widget.where.0}}" tile-init-left="{{widget.where.1}}"
         style="height: {{widget.css.height}}px; width: {{widget.css.width}}px;
@@ -68,13 +68,18 @@
 
       <!-- Installed Apps -->
       <div id="{{app.id}}" ng-repeat="app in apps"
-      class="widget app"
+      class="widget app search-not-active"
       tile-height="{{app.size.0}}" tile-width="{{app.size.1}}"
       tile-init-top="{{app.where.0}}" tile-init-left="{{app.where.1}}"
       style="{{app.css.bg}};
           height: {{app.css.height}}px; width: {{app.css.width}}px;
           top: {{app.css.top}}px; left: {{app.css.left}}px;
           background-size: {{app.backgroundSize}}; background-position: {{app.backgroundPosition}}">
+        <div ng-switch on="app.searchEnabled" >
+          <div ng-switch-when="true">
+            <input type="text" class="search-box" name="search" value="" placeholder="Search" data-search="{{app.searchUrl}}" />
+          </div>
+        </div>
         <div class="app-name" ng-hide="!app.name_show">{{app.name}}</div>
         <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}" onleftclick="{{app.onleftclick}}"></a>
         <div class="iframe-mask">
@@ -91,13 +96,18 @@
 
       <!-- Custom Shortcuts -->
       <div id="{{shortcut.id}}" ng-repeat="shortcut in custom_shortcuts"
-      class="widget app shortcut"
+      class="widget app search-not-active shortcut"
       tile-height="{{shortcut.size.0}}" tile-width="{{shortcut.size.1}}"
       tile-init-top="{{shortcut.where.0}}" tile-init-left="{{shortcut.where.1}}"
       style="{{shortcut.css.bg}};
           height: {{shortcut.css.height}}px; width: {{shortcut.css.width}}px;
           top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;
           background-size: {{shortcut.backgroundSize}}; background-position: {{shortcut.backgroundPosition}}">
+        <div ng-switch on="shortcut.searchEnabled" >
+          <div ng-switch-when="true">
+            <input type="text" class="search-box" name="search" value="" placeholder="Search" data-search="{{shortcut.searchUrl}}" />
+          </div>
+        </div>
         <div class="app-name" ng-hide="!shortcut.name_show">{{shortcut.name}}</div>
         <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}" onleftclick="{{shortcut.onleftclick}}"></a>
         <img ng-src="chrome://favicon/{{shortcut.appLaunchUrl}}" class="app-favicon" ng-hide="!shortcut.favicon_show" />
@@ -529,6 +539,12 @@
               <input id="shortcut_favicon_show" type="checkbox" />
               {{'ui_te_shfavicon' | i18n}}
             </p>
+          </div>
+
+          <div class="hide-if-app">
+            <h3>{{'ui_te_search' | i18n}}</h3>
+            <p>{{'ui_te_search_desc' | i18n}} <i>"https://www.google.com/search?q={input}"</i></p>
+            <input id="shortcut_search_url" type="text" />
           </div>
 
           <h3>{{'ui_config_bg_changecolor' | i18n}}</h3>

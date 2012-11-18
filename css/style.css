@@ -228,8 +228,11 @@ body {
   margin-bottom: auto;
   right: -19px;
 }
-.locked #widget-holder > .widget.app:active {
+.locked #widget-holder > .widget.app.search-not-active:active {
   -webkit-transform: scale(0.95);
+}
+.widget {
+  overflow: hidden;
 }
 .widget.widget-drag {
   -webkit-transform: scale(0.95);
@@ -237,6 +240,20 @@ body {
 }
 .widget.widget-resize {
   opacity: .75;
+}
+.locked .widget:hover .search-box, .locked .widget .search-box:focus {
+  top: 0;
+}
+.widget .search-box {
+  width: 100%;
+  position: absolute;
+  right: 0; left: 0; top: -50px;
+  height: 25px;
+  font-size: 16px;
+  z-index: 2;   
+
+  transition: all 150ms ease-in-out; /* for mouseover effect */
+  -webkit-transition: all 150ms ease-in-out;    
 }
 .app-name {
   position: absolute;

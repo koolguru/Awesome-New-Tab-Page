@@ -565,7 +565,7 @@ function setStuff() {
     $(".widget").live("mousedown", function(e) {
       if(lock === true) {
         held_element.element = false;
-        return false;
+        return true;
       }
 
       $(".ui-2.x").trigger("click");
@@ -935,3 +935,39 @@ function updateWidget(obj) {
 
   localStorageSync();
 }
+
+
+/* Tile Search */
+// To prevnt tile animation when clicked in search-box
+$(document).on("mousedown", ".shortcut input.search-box, .app input.search-box", function(e) {
+  $(this).closest(".app, .shortcut").removeClass("search-not-active");
+});
+$(document).on("mouseup", ".shortcut input.search-box, .app input.search-box", function(e) {
+  $(this).closest(".app, .shortcut").addClass("search-not-active");
+});
+
+$(document).on("click", ".shortcut input.search-box, .app input.search-box", function(e) {
+  console.log('clidedk');
+});
+
+$(document).on("mouseenter", ".shortcut, .app", function(e) {
+  var tile = $(this);
+  var searchBox = tile.find("input.search-box");
+  if (searchBox.length > 0)
+    searchBox.focus();
+});
+
+$(document).on("mouseleave", ".shortcut, .app", function(e) {
+  var tile = $(this);
+  var searchBox = tile.find("input.search-box");
+  if (searchBox.length > 0)
+    searchBox.blur();
+});
+
+$(document).on("keydown", ".shortcut input.search-box, .app input.search-box", function(e) {
+  var elem = $(this);
+  if (e.which == 13) {
+    document.location.href = elem.attr('data-search').replace("{input}", elem.val());
+  }
+});
+/* End Tile Search */

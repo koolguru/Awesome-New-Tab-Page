@@ -62,6 +62,12 @@
   "ui_te_shfavicon": {
     "message": "Show / Hide Favicon"
   },
+  "ui_te_search": {
+    "message": "Search"
+  }, 
+  "ui_te_search_desc": {
+    "message": "Enter a search URL for this website. For example:"
+  }, 
   "ui_te_bg_colorpicker": {
     "message": "Open Color Picker"
   },

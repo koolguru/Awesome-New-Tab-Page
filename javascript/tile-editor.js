@@ -97,6 +97,7 @@ function editShortcut(e, tile) {
       $(".ui-2#editor #preview-tile .app-favicon").hide()
         .attr("src", "chrome://favicon/"+ (widgets[id].url || widgets[id].appLaunchUrl) );
     }
+    $(".ui-2#editor #shortcut_search_url").val(widgets[id].searchUrl || '');
   } else {
     $(".ui-2#editor #preview-tile .app-favicon").hide();
   }
@@ -293,6 +294,7 @@ function updateShortcut(e) {
     var img  = $(".ui-2#editor #img_url").val();
     var name_show  = $(".ui-2#editor #shortcut_name_show").is(':checked');
     var favicon_show  = $(".ui-2#editor #shortcut_favicon_show").is(':checked');
+    var searchUrl = $(".ui-2#editor #shortcut_search_url").val();
     var shortcut_background_transparent  = $(".ui-2#editor #shortcut_background_transparent").is(':checked');
     var is_shortcut = (widgets[id].type && widgets[id].type === "shortcut");
     var onleftclick = null;
@@ -345,6 +347,8 @@ function updateShortcut(e) {
       $(".ui-2#editor #preview-tile .app-favicon, #"+id+" .app-favicon").hide()
         .attr("src", "chrome://favicon/"+ url);
     }
+
+    widgets[id].searchUrl = searchUrl;
 
     widgets[id].shortcut_background_transparent = shortcut_background_transparent;
     if(type === "shortcut") {

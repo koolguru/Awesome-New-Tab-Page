@@ -106,6 +106,17 @@ var
           tile.name_show = true;
         }
 
+        // Fixed list app urls with  their search urls
+        var fixedSearchURLs = {
+          "http://www.youtube.com/"                       : "http://www.youtube.com/results?search_query={input}", 
+          "http://www.amazon.com/?tag=sntp-20"            : "http://www.amazon.com/s/?field-keywords={input}&tag=sntp-20", 
+          "http://www.facebook.com/"                      : "http://www.facebook.com/search/?q={input}", 
+          "http://www.twitter.com/"                       : "http://twitter.com/search?q={input}&src=typd", 
+          "http://plus.google.com/"                       : "http://plus.google.com/s/{input}", 
+          "http://www.google.com/webhp?source=search_app" : "http://www.google.com/search?source=search_app&q={input}", 
+          "https://chrome.google.com/webstore?utm_source=webstore-app&utm_medium=awesome-new-tab-page" : "https://chrome.google.com/webstore/search/{input}"
+        };
+
         switch ( tile.type ) {
           case "iframe":
             if ( tile.instance_id ) {
@@ -115,10 +126,17 @@ var
             break;
           case "app":
             tile.resize = true;
+            if (fixedSearchURLs[tile.appLaunchUrl]) {
+              tile.searchUrl = fixedSearchURLs[tile.appLaunchUrl];
+              tile.searchEnabled = true;
+            }
             $scope.apps[id] = tile;
             break;
           case "shortcut":
             tile.resize = true;
+            if (tile.searchUrl && tile.searchUrl.indexOf("{input}") != -1) {
+              tile.searchEnabled = true;
+            }
             $scope.custom_shortcuts[id] = tile;
             break;
         }
