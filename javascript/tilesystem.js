@@ -648,8 +648,8 @@ function setStuff() {
         }
 
         if ( $(this).attr("app-source") === "from-drawer" ) {
-          addWidget($(this).attr("id"), { 
-            top: $(closestElm).attr("land-top"), 
+          addWidget($(this).attr("id"), {
+            top: $(closestElm).attr("land-top"),
             left: $(closestElm).attr("land-left")
           });
         }
@@ -835,12 +835,12 @@ function setStuff() {
 // Add widget to localStorage then refresh
 function addWidget(widget_id, tile_location) {
   widgets = JSON.parse(localStorage.getItem("widgets"));
-  
+
   var scope = angular.element("#widgets").scope(),
-      installedWidgets = scope.widgets, 
-      installedApps = scope.apps, 
-      obj = installedWidgets[widget_id] || installedApps.filter(function (app) { return app.id === widget_id; })[0], 
-      widget = {id: obj.id, name: obj.name, where: [tile_location.top, tile_location.left], size: [obj.height, obj.width], img: obj.img, isApp: obj.isApp || false}, 
+      installedWidgets = scope.widgets,
+      installedApps = scope.apps,
+      obj = installedWidgets[widget_id] || installedApps.filter(function (app) { return app.id === widget_id; })[0],
+      widget = {id: obj.id, name: obj.name, where: [tile_location.top, tile_location.left], size: [obj.height, obj.width], img: obj.img, isApp: obj.isApp || false},
       stock;
 
   if ( typeof(widget.size[0]) === "undefined" )
@@ -944,10 +944,6 @@ $(document).on("mousedown", ".shortcut input.search-box, .app input.search-box",
 });
 $(document).on("mouseup", ".shortcut input.search-box, .app input.search-box", function(e) {
   $(this).closest(".app, .shortcut").addClass("search-not-active");
-});
-
-$(document).on("click", ".shortcut input.search-box, .app input.search-box", function(e) {
-  console.log('clidedk');
 });
 
 $(document).on("mouseenter", ".shortcut, .app", function(e) {
