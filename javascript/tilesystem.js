@@ -565,7 +565,7 @@ function setStuff() {
     $(".widget").live("mousedown", function(e) {
       if(lock === true) {
         held_element.element = false;
-        return true;
+        return false;
       }
 
       $(".ui-2.x").trigger("click");
