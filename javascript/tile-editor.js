@@ -35,11 +35,6 @@ function removeFromTile(tile) {
 
     hscroll = true;
 
-    var tiles = getCovered(to_delete);
-    $(tiles.tiles).each(function(ind, elem){
-        $(elem).addClass("empty");
-    });
-
     $(to_delete).remove();
   }
 }

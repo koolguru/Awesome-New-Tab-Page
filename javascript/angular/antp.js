@@ -143,7 +143,7 @@ var
 
       });
 
-      setTimeout(function(){
+      /*setTimeout(function(){
         var tiles = $("#grid-holder > .tile");
         $("#grid-holder > .tile").addClass("empty");
         $("#widget-holder > div").each(function(ind, elem){
@@ -152,7 +152,7 @@ var
             $(elem).removeClass("empty");
           });
         });
-      }, 250);
+      }, 250);*/
 
 
       // To prevent an onload error

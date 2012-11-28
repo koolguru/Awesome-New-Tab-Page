@@ -78,9 +78,10 @@ function moveGrid(pref) {
   updateGridOpacity();
 }
 
+var tile_template = '<li class="tile empty">&nbsp;</li>';
+
 function placeGrid() {
   moveGrid({ "animate_top": false });
-  var tile_template = '<li class="tile empty">&nbsp;</li>';
 
   var height = GRID_MIN_HEIGHT;
   var width = GRID_MIN_WIDTH;
@@ -138,6 +139,10 @@ function placeGrid() {
   // wide / tall, no matter what the reason
   height = (height > 25) ? 25 : height; //  5,144 px
   width  = (width  > 50) ? 50 : width ; // 10,294 px
+  $("body").css({
+    width  : GRID_MARGIN_LEFT() + ( width * ( GRID_TILE_SIZE + GRID_TILE_PADDING * 2 )), 
+    height : GRID_MARGIN_TOP() + ( height * ( GRID_TILE_SIZE + GRID_TILE_PADDING * 2 ))
+  })
 
   // Actually place the grid
   for (var gx = 0; gx < height; gx++) {
@@ -174,52 +179,73 @@ function makeZero(num){
 }
 
 function findClosest(tile){
-  var closestElm = null;
-  var boxX = $(tile).position().left;
-  var boxY = $(tile).position().top;
-  var distElm = -1;
-  $(".tile").each(function(ind, elem){
-    var closeX = $(elem).position().left;
-    var closeY = $(elem).position().top;
-    testElm = Math.pow(boxX - closeX, 2) + Math.pow(boxY - closeY, 2);
-    if(testElm < distElm || distElm == -1){
-      distElm = testElm;
-      closestElm = elem;
-    }
-  });
+  var closestElm = {};
+  var boxX = $(tile).position().left - GRID_MARGIN_LEFT();
+  var boxY = $(tile).position().top - GRID_MARGIN_TOP();
+  var actualGridSize = GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 );
+  var extraX = boxX % actualGridSize;
+  var extraY = boxY % actualGridSize;
+  var SUB_FROM_HALF_X = 16;  // to bias grid half to one side
+  var ADD_TO_HALF_Y = 11;
+  boxX = extraX > (actualGridSize / 2 - SUB_FROM_HALF_X) ? boxX + (actualGridSize - extraX) : boxX - extraX;
+  boxY = extraY > (actualGridSize / 2 + ADD_TO_HALF_Y) ? boxY + (actualGridSize - extraY) : boxY - extraY;
+  closestElm.col = boxX / actualGridSize;
+  closestElm.row = boxY / actualGridSize;
+
   return closestElm;
 }
 
-function getCovered(tile) {
-  var toRet = {};
-  toRet.clear = true;
-  toRet.tiles = [];
-  var closestElm = findClosest(tile);
+function placeTileAt(tile, pos) {
+  tile.css({
+    position: "absolute", 
+    top:      pos.row * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ), 
+    left:     pos.col * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 )
+  });
+}
 
-  var top  = parseInt( $(closestElm).attr("land-top")  , 10);
-  var left = parseInt( $(closestElm).attr("land-left") , 10);
+function isPlaceable(location, size, widgetId) {
+  var rowsCoveredFrom = location[0], 
+      rowsCoveredTill = location[0] + parseFloat(size[0]) - 1, 
+      colsCoveredFrom = location[1], 
+      colsCoveredTill = location[1] + parseFloat(size[1]) - 1;
 
-  var height = parseInt( $(tile).attr("tile-height")   , 10);
-  var width  = parseInt( $(tile).attr("tile-width")    , 10);
+  // check if any widget conflits with the current position
+  var areaClear = true;
+  for (var key in widgets) {
+    var widgetRowsCoveredFrom = parseFloat(widgets[key].where[0]), 
+        widgetRowsCoveredTill = parseFloat(widgets[key].where[0]) + widgets[key].size[0] - 1, 
+        widgetColsCoveredFrom = parseFloat(widgets[key].where[1]), 
+        widgetColsCoveredTill = parseFloat(widgets[key].where[1]) + widgets[key].size[1] - 1;
 
-  for (h=0; h<=(height-1); h++)
-  {
-    for (w=0; w<=(width-1); w++)
-    {
-      var temporary_tile = $("#"+(top+h)+"x"+(left+w)+".tile")[0];
-      if( temporary_tile ) {
-        (toRet.tiles).push( temporary_tile );
-
-        if($( temporary_tile ).hasClass("empty") === false) {
-          toRet.clear = false;
-        }
-      } else {
-        toRet.clear = false;
+    if (!((colsCoveredFrom > widgetColsCoveredTill && colsCoveredTill > widgetColsCoveredTill) || 
+      (rowsCoveredFrom > widgetRowsCoveredTill && rowsCoveredTill > widgetRowsCoveredTill) || 
+      (colsCoveredTill < widgetColsCoveredFrom && colsCoveredTill < widgetColsCoveredTill) ||
+      (rowsCoveredTill < widgetRowsCoveredFrom && rowsCoveredTill < widgetRowsCoveredTill))) {
+      if (widgets[key].id != widgetId) {
+        areaClear = false;
+        break;
       }
     }
   }
 
-  return toRet;
+  return areaClear;
+}
+
+function repositionDropLocation(tile, widget) {
+  var closestElm = findClosest(tile);
+  var areaClear = isPlaceable([closestElm.row, closestElm.col], widget.size, widget.id);
+
+  // reposition tempTiles to show drop location
+  var totalTiles = widget.size[0]*widget.size[1];
+  for (var i=0, count=0; i<widget.size[0]; i++) {
+      for (var j=0; j<widget.size[1]; j++, count++) {
+        placeTileAt(held_element.tempTiles[count], {row: closestElm.row + i, col: closestElm.col + j});
+        held_element.tempTiles[count].removeClass("tile-green tile-red");
+        areaClear ? held_element.tempTiles[count].addClass("tile-green") : held_element.tempTiles[count].addClass("tile-red");
+    }
+  }
+
+  return areaClear;
 }
 
 function setStuff() {
@@ -271,8 +297,9 @@ function setStuff() {
 
   /* START :: Resize */
 
-    resize_element = {};
+    var resize_element = {};
     resize_element.element = false;
+
     // When a tile resize square is clicked
     $(".resize-tile > div").live("mousedown", function(e) {
       if ( lock === true ) {
@@ -294,11 +321,13 @@ function setStuff() {
         default:
           return console.error("Resize Mousedown", "Invalid side.");
       }
-      widgets = JSON.parse(localStorage.getItem("widgets"));
 
+      // cache widget so they don't needed to be loaded from localstorage on mousemove
+      widgets = JSON.parse(localStorage.getItem("widgets"));
 
       resize_element.element = $(this).closest(".widget")[0];
       var id = $(resize_element.element).attr("id");
+      resize_element.widget = widgets[id]
 
       // Ensure apps/custom shortcuts are resizable
       if ( widgets[id].type
@@ -332,8 +361,6 @@ function setStuff() {
       resize_element.moved_left = 0;
       resize_element.moved_top  = 0;
 
-      $(getCovered( resize_element.element ).tiles).addClass("empty");
-
       $(resize_element.element).find("#shortcut-edit,#delete,#widget-config").addClass("force-hide");
 
       $(resize_element.element)
@@ -343,7 +370,7 @@ function setStuff() {
       e.stopPropagation();
     });
 
-    // When a tile resize square is released
+    // When a tile resize square is resized
     $(document).live("mousemove", function(e) {
       if ( lock === true ) {
         resize_element.element = false;
@@ -521,10 +548,17 @@ function setStuff() {
 
       $(resize_element.element).css({
         "width" : calcWidth ({"is": $(resize_element.element).attr("tile-width")  }).width,
-        "height": calcHeight({"is": $(resize_element.element).attr("tile-height") }).height
+        "height": calcHeight ({"is": $(resize_element.element).attr("tile-height")  }).height
       }).removeClass("widget-resize");
 
-      if ( getCovered( resize_element.element ).clear === true ) {
+      var size = [];
+      size[0] = $(resize_element.element).attr("tile-height");
+      size[1] = $(resize_element.element).attr("tile-width");
+      var where = [];
+      where[0] = parseFloat($(resize_element.element).attr("land-top") - 1);
+      where[1] = parseFloat($(resize_element.element).attr("land-left") - 1);
+
+      if ( isPlaceable(where, size, resize_element.widget.id)) {
         updateWidget({
           "id"    : $(resize_element.element).attr("id"),
           "width" : $(resize_element.element).attr("tile-width"),
@@ -543,8 +577,6 @@ function setStuff() {
           "tile-height": resize_element.tileH
         });
       }
-
-      $(getCovered( resize_element.element ).tiles).removeClass("empty");
 
       $(resize_element.element).find("#shortcut-edit,#delete,#widget-config").removeClass("force-hide");
 
@@ -567,6 +599,12 @@ function setStuff() {
         held_element.element = false;
         return true;
       }
+      // if already dragging a tile
+      if (held_element.element != false)
+        return true;
+
+      // cache widget so they don't needed to be loaded from localstorage on mousemove
+      widgets = JSON.parse(localStorage.getItem("widgets"));
 
       $(".ui-2.x").trigger("click");
 
@@ -582,28 +620,56 @@ function setStuff() {
       if( $(this).attr("app-source") === "from-drawer" ) {
         held_element.element = $(this).clone()
           .addClass("widget-drag").css({
-            "left": $(this).offset().left,
-            "top" : $(this).offset().top,
+            "left": e.pageX - $(this).width() / 2,
+            "top" : e.pageY - $(this).height() / 2,
             "position": "absolute",
             "z-index" : "100"
         }).prependTo("body");
 
-        // Ensure that it's always droppable
-        held_element.offsetX_required = $(held_element.element).width()  / 2;
-        held_element.offsetY_required = $(held_element.element).height() / 2;
+        // To ensure the same position of mouse relative to the dragged item as it was in start
+        held_element.mouse_difference_x = $(held_element.element).width()  / 2;
+        held_element.mouse_difference_y = $(held_element.element).height()  / 2;
+
+        held_element.widget = {
+          id: $(this).attr("id"), 
+          where: [-5, -5], 
+          size: [$(this).attr("tile-height"), $(this).attr("tile-width")]
+        };
 
         $(".ui-2#apps,.ui-2#widgets").css("display", "none");
       } else {
-        var tiles = getCovered(this);
-        $(tiles.tiles).each(function(ind, elem){
-          $(elem).toggleClass("empty", true);
+        held_element.mouse_difference_x = e.pageX - held_element.oldX;
+        held_element.mouse_difference_y = e.pageY - held_element.oldY;
+        held_element.element = $(this);
+        held_element.element.addClass("widget-drag")
+        held_element.element.css({
+          "position": "absolute", 
+          "z-index" : "100"
         });
-
-        $(this).addClass("widget-drag")
-          .css("z-index", "100");
-
-        held_element.element = this;
+        held_element.widget = widgets[$(this).attr("id")];
       }
+
+      // generate tiles to show drop location
+      if (held_element.tempTiles) { // remove old temperory tiles, if any
+        $.each(held_element.tempTiles, function(index, elem) {
+          elem.remove();
+        });
+      }
+      held_element.tempTiles = [];
+      for (var i=0; i<held_element.widget.size[0]; i++) {
+        for (var j=0; j<held_element.widget.size[1]; j++) {
+          var tile = $(tile_template).removeClass("empty");
+          tile.css({
+            "position": "absolute",
+            "z-index" : "2"
+          }).addClass("temp-tiles");
+          tile.appendTo("#grid-holder");
+
+          held_element.tempTiles.push(tile);
+        }
+      }
+
+      repositionDropLocation(held_element.element, held_element.widget);
 
       $(".resize-tile").css("display", "none");
       $(this).find(".resize-tile").css("display", "block");
@@ -625,10 +691,15 @@ function setStuff() {
 
       update = true;
 
-      var closestElm = findClosest(this);
-      var tiles = getCovered(this);
+      var position = findClosest(held_element.element);
+      var areaClear = repositionDropLocation(held_element.element, held_element.widget);
 
-      if ( tiles.clear === true ) {
+      $.each(held_element.tempTiles, function(index, elem) {
+        elem.remove();
+      });
+      held_element.tempTiles = null;
+
+      if ( areaClear === true ) {
         if( $(this).attr("app-source") === "from-drawer" && $(this).attr("tile-widget") === "true" ) {
           var is_widget = true,
               src       = $(this).attr("tile-widget-src"),
@@ -649,27 +720,23 @@ function setStuff() {
 
         if ( $(this).attr("app-source") === "from-drawer" ) {
           addWidget($(this).attr("id"), { 
-            top: $(closestElm).attr("land-top"), 
-            left: $(closestElm).attr("land-left")
+            top: position.row, 
+            left: position.col
           });
         }
 
         if ( $(this).attr("app-source") !== "from-drawer" ) {
           updateWidget({
-            "id"  : $(this).attr("id"),
-            "top" : $(closestElm).attr("land-top"),
-            "left": $(closestElm).attr("land-left")
+            id  : $(this).attr("id"),
+            top : position.row,
+            left: position.col
           });
         }
 
         $(this).removeClass("widget-drag").css({
-          "left": $(closestElm).position().left,
-          "top" : $(closestElm).position().top,
+          "top": position.row * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ), 
+          "left": position.col * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ), 
           "z-index": "2"
-        });
-
-        $(tiles.tiles).each(function(ind, elem){
-            $(elem).toggleClass("empty", false);
         });
 
       } else { // If the tile was full
@@ -679,12 +746,6 @@ function setStuff() {
           "top" : held_element.oldY,
           "z-index": "2"
         });
-
-        tiles = getCovered(this);
-
-        $(tiles.tiles).each(function(ind, elem){
-          $(elem).toggleClass("empty", false);
-        });
       }
 
       if ( $(held_element.element).attr("app-source") === "from-drawer") {
@@ -693,8 +754,6 @@ function setStuff() {
       $("body > .widget-drag").remove();
 
       held_element.element = false;
-      $(".tile").removeClass("tile-green tile-red")
-        .css("z-index", "0");
     });
 
     // When a tile is held and moved
@@ -708,42 +767,19 @@ function setStuff() {
       }
 
       if ( typeof(held_element.element) === "object" ) {
+
         if(update === true){
           update = false;
         } else {
-          held_left = held_element.width / 2;
-          held_top = held_element.height / 2;
-
-          if( held_element.offsetX_required )
-            held_left = held_element.offsetX_required;
-          if( held_element.offsetY_required)
-            held_top  = held_element.offsetY_required;
-
           $(held_element.element).css({
-            "left": e.pageX - held_left - GRID_MARGIN_LEFT(),
-            "top" : e.pageY - held_top  - GRID_MARGIN_TOP()
+            "left": e.pageX - held_element.mouse_difference_x,
+            "top" : e.pageY - held_element.mouse_difference_y
           });
         }
 
         hscroll = true;
 
-        var closestElm = findClosest(held_element.element);
-        var tiles = getCovered(held_element.element);
-
-        $(".tile").removeClass("tile-green tile-red")
-          .css("z-index", "0");
-
-        if ( tiles.clear === true ) {
-          $(tiles.tiles).each(function(ind, elem){
-            $(elem).addClass("tile-green")
-              .css("z-index", "2");
-          });
-        } else {
-          $(tiles.tiles).each(function(ind, elem){
-            $(elem).addClass("tile-red")
-              .css("z-index", "2");
-          });
-        }
+        repositionDropLocation(held_element.element, held_element.widget);
       }
     });
     /* END :: Move */
@@ -971,3 +1007,20 @@ $(document).on("keydown", ".shortcut input.search-box, .app input.search-box", f
   }
 });
 /* End Tile Search */
+
+/* Generating Empty Tile */
+var emptyTile = $(tile_template).css({
+        "position": "absolute",
+        "display" : "none"
+      }).attr({
+        "land-top" : "-1",
+        "land-left": "-1"
+      }).appendTo("#grid-holder");
+
+$(document).live("mousemove", function(e) {
+  //var col = e.pageX / (( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ));
+  //var row = e.pageY / (( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ));
+
+  //if (emptyTile.row)
+});
+/* End Generating Empty Tile */
