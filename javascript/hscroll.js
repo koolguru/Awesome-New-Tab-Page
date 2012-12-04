@@ -54,7 +54,6 @@
   var repeatCount = 0;
 
   function ScrollSmoothly(scrollPos, repeatTimes, direction) {
-    console.log("scroll")
     if(repeatCount < repeatTimes) {
       if(direction === "right")
         window.scrollBy(scrollPos, 0);
