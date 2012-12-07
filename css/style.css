@@ -71,7 +71,8 @@ body {
   cursor: pointer
 }
 .tile {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1px;
   margin: 3px;
   padding: 0px;
   float: left;
@@ -90,6 +91,13 @@ body {
 }
 .tile-green {
   background-color: rgba(0, 255, 0, .4) !important;
+}
+#grid-holder {
+  background-image: url("/images/tile-bg.png");
+  background-repeat: repeat-x repeat-y;
+  background-position: 4px 2px;
+  height: 100%;
+  width: 100%;
 }
 #widget-holder,#grid-holder {
   position: absolute;
@@ -377,7 +385,7 @@ body {
 }
 .unlocked .empty.add-shortcut {
   background-image: url("/images/add_shortcut.png");
-  opacity: .5 !important;
+  opacity: .9 !important;
   cursor: pointer;
 }
 .colorpicker {
@@ -988,9 +996,8 @@ body > .widget-drawer-app img {
 
   .filesystem-drop-area {
     content: "Drop Here";
-    z-index: 1000;
     box-shadow: 0 0 0 2px #09C, 0px 0px 7px 2px #09C;
-    background: url("/images/ui-2/drop.png") no-repeat center center, rgba(0, 156, 204, .5);
+    background: url("/images/ui-2/drop.png") no-repeat center center, rgba(0, 156, 204, .5) !important;
     text-align: center;
     font-size: 50px;
   }

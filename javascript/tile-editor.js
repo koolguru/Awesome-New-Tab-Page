@@ -57,7 +57,7 @@ function createShortcut(tile) {
     "zIndex": "1"
   }).find(".iframe-mask").find("#shortcut-edit").trigger("click");
 
-  $(tile).removeClass("add-shortcut").removeClass("empty");
+  //$(tile).removeClass("add-shortcut").removeClass("empty");
 }
 
 // Edit shortcut or app

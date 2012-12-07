@@ -145,7 +145,7 @@ function placeGrid() {
   })
 
   // Actually place the grid
-  for (var gx = 0; gx < height; gx++) {
+  /*for (var gx = 0; gx < height; gx++) {
     for (var gy = 0; gy < width; gy++) {
       $(tile_template).css({
         "position": "absolute",
@@ -156,7 +156,7 @@ function placeGrid() {
         "land-left": gy
       }).appendTo("#grid-holder");
     }
-  }
+  }*/
 
   updateGridOpacity();
 }
@@ -1016,11 +1016,98 @@ var emptyTile = $(tile_template).css({
         "land-top" : "-1",
         "land-left": "-1"
       }).appendTo("#grid-holder");
+emptyTile.addClass("add-shortcut");
 
-$(document).live("mousemove", function(e) {
-  //var col = e.pageX / (( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ));
-  //var row = e.pageY / (( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 ));
+var actualTileSize = GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 );
 
-  //if (emptyTile.row)
+$(document).on("mousemove", "body.unlocked #grid-holder", function(e) {
+  if (e.target.id != "grid-holder" && !$(e.target).hasClass("tile empty"))
+    return;
+
+  placeEmptyTile(e);
 });
+
+$(document).on("mousemove", "#widget-holder .widget", function(e) {
+  emptyTile.css('display', 'none');
+});
+
+function placeEmptyTile(e) {
+  var SUB_FROM_HALF_X = 52;  // to bias grid half to one side
+  var ADD_TO_HALF_Y = 11;
+
+  var col = (e.pageX + 2*SUB_FROM_HALF_X) / (actualTileSize + GRID_MARGIN_LEFT());
+  var row = (e.pageY - ADD_TO_HALF_Y / 2) / (actualTileSize + GRID_MARGIN_TOP());
+  if (Math.ceil(col) - col < 0.019 || col - Math.floor(col) < 0.012 || Math.ceil(row) - row < 0.019 || row - Math.floor(row) < 0.012) {
+    emptyTile.css('display', 'none');
+    emptyTile.removeClass("add-shortcut");
+  }
+  else {
+    emptyTile.css('display', 'block');
+    emptyTile.addClass("add-shortcut");
+  }
+
+  var col = Math.floor(col);
+  var row = Math.floor(row);
+
+  if (emptyTile.attr("land-top") != row || emptyTile.attr("land-left") != col) {
+    placeTileAt(emptyTile, {row: row, col: col});
+    emptyTile.attr("land-top", row);
+    emptyTile.attr("land-left", col);
+  }
+}
+
 /* End Generating Empty Tile */
+
+
+/* Start: drag/drop bookmarks to empty tiles */
+
+$("body").bind({
+  "dragover": function(e) {
+    if ($("body").hasClass("unlocked")) {
+      placeEmptyTile(e.originalEvent);
+      emptyTile.addClass("filesystem-drop-area");
+    }
+  },
+  "dragleave": function(e) {
+    emptyTile.removeClass("filesystem-drop-area");
+  }, 
+  "drop": function(e) {
+    emptyTile.removeClass("filesystem-drop-area");
+  }
+});
+
+emptyTile.bind({
+  "dragover": function(e) {
+    if ($("body").hasClass("unlocked")) {
+      placeEmptyTile(e);
+      if (emptyTile.filter(".tile.empty.tile-grid").length == 1) {
+        emptyTile.addClass("filesystem-drop-area");
+      }
+    }
+    return false;
+  },
+  "dragleave": function(e) {
+    emptyTile.removeClass("filesystem-drop-area");
+    return false;
+  },
+  "drop": function(e) {
+    emptyTile.removeClass("filesystem-drop-area");
+    if (emptyTile.filter(".tile.empty.tile-grid").length == 1) {
+      if (e.originalEvent.dataTransfer.items.length > 0) {
+        var url = e.originalEvent.dataTransfer.getData("URL");
+        if (url !== null && url !== "") {
+          required('/javascript/tile-editor.js?nocache=12', function() {  // ensure tile-editor.js is loaded
+            createShortcut(e.srcElement);
+            $("#editor #shortcut_url").val(url);
+            $("#editor #shortcut_name").val("");
+            $("#editor #shortcut_name").focus();
+            updateShortcut();
+          });
+        }
+      }
+    }
+    return false;
+  }
+});
+
+/* End: drag/drop bookmarks to empty tiles */
