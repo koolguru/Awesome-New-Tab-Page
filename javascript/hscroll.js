@@ -1,7 +1,7 @@
 /* START :: Horizontal Scrolling Smarts */
 
   var hscroll = true;
-  $("body > .ui-2, body > #recently-closed-tabs-menu").live({
+  $("body > .ui-2, body > #recently-closed-tabs-menu, #apps, #widgets").live({
     mouseleave: function() {
       hscroll = true;
     },
