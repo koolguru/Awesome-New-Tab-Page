@@ -16,6 +16,18 @@
   *       relationship with the authors of this project or the project itself.
 ***/
 
+/* Online/Offline status */
+if (!navigator.onLine) {
+  $("body").addClass("offline");
+}
+
+$(document).bind("online", function () {
+  $("body").removeClass("offline");
+});
+$(document).bind("onffline", function () {
+  $("body").addClass("offline");
+});
+/* End: Online/Offline status */
 
 $(document).ready(function($) {
   $("#toggle-grid,#grid-holder").bind("click", updateGridOpacity);

@@ -64,104 +64,84 @@ var
       $scope.widgets = [];
       $scope.apps = {};
       $scope.custom_shortcuts = {};
+      
+      angular.forEach(tiles, function(tile, id) {
+        if ( tile.isApp === true )
+          tile.type = "app";
 
-      chrome.management.getAll(function(installed_apps){
-        angular.forEach(tiles, function(tile, id) {
-          if ( tile.isApp === true )
-            tile.type = "app";
+        tile.ext = tile.id;
+        tile.id = id;
 
-          tile.ext = tile.id;
-          tile.id = id;
+        if ( tiles[tile.id].optionsUrl ) {
+          tile.optionsUrl = tiles[tile.id].optionsUrl;
+        }
 
-          if ( tiles[tile.id].optionsUrl ) {
-            tile.optionsUrl = tiles[tile.id].optionsUrl;
+        /* Start :: CSS */
+
+          tile.css = {};
+          tile.css.height = ( tile.size[0] * 200 ) + ( ( tile.size[0] - 1 ) * 6 );
+          tile.css.width  = ( tile.size[1] * 200 ) + ( ( tile.size[1] - 1 ) * 6 );
+          tile.css.top    = tile.where[0] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+          tile.css.left   = tile.where[1] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+
+          if ( tile.type === "app" || tile.type === "shortcut" ) {
+            if ( tile.shortcut_background_transparent === true ) {
+              tile.css.bg = "background-image: url("+tile.img+"); background-color: transparent;";
+            } else {
+              tile.css.bg = "background-image: url("+tile.img+"), -webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(255, 255, 255, 0.04)), from(rgba(255, 255, 255, 0.35))); background-color: "+tile.color+";";
+            }
           }
 
-          /* Start :: CSS */
+          if ( tile.img && (tile.type === "app" || tile.type === "shortcut") ) {
+            tile.css.bgimg = "background-image: url("+tile.img+")";
+          }
 
-            tile.css = {};
-            tile.css.height = ( tile.size[0] * 200 ) + ( ( tile.size[0] - 1 ) * 6 );
-            tile.css.width  = ( tile.size[1] * 200 ) + ( ( tile.size[1] - 1 ) * 6 );
-            tile.css.top    = tile.where[0] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
-            tile.css.left   = tile.where[1] * ( GRID_TILE_SIZE + ( GRID_TILE_PADDING * 2 ) ) + ( GRID_TILE_PADDING * 2 );
+          /* END :: CSS */
 
-            if ( tile.type === "app" || tile.type === "shortcut" ) {
-              if ( tile.shortcut_background_transparent === true ) {
-                tile.css.bg = "background-image: url("+tile.img+"); background-color: transparent;";
-              } else {
-                tile.css.bg = "background-image: url("+tile.img+"), -webkit-gradient(linear, 100% 100%, 0% 0%, to(rgba(255, 255, 255, 0.04)), from(rgba(255, 255, 255, 0.35))); background-color: "+tile.color+";";
-              }
+        // Defaults
+        if ( tile.favicon_show === undefined ) {
+          tile.favicon_show = true;
+        }
+        if ( tile.name_show === undefined ) {
+          tile.name_show = true;
+        }
+
+        // Fixed list app urls with  their search urls
+        var fixedSearchURLs = {
+          "http://www.youtube.com/"                       : "http://www.youtube.com/results?search_query={input}", 
+          "http://www.amazon.com/?tag=sntp-20"            : "http://www.amazon.com/s/?field-keywords={input}&tag=sntp-20", 
+          "http://www.facebook.com/"                      : "http://www.facebook.com/search/?q={input}", 
+          "http://www.twitter.com/"                       : "http://twitter.com/search?q={input}&src=typd", 
+          "http://plus.google.com/"                       : "http://plus.google.com/s/{input}", 
+          "http://www.google.com/webhp?source=search_app" : "http://www.google.com/search?source=search_app&q={input}", 
+          "https://chrome.google.com/webstore?utm_source=webstore-app&utm_medium=awesome-new-tab-page" : "https://chrome.google.com/webstore/search/{input}"
+        };
+
+        switch ( tile.type ) {
+          case "iframe":
+            if ( tile.instance_id ) {
+              tile.hash = encodeURIComponent(JSON.stringify({"id": tile.instance_id}));
+            }
+            $scope.widgets.push(tile);
+            break;
+          case "app":
+            tile.resize = true;
+            if (fixedSearchURLs[tile.appLaunchUrl]) {
+              tile.searchUrl = fixedSearchURLs[tile.appLaunchUrl];
+              tile.searchEnabled = true;
             }
 
-            if ( tile.img && (tile.type === "app" || tile.type === "shortcut") ) {
-              tile.css.bgimg = "background-image: url("+tile.img+")";
+            $scope.apps[id] = tile;
+            break;
+          case "shortcut":
+            tile.resize = true;
+            if (tile.searchUrl && tile.searchUrl.indexOf("{input}") != -1) {
+              tile.searchEnabled = true;
             }
+            $scope.custom_shortcuts[id] = tile;
+            break;
+        }
 
-            /* END :: CSS */
-
-          // Defaults
-          if ( tile.favicon_show === undefined ) {
-            tile.favicon_show = true;
-          }
-          if ( tile.name_show === undefined ) {
-            tile.name_show = true;
-          }
-
-          // Fixed list app urls with  their search urls
-          var fixedSearchURLs = {
-            "http://www.youtube.com/"                       : "http://www.youtube.com/results?search_query={input}", 
-            "http://www.amazon.com/?tag=sntp-20"            : "http://www.amazon.com/s/?field-keywords={input}&tag=sntp-20", 
-            "http://www.facebook.com/"                      : "http://www.facebook.com/search/?q={input}", 
-            "http://www.twitter.com/"                       : "http://twitter.com/search?q={input}&src=typd", 
-            "http://plus.google.com/"                       : "http://plus.google.com/s/{input}", 
-            "http://www.google.com/webhp?source=search_app" : "http://www.google.com/search?source=search_app&q={input}", 
-            "https://chrome.google.com/webstore?utm_source=webstore-app&utm_medium=awesome-new-tab-page" : "https://chrome.google.com/webstore/search/{input}"
-          };
-
-          switch ( tile.type ) {
-            case "iframe":
-              if ( tile.instance_id ) {
-                tile.hash = encodeURIComponent(JSON.stringify({"id": tile.instance_id}));
-              }
-              $scope.widgets.push(tile);
-              break;
-            case "app":
-              tile.resize = true;
-              if (fixedSearchURLs[tile.appLaunchUrl]) {
-                tile.searchUrl = fixedSearchURLs[tile.appLaunchUrl];
-                tile.searchEnabled = true;
-              }
-
-              //console.log(JSON.stringify(installed_apps));
-              //console.log(JSON.stringify(tile));
-              console.log(id);
-
-              installed_apps.filter(function(app) {
-                if (app.id == id) {
-                  console.log('found');
-                  return true;
-                }
-              });
-
-              console.log(installed_apps.length > 0);
-              console.log(installed_apps[0].offlineEnabled);
-              console.log(navigator.onLine);
-              if (installed_apps.length > 0 && !installed_apps[0].offlineEnabled && !navigator.onLine) {
-                tile.css.bg += "-webkit-filter: grayscale(1);";
-              }
-
-              $scope.apps[id] = tile;
-              break;
-            case "shortcut":
-              tile.resize = true;
-              if (tile.searchUrl && tile.searchUrl.indexOf("{input}") != -1) {
-                tile.searchEnabled = true;
-              }
-              $scope.custom_shortcuts[id] = tile;
-              break;
-          }
-
-        });
       });
 
       setTimeout(function(){

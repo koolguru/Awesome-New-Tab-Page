@@ -180,6 +180,9 @@ body {
   top: 0; bottom: 0;
   right: 0; left: 0;
 }
+body.offline .app:not(.shortcut):not(.offline-enabled) {
+  -webkit-filter: grayscale(1);
+}
 .force-hide {
   display: none !important;
 }

@@ -48,6 +48,19 @@ storageFunctions.updateOldPaths = function() {
   localStorageSync(false);
 };
 
+// add offlineEnabled property to stored apps
+storageFunctions.addOfflineEnabledProp = function (argument) {
+  chrome.management.getAll(function(installed_apps) {
+    for (var i=0, app; app = installed_apps[i]; i++) {
+      for (var j in widgets) {
+        if (widgets[j].id == app.id) {
+          widgets[j].offlineEnabled = app.offlineEnabled;
+        }
+      }
+    }
+  });
+  localStorageSync(false);
+};
 
 (function() {
   var
@@ -59,7 +72,7 @@ storageFunctions.updateOldPaths = function() {
 
   // Prevent unnecessary checks
   // Must be updated with future storage updates
-  if ( storageVersion === 1 )
+  if ( storageVersion === 2 )
     return;
 
   if ( storageVersion < 1 ) {
@@ -68,6 +81,12 @@ storageFunctions.updateOldPaths = function() {
 
     store.set("storageVersion", 1);
     reload = true;
+  }
+
+  if ( storageVersion < 2 ) {
+    storageFunctions.addOfflineEnabledProp();
+
+    store.set("storageVersion", 2);
   }
 
   if ( reload === true )

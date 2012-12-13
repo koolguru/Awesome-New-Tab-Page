@@ -69,6 +69,7 @@
       <!-- Installed Apps -->
       <div id="{{app.id}}" ng-repeat="app in apps"
       class="widget app search-not-active"
+      ng-class="{'offline-enabled': app.offlineEnabled==true}"
       tile-height="{{app.size.0}}" tile-width="{{app.size.1}}"
       tile-init-top="{{app.where.0}}" tile-init-left="{{app.where.1}}"
       style="{{app.css.bg}};
