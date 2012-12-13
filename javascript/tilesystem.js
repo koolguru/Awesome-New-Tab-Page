@@ -894,6 +894,7 @@ function addWidget(widget_id, tile_location) {
     widgets[widget.instance_id] = widget;
   }
   else {
+    widget.offlineEnabled = obj.offlineEnabled;
     widget.appLaunchUrl = widget.url = obj.appLaunchUrl;
     widget.type = "app";
     widget.name_show = obj.stock ? false : true; // default false for stock tiles ONLY
