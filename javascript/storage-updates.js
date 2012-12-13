@@ -64,8 +64,7 @@ storageFunctions.addOfflineEnabledProp = function (argument) {
 
 (function() {
   var
-    storageVersion = parseFloat(store.get("storageVersion")),
-    reload = false;
+    storageVersion = parseFloat(store.get("storageVersion"));
 
   if ( isNaN(storageVersion) )
     storageVersion = 0;
@@ -80,7 +79,6 @@ storageFunctions.addOfflineEnabledProp = function (argument) {
     storageFunctions.onLeftClickUpdate();
 
     store.set("storageVersion", 1);
-    reload = true;
   }
 
   if ( storageVersion < 2 ) {
@@ -88,7 +86,4 @@ storageFunctions.addOfflineEnabledProp = function (argument) {
 
     store.set("storageVersion", 2);
   }
-
-  if ( reload === true )
-    window.location.reload();
 })();
