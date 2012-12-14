@@ -829,13 +829,6 @@ function setStuff() {
     });
   });
 
-  $(document).on("click", "#shortcut-edit",function(e){
-    var self = this;
-    required('/javascript/tile-editor.js?nocache=12', function() {
-      editShortcut(e, self);
-    });
-  });
-
   // Stop edit or delete buttons from interacting with the shortcut/app
   $(document).on("mousedown mouseup move", "#delete,#shortcut-edit,#widget-config", function(e) {
     e.stopPropagation();

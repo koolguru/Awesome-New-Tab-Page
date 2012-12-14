@@ -38,6 +38,9 @@
   "ui_te": {
     "message": "Tile Editor"
   },
+  "ui_te_general": {
+    "message": "General"
+  },
   "ui_te_name": {
     "message": "Name"
   },
@@ -64,10 +67,10 @@
   },
   "ui_te_search": {
     "message": "Search"
-  }, 
+  },
   "ui_te_search_desc": {
     "message": "Enter a search URL for this website. For example:"
-  }, 
+  },
   "ui_te_bg_colorpicker": {
     "message": "Open Color Picker"
   },
