@@ -584,25 +584,29 @@ function setStuff() {
 
       $(".widget").css("z-index", "1");
 
-      held_element.offsetX = e.offsetX;
-      held_element.offsetY = e.offsetY;
-      held_element.oldX    = $(this).position().left;
-      held_element.oldY    = $(this).position().top;
-      held_element.width   = $(this).width();
-      held_element.height  = $(this).height();
+      held_element.offsetX          = e.offsetX;
+      held_element.offsetY          = e.offsetY;
+      held_element.oldX             = $(this).position().left;
+      held_element.oldY             = $(this).position().top;
+      held_element.width            = $(this).width();
+      held_element.height           = $(this).height();
+      held_element.startingMousePos = {left: e.pageX, top: e.pageY};
 
       if( $(this).attr("app-source") === "from-drawer" ) {
         held_element.element = $(this).clone()
           .addClass("widget-drag").css({
-            "left": $(this).offset().left,
-            "top" : $(this).offset().top,
             "position": "absolute",
             "z-index" : "100"
         }).prependTo("body");
 
-        // Ensure that it's always droppable
+          // Ensure that it's always droppable
         held_element.offsetX_required = $(held_element.element).width()  / 2;
         held_element.offsetY_required = $(held_element.element).height() / 2;
+
+        held_element.element.css({
+          "left": e.pageX - held_element.offsetX_required - GRID_MARGIN_LEFT(),
+          "top" : e.pageY - held_element.offsetY_required  - GRID_MARGIN_TOP(), 
+          });
 
         $(".ui-2#apps,.ui-2#widgets").css("display", "none");
       } else {
@@ -685,6 +689,9 @@ function setStuff() {
         });
 
       } else { // If the tile was full
+        if (e.pageX = held_element.startingMousePos.left && e.pageY == held_element.startingMousePos.top) {
+          $.jGrowl(chrome.i18n.getMessage("ui_drag_widget_message"));
+        }
 
         $(held_element.element).removeClass("widget-drag").css({
           "left": held_element.oldX,
