@@ -301,6 +301,11 @@ function _e(_eNum) {
 
   $(document).on("mouseup", ".url", function(e) {
 
+    // Ctrl + Click = Open in new tab
+    if ( e.which !== 3 && e.ctrlKey === true ) {
+      e.which = 2;
+    }
+
     var url = $(this).attr("data-url");
 
     if ( url && typeof(url) === "string" && url !== ""
@@ -316,11 +321,6 @@ function _e(_eNum) {
         } else {
           url = "http://www.amazon.com/Instant-Video/b?ie=UTF8&tag=sntp-20&node=2858778011"
         }
-      }
-
-      // Ctrl + Click = Open in new tab
-      if ( e.which !== 3 && e.ctrlKey === true ) {
-        e.which = 2;
       }
 
       if ( e.shiftKey !== true ) {
@@ -345,6 +345,18 @@ function _e(_eNum) {
         } else if ( e.which === 2 ) {
           chrome.tabs.create({ url: (url), active: false });
         }
+      }
+    }
+    else if ((!url || url === "") && $(this).closest(".app").attr("type") == "app") {
+      if (e.which == 1 || e.which == 2) {
+        var app = $(this).closest(".app");
+        if (app.length > 0)
+          chrome.management.launchApp(app.attr("id"));
+
+        if (e.which == 1)
+          chrome.tabs.getCurrent(function(tab) {
+            chrome.tabs.remove([tab.id]);
+          });
       }
     }
 
