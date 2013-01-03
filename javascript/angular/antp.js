@@ -191,7 +191,11 @@ var
     $scope.apps = [];
     $scope.widgets = {};
 
+    var timeoutId = null;
+
     $scope.update = function() {
+      clearTimeout(timeoutId);  // to prevent multiple running of $scope.update function
+
       // Refresh widgets
       chrome.runtime.getBackgroundPage(function(bp) {
         chrome.management.getAll( bp.reloadExtensions );
@@ -225,7 +229,7 @@ var
           // $scope.widgetsCount = Object.keys( bp.installedWidgets ).length;
 
           // Update every 30 seconds
-          setTimeout($scope.update, 30000);
+          timeoutId = setTimeout($scope.update, 30000);
 
           $scope.$apply();
 
@@ -233,7 +237,7 @@ var
       });
     };
 
-    setTimeout($scope.update, 1000);
+    timeoutId = setTimeout($scope.update, 1000);
 
     chrome.management.onEnabled.addListener( $scope.update );
     chrome.management.onInstalled.addListener( $scope.update );

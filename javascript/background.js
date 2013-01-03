@@ -266,3 +266,20 @@
   }
 
   /* END :: External Communication Stuff */
+
+
+  /* START :: App installed */
+  chrome.management.onInstalled.addListener(function(ExtensionInfo) {
+    if (ExtensionInfo.type == "hosted_app" || ExtensionInfo.type == "packaged_app" || ExtensionInfo.type == "legacy_packaged_app") {
+      setTimeout(showAppsUI, 1000);
+    }
+  });
+
+  function showAppsWindow () {
+    var tabs = chrome.extension.getViews({type: "tab"});
+    for (var i=0, tab; tab=tabs[i]; i++) {
+      tab.showAppsWindow();
+    }
+  }
+
+  /* END :: App installed */

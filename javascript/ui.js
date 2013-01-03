@@ -327,3 +327,38 @@ $(".tile").bind({
     return false;
   }
 });
+
+// upon new app installed
+function showAppsWindow () {
+  $(".ui-2#apps").show();
+
+  required('/javascript/jquery.qtip.min.js', function() {
+    $(document).ready(function() {
+      $(document.body).qtip({
+        id: 'app-tip', // Give it an ID of qtip-step so we an identify it easily
+        content: {
+          text: chrome.i18n.getMessage("ui_apps_tip_message"),
+          title: {
+            text: chrome.i18n.getMessage("ui_apps_tip_message_title"), 
+            button: true
+          }
+        },
+        position: {
+          my: 'left center',
+          at: 'right center',
+          target: $('#app-drawer-button'), // Also use first steps position target...
+          viewport: $(window) // ...and make sure it stays on-screen if possible
+        },
+        show: {
+          event: false,
+          ready: true
+        },
+        hide: {
+          event: 'unfocus'
+        }
+      });
+
+      $('#qtip-app-tip').triggerHandler(this.id);
+    });
+  });
+}

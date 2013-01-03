@@ -401,5 +401,11 @@
   }, 
   "ui_drag_widget_message": {
     "message": "To place a widget, click and drag the widget to an empty tile."
+  }, 
+  "ui_apps_tip_message_title": {
+    "message": "New App Installed"
+  }, 
+  "ui_apps_tip_message": {
+    "message": "Nice! You just installed an app. You can find all of your installed apps here."
   }
 }
