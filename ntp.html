@@ -53,10 +53,10 @@
         style="height: {{widget.css.height}}px; width: {{widget.css.width}}px;
           top: {{widget.css.top}}px; left: {{widget.css.left}}px;
           background-size: {{widget.backgroundSize}}; background-position: {{widget.backgroundPosition}}">
-        <iframe ng-src="{{widget.path}}#{{widget.hash}}" scrolling="no" frameborder="0" align="center" height="100%" width="100%"></iframe>
+        <iframe ng-src="{{widget.path}}{{widget.hash}}" scrolling="no" frameborder="0" align="center" height="100%" width="100%"></iframe>
         <div class="iframe-mask" ng-switch on="widget.resize">
           <div id="delete"></div>
-          <div id="widget-config" class="url" data-url="{{widget.optionsUrl}}#{{widget.hash}}" ng-show="widget.optionsUrl"></div>
+          <div id="widget-config" class="url" data-url="{{widget.optionsUrl}}{{widget.hash}}" ng-show="widget.optionsUrl"></div>
           <div class="resize-tile" ng-switch-when="true">
             <div class="resize-tile-top"></div>
             <div class="resize-tile-bottom"></div>

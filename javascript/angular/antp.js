@@ -109,7 +109,9 @@ var
         switch ( tile.type ) {
           case "iframe":
             if ( tile.instance_id ) {
-              tile.hash = encodeURIComponent(JSON.stringify({"id": tile.instance_id}));
+              tile.hash = "#" + encodeURIComponent(JSON.stringify({"id": tile.instance_id}));
+            } else {
+              tile.hash = "";
             }
             $scope.widgets.push(tile);
             break;
