@@ -605,7 +605,7 @@ function setStuff() {
 
         held_element.element.css({
           "left": e.pageX - held_element.offsetX_required - GRID_MARGIN_LEFT(),
-          "top" : e.pageY - held_element.offsetY_required  - GRID_MARGIN_TOP(), 
+          "top" : e.pageY - held_element.offsetY_required  - GRID_MARGIN_TOP(),
           });
 
         $(".ui-2#apps,.ui-2#widgets").css("display", "none");
@@ -976,7 +976,7 @@ $(document).on("mouseleave", ".shortcut, .app", function(e) {
 $(document).on("keydown", ".shortcut input.search-box, .app input.search-box", function(e) {
   var elem = $(this);
   if (e.which == 13) {
-    document.location.href = elem.attr('data-search').replace("{input}", elem.val());
+    document.location.href = elem.attr('data-search').replace("{input}", encodeURI(elem.val()));
   }
 });
 /* End Tile Search */
