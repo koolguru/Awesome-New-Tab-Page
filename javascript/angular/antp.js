@@ -64,7 +64,7 @@ var
       $scope.widgets = [];
       $scope.apps = {};
       $scope.custom_shortcuts = {};
-      
+
       angular.forEach(tiles, function(tile, id) {
         if ( tile.isApp === true )
           tile.type = "app";
@@ -518,6 +518,10 @@ var
             // if checked, use value.
             if (attr.ngModel === "shortcut_pin" || attr.ngModel === "shortcut_newtab") {
               var checked = $("[ng-model=" + attr.ngModel + "]").attr("checked");
+
+              // uncheck the other box (if checked)
+              $("[ng-model=" + (attr.ngModel == "shortcut_pin" ? "shortcut_newtab" : "shortcut_pin") + "]").removeAttr("checked");
+
               if (!checked) {
                 value = undefined;
               }
