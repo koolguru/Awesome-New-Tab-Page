@@ -316,10 +316,9 @@ $(".tile").bind({
         if (url !== null && url !== "") {
           required('/javascript/tile-editor.js?nocache=12', function() {  // ensure tile-editor.js is loaded
             createShortcut(e.srcElement);
-            $("#editor #shortcut_url").val(url);
-            $("#editor #shortcut_name").val("");
-            $("#editor #shortcut_name").focus();
-            updateShortcut();
+            $("[ng-model=appLaunchUrl]").val(url).change();
+            $("[ng-model=name]").val("").change();
+            $("[ng-model=name]").focus();
           });
         }
       }
@@ -339,7 +338,7 @@ function showAppsWindow () {
         content: {
           text: chrome.i18n.getMessage("ui_apps_tip_message"),
           title: {
-            text: chrome.i18n.getMessage("ui_apps_tip_message_title"), 
+            text: chrome.i18n.getMessage("ui_apps_tip_message_title"),
             button: true
           }
         },
