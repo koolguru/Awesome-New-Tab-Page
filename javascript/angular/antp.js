@@ -392,6 +392,10 @@ var
 
       var tile = widgets[id];
 
+      if ( tile.name_show === undefined ) {
+        tile.name_show = true;
+      }
+
       $scope.name = tile.name;
       $scope.name_show = tile.name_show;
       $scope.shortcut_pin = (tile.onleftclick === "pin");
