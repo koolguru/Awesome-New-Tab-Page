@@ -275,7 +275,7 @@
     }
   });
 
-  function showAppsWindow () {
+  function showAppsUI () {
     var tabs = chrome.extension.getViews({type: "tab"});
     for (var i=0, tab; tab=tabs[i]; i++) {
       tab.showAppsWindow();
