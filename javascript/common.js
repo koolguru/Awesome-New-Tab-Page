@@ -347,7 +347,7 @@ function _e(_eNum) {
         }
       }
     }
-    else if ((!url || url === "") && $(this).closest(".app").attr("type") == "app") {
+    else if ((!url || url === "") && ($(this).closest(".app").attr("type") == "app" || $(this).closest(".app").attr("type") == "packaged_app")) {
       if (e.which == 1 || e.which == 2) {
         var app = $(this).closest(".app");
         if (app.length > 0)
