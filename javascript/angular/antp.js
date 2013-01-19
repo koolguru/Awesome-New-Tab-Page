@@ -290,6 +290,17 @@ var
 
   function windowTileEditorCtrl($scope) {
 
+    $scope.safeApply = function(fn) {
+      var phase = this.$root.$$phase;
+      if(phase == '$apply' || phase == '$digest') {
+        if(fn && (typeof(fn) === 'function')) {
+          fn();
+        }
+      } else {
+        this.$apply(fn);
+      }
+    };
+
     $scope.update = function (a, b) {
       // save all the things, put all the things into the tile.
       var id = $(".ui-2#editor").attr("active-edit-id");
@@ -334,8 +345,8 @@ var
             widgets[id].shortcut_background_transparent = true;
           } else {
             $scope.backgroundimage = "url("+widgets[id].img+")" + gradient;
-            $scope.backgroundcolor = widgets[id].color;
             widgets[id].color = $scope.color;
+            $scope.backgroundcolor = widgets[id].color;
             widgets[id].shortcut_background_transparent = false;
           }
           $(".ui-2#editor #invisible-tile-img").attr("src", widgets[id].img);
@@ -350,7 +361,7 @@ var
       }
 
       localStorage.setItem("widgets", JSON.stringify(widgets));
-      $scope.$apply();
+      $scope.safeApply();
     };
 
     $scope.edit = function() {
@@ -424,7 +435,7 @@ var
         .show()
         .attr("active-edit-id", id)
         .attr("active-edit-type", editor_type);
-      $scope.$apply();
+      $scope.safeApply();
 
       requiredColorPicker(function() {
         var rgb = [];
@@ -499,6 +510,7 @@ var
       $scope.backgroundcolor = "rgb(" + r + ", " + g + ", " + b + ")";
       $scope.color = $scope.backgroundcolor;
       $scope.shortcut_background_transparent = false;
+      $scope.update("backgroundcolor", $scope.color);
     }
 
     $(document).on("click", "#shortcut-edit", $scope.edit);
