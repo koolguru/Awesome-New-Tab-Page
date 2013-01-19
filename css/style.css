@@ -483,14 +483,12 @@ body.offline #widget-holder .app:not(.shortcut):not(.offline-enabled) {
   text-align: center;
 }
 
-#import-export-contents {
+#import-textarea, #export-textarea {
   display: none;
 }
+
 #import-export-contents .buttons {
   margin-top: 10px;
-}
-#import-export-contents #import-btn{
-  margin-left: 40px;
 }
 
 /* UI-2 */

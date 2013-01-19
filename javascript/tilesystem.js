@@ -30,7 +30,7 @@ $(document).bind("onffline", function () {
 /* End: Online/Offline status */
 
 $(document).ready(function($) {
-  $("#toggle-grid,#grid-holder").bind("click", updateGridOpacity);
+  $("#toggle-grid,#grid-holder").live("click", updateGridOpacity);
 
   if(localStorage.getItem("perm-grid") === null) {
     localStorage.setItem("perm-grid", "yes");

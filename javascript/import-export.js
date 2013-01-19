@@ -1,38 +1,10 @@
 required("/javascript/base64.js?nocache=12");
-
-// hide import/export section when config window is opened
-$("#config-button, .ui-2.config").live("click", function(){
-  hideImportExportSection();
-});
-
-function clearImportExportForm() {
-  $("#import-export-contents #import-textarea,#import-export-contents #export-textarea").hide().val('');
-  $("#run-import-btn").hide();
-}
-
-function hideImportExportSection() {
-  $("#config-contents>div:not(#import-export-contents)").show();
-  $("#import-export-contents").hide();
-}
+$("#run-import-btn").hide(); // hide Apply button instantly. (won't work properly if done from CSS)
 
 // select export-textarea's text on focus
 $("#export-textarea").bind("focus mousedown mouseup", function(e) {
   e.preventDefault();
   $(this).select();
-});
-
-// show import/export section when Import/Export button clicked
-$("#import-export-btn").bind("click", function() {
-  $("#config-contents>div:not(#import-export-contents)").slideUp(700);
-  $("#import-export-contents").slideDown(700);
-  clearImportExportForm();
-});
-
-// hide import/export section when hide button clicked
-$("#import-export-contents #hide-btn").bind("click", function() {
-  $("#config-contents>div:not(#import-export-contents)").slideDown(700);
-  $("#import-export-contents").slideUp(700);
-  clearImportExportForm();
 });
 
 // upon click on import button

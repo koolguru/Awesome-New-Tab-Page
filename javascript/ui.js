@@ -148,7 +148,7 @@
     moveLeftButtons();
   });
 
-  $("#hideLeftButtons").live("click", function(){
+  $("#hideLeftButtons").live("click", function() {
     if ($(this).is(':checked')) {
       localStorage.setItem("hideLeftButtons", "yes");
       moveLeftButtons();
@@ -207,7 +207,7 @@
       $("#bookmarksBar").hide();
     }
 
-  $("#toggleBmb").live("click", function(){
+  $("#toggleBmb").live("click", function() {
     if ($(this).is(':checked')) {
       if ( bookmark_bar_rendered === false ) {
         bookmark_bar_rendered = true;
