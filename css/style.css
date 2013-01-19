@@ -1091,8 +1091,12 @@ body > .widget-drawer-app img {
     line-height: 20px;
   }
 
-  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  .nav-tabs > :not(.active) > a, .nav-tabs > :not(.active) > a:hover {
     color: #555;
+  }
+
+  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    color: #000;
     cursor: default;
     background-color: white;
     border: 1px solid #DDD;
@@ -1105,14 +1109,8 @@ body > .widget-drawer-app img {
     text-decoration: none;
     background-color: #EEE;
   }
-  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
-    color: #555;
-    cursor: default;
-    background-color: white;
-    border: 1px solid #DDD;
-    border-bottom-color: transparent;
-  }
   .nav-tabs > li > a {
+    font-weight: bold;
     padding-top: 8px;
     padding-bottom: 8px;
     line-height: 20px;
