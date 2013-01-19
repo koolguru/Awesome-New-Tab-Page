@@ -9,7 +9,7 @@
 		"message":"Kilitle"
 	},
 	"ui_button_lock":{
-		"message":"Apps & Widgets ile etkile\u015fim i\u00e7in kilitle"
+		"message":"Uygulama&Ara\u00e7lar ile etkile\u015fimleri kilitle"
 	},
 	"ui_button_rct":{
 		"message":"En son kapat\u0131lan sekmeler"
@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"D\u00f6\u015feme D\u00fczenleyici"
 	},
+	"ui_te_general":{
+		"message":"Genel"
+	},
 	"ui_te_name":{
 		"message":"\u0130sim"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"Sol t\u0131klat\u0131nca sabitle"
+	},
+	"ui_te_newtab":{
+		"message":"Sol t\u0131kland\u0131\u011f\u0131nda yeni sekmede a\u00e7"
 	},
 	"ui_te_url_desc":{
 		"message":"Ba\u011flant\u0131 kurmak istedi\u011finiz URL'yi girin, \u00f6rne\u011fin http:\/\/www.google.com\/"
@@ -76,6 +82,21 @@
 	},
 	"ui_te_ib_browse":{
 		"message":"G\u00f6zat"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Ekran G\u00f6r\u00fcnt\u00fcs\u00fc Kullan"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Ekran g\u00f6r\u00fcnt\u00fcs\u00fc alma"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Ekran g\u00f6r\u00fcnt\u00fcs\u00fc yakalamak i\u00e7in sayfa yeni bir sekmede a\u00e7\u0131lacak. Sayfan\u0131n y\u00fcklemesi tamamland\u0131ktan sonra sekme otomatik olarak kapanacak ve Awesome New Tab sayfas\u0131na d\u00f6neceksiniz. L\u00fctfen sayfay\u0131 kapatmay\u0131n ve sayfada gezinmeyin. Bu i\u015flem bir ka\u00e7 saniye alabilir."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Giri\u015f izni reddedildi"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Awesome New Tab Page'in ekran g\u00f6r\u00fcnt\u00fcs\u00fc yakalamas\u0131 i\u00e7in gerekli olan izinleri vermediniz. E\u011fer ekran g\u00f6r\u00fcnt\u00fcs\u00fc almak istiyorsan\u0131z, Awesome New Tab Page'ye gerekli izinleri verdikten sonra tekrar deneyin."
 	},
 	"ui_te_ib_tip":{
 		"message":"\u0130pucu: Simge olmamas\u0131 i\u00e7in bo\u015f b\u0131rak\u0131n."
@@ -116,6 +137,9 @@
 	"ui_config_bg_upload":{
 		"message":"Resim Y\u00fckle"
 	},
+	"ui_config_bgimg1":{
+		"message":"<b>Geli\u015fmi\u015f<\/b> (CSS Arkaplan K\u0131sayolu): Web'ten bir resim kullan."
+	},
 	"ui_config_bgimg3":{
 		"message":"Varsay\u0131lan arkaplan\u0131 (tek renk) kullanmak i\u00e7in kutuyu silin."
 	},
@@ -155,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Bu uygulamay\u0131 be\u011fendin mi? Chrome Uygulama Ma\u011fazas\u0131nda sadece 1 dakikada olumlu g\u00f6r\u00fc\u015f bildirebilirsin."
 	},
-	"ui_button_download":{
-		"message":"Widgets \u0130ndir"
-	},
-	"ui_button_downloadapps":{
-		"message":"Uygulamalar\u0131 indir"
-	},
 	"ui_confirm_uninstall":{
 		"message":"$app$ uygulamas\u0131n\u0131 kald\u0131rmak istedi\u011fine emin misin?",
 		"placeholders":{
@@ -169,6 +187,24 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Kilidi a\u00e7 & S\u00fcr\u00fckle"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Kilidi a\u00e7\u0131n ve y\u00fckl\u00fc uygulamalar\u0131n\u0131z\u0131 bo\u015f slotlara <b>s\u00fcr\u00fckleyin<\/b>."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Kilidi a\u00e7\u0131n ve y\u00fckl\u00fc ara\u00e7lar\u0131n\u0131z\u0131 bo\u015f bir slota <b>s\u00fcr\u00fckleyin<\/b>."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Daha Fazla Uygulama Al"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"<a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'> Chromw Web Store<\/a>'dan daha fazla uygulama al."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Daha Fazla Ara\u00e7 Al"
 	},
 	"ui_bmb_ob":{
 		"message":"Di\u011fer yer imleri"
@@ -185,23 +221,38 @@
 	"tutorial_1_welcome":{
 		"message":"Ho\u015f Geldiniz"
 	},
+	"tutorial_1_desc1":{
+		"message":"A New Tab Page'\u0131 (NTP) de\u011fi\u015ftirmek k\u00f6t\u00fc de\u011fildir."
+	},
 	"tutorial_1_desc2":{
 		"message":"(... ya da en az\u0131ndan \u00e7al\u0131\u015f\u0131r ger\u00e7ekten zor de\u011fil.)"
+	},
+	"tutorial_1_desc3":{
+		"message":"Daha fazlas\u0131n\u0131 \u00f6\u011frenmek i\u00e7in <span class=\"ul\">\u0130lerit<\/span>'ye t\u0131kla."
+	},
+	"tutorial_2_title":{
+		"message":"Art\u0131k sadece <span class=\"ul\">simgeler<\/span> var"
 	},
 	"tutorial_2_desc2":{
 		"message":"Bu uzant\u0131, Chrome'a yeni etiket sayfalar\u0131 i\u00e7in ayn\u0131 g\u00fc\u00e7 getiren, bir ba\u015flang\u0131\u00e7t\u0131r."
 	},
 	"tutorial_2_desc3":{
-		"message":"<span class=\"ul\">Widgetlara<\/span> merhaba deyin."
+		"message":"<span class=\"ul\">Ara\u00e7lara<\/span> merhaba deyin."
+	},
+	"tutorial_3_title":{
+		"message":"<span class=\"ul\">\u0130htiya\u00e7lar\u0131n\u0131za<\/span> uygun i\u015fler yap\u0131n"
 	},
 	"tutorial_3_desc1":{
-		"message":"Kilidi a\u00e7'a bas\u0131n ve widgetlar\u0131 ve ikonlar\u0131 nereye isterseniz oraya <span class=\"ul\">hareket ettirin<\/span>. \u0130stemedi\u011finiz \u015feyleri <span class=\"ul\">silin<\/span> (Kilit a\u00e7\u0131kken)."
+		"message":"Kilidi a\u00e7'a bas\u0131n; ara\u00e7lar\u0131 ve ikonlar\u0131 nereye isterseniz oraya <span class=\"ul\">hareket ettirin<\/span>. \u0130stemedi\u011finiz \u015feyleri <span class=\"ul\">silin<\/span> (Kilit a\u00e7\u0131kken)."
 	},
 	"tutorial_4_title":{
 		"message":"Uygulamalar\u0131n\u0131z G\u00fcvende"
 	},
 	"tutorial_4_desc1":{
 		"message":"Endi\u015felenmeyin, uygulamalar\u0131n\u0131z hi\u00e7 bir yere gitmedi."
+	},
+	"tutorial_4_desc2":{
+		"message":"D\u00f6\u015feme kilidini a\u00e7t\u0131ktan sonra uygulamalar\u0131 ana ekrana s\u00fcr\u00fckleyebilirsiniz."
 	},
 	"tutorial_4_desc3":{
 		"message":"Genelde kulland\u0131\u011f\u0131n\u0131 g\u00f6ster, di\u011fer her\u015feyi gizle."
@@ -219,18 +270,96 @@
 		"message":"Geli\u015ftirici misiniz?"
 	},
 	"tutorial_5_desc3":{
-		"message":"Kendi widgetlar\u0131n\u0131z\u0131 yap\u0131n. Nas\u0131l yapaca\u011f\u0131n\u0131z\u0131 buradan bulabilirsiniz:"
+		"message":"Kendi ara\u00e7lar\u0131n\u0131z\u0131 yap\u0131n. Nas\u0131l yapaca\u011f\u0131n\u0131z\u0131 buradan bulabilirsiniz:"
 	},
 	"ui_shortcut_img":{
 		"message":"Verilen URL deki resim tam olarak 128x128 piksel boyutunda, tercihen alfa deste\u011fiyle PNG format\u0131nda olmal\u0131d\u0131r. S\u0131f\u0131rlamak i\u00e7in, sadece formdaki her\u015feyi silin."
 	},
 	"notepad_default":{
-		"message":"Buraya istedi\u011finizi yazabilirsiniz. Yazd\u0131\u011f\u0131n\u0131z \u015feyler ba\u015fka bir yere t\u0131klad\u0131\u011f\u0131n\u0131zda kaydedilecektir. L\u00fctfen dikkatli olun; geri alma i\u015flemi yoktur. Reset butonu widgetlerinizi s\u0131f\u0131rlar!"
+		"message":"Buraya istedi\u011finizi yazabilirsiniz. Yazd\u0131\u011f\u0131n\u0131z her \u015fey klavye tu\u015flar\u0131na her bast\u0131\u011f\u0131n\u0131zda kaydedilmi\u015f olacak. L\u00fctfen dikkatli olun; geri alma i\u015flemi yoktur. S\u0131f\u0131rla butonu bu arac\u0131 s\u0131f\u0131rlar!"
 	},
 	"ui_resize_reset":{
 		"message":"S\u0131f\u0131rla"
 	},
+	"ui_resize_center":{
+		"message":"Merkez"
+	},
+	"ui_resize_cover":{
+		"message":"Kapla"
+	},
+	"ui_resize_contain":{
+		"message":"Kapla"
+	},
+	"ui_resize_zoom":{
+		"message":"Yak\u0131nla\u015ft\u0131r"
+	},
+	"rctm_remove":{
+		"message":"Kald\u0131r"
+	},
+	"rctm_clear_all":{
+		"message":"Yeni Kapat\u0131lan Sekmeleri Temizle"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"Son Kapat\u0131lan Sekmeleri silme men\u00fcs\u00fc Chrome'un taray\u0131c\u0131 ge\u00e7mi\u015fini temizlemez. Bu \u00f6zellik sadece bu listeyi temizler."
+	},
+	"ui_import_export_btn":{
+		"message":"Al\/Ver"
+	},
+	"ui_import_export_desc":{
+		"message":"Di\u011fer taray\u0131c\u0131lardan ayarlar\u0131n\u0131z\u0131 al\u0131n veya mevcut yede\u011fini geri y\u00fckleyin."
+	},
 	"ui_import_export_btn2":{
 		"message":"Geri"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Al"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Ver"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Uygula"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Verme: T\u00fcm tercihlerinizi i\u00e7eren bir dizi olu\u015fturur. Bu dizi bir sonraki geri alma i\u015flemine kadar saklanabilir veya ba\u015fka bilgisayarlarda ayn\u0131 ayarlar\u0131 otomatik olarak kurmak i\u00e7in kopyalanabilir."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Alma: Ge\u00e7erli bir dizi \u015fu anki ayarlar\u0131n\u0131z\u0131n \u00fczerine yaz\u0131l\u0131r. <b>UYARI<\/b>: \u015eu anki t\u00fcm tercihleriniz geri d\u00f6nd\u00fcr\u00fclemeyecek \u015fekilde kaybolacak. Bu i\u015flem geri al\u0131namaz. Web \u00fczerinde olduklar\u0131 i\u00e7in y\u00fckl\u00fc resimler al\u0131namaz."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Y\u00fckl\u00fc uygulamalar, uzant\u0131lar ve ara\u00e7lar e\u015fitlenemez. Uzant\u0131lar ba\u015fka uygulama ve uzant\u0131lara kurulamaz. Bunun yerine  <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Chrome Sync<\/a> kullanabilirsiniz."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Geri y\u00fckleme: Son alma i\u015flemini geri y\u00fcklemenizi sa\u011flar. Ge\u00e7erli durumunuz daha sonra geri y\u00fckleyebilmeniz i\u00e7in yedeklenecektir."
+	},
+	"ui_import_export_header":{
+		"message":"Al\/Ver"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"GEri Y\u00fcklemeyi Onayla"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Mevcut ayarlar\u0131n\u0131z kaybolacak. S\u0131f\u0131rlamak istedi\u011finize emin misiniz."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Al\/Ver"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"S\u0131f\u0131rlama tamamland\u0131."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Hi\u00e7bir \u015fey geri y\u00fcklenemedi!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Alma i\u015flemi tamamland\u0131."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"\u0130lk alma dizesi girin!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Ge\u00e7ersiz alma dizesi!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"S\u0131f\u0131rla"
 	}
 }

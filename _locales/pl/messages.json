@@ -3,13 +3,13 @@
 		"message":"Dodatki"
 	},
 	"ui_button_widgets":{
-		"message":"Widgety"
+		"message":"Wid\u017cety"
 	},
 	"ui_button_unlock":{
 		"message":"Odblokuj"
 	},
 	"ui_button_lock":{
-		"message":"Zablokuj by korzysta\u0107"
+		"message":"Zablokuj aby korzysta\u0107 z aplikacji i widget\u00f3w"
 	},
 	"ui_button_rct":{
 		"message":"Ostatnio zamkni\u0119te karty"
@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Edytor kafelka"
 	},
+	"ui_te_general":{
+		"message":"Og\u00f3lne"
+	},
 	"ui_te_name":{
 		"message":"Nazwa"
 	},
@@ -42,16 +45,19 @@
 		"message":"Poka\u017c \/ ukryj nazw\u0119"
 	},
 	"ui_te_pin":{
-		"message":"przypnij kart\u0119 po otwarciu"
+		"message":"Przypnij kart\u0119 po otwarciu"
+	},
+	"ui_te_newtab":{
+		"message":"Otw\u00f3rz na nowej karcie lewym klikni\u0119ciem"
 	},
 	"ui_te_url_desc":{
 		"message":"Podaj adres do kt\u00f3rego chcesz linkowa\u0107, np. http:\/\/www.google.pl\/"
 	},
 	"ui_te_url_tip":{
-		"message":"Porada: Prwaid\u0142owy adres URL zawiera oznaczenie protoko\u0142u - takich jak np. \"http:\/\/\" - przed adresem domeny. Bez prawid\u0142owego oznaczenia protoko\u0142u, Tw\u00f3j skr\u00f3t nie b\u0119dzie dzia\u0142a\u0107."
+		"message":"Porada: Prawid\u0142owy adres URL zawiera oznaczenie protoko\u0142u - takich jak np. \"http:\/\/\" - przed adresem domeny. Bez prawid\u0142owego oznaczenia protoko\u0142u, Tw\u00f3j skr\u00f3t nie b\u0119dzie dzia\u0142a\u0107."
 	},
 	"ui_te_shfavicon":{
-		"message":"Poka\u017c \/ ukryj favicon ikon\u0119 ulubionych"
+		"message":"Poka\u017c \/ ukryj favicon"
 	},
 	"ui_te_bg_colorpicker":{
 		"message":"Otw\u00f3rz Pr\u00f3bnik kolor\u00f3w"
@@ -84,7 +90,13 @@
 		"message":"Wykonywanie zrzutu ekranu"
 	},
 	"ui_screenshot_confirm":{
-		"message":"W celu wykonania zrzutu ekranu strony, strona zostanie otworzona w nowej karcie. Kiedy strona si\u0119 za\u0142aduje, karta si\u0119 zamknie automatycznie i powr\u00f3cisz do ANTP. Prosz\u0119 nie zamyka\u0107 kart i nie prze\u0142\u0105cza\u0107 na inne karty. To powinno zaj\u0105\u0107 nie wi\u0119cej jak kilka sekund."
+		"message":"W celu wykonania zrzutu ekranu strony, strona zostanie otworzona w nowej karcie. Kiedy strona si\u0119 za\u0142aduje, karta si\u0119 zamknie automatycznie i powr\u00f3cisz do Awesome New Tab Page. Prosz\u0119 nie zamyka\u0107 kart i nie prze\u0142\u0105cza\u0107 na inne karty. To powinno zaj\u0105\u0107 nie wi\u0119cej jak kilka sekund."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Odmowa dost\u0119pu"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Odm\u00f3wi\u0142e\u015b przyznania Awesome New Tab Page uprawnie\u0144 potrzebnych do umo\u017cliwienia wykonywania zrzut\u00f3w ekranu. Je\u015bli chcesz wykona\u0107 zrzut ekranu, musisz przyzna\u0107 Awesome New Tab Page potrzebne uprawnienia."
 	},
 	"ui_te_ib_tip":{
 		"message":"Porada: Zostaw puste aby nie by\u0142o \u017cadnej ikony."
@@ -108,7 +120,7 @@
 		"message":"Poka\u017c \/ Ukryj Siatk\u0119 (kiedy odblokowane)"
 	},
 	"ui_config_amazonlocale":{
-		"message":"Dla <i>domy\u015blnego<\/i> skrutu strony Amazon, wybierz sw\u00f3j kraj."
+		"message":"Dla <i>domy\u015blnego<\/i> skr\u00f3tu strony Amazon, wybierz sw\u00f3j kraj."
 	},
 	"ui_config_reset":{
 		"message":"Resetuj"
@@ -117,7 +129,7 @@
 		"message":"Ten przycisk umo\u017cliwi Ci cofni\u0119cie wszystkich zmian jakich dokona\u0142e\u015b w Awesome New Tab Page."
 	},
 	"ui_confirm_reset":{
-		"message":"Czy na pewno chcesz zresetowa\u0107 widget, aplikacj\u0119, skr\u00f3ty niestandardowe, ustawienia widget\u00f3w(notes, itp.)  oraz ustawienia t\u0142a? Wszystkie zapisane ustawienia zostan\u0105 utracone."
+		"message":"Czy na pewno chcesz zresetowa\u0107 widget, aplikacj\u0119, skr\u00f3ty niestandardowe, ustawienia widget\u00f3w (notes, itp.) oraz ustawienia t\u0142a? Wszystkie zapisane ustawienia zostan\u0105 utracone."
 	},
 	"ui_config_bg":{
 		"message":"T\u0142o"
@@ -167,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Lubisz to rozszerzenie? Po\u015bwi\u0119\u0107 chwil\u0119 i dodaj pozytywn\u0105 ocen\u0119 w Chrome Web Store."
 	},
-	"ui_button_download":{
-		"message":"Pobierz widgety"
-	},
-	"ui_button_downloadapps":{
-		"message":"Pobierz Aplikacje"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Czy na pewno chcesz odinstalowa\u0107 dodatek $app$?",
 		"placeholders":{
@@ -195,13 +201,10 @@
 		"message":"Pobierz wi\u0119cej Aplikacji"
 	},
 	"ui_faw_get_more_apps_body":{
-		"message":"Pobierz wi\u0119cej aplikacji ze<a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Sklepu internetowego<\/a>."
+		"message":"Pobierz wi\u0119cej aplikacji ze <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Sklepu internetowego<\/a>."
 	},
 	"ui_faw_get_more_widgets":{
 		"message":"Pobierz wi\u0119cej gad\u017cet\u00f3w"
-	},
-	"ui_faw_get_more_widgets_body":{
-		"message":"Pobierz wi\u0119cej gad\u017cet\u00f3w ze <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Sklepu internetowego<\/a>."
 	},
 	"ui_bmb_ob":{
 		"message":"Inne zak\u0142adki"
@@ -230,9 +233,6 @@
 	"tutorial_2_title":{
 		"message":"To ju\u017c nie tylko <span class=\"ul\">Ikonki<\/span>"
 	},
-	"tutorial_2_desc1":{
-		"message":"Ikonki s\u0105 przestarza\u0142e Technologia idzie do przodu, pojawiaj\u0105 si\u0119 nowe, pot\u0119\u017cne i dynamiczne wid\u017cety tj te z Androida, Windows Phone 7 oraz (ju\u017c nied\u0142ugo) Windows 8."
-	},
 	"tutorial_2_desc2":{
 		"message":"To rozszerzenie jest pocz\u0105tkiem w dostarczeniu podobnej mocy do nowej karty w Google Chrome."
 	},
@@ -249,7 +249,7 @@
 		"message":"Twoje appsy s\u0105 bezpieczne"
 	},
 	"tutorial_4_desc1":{
-		"message":"Nie martw si\u0119, Twoje aplikacje nie posz\u0142y na darmo."
+		"message":"Nie martw si\u0119, Twoje aplikacje nie posz\u0142y daleko."
 	},
 	"tutorial_4_desc2":{
 		"message":"Mo\u017cesz spokojnie odblokowa\u0107 kafelki i przeci\u0105ga\u0107 widgety na Tw\u00f3j ekran domowy."
@@ -261,7 +261,7 @@
 		"message":"Baw si\u0119"
 	},
 	"tutorial_5_desc1":{
-		"message":"Baw si\u0119 dobrze! Pami\u0119taj by da\u0107 mi 5 gwiazdek w sklepiku Google Chrome."
+		"message":"Baw si\u0119 dobrze! Pami\u0119taj by da\u0107 tej aplikacji 5 gwiazdek w sklepiku Google Chrome."
 	},
 	"tutorial_5_desc2":{
 		"message":"Masz pomys\u0142 na rozszerzenie? Zostaw go <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">tutaj<\/a>."
@@ -321,10 +321,10 @@
 		"message":"Zastosuj"
 	},
 	"ui_import_export_desc_export":{
-		"message":"Eksport: Tworzy kopi\u0119 wrzystkich twoich ustawie\u0144. Mo\u017ce by\u0107 wykorzystany p\u00f3\u017aniej jako kopia zapasowa lub mo\u017ce zosta\u0107 skopiowana na inne komputery aby zastosowa\u0107 na nich styl taki sam jak na tym komputerze. Zdj\u0119cia z komputera nie b\u0119d\u0105 eksportowane; a zdj\u0119cia znajduj\u0105ce si\u0119 w sieci web b\u0119d\u0105."
+		"message":"Eksport: Tworzy kopi\u0119 wszystkich twoich ustawie\u0144. Mo\u017ce by\u0107 wykorzystany p\u00f3\u017aniej jako kopia zapasowa lub mo\u017ce zosta\u0107 skopiowana na inne komputery aby zastosowa\u0107 na nich styl taki sam jak na tym komputerze. Zdj\u0119cia z komputera nie b\u0119d\u0105 eksportowane; a zdj\u0119cia znajduj\u0105ce si\u0119 w sieci web b\u0119d\u0105."
 	},
 	"ui_import_export_desc_import":{
-		"message":"Import: Nadpisuje Twoj\u0105 obecn\u0105 konfogujacj\u0119 prawid\u0142owo wyeksportowan\u0105 \u015bcie\u017ck\u0105. <b>UWAGA<\/b> Wszystki Twoje obecne ustawienia b\u0119d\u0105 nieodwracalnie utracone. Nie ma sposobu aby odwr\u00f3ci\u0107 t\u0105 operacj\u0119. Zdj\u0119cia z komputera nie b\u0119d\u0105 importowane; a zdj\u0119cia znajduj\u0105ce si\u0119 w sieci web b\u0119d\u0105."
+		"message":"Import: Nadpisuje Twoj\u0105 obecn\u0105 konfiguracj\u0119 prawid\u0142owo wyeksportowan\u0105 \u015bcie\u017ck\u0105. <b>UWAGA<\/b> Wszystkie Twoje obecne ustawienia b\u0119d\u0105 nieodwracalnie utracone. Nie ma sposobu aby odwr\u00f3ci\u0107 t\u0105 operacj\u0119. Zdj\u0119cia z komputera nie b\u0119d\u0105 importowane; a zdj\u0119cia znajduj\u0105ce si\u0119 w sieci web b\u0119d\u0105."
 	},
 	"ui_import_export_installed_warning":{
 		"message":"Zainstalowane aplikacje, rozszerzenia, i gad\u017cety nie s\u0105 importowane lub eksportowane. Rozszerzenia nie mog\u0105 instalowa\u0107 innych aplikacji lub rozszerze\u0144. U\u017cyj <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Chrome Sync<\/a>."
@@ -336,10 +336,10 @@
 		"message":"Importuj\/Eksportuj"
 	},
 	"ui_import_export_confirm_restore_title":{
-		"message":"Potwierdz przywr\u00f3cenie"
+		"message":"Potwierd\u017a przywr\u00f3cenie"
 	},
 	"ui_import_export_confirm_restore":{
-		"message":"Czy na pewno chcesz przywr\u00f3ci\u0107? Twoje obecne ustawienia  b\u0119d\u0105 utracone."
+		"message":"Jeste\u015b pewien \u017ce chcesz przywr\u00f3ci\u0107 dane? Twoje obecne ustawienia zostan\u0105 utracone."
 	},
 	"ui_import_export_msg_header":{
 		"message":"Importuj\/Eksportuj"

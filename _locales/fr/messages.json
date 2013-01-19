@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"\u00c9diteur de carreaux"
 	},
+	"ui_te_general":{
+		"message":"G\u00e9n\u00e9ral"
+	},
 	"ui_te_name":{
 		"message":"Nom"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"\u00c9pingler avec un clic gauche"
+	},
+	"ui_te_newtab":{
+		"message":"Ouvrir dans un nouvel onglet sur clique gauche"
 	},
 	"ui_te_url_desc":{
 		"message":"Entrer l'URL \u00e0 acc\u00e9der, comme http:\/\/www.google.com\/"
@@ -85,6 +91,12 @@
 	},
 	"ui_screenshot_confirm":{
 		"message":"Afin de capturer la capture d'\u00e9cran, le site sera ouvert dans un nouvel onglet. Apr\u00e8s la fin du chargement de la page, l'onglet se fermera automatiquement et vous allez retourner sur Awesome New Tab Page. Veuillez ne pas fermer ou naviguer plus loin. Cela ne devrait pas prendre que quelques secondes."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Autorisation refus\u00e9e"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Vous a refus\u00e9 d'accorder \u00e0 Awesome New Tab Page l'autorisation n\u00e9cessaire pour lui permettre de capturer des captures d'\u00e9cran. Si vous souhaitez prendre une capture d'\u00e9cran, veuillez essayer \u00e0 nouveau et accorder \u00e0 Awesome New Tab Page l'autorisation n\u00e9cessaire."
 	},
 	"ui_te_ib_tip":{
 		"message":"Astuce : Laisser en blanc pour aucune ic\u00f4ne."
@@ -167,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Vous aimez cette extension ? Prenez une minute pour donner un avis positif sur le Chrome Web Store."
 	},
-	"ui_button_download":{
-		"message":"T\u00e9l\u00e9charger des Widgets"
-	},
-	"ui_button_downloadapps":{
-		"message":"T\u00e9l\u00e9charger les applis"
-	},
 	"ui_confirm_uninstall":{
 		"message":"\u00cates-vous s\u00fbr de vouloir d\u00e9sinstaller $app$?",
 		"placeholders":{
@@ -200,9 +206,6 @@
 	"ui_faw_get_more_widgets":{
 		"message":"Obtenir plus de widgets"
 	},
-	"ui_faw_get_more_widgets_body":{
-		"message":"Obtenir plus de widgets \u00e0 partir du <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a> ."
-	},
 	"ui_bmb_ob":{
 		"message":"Autres favoris"
 	},
@@ -229,9 +232,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Il n'est plus seulement question d'<span class=\"ul\">ic\u00f4nes<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Les \u00eecones sont d\u00e9pass\u00e9es, Le futur de la Technologie est d\u00e9j\u00e0 pr\u00e9sent dans les widgets extr\u00eamement puissants et dynamiques que l'on trouve sur Android, Windows Phone 7, et (bient\u00f4t) Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"Cette extension vous donne le m\u00eame pouvoir que la Nouvelle Page d'Onglet de Chrome."
@@ -339,7 +339,7 @@
 		"message":"Confirmer la restauration"
 	},
 	"ui_import_export_confirm_restore":{
-		"message":"Vous souhaitez restaurer ? Vos param\u00e8tres actuels seraient perdus."
+		"message":"\u00cates-vous s\u00fbr de vouloir restaurer ? Vos param\u00e8tres actuels seront perdus."
 	},
 	"ui_import_export_msg_header":{
 		"message":"Importation\/exportation"

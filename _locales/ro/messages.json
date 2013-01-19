@@ -29,6 +29,9 @@
 	"ui_config_bg_changecolor":{
 		"message":"Schimba\u0163i culoarea de fundal"
 	},
+	"ui_te_general":{
+		"message":"Generale"
+	},
 	"ui_te_name":{
 		"message":"Nume"
 	},
@@ -113,12 +116,6 @@
 	"ui_about_rate":{
 		"message":"Evalueaz\u0103"
 	},
-	"ui_button_download":{
-		"message":"Desc\u0103rca\u0163i widget-uri"
-	},
-	"ui_button_downloadapps":{
-		"message":"Aplica\u0163ii desc\u0103rcate"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Sunte\u0163i sigur c\u0103 dori\u0163i s\u0103 dezinstala\u0163i $app$?",
 		"placeholders":{
@@ -154,9 +151,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Nu numai <span class=\"ul\">iconi\u021be<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Iconi\u021bele sunt \u00eenvechite Tehnologia merge mai departe, cu widget-urile extrem de puternice \u0219i dinamice g\u0103site \u00een Android, Windows Phone 7 \u0219i (\u00een cur\u00e2nd) Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"Aceast\u0103 extensie este un \u00eenceput aduce aceea\u015fi putere \u00een New Tab Page-ul din Chrome."

@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Ch\u1ec9nh s\u1eeda h\u1ecda ti\u1ebft"
 	},
+	"ui_te_general":{
+		"message":"C\u00e0i \u0111\u1eb7t chung"
+	},
 	"ui_te_name":{
 		"message":"T\u00ean"
 	},
@@ -158,12 +161,6 @@
 	"ui_about_rate_desc":{
 		"message":"B\u1ea1n c\u00f3 th\u00edch ph\u1ea7n b\u1ed5 tr\u1ee3 n\u00e0y kh\u00f4ng? H\u00e3y d\u00e0nh ch\u00fat th\u1eddi gian \u0111\u1ec3 \u0111\u01b0a ra \u0111\u00f3ng g\u00f3p tr\u00ean Chrome Web Store."
 	},
-	"ui_button_download":{
-		"message":"T\u1ea3i ti\u1ec7n \u00edch"
-	},
-	"ui_button_downloadapps":{
-		"message":"T\u1ea3i \u1ee8ng d\u1ee5ng"
-	},
 	"ui_confirm_uninstall":{
 		"message":"B\u1ea1n c\u00f3 ch\u1eafc mu\u1ed1n g\u1ee1 b\u1ecf $app$?",
 		"placeholders":{
@@ -199,9 +196,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"<span class=\"ul\">Bi\u1ec3u t\u01b0\u1ee3ng<\/span> kh\u00f4ng c\u00f2n t\u1ed3n t\u1ea1i"
-	},
-	"tutorial_2_desc1":{
-		"message":"Nh\u1eefng bi\u1ec3u t\u01b0\u1ee3ng \u0111\u00e3 l\u1ed7i th\u1eddi. C\u00f4ng ngh\u1ec7 \u0111\u00e3 ti\u1ebfn th\u00eam m\u1ed9t b\u01b0\u1edbc, v\u1edbi s\u1ee9c m\u1ea1nh, \u0111\u1ed9ng l\u1ef1c, v\u00e0 ti\u1ec7n \u00edch \u0111\u01b0\u1ee3c t\u00ecm th\u1ea5y trong Android, Windows Phone 7, v\u00e0 Windows 8 (s\u1eafp t\u1edbi)."
 	},
 	"tutorial_2_desc2":{
 		"message":"Ph\u1ea7n m\u1edf r\u1ed9ng n\u00e0y l\u00e0 b\u01b0\u1edbc kh\u1edfi \u0111\u1ea7u mang \u0111\u1ebfn s\u1ee9c m\u1ea1nh cho tab m\u1edbi c\u1ee7a Chrome."

@@ -20,6 +20,75 @@
 	"ui_button_about":{
 		"message":"Sobre"
 	},
+	"ui_config":{
+		"message":"Configura"
+	},
+	"ui_c_learnmore":{
+		"message":"M\u00e9s informaci\u00f3"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Canvia el Color de Fons"
+	},
+	"ui_te":{
+		"message":"Edita el Titol"
+	},
+	"ui_te_general":{
+		"message":"General"
+	},
+	"ui_te_name":{
+		"message":"Nom"
+	},
+	"ui_te_name_desc":{
+		"message":"Digues alguna cosa..."
+	},
+	"ui_te_shname":{
+		"message":"Mostra \/ Amaga el Nom"
+	},
+	"ui_te_pin":{
+		"message":"Pitja el bot\u00f3 esquerre"
+	},
+	"ui_te_newtab":{
+		"message":"Obre una nova Pestanya fent clic al bot\u00f3 esquerre"
+	},
+	"ui_te_url_desc":{
+		"message":"Introdueix l'URL que vols enlla\u00e7ar, com ara http:\/\/www.google.com\/"
+	},
+	"ui_te_url_tip":{
+		"message":"Consell: Una URL v\u00e0lida cont\u00e9 un protocol - com \"http:\/\/\" - abans del domini. Sense un protocol v\u00e0lid, la drecera no funcionar\u00e0."
+	},
+	"ui_te_shfavicon":{
+		"message":"Mostra \/ Amaga Favicon"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"Obre el Selector de Color"
+	},
+	"ui_te_bg_transparent":{
+		"message":"Fons completament transparent"
+	},
+	"ui_te_bg_tip":{
+		"message":"Consell: Si marques aquesta casella, tamb\u00e9 pots amagar el nom i el favicon."
+	},
+	"ui_te_bg_note":{
+		"message":"Nota: No tindr\u00e0 cap efecte sobre les opcions d'\"Icona i Fons\"."
+	},
+	"ui_te_app_tip":{
+		"message":"No totes les opcions estan disponibles per les aplicacions. Si vols tenir m\u00e9s opcions, crea una drecera personalitzada. Simplement fes clic en un mosaic buit amb la quadr\u00edcula desbloquejada."
+	},
+	"ui_te_ib":{
+		"message":"Icona i Fons"
+	},
+	"ui_te_ib_desc":{
+		"message":"Introdueix l'URL d'una imatge, fes servir el bot\u00f3 examinar, o arrossega i deixa una imatge damunt per cambiar l'icona."
+	},
+	"ui_te_ib_browse":{
+		"message":"Examinar"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Fes servir \"Captura de Pantalla\""
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Fent una Captura de Pantalla"
+	},
 	"ui_config_general":{
 		"message":"General"
 	},
@@ -30,7 +99,7 @@
 		"message":"Fons"
 	},
 	"ui_config_bgimg3":{
-		"message":"Esborrar la caixa;opci\u00f3 per utilitzar el fons per defecte (color s\u00f2lid)."
+		"message":"Esborrar la caixa per utilitzar el fons per defecte (color s\u00f2lid)."
 	},
 	"ui_config_bgimg2":{
 		"message":"Exemple (NO punt i coma final!):"
@@ -38,11 +107,8 @@
 	"ui_about":{
 		"message":"Sobre"
 	},
-	"ui_button_download":{
-		"message":"Descarregar Widgets"
-	},
 	"ui_confirm_uninstall":{
-		"message":"Esteu segur que voleu desinstal\u00b7lar l'aplicaci\u00f3?",
+		"message":"Este\u00e0s segur que vols desinstal\u00b7lar l'aplicaci\u00f3?",
 		"placeholders":{
 			"app":{
 				"content":"$1",
@@ -66,13 +132,13 @@
 		"message":"Benvingut a"
 	},
 	"tutorial_4_title":{
-		"message":"Les teues aplicacions estan segures"
+		"message":"Les teves Aplicacions estan Segures"
 	},
 	"tutorial_4_desc1":{
-		"message":"No et preocupis, les teues aplicacions no han anat massa lluny."
+		"message":"No et preocupis, les teves aplicacions no han anat massa lluny."
 	},
 	"tutorial_4_desc2":{
-		"message":"sentix-te lliure per desbloquejar les rajoles a continuaci\u00f3, arrossegueu les aplicacions a la pantalla principal."
+		"message":"No dubtis en desbloquejar les rajoles, a continuaci\u00f3, arrossegueu les aplicacions a la pantalla principal."
 	},
 	"tutorial_4_desc3":{
 		"message":"Mostra el que tu fas servir amb regularitat, amagar tota la resta."
@@ -81,19 +147,19 @@
 		"message":"Disfruta"
 	},
 	"tutorial_5_desc1":{
-		"message":"Disfruta! Recorda de donar a aquesta app 5 estrelles a la botiga de la Web."
+		"message":"Disfruta! Recorda puntuar amb 5 estrelles aquesta aplicaci\u00f3 a la Web Store."
 	},
 	"tutorial_5_desc2":{
-		"message":"Tens una idea per a aquesta extensi\u00f3? Deixa-ho <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">a\u00e7i<\/a> ."
+		"message":"Tens una idea per a aquesta extensi\u00f3? Deixa-ho a <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">a\u00e7i<\/a> ."
 	},
 	"tutorial_5_title2":{
-		"message":"Ets un Developer?"
+		"message":"Ets un Desarrollador?"
 	},
 	"tutorial_5_desc3":{
-		"message":"Fes els teus propis widgets! Descobreix com a\u00e7i:"
+		"message":"Fes els teus propis widgets! Descobreix com:"
 	},
 	"ui_shortcut_img":{
-		"message":"URL de la imatge ha de ser exactament 128px per 128px, preferiblement en format PNG amb transpar\u00e8ncia alfa. Per restaurar a omissi\u00f3, nom\u00e9s esborra tot en el camp."
+		"message":"L'URL de la imatge ha de ser exactament de 128px per 128px, preferiblement en format PNG amb transpar\u00e8ncia alfa. Per reestablir els valors predeterminats, nom\u00e9s esborra tot en el camp."
 	},
 	"notepad_default":{
 		"message":"Escriviu qualsevol cosa aqu\u00ed. Tot el que escrigues es guardar\u00e0 en cada cop de teclat. Aneu amb compte , no hi ha c\u00f2pies de seguretat, i el bot\u00f3 de reinici restablir\u00e0 aquest Widget!"

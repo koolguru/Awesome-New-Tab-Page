@@ -1,0 +1,365 @@
+{
+	"ui_button_apps":{
+		"message":"Aplica\u00e7\u00f5es"
+	},
+	"ui_button_widgets":{
+		"message":"Widgets"
+	},
+	"ui_button_unlock":{
+		"message":"Desbloquear"
+	},
+	"ui_button_lock":{
+		"message":"Bloquear para Interagir com Aplica\u00e7\u00f5es e Widgets"
+	},
+	"ui_button_rct":{
+		"message":"P\u00e1ginas recentemente fechadas"
+	},
+	"ui_button_close":{
+		"message":"Fechar"
+	},
+	"ui_button_about":{
+		"message":"Sobre"
+	},
+	"ui_config":{
+		"message":"Configurar"
+	},
+	"ui_c_learnmore":{
+		"message":"Saber mais"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Mudar Cor de Fundo"
+	},
+	"ui_te":{
+		"message":"Editor de T\u00edtulo"
+	},
+	"ui_te_general":{
+		"message":"Geral"
+	},
+	"ui_te_name":{
+		"message":"Nome"
+	},
+	"ui_te_name_desc":{
+		"message":"Que nome lhe queres dar?"
+	},
+	"ui_te_shname":{
+		"message":"Mostrar \/ Ocultar Nome"
+	},
+	"ui_te_pin":{
+		"message":"Fixar com o bot\u00e3o esquerdo"
+	},
+	"ui_te_newtab":{
+		"message":"Abrir num Novo Separador com o bot\u00e3o esquerdo"
+	},
+	"ui_te_url_desc":{
+		"message":"Digite o URL que deseja, por exemplo http:\/\/www.google.com\/"
+	},
+	"ui_te_url_tip":{
+		"message":"Dica: Um URL v\u00e1lido cont\u00e9m um protocolo - com \"http:\/\/\" - antes do dom\u00ednio. Sem um protocolo v\u00e1lido o atalho n\u00e3o funcionar\u00e1."
+	},
+	"ui_te_shfavicon":{
+		"message":"Mostrar \/ Ocultar Favicon"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"Abrir seletor de cores"
+	},
+	"ui_te_bg_transparent":{
+		"message":"Fundo completamente transparente"
+	},
+	"ui_te_bg_tip":{
+		"message":"Dica: Se selecionar esta op\u00e7\u00e3o, poder\u00e1 tamb\u00e9m querer ocultar o Nome e o Favicon."
+	},
+	"ui_te_bg_note":{
+		"message":"Nota: Esta op\u00e7\u00e3o n\u00e3o tem efeito nas defini\u00e7\u00f5es de \u00cdcone e de Fundo."
+	},
+	"ui_te_app_tip":{
+		"message":"Nem todas as op\u00e7\u00f5es est\u00e3o dispon\u00edveis para aplica\u00e7\u00f5es. Se voc\u00ea gostaria de ter mais op\u00e7\u00f5es, crie um atalho personalizado no seu lugar. Basta clicar sobre um azulejo branco com a grade desbloqueada."
+	},
+	"ui_te_ib":{
+		"message":"\u00cdcone e Fundo"
+	},
+	"ui_te_ib_desc":{
+		"message":"Digite a URL da Web de uma imagem, utilize o bot\u00e3o de navega\u00e7\u00e3o, ou arraste e solte uma imagem acima para mudar o \u00edcone."
+	},
+	"ui_te_ib_browse":{
+		"message":"Procurar"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Usar Imagem de Tela"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"A tirar imagem da tela"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Para capturar a imagem, o site ser\u00e1 aberto em um novo separador. Depois de a p\u00e1gina terminar de carregar, o mesmo ser\u00e1 automaticamente encerrado e ir\u00e1 de volta ao ANT Grid. Por favor, n\u00e3o feche nem navegue pelo site. Isto n\u00e3o dever\u00e1 levar mais que alguns segundos."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Lamentamos, Permiss\u00e3o Negada!"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Recusou-se a conceder a permiss\u00e3o necess\u00e1ria para o ANT Grid capturar a tela. Se voc\u00ea deseja ter uma imagem, por favor, tente novamente e conceda a permiss\u00e3o necess\u00e1ria ao ANT Grid."
+	},
+	"ui_te_ib_tip":{
+		"message":"Dica: Deixe em branco e n\u00e3o ter\u00e1 nenhum \u00edcone."
+	},
+	"ui_te_ib_advanced":{
+		"message":"Avan\u00e7ado: Oculte o Nome e o Favicon e use uma imagem de 200px por 200px para personalizar completamente o azulejo 1x1."
+	},
+	"ui_config_general":{
+		"message":"Geral"
+	},
+	"ui_config_shbmb":{
+		"message":"Mostrar \/ Ocultar Barra de Favoritos"
+	},
+	"ui_config_shtlb":{
+		"message":"Mostrar os bot\u00f5es da barra lateral esquerda somente na \u00e1rea em foco"
+	},
+	"ui_config_shtlb_desc":{
+		"message":"Quando esta op\u00e7\u00e3o estiver marcada, os bot\u00f5es superiores \u00e0 esquerda ir\u00e3o deslizar para fora do caminho. Para acess\u00e1-los novamente, simplesmente aponte sobre onde eles normalmente est\u00e3o."
+	},
+	"ui_config_shgrid":{
+		"message":"Mostrar \/ Ocultar Grelha (Quando Desbloqueado)"
+	},
+	"ui_config_amazonlocale":{
+		"message":"Para o <i>suporte<\/i> do atalho Amazon, selecione seu pa\u00eds."
+	},
+	"ui_config_reset":{
+		"message":"Repor"
+	},
+	"ui_config_reset_desc":{
+		"message":"Este bot\u00e3o ir\u00e1 permitir desfazer todas as altera\u00e7\u00f5es que fez no ANT Grid."
+	},
+	"ui_confirm_reset":{
+		"message":"Tem certeza de que deseja repor os widgets, as aplica\u00e7\u00f5es, os atalhos personalizados, as a\u00e7\u00f5es dos widgets (bloco de notas, etc.) e o plano de fundo? Lembre-se que todas as altera\u00e7\u00f5es ser\u00e3o perdidas."
+	},
+	"ui_config_bg":{
+		"message":"Plano de fundo"
+	},
+	"ui_config_bg_upload":{
+		"message":"Carregar Imagem"
+	},
+	"ui_config_bgimg1":{
+		"message":"<b>Avan\u00e7ado<\/b> (Shorthand Background CSS): Usar uma imagem da Web."
+	},
+	"ui_config_bgimg3":{
+		"message":"Apague a caixa para usar o fundo padr\u00e3o (Cor S\u00f3lida)."
+	},
+	"ui_config_bgimg2":{
+		"message":"Exemplo(SEM virgula \u00e0 frente!):"
+	},
+	"ui_about":{
+		"message":"Sobre"
+	},
+	"ui_about_contrib":{
+		"message":"Patrocinadores"
+	},
+	"ui_about_contrib_desc":{
+		"message":"Este projeto n\u00e3o poderia existir sem muito trabalho, feedback, ideias, tradu\u00e7\u00f5es, e suporte por parte de alguns grupos de pessoas incr\u00edveis."
+	},
+	"ui_about_dev":{
+		"message":"Programadores"
+	},
+	"ui_about_contrib_translators":{
+		"message":"Tradutores"
+	},
+	"ui_about_contrib_users":{
+		"message":"Utilizadores"
+	},
+	"ui_about_contrib_cta":{
+		"message":"Clique nos links acima para ver (e talvez juntar-se) a essas pessoas impressionantes em a\u00e7\u00e3o!"
+	},
+	"ui_about_share":{
+		"message":"Partilhar"
+	},
+	"ui_about_share1":{
+		"message":"Voc\u00ea gosta do Awesome New Tab Page? Por que n\u00e3o o compartilha com seus amigos e familiares?"
+	},
+	"ui_about_rate":{
+		"message":"Classificar"
+	},
+	"ui_about_rate_desc":{
+		"message":"Gostas desta extens\u00e3o? Leva um minuto para escrever uma cr\u00edtica positiva na Web Store do Chrome."
+	},
+	"ui_confirm_uninstall":{
+		"message":"\ufeffTem a certeza que quer desinstalar a Aplica\u00e7\u00e3o $app$?",
+		"placeholders":{
+			"app":{
+				"content":"$1",
+				"example":"Chrome Web Store"
+			}
+		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Desbloqueie e Arraste"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Desbloqueie a grelha e <b> arraste <\/ b> as aplica\u00e7\u00f5es instaladas para um espa\u00e7o vazio."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Desbloqueie a grade e <b> arraste <\/ b> os widgets instalados para um espa\u00e7o vazio."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Obter + Aplica\u00e7\u00f5es"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Obter mais aplica\u00e7\u00f5es em <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Obter + widgets"
+	},
+	"ui_bmb_ob":{
+		"message":"Outros Marcadores"
+	},
+	"app_webstore":{
+		"message":"Chrome Web Store"
+	},
+	"tutorial_ui_next":{
+		"message":"Seguinte"
+	},
+	"tutorial_ui_back":{
+		"message":"Voltar"
+	},
+	"tutorial_1_welcome":{
+		"message":"Bem-vindo ao"
+	},
+	"tutorial_1_desc1":{
+		"message":"Uma nova guia de substitui\u00e7\u00e3o de p\u00e1gina (NTP), que funciona."
+	},
+	"tutorial_1_desc2":{
+		"message":"(... ao menos tente, n\u00e3o \u00e9 muito dif\u00edcil.)"
+	},
+	"tutorial_1_desc3":{
+		"message":"Clique <span class=\"ul\">Pr\u00f3ximo<\/span> para aprender mais."
+	},
+	"tutorial_2_title":{
+		"message":"N\u00e3o mais Apenas <span class=\"ul\">\u00edcones<\/span>"
+	},
+	"tutorial_2_desc2":{
+		"message":"Esta extens\u00e3o \u00e9 um bom come\u00e7o de trazer o mesmo poder do \"Nova Separador\" do Chrome."
+	},
+	"tutorial_2_desc3":{
+		"message":"Diga \"Ol\u00e1!\" aos <span class=\"ul\">widgets<\/span>."
+	},
+	"tutorial_3_title":{
+		"message":"Fa\u00e7a com que as coisas se encaixem \u00e0s <span class=\"ul\">SUAS<\/span> necessidades!"
+	},
+	"tutorial_3_desc1":{
+		"message":"Clique em desbloquear e <span class=\"ul\">mova<\/span> os widgets e os \u00edcones para onde desejar. <span class=\"ul\">Exclua<\/span> o que voc\u00ea n\u00e3o quer (Quando Estiverem Desbloqueados)."
+	},
+	"tutorial_4_title":{
+		"message":"As suas aplica\u00e7\u00f5es est\u00e3o seguras."
+	},
+	"tutorial_4_desc1":{
+		"message":"N\u00e3o se preocupe, as suas aplica\u00e7\u00f5es n\u00e3o foram muito longe."
+	},
+	"tutorial_4_desc2":{
+		"message":"Sinta-se livre para desbloquear os azulejos, em seguida, arraste os aplicativos para sua tela inicial."
+	},
+	"tutorial_4_desc3":{
+		"message":"Mostre somente o que voc\u00ea usa regularmente, oculte todo o resto."
+	},
+	"tutorial_5_title1":{
+		"message":"Divirta-se..."
+	},
+	"tutorial_5_desc1":{
+		"message":"Divirta-se! Lembre-se de dar 5 Estrelas a esta aplica\u00e7\u00e3o (ANT Grid) na Web Store."
+	},
+	"tutorial_5_desc2":{
+		"message":"Tem uma ideia para esta extens\u00e3o? Ent\u00e3o deixe sua ideia <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">aqui<\/a>!"
+	},
+	"tutorial_5_title2":{
+		"message":"Voc\u00ea \u00e9 um desenvolvente?"
+	},
+	"tutorial_5_desc3":{
+		"message":"Fa\u00e7a os seu pr\u00f3prios widgets! Descubra aqui como:"
+	},
+	"ui_shortcut_img":{
+		"message":"O URL da imagem deve ter 128px por 128px, de prefer\u00eancia no formato PNG com transpar\u00eancia. Para repor os valores padr\u00e3o elimine o conte\u00fado do campo."
+	},
+	"notepad_default":{
+		"message":"Escreva qualquer coisa aqui. Tudo o que voc\u00ea digitar ser\u00e3o salvos em cada tecla. Tenha cuidado, por\u00e9m, N\u00c3O H\u00c1 C\u00f3pias de Seguran\u00e7a, e o bot\u00e3o Repor * FAZ * redefinir esse widget!"
+	},
+	"ui_resize_reset":{
+		"message":"Repor"
+	},
+	"ui_resize_center":{
+		"message":"Centro"
+	},
+	"ui_resize_cover":{
+		"message":"Capa"
+	},
+	"ui_resize_contain":{
+		"message":"Cont\u00eam"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Remover"
+	},
+	"rctm_clear_all":{
+		"message":"Limpar Separadores Recentemente Fechados"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"Limpar o Menu de Separadores Recentemente Fechados n\u00e3o limpa o hist\u00f3rico do Google Chrome. Esse recurso apenas limpa esta lista."
+	},
+	"ui_import_export_btn":{
+		"message":"Importar\/Exportar"
+	},
+	"ui_import_export_desc":{
+		"message":"Leve suas configura\u00e7\u00f5es para outros navegadores ou restaure uma C\u00f3pia de Seguran\u00e7a."
+	},
+	"ui_import_export_btn2":{
+		"message":"Voltar"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importar"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Exportar"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Aplicar"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Exporta\u00e7\u00e3o: Gera uma sequ\u00eancia que contem todas as suas defini\u00e7\u00f5es. Esta sequ\u00eancia pode ser guardada para ser usada como backup ou ser copiada para outros computadores automaticamente e ficarem iguais ao seu. As imagens carregadas n\u00e3o ser\u00e3o exportadas, as imagens na Web ser\u00e3o."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Importa\u00e7\u00e3o: Substitui a configura\u00e7\u00e3o atual, com uma sequ\u00eancia v\u00e1lida exportada. <b> AVISO <\/b>: Todas as suas prefer\u00eancias atuais ser\u00e3o irremediavelmente perdidas. N\u00e3o h\u00e1 maneira de desfazer esta opera\u00e7\u00e3o. Imagens enviadas n\u00e3o ser\u00e3o importadas, as imagens da Web ser\u00e3o."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Aplicativos instalados, extens\u00f5es e widgets n\u00e3o s\u00e3o importados ou exportados. As extens\u00f5es n\u00e3o conseguem instalar outros aplicativos ou extens\u00f5es. Use o <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Sync Chrome<\/a> inv\u00e9s disso."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Restaura\u00e7\u00e3o: Permite desfazer a \u00faltima importa\u00e7\u00e3o. Ser\u00e1 feito o backup de seu estado atual para restaura\u00e7\u00e3o posterior tamb\u00e9m."
+	},
+	"ui_import_export_header":{
+		"message":"Importar\/Exportar"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Confirmar a restaura\u00e7\u00e3o"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Tem certeza que deseja restaurar?  As suas configura\u00e7\u00f5es atuais ser\u00e3o perdidas."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Importar\/Exportar"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Restaura\u00e7\u00e3o completa."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"N\u00e3o h\u00e1 nada para restaurar!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Importa\u00e7\u00e3o completa."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Digite a sequ\u00eancia de importa\u00e7\u00e3o primeiro!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Sequ\u00eancia de importa\u00e7\u00e3o inv\u00e1lida!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Restaurar"
+	}
+}
