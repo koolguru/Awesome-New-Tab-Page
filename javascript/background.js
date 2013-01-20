@@ -283,3 +283,17 @@
   }
 
   /* END :: App installed */
+
+/* START :: On App/Widget uninstalled */
+chrome.management.onUninstalled.addListener(removeWidgetInstances);
+
+function removeWidgetInstances(id) {
+  var widgets = JSON.parse(localStorage.widgets);
+  for (i in widgets) {
+    if (widgets[i].id == id)
+      delete widgets[i];
+  }
+  localStorage.setItem("widgets", JSON.stringify(widgets));
+}
+
+/* END :: On App/Widget uninstalled */
