@@ -266,3 +266,34 @@
   }
 
   /* END :: External Communication Stuff */
+
+
+  /* START :: App installed */
+  chrome.management.onInstalled.addListener(function(ExtensionInfo) {
+    if (ExtensionInfo.type == "hosted_app" || ExtensionInfo.type == "packaged_app" || ExtensionInfo.type == "legacy_packaged_app") {
+      setTimeout(showAppsUI, 1000);
+    }
+  });
+
+  function showAppsUI () {
+    var tabs = chrome.extension.getViews({type: "tab"});
+    for (var i=0, tab; tab=tabs[i]; i++) {
+      tab.showAppsWindow();
+    }
+  }
+
+  /* END :: App installed */
+
+/* START :: On App/Widget uninstalled */
+chrome.management.onUninstalled.addListener(removeWidgetInstances);
+
+function removeWidgetInstances(id) {
+  var widgets = JSON.parse(localStorage.widgets);
+  for (i in widgets) {
+    if (widgets[i].id == id)
+      delete widgets[i];
+  }
+  localStorage.setItem("widgets", JSON.stringify(widgets));
+}
+
+/* END :: On App/Widget uninstalled */

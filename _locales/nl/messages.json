@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Tegel aanpasser"
 	},
+	"ui_te_general":{
+		"message":"Algemene"
+	},
 	"ui_te_name":{
 		"message":"Naam"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"PIN met de linkermuisknop"
+	},
+	"ui_te_newtab":{
+		"message":"Open in een nieuw tabblad met linkermuisknop"
 	},
 	"ui_te_url_desc":{
 		"message":"Voer een link in waar je naartoe gelinkt wil worden zoals http:\/\/www.google.nl\/"
@@ -76,6 +82,21 @@
 	},
 	"ui_te_ib_browse":{
 		"message":"Bladeren"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Gebruik schermfoto"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Bezig met foto maken"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Om de schermfoto te maken zal de website geopend worden in een nieuw tabblad. Nadat de pagina geladen is, zal het tabblad automatisch sluiten en je zal dan teruggebracht worden naar de Awesome New Tab page. A.u.b. niet sluiten of weg klikken. Dit zal niet meer dan een paar seconden duren."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Dat mag niet!"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"U weigerde Awesome  New Tab Page de toestemming die nodig om het schermfoto's te maken. Als u een schermfoto wil nemen, probeer het alstublieft opnieuw en geef Awesome New Tab Page de benodigde toestemming."
 	},
 	"ui_te_ib_tip":{
 		"message":"Tip: Laat leeg voor geen pictogram."
@@ -158,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Vind je deze extension leuk? Maak tijd en geef een positieve review op de Chrome web store."
 	},
-	"ui_button_download":{
-		"message":"Widgets downloaden"
-	},
-	"ui_button_downloadapps":{
-		"message":"Download apps"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Weet je zeker dat je $app$ wilt verwijderen?",
 		"placeholders":{
@@ -172,6 +187,24 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Ontgrendel & Sleep"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Ontgrendel het raster en <b>Sleep<\/b> uw ge\u00efnstalleerde apps naar een leeg plekje."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Ontgrendel het raster en <b>Sleep<\/b> uw ge\u00efnstalleerde widget naar een leeg plekje."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Krijg  meer apps"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Meer apps krijgen uit de <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'> Chrome Web-winkel<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Krijg meer widgets"
 	},
 	"ui_bmb_ob":{
 		"message":"Andere Bladwijzers"
@@ -199,9 +232,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Niet langer alleen <span class=\"ul\">pictogrammen<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Pictogrammen zijn verouderd. De technologie gaat vooruit, met extreem sterke, dynamische en prachtige widgets gevonden in Android, Windows Phone 7 and (binnenkort) windows 8. "
 	},
 	"tutorial_2_desc2":{
 		"message":"Deze uitbreiding is een begin van het brengen van dezelfde kracht tegenover Chrome's New Tablad pagina."
@@ -251,7 +281,85 @@
 	"ui_resize_reset":{
 		"message":"Reset"
 	},
+	"ui_resize_center":{
+		"message":"Centreren"
+	},
+	"ui_resize_cover":{
+		"message":"Bedek"
+	},
+	"ui_resize_contain":{
+		"message":"Bevat"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Verwijder"
+	},
+	"rctm_clear_all":{
+		"message":"Verwijder recent gesloten tabbladen"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"Het wissen van de recent gesloten tabbladen wist niet de internetgeschiedenis. Deze functie leegt alleen maar deze lijst. "
+	},
+	"ui_import_export_btn":{
+		"message":"Importeren\/exporteren"
+	},
+	"ui_import_export_desc":{
+		"message":"Breng je instellingen naar andere browsers of herstel vanaf een backup."
+	},
 	"ui_import_export_btn2":{
 		"message":"Terug"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importeren"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Exporteren"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Pas toe"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Export: Genereert een tekst die al uw voorkeuren bevat. Deze tekst kan worden opgeslagen voor later als een back-up of kan worden gekopieerd naar andere computers die zich dan automatisch instellen zoals deze. Ge\u00fcploade afbeeldingen worden niet ge\u00ebxporteerd; die afbeeldingen staan op het internet."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Importeren: Overschrijft uw huidige configuratie met een geldige ge\u00ebxporteerde tekst. <b>Waarschuwing<\/b>: al uw huidige voorkeuren zullen verloren gaan. Er is geen manier om deze bewerking ongedaan maken. Ge\u00fcploade afbeeldingen worden niet ge\u00efmporteerd; deze afbeeldingen staan op het internet."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Ge\u00efnstalleerde apps, extensies en widgets worden niet ge\u00efmporteerd of ge\u00ebxporteerd. Extensies kunnen niet andere apps of extensies installeren. Gebruik <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'> Chrome Sync<\/a>."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Herstel: Je kan altijd je laatste invoer ongedaan maken. Je huidige status zal ook opgeslagen worden zodat hij eventueel later ook nog hersteld kan worden."
+	},
+	"ui_import_export_header":{
+		"message":"Importeren\/exporteren"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Bevestig herstellen"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Weet u zeker dat u wilt herstellen? Je huidige instellingen zullen verloren gaan."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Importeren\/exporteren"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Herstelling compleet."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Niks te herstellen!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Invoer voltooid."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Voer invoer tekst eerst in!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Ongeldige invoer!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Herstel"
 	}
 }

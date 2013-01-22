@@ -148,7 +148,7 @@
     moveLeftButtons();
   });
 
-  $("#hideLeftButtons").live("click", function(){
+  $("#hideLeftButtons").live("click", function() {
     if ($(this).is(':checked')) {
       localStorage.setItem("hideLeftButtons", "yes");
       moveLeftButtons();
@@ -207,7 +207,7 @@
       $("#bookmarksBar").hide();
     }
 
-  $("#toggleBmb").live("click", function(){
+  $("#toggleBmb").live("click", function() {
     if ($(this).is(':checked')) {
       if ( bookmark_bar_rendered === false ) {
         bookmark_bar_rendered = true;
@@ -316,10 +316,9 @@ $(".tile").bind({
         if (url !== null && url !== "") {
           required('/javascript/tile-editor.js?nocache=12', function() {  // ensure tile-editor.js is loaded
             createShortcut(e.srcElement);
-            $("#editor #shortcut_url").val(url);
-            $("#editor #shortcut_name").val("");
-            $("#editor #shortcut_name").focus();
-            updateShortcut();
+            $("[ng-model=appLaunchUrl]").val(url).change();
+            $("[ng-model=name]").val("").change();
+            $("[ng-model=name]").focus();
           });
         }
       }
@@ -327,3 +326,38 @@ $(".tile").bind({
     return false;
   }
 });
+
+// upon new app installed
+function showAppsWindow () {
+  $(".ui-2#apps").show();
+
+  required('/javascript/jquery.qtip.min.js', function() {
+    $(document).ready(function() {
+      $(document.body).qtip({
+        id: 'app-tip', // Give it an ID of qtip-step so we an identify it easily
+        content: {
+          text: chrome.i18n.getMessage("ui_apps_tip_message"),
+          title: {
+            text: chrome.i18n.getMessage("ui_apps_tip_message_title"),
+            button: true
+          }
+        },
+        position: {
+          my: 'left center',
+          at: 'right center',
+          target: $('#app-drawer-button'), // Also use first steps position target...
+          viewport: $(window) // ...and make sure it stays on-screen if possible
+        },
+        show: {
+          event: false,
+          ready: true
+        },
+        hide: {
+          event: 'unfocus'
+        }
+      });
+
+      $('#qtip-app-tip').triggerHandler(this.id);
+    });
+  });
+}

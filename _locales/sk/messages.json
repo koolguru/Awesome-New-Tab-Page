@@ -26,6 +26,9 @@
 	"ui_config_bg_changecolor":{
 		"message":"Zmeni\u0165 farbu pozadia"
 	},
+	"ui_te_general":{
+		"message":"V\u0161eobecn\u00e9"
+	},
 	"ui_te_name":{
 		"message":"Meno"
 	},
@@ -62,11 +65,17 @@
 	"ui_config_reset_desc":{
 		"message":"Toto tla\u010didlo v\u00e1m umo\u017en\u00ed vr\u00e1ti\u0165 sp\u00e4\u0165 v\u0161etky zmeny, ktor\u00e9 ste vykonali na Awesome New Tab Page."
 	},
+	"ui_confirm_reset":{
+		"message":"Naozaj chcete vynulova\u0165 umiestnenie widgetu, app a vlastn\u00e9ho odkazu, z\u00e1kladn\u00e9 nastavenia widgetu (notepad at\u010f.) a nastavenia pozadia? V\u0161etky prisp\u00f4sobenia sa nen\u00e1vratne stratia."
+	},
 	"ui_config_bg":{
 		"message":"Pozadie"
 	},
 	"ui_config_bg_upload":{
 		"message":"Nahra\u0165 obr\u00e1zok"
+	},
+	"ui_config_bgimg1":{
+		"message":"<b>Roz\u0161\u00edren\u00e9<\/b> (CSS skratka pozadia): pou\u017ei\u0165 obr\u00e1zok na webe."
 	},
 	"ui_about_contrib":{
 		"message":"Prispievatelia"
@@ -80,17 +89,14 @@
 	"ui_about_contrib_translators":{
 		"message":"Prekladatelia"
 	},
+	"ui_about_contrib_users":{
+		"message":"Pou\u017e\u00edvatelia"
+	},
 	"ui_about_share":{
 		"message":"Zdie\u013ea\u0165"
 	},
 	"ui_about_rate":{
 		"message":"Hodnoti\u0165"
-	},
-	"ui_button_download":{
-		"message":"Stiahnu\u0165 widgety"
-	},
-	"ui_button_downloadapps":{
-		"message":"Stiahnu\u0165 aplik\u00e1cie"
 	},
 	"ui_confirm_uninstall":{
 		"message":"Naozaj chcete odin\u0161talova\u0165 $app$?",

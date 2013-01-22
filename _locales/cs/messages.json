@@ -17,20 +17,125 @@
 	"ui_button_close":{
 		"message":"Zav\u0159\u00edt"
 	},
+	"ui_button_about":{
+		"message":"O n\u00e1s"
+	},
+	"ui_config":{
+		"message":"Konfigurovat"
+	},
+	"ui_c_learnmore":{
+		"message":"Objevte v\u00edce"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Zm\u011bnit barvu pozad\u00ed"
+	},
+	"ui_te":{
+		"message":"Editor dla\u017edic"
+	},
+	"ui_te_general":{
+		"message":"Obecn\u00e9"
+	},
+	"ui_te_name":{
+		"message":"Jm\u00e9no"
+	},
+	"ui_te_name_desc":{
+		"message":"Jak to chcete nazvat?"
+	},
+	"ui_te_shname":{
+		"message":"Zobrazit \/ skr\u00fdt jm\u00e9no"
+	},
+	"ui_te_pin":{
+		"message":"P\u0159ip\u00edchnout na lev\u00fd klik"
+	},
+	"ui_te_newtab":{
+		"message":"Otev\u0159\u00edt lev\u00fdm stiskem v nov\u00e9 kart\u011b"
+	},
+	"ui_te_url_desc":{
+		"message":"Zadejde odkaz na kter\u00fd chcete b\u00fdt p\u0159epojeni,pro p\u0159\u00edklad http:\/\/www.google.com\/"
+	},
+	"ui_te_url_tip":{
+		"message":"Tip: Platn\u00e1 adresa obsahuje protokol jako je \"http:\/\/\" p\u0159ed dom\u00e9nou. Bez platn\u00e9ho protokolu nebude va\u0161e zkratka pracovat."
+	},
+	"ui_te_shfavicon":{
+		"message":"Zobrazit \/ skr\u00fdt ikonku str\u00e1nky"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"Otev\u0159\u00edt dialog pro v\u00fdb\u011br barev"
+	},
+	"ui_te_bg_transparent":{
+		"message":"Zcela pr\u016fhledn\u00e9 pozad\u00ed"
+	},
+	"ui_te_ib":{
+		"message":"Ikony a pozad\u00ed"
+	},
+	"ui_te_ib_browse":{
+		"message":"Proch\u00e1zet"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Pou\u017e\u00edt screenshot"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Sn\u00edm\u00e1n\u00ed obrazovky"
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Opr\u00e1vn\u011bn\u00ed odep\u0159ena"
+	},
+	"ui_te_ib_tip":{
+		"message":"Tip: Nechejte pr\u00e1zdn\u00e9 pokud nechcete ikonu."
+	},
 	"ui_config_general":{
 		"message":"Obecn\u00e9"
+	},
+	"ui_config_shbmb":{
+		"message":"Zobrazit \/ Skr\u00fdt panel z\u00e1lo\u017eek"
 	},
 	"ui_config_shgrid":{
 		"message":"Zobrazit \/ Skr\u00fdt m\u0159\u00ed\u017eku (p\u0159i odem\u010den\u00ed)"
 	},
+	"ui_config_reset":{
+		"message":"Obnovit"
+	},
 	"ui_config_bg":{
 		"message":"Pozad\u00ed"
+	},
+	"ui_config_bg_upload":{
+		"message":"Nahr\u00e1t obr\u00e1zek"
 	},
 	"ui_config_bgimg3":{
 		"message":"Vyma\u017ete pole pro pou\u017eit\u00ed p\u016fvodn\u00edho pozad\u00ed (pln\u00e1 barva)."
 	},
-	"ui_button_download":{
-		"message":"St\u00e1hnout widgety"
+	"ui_config_bgimg2":{
+		"message":"P\u0159\u00edklad (\u017e\u00e1dn\u00fd koncov\u00fd st\u0159edn\u00edk!):"
+	},
+	"ui_about":{
+		"message":"O n\u00e1s"
+	},
+	"ui_about_contrib":{
+		"message":"Spolupracovn\u00edci"
+	},
+	"ui_about_contrib_desc":{
+		"message":"Tento projekt by neexistoval bez tvrd\u00e9 pr\u00e1ce,n\u00e1pad\u016f,p\u0159eklad\u016f a podpory p\u00e1r velmi skv\u011bl\u00edch lid\u00ed."
+	},
+	"ui_about_dev":{
+		"message":"V\u00fdvoj\u00e1\u0159i"
+	},
+	"ui_about_contrib_translators":{
+		"message":"P\u0159ekladatel\u00e9"
+	},
+	"ui_about_contrib_users":{
+		"message":"U\u017eivatel\u00e9"
+	},
+	"ui_about_share":{
+		"message":"Sd\u00edlet"
+	},
+	"ui_about_share1":{
+		"message":"L\u00edb\u00ed se v\u00e1m nov\u00e1 Super karta?Pro\u010d j\u00ed nesd\u00edlet s p\u0159\u00e1tely nebo rodinou?"
+	},
+	"ui_about_rate":{
+		"message":"Ohodnotit"
+	},
+	"ui_about_rate_desc":{
+		"message":"L\u00edb\u00ed se V\u00e1m toto roz\u0161\u00ed\u0159en\u00ed? V\u011bnujte minutu a napi\u0161te recenzi na Chrome Obchodu."
 	},
 	"ui_confirm_uninstall":{
 		"message":"Jste si jist\u00fd, \u017ee chcete odinstalovat $app$?",
@@ -40,6 +145,18 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Odemknout a p\u0159et\u00e1hnout"
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Z\u00edskat dal\u0161\u00ed aplikace"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Z\u00edskejte v\u00edce aplikac\u00ed z Get more apps from the <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Z\u00edskat v\u00edce widget\u016f"
 	},
 	"ui_bmb_ob":{
 		"message":"Ostatn\u00ed z\u00e1lo\u017eky"
@@ -71,6 +188,12 @@
 	"tutorial_4_desc3":{
 		"message":"Uk\u00e1zat, co pravideln\u011b pou\u017e\u00edv\u00e1te, Skr\u00fdt v\u0161e ostatn\u00ed."
 	},
+	"tutorial_5_title1":{
+		"message":"U\u017eijte si"
+	},
+	"tutorial_5_desc1":{
+		"message":"U\u017eijte si!Pamatujte d\u00e1t t\u00e9to aplikaci 5 hv\u011bzdi\u010dek na Web Store."
+	},
 	"tutorial_5_desc2":{
 		"message":"M\u00e1te n\u00e1pad pro toto roz\u0161\u00ed\u0159en\u00ed? Zanechte jej <a href=\"http:\/\/ntp.uservoice.com\/\" target=\"_top\">zde<\/a>."
 	},
@@ -86,7 +209,70 @@
 	"notepad_default":{
 		"message":"Napi\u0161te zde cokoliv. V\u0161e bude ulo\u017eeno p\u0159i ka\u017ed\u00e9m stisku kl\u00e1vesy.\nBu\u010fte opatrn\u00ed; neexistuj\u00ed \u017e\u00e1dn\u00e9 z\u00e1lohy a tla\u010d\u00edtko Reset obnov\u00ed tento widget a o v\u0161echno p\u0159ijdete!"
 	},
+	"ui_resize_reset":{
+		"message":"Obnovit"
+	},
+	"ui_resize_center":{
+		"message":"St\u0159ed"
+	},
+	"ui_resize_cover":{
+		"message":"Obal"
+	},
+	"ui_resize_contain":{
+		"message":"Obsahuje"
+	},
+	"ui_resize_zoom":{
+		"message":"P\u0159ibl\u00ed\u017eit"
+	},
+	"rctm_remove":{
+		"message":"Odstranit"
+	},
+	"rctm_clear_all":{
+		"message":"Vymazat ned\u00e1vno zav\u0159en\u00e9 z\u00e1lo\u017eky"
+	},
+	"ui_import_export_btn":{
+		"message":"Import \/ Export"
+	},
 	"ui_import_export_btn2":{
 		"message":"Zp\u011bt"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importovat"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Exportovat"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Poou\u017e\u00edt"
+	},
+	"ui_import_export_header":{
+		"message":"Import \/ Export"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Potvrdit obnoven\u00ed"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Jste si jisti \u017ee chcete obnovit p\u016fvodn\u00ed nastaven\u00ed?V\u0161echna na\u0161e dosavadn\u00ed nastaven\u00ed budou ztracena."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Import \/ Export"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Obnoven\u00ed dokon\u010deno."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Nen\u00ed zde co obnovovat!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Import byl dokon\u010den."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Nejprve zadejte \u0159et\u011bzec importu!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Neplatn\u00fd \u0159et\u011bzec importu!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Obnovit"
 	}
 }

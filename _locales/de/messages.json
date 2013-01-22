@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Kacheleditor"
 	},
+	"ui_te_general":{
+		"message":"Allgemeines"
+	},
 	"ui_te_name":{
 		"message":"Name"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"Mit Linksklick anpinnen"
+	},
+	"ui_te_newtab":{
+		"message":"Mit Linksklick \u00f6ffnen in einem neuem Tab"
 	},
 	"ui_te_url_desc":{
 		"message":"Geben Sie eine URL ein um eine Seite zu verkn\u00fcpfen, zum Beispiel http:\/\/www.google.com\/"
@@ -79,6 +85,15 @@
 	},
 	"ui_te_ib_screenshot":{
 		"message":"Screenshots benutzen"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Screenshot aufnehmen"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Um den Screenshot zu machen wird die Website in einem neuem Tab ge\u00f6ffnet. Nachdem die Seite geladen wurde, wird der Tab automatisch geschlossen und Sie kommen zur\u00fcck zur Awesome New Tab Page. Bitte Schlie\u00dfen Sie nichts und surfen auf anderen Seiten."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Erlaubnis verweigert"
 	},
 	"ui_te_ib_tip":{
 		"message":"Tipp: Leer lassen, um kein Symbol anzuzeigen."
@@ -161,12 +176,6 @@
 	"ui_about_rate_desc":{
 		"message":"Gef\u00e4llt Ihnen diese Erweiterung? Nehmen Sie sich einen Augenblick Zeit und geben Sie ihr eine positive Bewertung im Chrome Web Store."
 	},
-	"ui_button_download":{
-		"message":"Erweiterungen herunterladen"
-	},
-	"ui_button_downloadapps":{
-		"message":"Apps herunterladen"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Sind Sie sicher, dass Sie $app$ deinstallieren wollen?",
 		"placeholders":{
@@ -175,6 +184,24 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Entsperren & ziehen"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Entriegeln Sie das Raster und <b>ziehen Sie<\/b> Ihre installierten apps auf einen leeren Slot."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Entriegeln Sie das Raster und <b>ziehen Sie<\/b> Ihre installierten Widgets auf einen leeren Slot."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Mehr Apps bekommen"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Mehr Apps aus denm <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Erhalten sie weitere Widgets"
 	},
 	"ui_bmb_ob":{
 		"message":"Andere Lesezeichen"
@@ -202,9 +229,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Nicht l\u00e4nger nur <span class=\"ul\">Icons<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Icons sind veraltet. Technologie l\u00e4uft mit extrem starken, dynamischen und sch\u00f6nen Widgets voran, welche man in Android, Windows Phone 7 und (bald) auch in Windows 8 findet."
 	},
 	"tutorial_2_desc2":{
 		"message":"Diese Erweiterung ist ein Start, um die selben F\u00e4higkeiten Chromes neuer Tab Seite zu geben."
@@ -254,7 +278,73 @@
 	"ui_resize_reset":{
 		"message":"Zur\u00fccksetzen"
 	},
+	"ui_resize_center":{
+		"message":"Mitte"
+	},
+	"ui_resize_cover":{
+		"message":"Deckung"
+	},
+	"ui_resize_contain":{
+		"message":"enthalten"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Entfernen"
+	},
+	"rctm_clear_all":{
+		"message":"Liste der k\u00fcrzlich geschlossenen Tabs l\u00f6schen"
+	},
+	"ui_import_export_btn":{
+		"message":"Importieren\/Exportieren"
+	},
 	"ui_import_export_btn2":{
 		"message":"Zur\u00fcck"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importieren"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Exportieren"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Anwenden"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Export: Erzeugt einen String, der alle ihre W\u00fcnsche enth\u00e4lt. Dieser String kann als Backup gespeichert werden oder auf andere Computer kopiert werden, um ihn dort so wie diesen zu nutzen. Hochgeladenen Bilder werden nicht exportiert; Bilder aus dem Internet werden exportiert."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Wiederherstellung: Hiermit k\u00f6nnen Sie den letzten Import r\u00fcckg\u00e4ngig machen. Ihr aktueller Stand wird trotzdem als ein weiteres Backup gespeichert."
+	},
+	"ui_import_export_header":{
+		"message":"Importieren\/Exportieren"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Wiederherstellung best\u00e4tigen"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Bist du dir sicher, dass du die Einstellungen wiederherstellen m\u00f6chtest?\nDie Aktuellen w\u00fcrden verloren gehen."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Importieren\/Exportieren"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Wiederherstellung komplett."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Es gibt nichts, was wiederhergestellt werden k\u00f6nnte!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Import abgeschlossen."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Als erstes import String festlegen!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Ung\u00fcltiger import String!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Wiederherstellen"
 	}
 }

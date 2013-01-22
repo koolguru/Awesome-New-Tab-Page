@@ -38,6 +38,9 @@
   "ui_te": {
     "message": "Tile Editor"
   },
+  "ui_te_general": {
+    "message": "General"
+  },
   "ui_te_name": {
     "message": "Name"
   },
@@ -61,6 +64,12 @@
   },
   "ui_te_shfavicon": {
     "message": "Show / Hide Favicon"
+  },
+  "ui_te_search": {
+    "message": "Search"
+  },
+  "ui_te_search_desc": {
+    "message": "Enter a search URL for this website. For example:"
   },
   "ui_te_bg_colorpicker": {
     "message": "Open Color Picker"
@@ -389,5 +398,14 @@
   },
   "ui_import_export_btn_restore": {
     "message": "Restore"
+  }, 
+  "ui_drag_widget_message": {
+    "message": "To place a widget, click and drag the widget to an empty tile."
+  }, 
+  "ui_apps_tip_message_title": {
+    "message": "New App Installed"
+  }, 
+  "ui_apps_tip_message": {
+    "message": "Nice! You just installed an app. You can find all of your installed apps here."
   }
 }

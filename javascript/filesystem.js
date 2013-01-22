@@ -125,7 +125,7 @@ $("#filesystem_icon_screenshot_bt").click(function () {
 });
 
 function takeScreenshot() {
-  var shortcutURL = $("#shortcut_url").val();
+  var shortcutURL = $("[ng-model=appLaunchUrl]").val();
   chrome.tabs.create({ url: shortcutURL }, function (tab) {
     chrome.tabs.onUpdated.addListener(function (tabid, tabInfo, tabToCapture) {   // wait until page is completely loaded
       if (tabid == tab.id && tabInfo.status == "complete") {
@@ -250,23 +250,23 @@ function validateImageFile(file, sizeLimit, sizeUnit) {
     var originalLimit = sizeLimit;
     var error;
     if ((file.type).match("image/") === null) {
-        error = "Not an image.<br /> Type: " + file.type;
-        $.jGrowl(error, { header: "Filesystem Error" });
-        console.error("filesystem:", error);
-        return false;
+      error = "Not an image.<br /> Type: " + file.type;
+      $.jGrowl(error, { header: "Filesystem Error" });
+      console.error("filesystem:", error);
+      return false;
     }
 
     var fileSize = file.size / 1024;
     sizeLimit *= 1024;
     if (sizeUnit == "MB") {
-        sizeLimit = sizeLimit * 1024;
-        fileSize /= 1024;
+      sizeLimit = sizeLimit * 1024;
+      fileSize /= 1024;
     }
     if (file.size > sizeLimit) {
-        error = "File size too great: Size: " + (fileSize).toFixed(2) + " " + sizeUnit + ".<br /> Please limit to " + originalLimit + " " + sizeUnit + ".";
-        $.jGrowl(error, { header: "Filesystem Error" });
-        console.error("filesystem:", error);
-        return false;
+      error = "File size too great: Size: " + (fileSize).toFixed(2) + " " + sizeUnit + ".<br /> Please limit to " + originalLimit + " " + sizeUnit + ".";
+      $.jGrowl(error, { header: "Filesystem Error" });
+      console.error("filesystem:", error);
+      return false;
     }
     return true;
 }
@@ -274,7 +274,7 @@ function validateImageFile(file, sizeLimit, sizeUnit) {
 function readFile(file, callback) {
     var reader = new FileReader();
     reader.onload = function (event) {
-        callback(event.target.result);
+      callback(event.target.result);
     };
     reader.readAsDataURL(file);
 }
@@ -307,18 +307,17 @@ function saveImage(dataURI, fileExtension, saveTo, setToCover) {
     fileEntry.createWriter(function(fileWriter) {
       fileWriter.onwriteend = function(e) {
         if (saveTo === "shortcut") {
-          $("#img_url").val(fileEntry.toURL())
-            .change();
-            $("#preview-tile").css("background-size", "cover");
-            if (setToCover) {
-              IconResizing.resetTileIcon();
-              IconResizing.calculateVars(function() {
-                IconResizing.changeBackgroundSize("cover");
-              });
-            }
-          } else if (saveTo === "background") {
-          $("#bg-img-css").val( "url("+fileEntry.toURL()+")" )
-            .change();
+          console.log(fileEntry.toURL());
+          $("[ng-model=img]").val(fileEntry.toURL()).trigger("change");
+          $("#preview-tile").css("background-size", "cover");
+          if (setToCover) {
+            IconResizing.resetTileIcon();
+            IconResizing.calculateVars(function() {
+              IconResizing.changeBackgroundSize("cover");
+            });
+          }
+        } else if (saveTo === "background") {
+          $("#bg-img-css").val( "url("+fileEntry.toURL()+")" ).change();
         }
       };
       fileWriter.write(dataURItoBlob(dataURI));

@@ -16,9 +16,21 @@
   *       relationship with the authors of this project or the project itself.
 ***/
 
+/* Online/Offline status */
+if (!navigator.onLine) {
+  $("body").addClass("offline");
+}
+
+$(document).bind("online", function () {
+  $("body").removeClass("offline");
+});
+$(document).bind("onffline", function () {
+  $("body").addClass("offline");
+});
+/* End: Online/Offline status */
 
 $(document).ready(function($) {
-  $("#toggle-grid,#grid-holder").bind("click", updateGridOpacity);
+  $("#toggle-grid,#grid-holder").live("click", updateGridOpacity);
 
   if(localStorage.getItem("perm-grid") === null) {
     localStorage.setItem("perm-grid", "yes");
@@ -572,25 +584,29 @@ function setStuff() {
 
       $(".widget").css("z-index", "1");
 
-      held_element.offsetX = e.offsetX;
-      held_element.offsetY = e.offsetY;
-      held_element.oldX    = $(this).position().left;
-      held_element.oldY    = $(this).position().top;
-      held_element.width   = $(this).width();
-      held_element.height  = $(this).height();
+      held_element.offsetX          = e.offsetX;
+      held_element.offsetY          = e.offsetY;
+      held_element.oldX             = $(this).position().left;
+      held_element.oldY             = $(this).position().top;
+      held_element.width            = $(this).width();
+      held_element.height           = $(this).height();
+      held_element.startingMousePos = {left: e.pageX, top: e.pageY};
 
       if( $(this).attr("app-source") === "from-drawer" ) {
         held_element.element = $(this).clone()
           .addClass("widget-drag").css({
-            "left": $(this).offset().left,
-            "top" : $(this).offset().top,
             "position": "absolute",
             "z-index" : "100"
         }).prependTo("body");
 
-        // Ensure that it's always droppable
+          // Ensure that it's always droppable
         held_element.offsetX_required = $(held_element.element).width()  / 2;
         held_element.offsetY_required = $(held_element.element).height() / 2;
+
+        held_element.element.css({
+          "left": e.pageX - held_element.offsetX_required - GRID_MARGIN_LEFT(),
+          "top" : e.pageY - held_element.offsetY_required  - GRID_MARGIN_TOP(),
+          });
 
         $(".ui-2#apps,.ui-2#widgets").css("display", "none");
       } else {
@@ -648,8 +664,8 @@ function setStuff() {
         }
 
         if ( $(this).attr("app-source") === "from-drawer" ) {
-          addWidget($(this).attr("id"), { 
-            top: $(closestElm).attr("land-top"), 
+          addWidget($(this).attr("id"), {
+            top: $(closestElm).attr("land-top"),
             left: $(closestElm).attr("land-left")
           });
         }
@@ -673,6 +689,9 @@ function setStuff() {
         });
 
       } else { // If the tile was full
+        if (e.pageX = held_element.startingMousePos.left && e.pageY == held_element.startingMousePos.top) {
+          $.jGrowl(chrome.i18n.getMessage("ui_drag_widget_message"));
+        }
 
         $(held_element.element).removeClass("widget-drag").css({
           "left": held_element.oldX,
@@ -817,13 +836,6 @@ function setStuff() {
     });
   });
 
-  $(document).on("click", "#shortcut-edit",function(e){
-    var self = this;
-    required('/javascript/tile-editor.js?nocache=12', function() {
-      editShortcut(e, self);
-    });
-  });
-
   // Stop edit or delete buttons from interacting with the shortcut/app
   $(document).on("mousedown mouseup move", "#delete,#shortcut-edit,#widget-config", function(e) {
     e.stopPropagation();
@@ -835,12 +847,12 @@ function setStuff() {
 // Add widget to localStorage then refresh
 function addWidget(widget_id, tile_location) {
   widgets = JSON.parse(localStorage.getItem("widgets"));
-  
+
   var scope = angular.element("#widgets").scope(),
-      installedWidgets = scope.widgets, 
-      installedApps = scope.apps, 
-      obj = installedWidgets[widget_id] || installedApps.filter(function (app) { return app.id === widget_id; })[0], 
-      widget = {id: obj.id, name: obj.name, where: [tile_location.top, tile_location.left], size: [obj.height, obj.width], img: obj.img, isApp: obj.isApp || false}, 
+      installedWidgets = scope.widgets,
+      installedApps = scope.apps,
+      obj = installedWidgets[widget_id] || installedApps.filter(function (app) { return app.id === widget_id; })[0],
+      widget = {id: obj.id, name: obj.name, where: [tile_location.top, tile_location.left], size: [obj.height, obj.width], img: obj.img, isApp: obj.isApp || false},
       stock;
 
   if ( typeof(widget.size[0]) === "undefined" )
@@ -882,6 +894,7 @@ function addWidget(widget_id, tile_location) {
     widgets[widget.instance_id] = widget;
   }
   else {
+    widget.offlineEnabled = obj.offlineEnabled;
     widget.appLaunchUrl = widget.url = obj.appLaunchUrl;
     widget.type = "app";
     widget.name_show = obj.stock ? false : true; // default false for stock tiles ONLY
@@ -935,3 +948,35 @@ function updateWidget(obj) {
 
   localStorageSync();
 }
+
+
+/* Tile Search */
+// To prevnt tile animation when clicked in search-box
+$(document).on("mousedown", ".shortcut input.search-box, .app input.search-box", function(e) {
+  $(this).closest(".app, .shortcut").removeClass("search-not-active");
+});
+$(document).on("mouseup", ".shortcut input.search-box, .app input.search-box", function(e) {
+  $(this).closest(".app, .shortcut").addClass("search-not-active");
+});
+
+$(document).on("mouseenter", ".shortcut, .app", function(e) {
+  var tile = $(this);
+  var searchBox = tile.find("input.search-box");
+  if (searchBox.length > 0)
+    searchBox.focus();
+});
+
+$(document).on("mouseleave", ".shortcut, .app", function(e) {
+  var tile = $(this);
+  var searchBox = tile.find("input.search-box");
+  if (searchBox.length > 0)
+    searchBox.blur();
+});
+
+$(document).on("keydown", ".shortcut input.search-box, .app input.search-box", function(e) {
+  var elem = $(this);
+  if (e.which == 13) {
+    document.location.href = elem.attr('data-search').replace("{input}", encodeURI(elem.val()));
+  }
+});
+/* End Tile Search */

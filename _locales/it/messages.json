@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Tile Editor"
 	},
+	"ui_te_general":{
+		"message":"Generale"
+	},
 	"ui_te_name":{
 		"message":"Nome"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"Fare clic sul tasto sinistro"
+	},
+	"ui_te_newtab":{
+		"message":"Apri in Nuova scheda al click sinistro"
 	},
 	"ui_te_url_desc":{
 		"message":"Immettere l'URL che si desidera collegare, ad esempio http:\/\/www.google.com\/"
@@ -79,6 +85,18 @@
 	},
 	"ui_te_ib_screenshot":{
 		"message":"Usa screenshot"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Fare uno screenshot"
+	},
+	"ui_screenshot_confirm":{
+		"message":"Per catturare uno screenshot, il sito verr\u00e0 aperto in una nuova scheda. Appena la pagina ha finito il caricamento, il tab si chiuder\u00e0 automaticamente e tornerai ad ANTP. Non chiudere o cambiare scheda. Dovrebbe prendere alcuni secondi."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Permesso negato"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Hai declinato il permesso ad ANTP necessario a catturare screenshots. Se vuoi fare uno screenshot, prova di nuovo e dai ad ANTP i permessi necessari."
 	},
 	"ui_te_ib_tip":{
 		"message":"Consiglio: Lascia vuoto per nessuna icona."
@@ -161,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Ti piace questa estensione? Prendi un minuto per dare una recensione positiva su Chrome Web Store."
 	},
-	"ui_button_download":{
-		"message":"Scarica Widgets"
-	},
-	"ui_button_downloadapps":{
-		"message":"Scarica Apps"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Sei sicuro di che voler disinstallare questa $app$?",
 		"placeholders":{
@@ -175,6 +187,24 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Sblocca&Trascina"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"Sblocca la griglia e <b>trascina<\/b> le tue apps installate in uno slot vuoto."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"Sblocca la griglia e <b>trascina<\/b> i tuoi widget installati in uno slot vuoto."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Ottieni pi\u00f9 Apps"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Ottieni pi\u00f9 Apps dal <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Ottieni pi\u00f9 Widget"
 	},
 	"ui_bmb_ob":{
 		"message":"Altri segnalibri"
@@ -202,9 +232,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Non pi\u00f9 solo <span class=\"ul\">icone<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Le icone sono scadute. La tecnologia \u00e8 avanti, con i widget estremamente potenti, dinamici e belli trovati in Android, Windows Phone 7 e (presto)in Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"Questa estensione rimpiazza la pagina Nuova scheda in Chrome."
@@ -254,7 +281,85 @@
 	"ui_resize_reset":{
 		"message":"Reset"
 	},
+	"ui_resize_center":{
+		"message":"Centro"
+	},
+	"ui_resize_cover":{
+		"message":"Copri"
+	},
+	"ui_resize_contain":{
+		"message":"Contieni"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Rimuovi"
+	},
+	"rctm_clear_all":{
+		"message":"Cancella Tab chiusi recentemente"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"Cancellando i Tab chiusi recentemente non cancelli la cronologia di Chrome. Questa funzione cancella solo la lista."
+	},
+	"ui_import_export_btn":{
+		"message":"Importa\/Esporta"
+	},
+	"ui_import_export_desc":{
+		"message":"Porta le impostazioni ad altri browser o ripristina un backup."
+	},
 	"ui_import_export_btn2":{
 		"message":"Indietro"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importa"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Esporta"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Applica"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Esporta: Genera una stringa che contiene tutte le tue impostazioni. La stringa pu\u00f2 essere salvata pi\u00f9 tardi come backup o pu\u00f2 essere copiata ad altri computer per impostarli automaticamente come questo. Le immagini caricate non sono esportate; le immagini sul web s\u00ec."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Importa: Sovrascrivi la tua configurazione corrente con una stringa valida. <b>ATTENZIONE<\/b>: Tutte le tue attuali impostazioni saranno perse. Non si pu\u00f2 tornare indietro. Le immagini caricate non sono importate; le immagini sul web s\u00ec."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Apps installate, estensioni e widget non sono importati o esportati. Le estensioni non possono installare altre apps o estensioni. In alternativa, usa <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Chrome Sync<\/a>."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Ripristina: ti permette di annullare l'ultima importazione. Il tuo stato corrente  verr\u00e0 salvato per un altro ripristino."
+	},
+	"ui_import_export_header":{
+		"message":"Importa\/Esporta"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Conferma ripristino"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Sei sicuro di ripristinare? Le tue impostazioni andranno perse."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Importa\/Esporta"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Ripristino completato."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Niente da ripristinare!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Importazione completata."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Inserisci prima la stringa di importazione!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Stringa di importazione invalida!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Ripristina"
 	}
 }

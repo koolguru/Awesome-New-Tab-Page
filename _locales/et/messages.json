@@ -20,14 +20,74 @@
 	"ui_button_about":{
 		"message":"Rakendusest"
 	},
+	"ui_config":{
+		"message":"Seadista"
+	},
+	"ui_c_learnmore":{
+		"message":"Vaata lisa"
+	},
+	"ui_config_bg_changecolor":{
+		"message":"Muuda tausta v\u00e4rvi"
+	},
+	"ui_te":{
+		"message":"Pealkirja redaktor"
+	},
+	"ui_te_general":{
+		"message":"\u00dcldine"
+	},
+	"ui_te_name":{
+		"message":"Nimi"
+	},
+	"ui_te_name_desc":{
+		"message":"Mida sa soovid sellele nimeks panna?"
+	},
+	"ui_te_shname":{
+		"message":"N\u00e4ita \/ Peida nime"
+	},
+	"ui_te_newtab":{
+		"message":"Ava uus vahekaart vasaku klikiga"
+	},
+	"ui_te_shfavicon":{
+		"message":"N\u00e4ita \/ Peida Faviconi"
+	},
+	"ui_te_bg_colorpicker":{
+		"message":"Ava v\u00e4rvivalija"
+	},
+	"ui_te_bg_transparent":{
+		"message":"T\u00e4iesti l\u00e4bipaistev taust"
+	},
+	"ui_te_ib":{
+		"message":"Ikoon & taust"
+	},
+	"ui_te_ib_browse":{
+		"message":"Sirvi"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Kasuta ekraanipilti"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Ekraanipildi tegemine"
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Juurdep\u00e4\u00e4s Keelatud"
+	},
 	"ui_config_general":{
 		"message":"\u00dcldine"
+	},
+	"ui_config_shbmb":{
+		"message":"N\u00e4ita \/ Peida j\u00e4rjehoidja riba"
 	},
 	"ui_config_shgrid":{
 		"message":"N\u00e4ita \/ Peida v\u00f5rgustikku (kui on avatud)"
 	},
+	"ui_config_reset":{
+		"message":"Taasta"
+	},
 	"ui_config_bg":{
 		"message":"Taust"
+	},
+	"ui_config_bg_upload":{
+		"message":"Lae pilt \u00fcles"
 	},
 	"ui_config_bgimg3":{
 		"message":"Vaikimisi taustav\u00e4rvi kasutamiseks kustuta selle lahtri sisu."
@@ -38,8 +98,23 @@
 	"ui_about":{
 		"message":"Rakendusest"
 	},
-	"ui_button_download":{
-		"message":"Lae vidinaid alla"
+	"ui_about_contrib":{
+		"message":"Toetajad"
+	},
+	"ui_about_dev":{
+		"message":"Arendajad"
+	},
+	"ui_about_contrib_translators":{
+		"message":"T\u00f5lkijad"
+	},
+	"ui_about_contrib_users":{
+		"message":"Kasutajad"
+	},
+	"ui_about_share":{
+		"message":"Jaga"
+	},
+	"ui_about_rate":{
+		"message":"Hinda"
 	},
 	"ui_confirm_uninstall":{
 		"message":"Oled sa kindel, et sa soovid rakendust $app$ kustutada?",
@@ -49,6 +124,9 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Ava & lohista"
 	},
 	"ui_bmb_ob":{
 		"message":"Muud j\u00e4rjehoidjad"
@@ -110,7 +188,58 @@
 	"notepad_default":{
 		"message":"Kirjuta siia mida iganes. K\u00f5ok, mida sa kirjutad salvestatakse kohe tr\u00fckkimise ajal.\n\nOle siiski ettevaatlik; varukoopiaid POLE ja taastamise nupp *NULLIB* ka selle vidina!"
 	},
+	"ui_resize_reset":{
+		"message":"Taasta"
+	},
+	"ui_resize_center":{
+		"message":"Keskel"
+	},
+	"ui_resize_cover":{
+		"message":"Kaas"
+	},
+	"ui_resize_contain":{
+		"message":"Sisaldab"
+	},
+	"ui_resize_zoom":{
+		"message":"Suurendus"
+	},
+	"rctm_remove":{
+		"message":"Eemalda"
+	},
+	"ui_import_export_btn":{
+		"message":"Impordi\/Ekspordi"
+	},
 	"ui_import_export_btn2":{
 		"message":"Tagasi"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Impordi"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Ekspordi"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Rakenda"
+	},
+	"ui_import_export_header":{
+		"message":"Impordi\/Ekspordi"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Kinnita taastamine"
+	},
+	"ui_import_export_msg_header":{
+		"message":"Impordi\/Ekspordi"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Taastamine on tehtud."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Pole midagi taastada!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Importimine on valmis."
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Taasta"
 	}
 }

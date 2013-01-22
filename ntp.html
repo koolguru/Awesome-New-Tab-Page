@@ -47,7 +47,8 @@
 
       <!-- Widgets -->
       <div id="{{widget.id}}" ng-repeat="widget in widgets"
-        class="widget ng-cloak"
+        class="widget ng-cloak search-not-active"
+        type="{{widget.type}}"
         tile-height="{{widget.size.0}}" tile-width="{{widget.size.1}}"
         tile-init-top="{{widget.where.0}}" tile-init-left="{{widget.where.1}}"
         style="height: {{widget.css.height}}px; width: {{widget.css.width}}px;
@@ -68,13 +69,20 @@
 
       <!-- Installed Apps -->
       <div id="{{app.id}}" ng-repeat="app in apps"
-      class="widget app"
+      class="widget app search-not-active"
+      ng-class="{'offline-enabled': app.offlineEnabled==true}"
+      type="{{app.type}}"
       tile-height="{{app.size.0}}" tile-width="{{app.size.1}}"
       tile-init-top="{{app.where.0}}" tile-init-left="{{app.where.1}}"
       style="{{app.css.bg}};
           height: {{app.css.height}}px; width: {{app.css.width}}px;
           top: {{app.css.top}}px; left: {{app.css.left}}px;
           background-size: {{app.backgroundSize}}; background-position: {{app.backgroundPosition}}">
+        <div ng-switch on="app.searchEnabled" >
+          <div ng-switch-when="true">
+            <input type="text" class="search-box" name="search" value="" placeholder="Search" data-search="{{app.searchUrl}}" />
+          </div>
+        </div>
         <div class="app-name" ng-hide="!app.name_show">{{app.name}}</div>
         <a class="url" data-url="{{app.appLaunchUrl}}" href="{{app.appLaunchUrl}}" onleftclick="{{app.onleftclick}}"></a>
         <div class="iframe-mask">
@@ -91,13 +99,19 @@
 
       <!-- Custom Shortcuts -->
       <div id="{{shortcut.id}}" ng-repeat="shortcut in custom_shortcuts"
-      class="widget app shortcut"
+      class="widget app search-not-active shortcut"
+      type="{{shortcut.type}}"
       tile-height="{{shortcut.size.0}}" tile-width="{{shortcut.size.1}}"
       tile-init-top="{{shortcut.where.0}}" tile-init-left="{{shortcut.where.1}}"
       style="{{shortcut.css.bg}};
           height: {{shortcut.css.height}}px; width: {{shortcut.css.width}}px;
           top: {{shortcut.css.top}}px; left: {{shortcut.css.left}}px;
           background-size: {{shortcut.backgroundSize}}; background-position: {{shortcut.backgroundPosition}}">
+        <div ng-switch on="shortcut.searchEnabled" >
+          <div ng-switch-when="true">
+            <input type="text" class="search-box" name="search" value="" placeholder="Search" data-search="{{shortcut.searchUrl}}" />
+          </div>
+        </div>
         <div class="app-name" ng-hide="!shortcut.name_show">{{shortcut.name}}</div>
         <a class="url" data-url="{{shortcut.appLaunchUrl}}" href="{{shortcut.appLaunchUrl}}" onleftclick="{{shortcut.onleftclick}}"></a>
         <img ng-src="chrome://favicon/{{shortcut.appLaunchUrl}}" class="app-favicon" ng-hide="!shortcut.favicon_show" />
@@ -258,77 +272,102 @@
       </div>
 
       <div class="ui-2 contents" id="config-contents">
-        <div id="config-general" class="ui-2">
-          <h3>{{'ui_config_general' | i18n}}</h3>
-          <div id="toggleBmb-holder">
-            <input id="toggleBmb" type="checkbox" name="show" value="true" />
-            <p class="ilb">{{'ui_config_shbmb' | i18n}}</p>
-          </div>
+        <tabs>
+          <pane name="{{'ui_config_general' | i18n}}">
+            <div id="toggleBmb-holder">
+              <input id="toggleBmb" type="checkbox" name="show" value="true" />
+              <p class="ilb">{{'ui_config_shbmb' | i18n}}</p>
+            </div>
 
-          <div id="hideLeftButtons-holder">
-            <input id="hideLeftButtons" type="checkbox" name="show" value="true" />
-            <p class="ilb">{{'ui_config_shtlb' | i18n}}</p>
-          </div>
+            <div id="hideLeftButtons-holder">
+              <input id="hideLeftButtons" type="checkbox" name="show" value="true" />
+              <p class="ilb">{{'ui_config_shtlb' | i18n}}</p>
+            </div>
 
-          <p class="tip">{{'ui_config_shtlb_desc' | i18n}}</p>
+            <p class="tip">{{'ui_config_shtlb_desc' | i18n}}</p>
 
-          <div id="toggle-grid-holder">
-            <input id="toggle-grid" type="checkbox" name="show" value="true" />
-            <p class="ilb">{{'ui_config_shgrid' | i18n}}</p>
-          </div>
+            <div id="toggle-grid-holder">
+              <input id="toggle-grid" type="checkbox" name="show" value="true" />
+              <p class="ilb">{{'ui_config_shgrid' | i18n}}</p>
+            </div>
 
-          <div id="amazon-locale">
-            <select id="amazon-locale-selection">
-              <option value="amazon.com">United States (Amazon.com)</option>
-              <option value="amazon.ca">Canada (Amazon.ca)</option>
-              <option value="amazon.co.uk">United Kingdom (Amazon.co.uk)</option>
-              <option value="amazon.at">Austria (Amazon.at)</option>
-              <option value="amazon.cn">China (Amazon.cn)</option>
-              <option value="amazon.fr">France (Amazon.fr)</option>
-              <option value="amazon.de">Germany (Amazon.de)</option>
-              <option value="amazon.it">Italy (Amazon.it)</option>
-              <option value="amazon.co.jp">Japan (Amazon.co.jp)</option>
-              <option value="amazon.es">Spain (Amazon.es)</option>
-            </select>
-            <p class="ilb">
-              <i18n message-id='ui_config_amazonlocale' />
-              <a href="http://www.amazon.com/gp/feature.html?docId=487250&tag=sntp-20">
-                <u>{{'ui_c_learnmore' | i18n}}</u></a>.
+            <div id="amazon-locale">
+              <select id="amazon-locale-selection">
+                <option value="amazon.com">United States (Amazon.com)</option>
+                <option value="amazon.ca">Canada (Amazon.ca)</option>
+                <option value="amazon.co.uk">United Kingdom (Amazon.co.uk)</option>
+                <option value="amazon.at">Austria (Amazon.at)</option>
+                <option value="amazon.cn">China (Amazon.cn)</option>
+                <option value="amazon.fr">France (Amazon.fr)</option>
+                <option value="amazon.de">Germany (Amazon.de)</option>
+                <option value="amazon.it">Italy (Amazon.it)</option>
+                <option value="amazon.co.jp">Japan (Amazon.co.jp)</option>
+                <option value="amazon.es">Spain (Amazon.es)</option>
+              </select>
+              <p class="ilb">
+                <i18n message-id='ui_config_amazonlocale' />
+                <a href="http://www.amazon.com/gp/feature.html?docId=487250&tag=sntp-20">
+                  <u>{{'ui_c_learnmore' | i18n}}</u></a>.
+              </p>
+            </div>
+            <div id="reset-button" class="bubble ilb">{{'ui_config_reset' | i18n}}</div>
+            <p class="ilb">{{'ui_config_reset_desc' | i18n}}</p>
+          </pane>
+
+          <pane name="{{'ui_config_bg' | i18n}}">
+            <div class="bubble ilb bg-color">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id="colorselector-bg" class="bubble ilb">
+              {{'ui_config_bg_changecolor' | i18n}}
+            </div>
+            <input type="file" id="filesystem_bg_input" style="width:0; height: 0; opacity: 0;">
+            <div id="filesystem_bg_ui" class="bubble ilb">
+              {{'ui_config_bg_upload' | i18n}}
+            </div>
+            <p class="tip">
+              <i18n message-id='ui_config_bgimg1' />
+              <a href="http://www.w3schools.com/css/tryit.asp?filename=trycss_background_shorthand2">
+                <u>{{'ui_c_learnmore' | i18n}}</u>.
+              </a>
             </p>
-          </div>
+            <p>
+              <input id="bg-img-css" type="text" name="bg-img-css" />
+            </p>
+            <p class="tip">{{'ui_config_bgimg3' | i18n}}</p>
+            <p>{{'ui_config_bgimg2' | i18n}}</p>
+            <pre>url(https://cdn.antp.co/misc/bg/ics.png) repeat right top</pre>
+          </pane>
 
-          <div id="reset-button" class="bubble ilb">{{'ui_config_reset' | i18n}}</div>
-          <p class="ilb">{{'ui_config_reset_desc' | i18n}}</p>
+          <pane name="{{'ui_import_export_header' | i18n}}">
+            <div id="import-export-contents" class="ui-2">
+              <div class="buttons">
+                <div id="import-btn" class="bubble ilb"><i18n message-id="ui_import_export_btn_import" /></div>
+                <div id="export-btn" class="bubble ilb"><i18n message-id="ui_import_export_btn_export" /></div>
+                <div id="restore-btn" class="bubble ilb"><i18n message-id="ui_import_export_btn_restore" /></div>
+              </div>
+
+              <p><i18n message-id="ui_import_export_desc_import" /></p>
+              <p><i18n message-id="ui_import_export_desc_export" /></p>
+              <p><i18n message-id="ui_import_export_installed_warning" /></p>
+              <p><i18n message-id="ui_import_export_desc_restore" /></p>
+
+              <div>
+                <textarea rows="10" cols="50" id="import-textarea"></textarea>
+                <textarea rows="10" cols="50" id="export-textarea"></textarea>
+              </div>
+              <div id="run-import-btn" class="bubble ilb">
+                <i18n message-id="ui_import_export_btn_import_run" />
+              </div>
+            </div>
+          </pane>
+        </tabs>
+        <!--
+
+
 
           <div id="import-export-btn" class="bubble ilb"><i18n message-id="ui_import_export_btn" /></div>
           <p class="ilb">{{'ui_import_export_desc' | i18n}}</p>
-        </div>
-
-        <div id="config-background" class="ui-2">
-          <h3>{{'ui_config_bg' | i18n}}</h3>
-
-          <div class="bubble ilb bg-color">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-          </div>
-          <div id="colorselector-bg" class="bubble ilb">
-            {{'ui_config_bg_changecolor' | i18n}}
-          </div>
-          <input type="file" id="filesystem_bg_input" style="width:0; height: 0; opacity: 0;">
-          <div id="filesystem_bg_ui" class="bubble ilb">
-            {{'ui_config_bg_upload' | i18n}}
-          </div>
-          <p class="tip">
-            <i18n message-id='ui_config_bgimg1' />
-            <a href="http://www.w3schools.com/css/tryit.asp?filename=trycss_background_shorthand2">
-              <u>{{'ui_c_learnmore' | i18n}}</u>.
-            </a>
-          </p>
-          <p>
-            <input id="bg-img-css" type="text" name="bg-img-css" />
-          </p>
-          <p class="tip">{{'ui_config_bgimg3' | i18n}}</p>
-          <p>{{'ui_config_bgimg2' | i18n}}</p>
-          <pre>url(https://cdn.antp.co/misc/bg/ics.png) repeat right top</pre>
         </div>
 
         <div id="import-export-contents" class="ui-2">
@@ -353,6 +392,7 @@
             <i18n message-id="ui_import_export_btn_import_run" />
           </div>
         </div>
+      -->
       </div>
     </div>
 
@@ -399,6 +439,7 @@
           <div ng-repeat="app in apps"
           id="{{app.id}}"
           class="widget app drawer-app ui-2 ilb"
+          type="{{app.type}}"
           tile-width="1"
           tile-height="1"
           app-source="from-drawer"
@@ -456,6 +497,7 @@
           <div ng-repeat="(key, widget) in widgets"
             id="{{key}}"
             class="widget app drawer-app ui-2 ilb" app-source="from-drawer"
+            type="{{widget.type}}"
             tile-width="{{widget.width}}"
             tile-height="{{widget.height}}"
             tile-widget="true"
@@ -476,7 +518,7 @@
       </div>
     </div>
 
-    <div id="editor" class="ui-2 container">
+    <div id="editor" ng-controller="windowTileEditorCtrl" class="ui-2 container">
       <div class="ui-2 header">
         <div class="ui-2 left">
           <div class="ui-2 logo"></div>
@@ -488,7 +530,7 @@
             </span>
             <span class="ui-2 crumb">&nbsp;</span>
             <span class="ui-2 subname" id="editor-name">
-              &nbsp;
+              {{name}}
             </span>
           </div>
           <div class="ui-2 plus-share">
@@ -505,60 +547,93 @@
 
       <div class="ui-2 contents">
         <div id="tile-editor-right">
-            <h3>{{'ui_te_name' | i18n}}</h3>
-            <p>{{'ui_te_name_desc' | i18n}}</p>
-            <input id="shortcut_name" type="text" />
-            <p>
-              <input id="shortcut_name_show" type="checkbox" />
-              {{'ui_te_shname' | i18n}}
-            </p>
-            <p>
-              <input id="shortcut_pin" name="leftclick" value="pin" type="checkbox" />
-              {{'ui_te_pin' | i18n}}
-            </p>
-            <p>
-              <input id="shortcut_newtab" name="leftclick" value="newtab" type="checkbox" />
-              {{'ui_te_newtab' | i18n}}
-            </p>
-          <div class="hide-if-app">
-            <h3>URL</h3>
-            <p>{{'ui_te_url_desc' | i18n}}</p>
-            <input id="shortcut_url" type="text" />
-            <p class="tip">{{'ui_te_url_tip' | i18n}}</p>
-            <p>
-              <input id="shortcut_favicon_show" type="checkbox" />
-              {{'ui_te_shfavicon' | i18n}}
-            </p>
-          </div>
+          <tabs>
+            <pane name="{{'ui_te_general' | i18n}}">
+              <div class="show-if-app">
+                <p class="tip">{{'ui_te_app_tip' | i18n}}</p>
+              </div>
 
-          <h3>{{'ui_config_bg_changecolor' | i18n}}</h3>
-          <div id="shortcut_colorpicker" class="bubble ilb">
-            {{'ui_te_bg_colorpicker' | i18n}}
-          </div>
-          <div id="swatches"></div>
+              <h3>{{'ui_te_name' | i18n}}</h3>
+              <p>{{'ui_te_name_desc' | i18n}}</p>
+              <input type="text" ng-model="name" ng-tile-editor />
+              <p>
+                <input ng-model="name_show" type="checkbox" ng-tile-editor />
+                {{'ui_te_shname' | i18n}}
+              </p>
+              <p>
+                <input ng-model="shortcut_pin" name="leftclick" value="pin" type="checkbox" ng-tile-editor />
+                {{'ui_te_pin' | i18n}}
+              </p>
+              <p>
+                <input ng-model="shortcut_newtab" name="leftclick" value="newtab" type="checkbox" ng-tile-editor />
+                {{'ui_te_newtab' | i18n}}
+              </p>
 
-          <p>
-            <input id="shortcut_background_transparent" type="checkbox" />
-            {{'ui_te_bg_transparent' | i18n}}
-          </p>
-          <p class="tip">
-            {{'ui_te_bg_tip' | i18n}}
-          </p>
-          <div class="hide-if-app">
-          <p class="tip">
-            {{'ui_te_bg_note' | i18n}}
-          </p>
-          </div>
+              <div class="hide-if-app">
+                <h3>URL</h3>
+                <p>{{'ui_te_url_desc' | i18n}}</p>
+                <input ng-model="appLaunchUrl" type="text" ng-tile-editor />
+                <p class="tip">{{'ui_te_url_tip' | i18n}}</p>
+                <p>
+                  <input ng-model="favicon_show" type="checkbox" ng-tile-editor />
+                  {{'ui_te_shfavicon' | i18n}}
+                </p>
+              </div>
+            </pane>
 
+            <pane name="{{'ui_te_search' | i18n}}" class="hide-if-app">
+              <div class="hide-if-app">
+                <p>{{'ui_te_search_desc' | i18n}} <i>"https://www.google.com/search?q={input}"</i></p>
+                <input ng-model="searchUrl" type="text" ng-tile-editor />
+              </div>
+            </pane>
+
+            <pane name="{{'ui_config_bg' | i18n}}">
+
+              <h3>{{'ui_config_bg_changecolor' | i18n}}</h3>
+              <div id="shortcut_colorpicker" class="bubble ilb">
+                {{'ui_te_bg_colorpicker' | i18n}}
+              </div>
+              <div id="swatches" ng-click="setswatch($event)"></div>
+
+              <p>
+                <input ng-model="shortcut_background_transparent" type="checkbox" ng-tile-editor />
+                {{'ui_te_bg_transparent' | i18n}}
+              </p>
+              <p class="tip">
+                {{'ui_te_bg_tip' | i18n}}
+              </p>
+              <div class="hide-if-app">
+                <p class="tip">
+                  {{'ui_te_bg_note' | i18n}}
+                </p>
+              </div>
+
+              <div class="hide-if-app">
+                <h3>{{'ui_te_ib' | i18n}}</h3>
+                <p>{{'ui_te_ib_desc' | i18n}}</p>
+                <div id="filesystem_icon_screenshot_bt" class="bubble ilb">
+                  {{'ui_te_ib_screenshot' | i18n}}
+                </div>
+                <input ng-model="img" type="text" class="ilb" ng-tile-editor />
+                <input type="file" id="filesystem_icon_input" style="width:0; height: 0; opacity: 0;">
+                <div id="filesystem_icon_ui" class="bubble ilb">
+                  {{'ui_te_ib_browse' | i18n}}
+                </div>
+                <p class="tip">{{'ui_te_ib_tip' | i18n}}</p>
+                <p class="tip">{{'ui_te_ib_advanced' | i18n}}</p>
+              </div>
+            </pane>
+          </tabs>
         </div>
 
         <div id="tile-editor-left">
           <div id="fake-tile-wrapper">
             <div id="fake-tile-background" class="bg-color">
-              <div class="fake-tile" id="preview-tile">
+              <div class="fake-tile" id="preview-tile" style="background-image: {{backgroundimage}}; background-color: {{backgroundcolor}}; ">
                 <img id="invisible-tile-img" style="display: none;"/> <!-- this element is to just get width and height of tile icon -->
-                <div class="app-name"></div>
-                <img class="app-favicon"></img>
+                <div class="app-name" ng-show="name_show">{{name}}</div>
+                <img class="app-favicon" ng-show="favicon_show" ng-src="{{favicon}}"/>
                 <div class="iframe-mask" style="display: block;"></div>
               </div>
               <div class="fake-tile" id="ft0"></div>
@@ -571,12 +646,7 @@
               <div class="fake-tile" id="ft7"></div>
               <div class="fake-tile" id="ft8"></div>
             </div>
-          </div>
 
-          <div class="show-if-app">
-            <p class="tip">{{'ui_te_app_tip' | i18n}}</p>
-          </div>
-          <div class="hide-if-app">
             <div id="icon-resize-scale-controls">
               <div>
                 <span class="align-top">{{'ui_resize_zoom' | i18n}}: </span>
@@ -594,20 +664,7 @@
               <div id="contain-bt" class="bubble ilb">
                 {{'ui_resize_contain' | i18n}}
               </div>
-          </div>
-
-            <h3>{{'ui_te_ib' | i18n}}</h3>
-            <p>{{'ui_te_ib_desc' | i18n}}</p>
-            <div id="filesystem_icon_screenshot_bt" class="bubble ilb">
-              {{'ui_te_ib_screenshot' | i18n}}
             </div>
-            <input id="img_url" type="text" class="ilb" />
-            <input type="file" id="filesystem_icon_input" style="width:0; height: 0; opacity: 0;">
-            <div id="filesystem_icon_ui" class="bubble ilb">
-              {{'ui_te_ib_browse' | i18n}}
-            </div>
-            <p class="tip">{{'ui_te_ib_tip' | i18n}}</p>
-            <p class="tip">{{'ui_te_ib_advanced' | i18n}}</p>
           </div>
         </div>
       </div>
@@ -628,12 +685,12 @@
       <script type="text/javascript" src="/javascript/jquery.jgrowl.js" async="async"></script>
       <script type="text/javascript" src="/javascript/center.js"></script>
 
+      <script type="text/javascript" src="/javascript/icon-resizing.js"></script>
+
       <script type="text/javascript" data-main="/javascript/delayed-loader" src="/javascript/require.js"></script>
 
       <!--<script type="text/javascript" src="/javascript/ui.js?nocache=12" async="async"></script>-->
       <!--<script type="text/javascript" src="/javascript/base64.js?nocache=12" async="async"></script>-->
-
-      <!--<script type="text/javascript" src="/javascript/tile-editor.js?nocache=12" async="async"></script>-->
 
       <!--<script type="text/javascript" src="/javascript/color-thief.js" async="async"></script>-->
       <!--<script type="text/javascript" src="/javascript/quantize.js" async="async"></script>-->

@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"R\u00e1csszerkeszt\u0151"
 	},
+	"ui_te_general":{
+		"message":"\u00c1ltal\u00e1nos"
+	},
 	"ui_te_name":{
 		"message":"N\u00e9v"
 	},
@@ -161,12 +164,6 @@
 	"ui_about_rate_desc":{
 		"message":"Tetszik ez a kiterjeszt\u00e9s? Sz\u00e1nj egy percet arra, hogy \u00e9rt\u00e9keld a Chrome webt\u00e1rhelyen."
 	},
-	"ui_button_download":{
-		"message":"Widget-ek let\u00f6lt\u00e9se"
-	},
-	"ui_button_downloadapps":{
-		"message":"Appok let\u00f6lt\u00e9se"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Biztos, hogy el szeretn\u00e9 t\u00e1vol\u00edtani a(z) $app$-t?",
 		"placeholders":{
@@ -194,9 +191,6 @@
 	"ui_faw_get_more_widgets":{
 		"message":"Tov\u00e1bbi widgetek"
 	},
-	"ui_faw_get_more_widgets_body":{
-		"message":"Tov\u00e1bbi widget-ek innen: <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Chrome Web Store<\/a>."
-	},
 	"ui_bmb_ob":{
 		"message":"Tov\u00e1bbi k\u00f6nyvjelz\u0151k"
 	},
@@ -223,9 +217,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Nincsenek T\u00f6bb\u00e9 <span class=\"ul\">Ikonok<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Az ikonok elavultak. A technol\u00f3gia fejl\u0151dik, a rendk\u00edv\u00fcl er\u0151teljes, dinamikus \u00e9s sz\u00e9p widget-ekkel, mint az Android, Windows Phone 7 \u00e9s (hamarosan) Windows 8 rendszereken."
 	},
 	"tutorial_2_desc2":{
 		"message":"Ez az alkalmaz\u00e1s megteremti ugyanazt a hatalmat mint a Chrome \u00daj Lapja."

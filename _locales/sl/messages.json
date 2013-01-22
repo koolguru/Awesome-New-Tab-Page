@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Urejevalnik plo\u0161\u010dic"
 	},
+	"ui_te_general":{
+		"message":"Splo\u0161no"
+	},
 	"ui_te_name":{
 		"message":"Ime"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"Pritrdi z levim klikom"
+	},
+	"ui_te_newtab":{
+		"message":"Ob kliku odpri v novem zavihku"
 	},
 	"ui_te_url_desc":{
 		"message":"Vnesite naslov URL, ki ga \u017eelite povezati, kot http:\/\/www.google.com\/"
@@ -85,6 +91,12 @@
 	},
 	"ui_screenshot_confirm":{
 		"message":"Za zajem zaslona bo spletna stran odprta v novem zavihku. Ko bo stran nalo\u017eena se bo zavihek samodejno zaprl in vrnili se boste na Awesome New Tab Page. Prosim ne zapirajte ali brskate drugam. To ne bi smelo trajati ve\u010d kot nekaj sekund."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Dostop zavrnjen"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Zavrnili ste, da Awesome New Tab Page zajame sliko. \u010ce \u017eelite, da jo zajame, prosim poskusite znova in dovolite dovoljenje."
 	},
 	"ui_te_ib_tip":{
 		"message":"Namig: pustite prazno, da ne bo ikone."
@@ -167,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Vam je v\u0161e\u010d ta raz\u0161iritev? Vzemite si minuto in jo pozitivno ocenite v Spletni trgovini Chrome."
 	},
-	"ui_button_download":{
-		"message":"Prenos gradnikov"
-	},
-	"ui_button_downloadapps":{
-		"message":"Prenos aplikacij"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Ali ste prepri\u010dani, da \u017eelite odstraniti $app$?",
 		"placeholders":{
@@ -200,9 +206,6 @@
 	"ui_faw_get_more_widgets":{
 		"message":"Pridobite gradnike"
 	},
-	"ui_faw_get_more_widgets_body":{
-		"message":"Pridobite grtadnike iz <a href='https:\/\/chrome.google.com\/webstore\/search\/%22Awesome New tab Page%22?utm_source=download-widgets&amp;utm_medium=awesome-new-tab-page'>Spletne trgovine Chrome<\/a>."
-	},
 	"ui_bmb_ob":{
 		"message":"Drugi zaznamki"
 	},
@@ -229,9 +232,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Ni\u010d ve\u010d samo <span class=\"ul\">ikone<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Ikone so zastarele. Tehnologija napreduje z ekstremno mo\u010dnimi, dinami\u010dnimi in lepimi gradniki, ki jih najdemo v sistemu Android, Windows Phone 7 in (kmalu) v Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"Ta raz\u0161iritev je za\u010detek, ki vna\u0161a v Chrome podobno zmogljivost na strani novega zavihka."
@@ -339,7 +339,7 @@
 		"message":"Potrdi obnovitev"
 	},
 	"ui_import_export_confirm_restore":{
-		"message":"Ali \u017eelite obnoviti? Va\u0161e trenutne nastavitve se bodo izgubile."
+		"message":"Ali ste prepri\u010dani, da \u017eelite vse obnoviti? Va\u0161e trenutne nastavitve bi izgubili."
 	},
 	"ui_import_export_msg_header":{
 		"message":"Uvoz\/Izvoz"

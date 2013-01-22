@@ -32,6 +32,9 @@
 	"ui_te":{
 		"message":"Flise Editor"
 	},
+	"ui_te_general":{
+		"message":"Generelt"
+	},
 	"ui_te_name":{
 		"message":"Navn"
 	},
@@ -43,6 +46,9 @@
 	},
 	"ui_te_pin":{
 		"message":"Pin med venstre klik"
+	},
+	"ui_te_newtab":{
+		"message":"\u00c5bn i ny fane ved klik med venstre museknap"
 	},
 	"ui_te_url_desc":{
 		"message":"Angiv den URL-adresse, du gerne vil oprette et hyperlink til, s\u00e5som http:\/\/www.google.com\/"
@@ -76,6 +82,21 @@
 	},
 	"ui_te_ib_browse":{
 		"message":"Gennemse"
+	},
+	"ui_te_ib_screenshot":{
+		"message":"Brug sk\u00e6rmbillede"
+	},
+	"ui_screenshot_confirm_title":{
+		"message":"Tager sk\u00e6rmbillede"
+	},
+	"ui_screenshot_confirm":{
+		"message":"For at tage sk\u00e6rmbilledet, \u00e5bnes webstedet i et nyt faneblad. N\u00e5r indl\u00e6sning af siden er afsluttet lukkes fanen automatisk og du f\u00f8res tilbage til Awesome New Tab Page. Luk eller naviger venligst ikke fra iden. Dette b\u00f8r ikke tage mere end et par sekunder."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Tilladelse n\u00e6gtet"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Du afslog at give Awesome New Tab Page den n\u00f8dvendige tilladelse til at tage sk\u00e6rmbilleder. Hvis du \u00f8nsker at tage et sk\u00e6rmbillede, bedes du pr\u00f8ve igen og give Awesome New Tab Page de n\u00f8dvendige tilladelser."
 	},
 	"ui_te_ib_tip":{
 		"message":"Tip: Forlad tom for intet ikon."
@@ -158,12 +179,6 @@
 	"ui_about_rate_desc":{
 		"message":"Kan du godt lide denne udvidelse? Brug et minuts tid til at give den et positivt review p\u00e5 Chrome Web Storen."
 	},
-	"ui_button_download":{
-		"message":"Hent Widgets"
-	},
-	"ui_button_downloadapps":{
-		"message":"Download apps"
-	},
 	"ui_confirm_uninstall":{
 		"message":"Er du sikker p\u00e5 at du vil afinstallere $app$?",
 		"placeholders":{
@@ -172,6 +187,24 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"L\u00e5s op og tr\u00e6k"
+	},
+	"ui_faw_unlock_drag_apps":{
+		"message":"L\u00e5s gitteret og <b>tr\u00e6k<\/b> dine installerede apps til en tom plads."
+	},
+	"ui_faw_unlock_drag_widgets":{
+		"message":"L\u00e5s gitteret op og <b>tr\u00e6k<\/b> dine installerede apps til en tom plads."
+	},
+	"ui_faw_get_more_apps":{
+		"message":"F\u00e5 flere apps"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"F\u00e5 flere apps fra <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'> Chrome Webshop<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"F\u00e5 flere widgets"
 	},
 	"ui_bmb_ob":{
 		"message":"Andre bogm\u00e6rker"
@@ -199,9 +232,6 @@
 	},
 	"tutorial_2_title":{
 		"message":"Ikke l\u00e6ngere bare <span class=\"ul\">ikoner<\/span>"
-	},
-	"tutorial_2_desc1":{
-		"message":"Ikoner er for\u00e6ldede. Teknologien skynder sig fremad, med ekstremt kraftige, dynamiske og smukke widgets som findes i Android, Windows Phone 7 og (snart) ogs\u00e5 Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"Denne udvidelse er en start p\u00e5 at bringe den samme kraft til Chromes Ny Fane side."
@@ -251,7 +281,85 @@
 	"ui_resize_reset":{
 		"message":"Nulstil"
 	},
+	"ui_resize_center":{
+		"message":"Centrer"
+	},
+	"ui_resize_cover":{
+		"message":"D\u00e6k"
+	},
+	"ui_resize_contain":{
+		"message":"Indehold"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Fjern"
+	},
+	"rctm_clear_all":{
+		"message":"Ryd nyligt lukkede faner"
+	},
+	"rctm_clear_all_confirm":{
+		"message":"At rydde menuen for nyligt lukkede faner sletter ikke Chrome's browserhistorik. Denne funktion rydder kun denne liste."
+	},
+	"ui_import_export_btn":{
+		"message":"Import\/eksport"
+	},
+	"ui_import_export_desc":{
+		"message":"Eskporter dine indstillinger til andre browsere eller gendan en sikkerhedskopi."
+	},
 	"ui_import_export_btn2":{
 		"message":"Tilbage"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importer"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Eksporter"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Anvend"
+	},
+	"ui_import_export_desc_export":{
+		"message":"Eksport: Genererer en streng, der indeholder alle dine pr\u00e6ferencer. Denne streng kan gemmes til senere brug, som en sikkerhedskopi eller kan kopieres til andre computere til automatisk at konfigurere dem som denne. Uploadede billeder eksporteres ikke; billeder fra hjemmesider importeres."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Importer: Overskriver din aktuelle konfiguration med en gyldig eksporteret streng. <b>Advarsel<\/b>: alle dine aktuelle indstillinger vil v\u00e6re uigenkaldeligt tabt. Der er ingen m\u00e5de at fortryde denne handling p\u00e5. Uploadede billeder importeres ikke; billeder fra hjemmesider importeres."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Installerede apps, udvidelser og widgets importeres eller eksporteres ikke. Udvidelser kan ikke installere andre apps eller udvidelser. Brug <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'> Chrome Sync<\/a> i stedet."
+	},
+	"ui_import_export_desc_restore":{
+		"message":"Gendannelse: Tillader dig at fortryde den sidste import. Din aktuelle tilstand vil blive sikkerhedskopieret til senere gendannelse."
+	},
+	"ui_import_export_header":{
+		"message":"Import\/eksport"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Bekr\u00e6ft gendannelse"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Er du sikker p\u00e5, du vil gendanne? Dine aktuelle indstillinger vil g\u00e5 tabt."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Import\/eksport"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Gendannelsen er fuldf\u00f8rt."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Intet at gendanne!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Import fuldf\u00f8rt."
+	},
+	"ui_import_export_empty_string_msg":{
+		"message":"Angiv importstreng f\u00f8rst!"
+	},
+	"ui_import_export_invalid_string_msg":{
+		"message":"Ugyldig importstreng!"
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Gendan"
 	}
 }
