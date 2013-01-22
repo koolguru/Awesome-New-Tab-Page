@@ -305,11 +305,7 @@ var
       // save all the things, put all the things into the tile.
       var id = $(".ui-2#editor").attr("active-edit-id");
       var widgets = JSON.parse(localStorage.getItem("widgets"));
-      $scope[a] = b;
-
-      if (typeof widgets[id][a] !== undefined) { // if object exists, set
-        widgets[id][a] = $scope[a];
-      }
+      $scope[a] = widgets[id][a] = b;
 
       switch (a) {
         case "appLaunchUrl":
@@ -368,9 +364,12 @@ var
       var id = $(this).parent().parent().attr("id");
       var widgets = JSON.parse(localStorage.getItem("widgets"));
 
+      var tile = widgets[id];
+
       var this_extension = extensions.filter(function (ext) { return ext.id === id })[0];
       var is_app = (typeof(this_extension) !== "undefined" && typeof(this_extension.isApp) === "boolean");
-      var is_shortcut = (widgets[id].type && widgets[id].type === "shortcut");
+      var is_shortcut = (tile.type && tile.type === "shortcut");
+
 
       var editor_type;
       if ( is_shortcut ) {
@@ -388,28 +387,24 @@ var
         .attr("active-edit-id", id)
         .attr("active-edit-type", editor_type);
 
-      $scope.safeApply();
-
       var stock_app = false;
       if ( $.inArray(id, ["webstore", "amazon", "amazoninstantvideo", "facebook", "twitter"]) !== -1 ) {
-        widgets[id].img = stock_widgets[id].simg;
+        tile.img = stock_widgets[id].simg;
         stock_app = true;
       }
 
       if ( is_shortcut ) {
-        $scope.favicon = "chrome://favicon/" + widgets[id].appLaunchUrl;
-        if ( widgets[id].favicon_show !== false ) {
+        $scope.favicon = "chrome://favicon/" + tile.appLaunchUrl;
+        if ( tile.favicon_show !== false ) {
           $scope.favicon_show = true;
         } else {
           $scope.favicon_show = false;
         }
-        $scope.searchUrl = widgets[id].searchUrl;
+        $scope.searchUrl = tile.searchUrl;
       } else {
         $scope.searchUrl = "";
         $scope.favicon_show = false;
       }
-
-      var tile = widgets[id];
 
       if ( tile.name_show === undefined ) {
         tile.name_show = true;
@@ -429,10 +424,10 @@ var
       $scope.backgroundcolor = tile.color; // to hold color/transparent
 
       if($scope.shortcut_background_transparent === true) {
-        $scope.backgroundimage = "url("+widgets[id].img+")";
+        $scope.backgroundimage = "url("+tile.img+")";
         $scope.backgroundcolor = "transparent";
       } else {
-        $scope.backgroundimage = "url("+widgets[id].img+")" + gradient;
+        $scope.backgroundimage = "url("+tile.img+")" + gradient;
         $scope.backgroundcolor = tile.color;
         $scope.color = tile.color;
       }
@@ -467,7 +462,7 @@ var
 
       $("#swatches").html("").hide();
       if ( is_app === true && stock_app === false ) {
-        var image = widgets[id].img;
+        var image = tile.img;
         required("quantize", function() {
           required("color-thief", function() {
             var medianPalette = createPalette(
@@ -493,9 +488,9 @@ var
           });
         });
       }
-      $(".ui-2#editor #invisible-tile-img").attr("src", widgets[id].img);
-      if (widgets[id].backgroundSize) {
-        $("#widget-holder #"+id + ", #preview-tile").css("background-size", widgets[id].backgroundSize);
+      $(".ui-2#editor #invisible-tile-img").attr("src", tile.img);
+      if (tile.backgroundSize) {
+        $("#widget-holder #"+id + ", #preview-tile").css("background-size", tile.backgroundSize);
         IconResizing.previewTileUpdated(IconResizing.updateSlider);
       }
       IconResizing.previewTileUpdated();
@@ -522,7 +517,8 @@ var
     return {
       restrict: 'A',
       require: 'ngModel',
-      link: function(scope, elm, attr, ngModelCtrl) {
+      link: function($scope, elm, attr, ngModelCtrl) {
+
         var bind_method;
         if (attr.type === 'radio' || attr.type === 'checkbox') {
           bind_method = "click";
@@ -531,7 +527,7 @@ var
         }
         elm.bind(bind_method, function(event) {
           var value = elm.val();
-          scope.$apply(function() {
+          $scope.$apply(function() {
             // i have to set up special cases, because some checkboxes use values AND checked booleans
             // if checked, use value.
             if (attr.ngModel === "shortcut_pin" || attr.ngModel === "shortcut_newtab") {
@@ -553,7 +549,7 @@ var
 
             ngModelCtrl.$setViewValue(value);
           });
-          scope.update(attr.ngModel, value);
+          $scope.update(attr.ngModel, value);
         });
       }
     };
