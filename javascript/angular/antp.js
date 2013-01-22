@@ -319,14 +319,12 @@ var
           $("#widget-holder #"+id+" .app-favicon").attr("src", $scope.favicon);
           break;
         case "shortcut_pin": case "shortcut_newtab":
+          widgets[id].onleftclick = "";
           if ( $scope.shortcut_pin === "pin" ) {
             widgets[id].onleftclick = "pin";
           }
           if ( $scope.shortcut_newtab === "newtab" ) {
             widgets[id].onleftclick = "newtab";
-          }
-          if ( $scope.shortcut_newtab !== "newtab" && $scope.shortcut_pin !== "pin" ) {
-            widgets[id].onleftclick = "";
           }
           $scope.onleftclick = widgets[id].onleftclick;
           $("#widget-holder #"+id+" .url").attr("onleftclick", widgets[id].onleftclick);
@@ -353,6 +351,7 @@ var
           $("#widget-holder #"+id + ", #preview-tile").css("background-image", $scope.backgroundimage).css("background-color", $scope.backgroundcolor);
           break;
         case "name":
+        case "name_show":
           $("#widget-holder #"+id+" .app-name").html($scope.name).css("opacity", +$scope.name_show);
           break;
         case "favicon_show":
@@ -381,6 +380,15 @@ var
         editor_type = "app";
         $(".ui-2#editor").addClass("type-app").removeClass("type-shortcut");
       }
+
+      $("body > .ui-2").hide();
+
+      $(".ui-2#editor")
+        .show()
+        .attr("active-edit-id", id)
+        .attr("active-edit-type", editor_type);
+
+      $scope.safeApply();
 
       var stock_app = false;
       if ( $.inArray(id, ["webstore", "amazon", "amazoninstantvideo", "facebook", "twitter"]) !== -1 ) {
@@ -429,12 +437,6 @@ var
         $scope.color = tile.color;
       }
 
-      $("body > .ui-2").hide();
-
-      $(".ui-2#editor")
-        .show()
-        .attr("active-edit-id", id)
-        .attr("active-edit-type", editor_type);
       $scope.safeApply();
 
       requiredColorPicker(function() {
@@ -493,10 +495,10 @@ var
       }
       $(".ui-2#editor #invisible-tile-img").attr("src", widgets[id].img);
       if (widgets[id].backgroundSize) {
-          $("#widget-holder #"+id + ", #preview-tile").css("background-size", widgets[id].backgroundSize);
-          IconResizing.previewTileUpdated(IconResizing.updateSlider);
-        }
-        IconResizing.previewTileUpdated();
+        $("#widget-holder #"+id + ", #preview-tile").css("background-size", widgets[id].backgroundSize);
+        IconResizing.previewTileUpdated(IconResizing.updateSlider);
+      }
+      IconResizing.previewTileUpdated();
     };
 
     $scope.setswatch = function(e) {
