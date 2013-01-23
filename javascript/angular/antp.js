@@ -307,6 +307,11 @@ var
       var widgets = JSON.parse(localStorage.getItem("widgets"));
       $scope[a] = widgets[id][a] = b;
 
+      if (a == "shortcut_pin" && b == true)
+        $scope.shortcut_newtab = false;
+      if (a == "shortcut_newtab" && b == true)
+        $scope.shortcut_pin = false;
+
       switch (a) {
         case "appLaunchUrl":
           $scope.favicon = "chrome://favicon/" + widgets[id].appLaunchUrl;
@@ -316,10 +321,10 @@ var
           break;
         case "shortcut_pin": case "shortcut_newtab":
           widgets[id].onleftclick = "";
-          if ( $scope.shortcut_pin === "pin" ) {
+          if ( $scope.shortcut_pin === true ) {
             widgets[id].onleftclick = "pin";
           }
-          if ( $scope.shortcut_newtab === "newtab" ) {
+          if ( $scope.shortcut_newtab === true ) {
             widgets[id].onleftclick = "newtab";
           }
           $scope.onleftclick = widgets[id].onleftclick;
@@ -530,26 +535,22 @@ var
           $scope.$apply(function() {
             // i have to set up special cases, because some checkboxes use values AND checked booleans
             // if checked, use value.
-            if (attr.ngModel === "shortcut_pin" || attr.ngModel === "shortcut_newtab") {
-              var checked = $("[ng-model=" + attr.ngModel + "]").attr("checked");
+            if (attr.ngModel === "$parent.$parent.shortcut_pin" || attr.ngModel === "$parent.$parent.shortcut_newtab") {
+              value = $("[ng-model='" + attr.ngModel + "']").is(':checked');
 
               // uncheck the other box (if checked)
-              $("[ng-model=" + (attr.ngModel == "shortcut_pin" ? "shortcut_newtab" : "shortcut_pin") + "]").removeAttr("checked");
-
-              if (!checked) {
-                value = undefined;
-              }
+              $("[ng-model='" + (attr.ngModel == "$parent.$parent.shortcut_pin" ? "$parent.$parent.shortcut_newtab" : "$parent.$parent.shortcut_pin") + "']").removeAttr("checked");
             }
 
             // checked = true, unchecked = false
             // rather than unchecked = undefined
-            if (attr.ngModel === "name_show" || attr.ngModel === "favicon_show" || attr.ngModel === "shortcut_background_transparent") {
-              value = $("[ng-model=" + attr.ngModel + "]").is(':checked');
+            if (attr.ngModel === "$parent.$parent.name_show" || attr.ngModel === "$parent.$parent.favicon_show" || attr.ngModel === "$parent.$parent.shortcut_background_transparent") {
+              value = $("[ng-model='" + attr.ngModel + "']").is(':checked');
             }
 
             ngModelCtrl.$setViewValue(value);
           });
-          $scope.update(attr.ngModel, value);
+          $scope.update(attr.ngModel.split(".")[2], value);
         });
       }
     };

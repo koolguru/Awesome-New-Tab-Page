@@ -524,27 +524,27 @@
 
               <h3>{{'ui_te_name' | i18n}}</h3>
               <p>{{'ui_te_name_desc' | i18n}}</p>
-              <input type="text" ng-model="name" ng-tile-editor />
+              <input type="text" ng-model="$parent.$parent.name" ng-tile-editor />
               <p>
-                <input ng-model="name_show" type="checkbox" ng-tile-editor />
+                <input ng-model="$parent.$parent.name_show" type="checkbox" ng-tile-editor />
                 {{'ui_te_shname' | i18n}}
               </p>
               <p>
-                <input ng-model="shortcut_pin" name="leftclick" value="pin" type="checkbox" ng-tile-editor />
+                <input ng-model="$parent.$parent.shortcut_pin" name="leftclick" value="pin" type="checkbox" ng-tile-editor />
                 {{'ui_te_pin' | i18n}}
               </p>
               <p>
-                <input ng-model="shortcut_newtab" name="leftclick" value="newtab" type="checkbox" ng-tile-editor />
+                <input ng-model="$parent.$parent.shortcut_newtab" name="leftclick" value="newtab" type="checkbox" ng-tile-editor />
                 {{'ui_te_newtab' | i18n}}
               </p>
 
               <div class="hide-if-app">
                 <h3>URL</h3>
                 <p>{{'ui_te_url_desc' | i18n}}</p>
-                <input ng-model="appLaunchUrl" type="text" ng-tile-editor />
+                <input ng-model="$parent.$parent.appLaunchUrl" type="text" ng-tile-editor />
                 <p class="tip">{{'ui_te_url_tip' | i18n}}</p>
                 <p>
-                  <input ng-model="favicon_show" type="checkbox" ng-tile-editor />
+                  <input ng-model="$parent.$parent.favicon_show" type="checkbox" ng-tile-editor />
                   {{'ui_te_shfavicon' | i18n}}
                 </p>
               </div>
@@ -553,7 +553,7 @@
             <pane name="{{'ui_te_search' | i18n}}" class="hide-if-app">
               <div class="hide-if-app">
                 <p>{{'ui_te_search_desc' | i18n}} <i>"https://www.google.com/search?q={input}"</i></p>
-                <input ng-model="searchUrl" type="text" ng-tile-editor />
+                <input ng-model="$parent.$parent.searchUrl" type="text" ng-tile-editor />
               </div>
             </pane>
 
@@ -566,7 +566,7 @@
               <div id="swatches" ng-click="setswatch($event)"></div>
 
               <p>
-                <input ng-model="shortcut_background_transparent" type="checkbox" ng-tile-editor />
+                <input ng-model="$parent.$parent.shortcut_background_transparent" type="checkbox" ng-tile-editor />
                 {{'ui_te_bg_transparent' | i18n}}
               </p>
               <p class="tip">
@@ -584,7 +584,7 @@
                 <div id="filesystem_icon_screenshot_bt" class="bubble ilb">
                   {{'ui_te_ib_screenshot' | i18n}}
                 </div>
-                <input ng-model="img" type="text" class="ilb" ng-tile-editor />
+                <input ng-model="$parent.$parent.img" type="text" class="ilb" ng-tile-editor />
                 <input type="file" id="filesystem_icon_input" style="width:0; height: 0; opacity: 0;">
                 <div id="filesystem_icon_ui" class="bubble ilb">
                   {{'ui_te_ib_browse' | i18n}}
