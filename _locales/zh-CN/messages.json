@@ -5,6 +5,9 @@
 	"ui_button_widgets":{
 		"message":"\u5c0f\u5de5\u5177"
 	},
+	"ui_button_widget_browser":{
+		"message":"\u5c0f\u5de5\u5177\u6d4f\u89c8\u5668"
+	},
 	"ui_button_unlock":{
 		"message":"\u89e3\u9501"
 	},
@@ -22,6 +25,9 @@
 	},
 	"ui_config":{
 		"message":"\u914d\u7f6e\u8bbe\u7f6e"
+	},
+	"ui_button_help":{
+		"message":"\u5e2e\u52a9&\u53cd\u9988"
 	},
 	"ui_c_learnmore":{
 		"message":"\u4e86\u89e3\u66f4\u591a"
@@ -58,6 +64,12 @@
 	},
 	"ui_te_shfavicon":{
 		"message":"\u663e\u793a\/\u9690\u85cfURL\u56fe\u6807"
+	},
+	"ui_te_search":{
+		"message":"\u641c\u7d22"
+	},
+	"ui_te_search_desc":{
+		"message":"\u8bf7\u8f93\u5165\u4e00\u4e2a\u8be5\u7f51\u7ad9\u7684url\u5730\u5740\u3002\u4f8b\u5982\uff1a"
 	},
 	"ui_te_bg_colorpicker":{
 		"message":"\u6253\u5f00\u62fe\u8272\u5668"
@@ -179,6 +191,12 @@
 	"ui_about_rate_desc":{
 		"message":"\u6b22\u8fd9\u4e2a\u6269\u5c55\u7a0b\u5e8f\u5417?\u82b1\u4e00\u5206\u949f,\u5728Chrome Web Store\u4e0a\u7ed9\u6211\u4eec\u597d\u8bc4\u5427."
 	},
+	"ui_install":{
+		"message":"\u5b89\u88c5"
+	},
+	"ui_uninstall":{
+		"message":"\u5378\u8f7d"
+	},
 	"ui_confirm_uninstall":{
 		"message":"\u4f60\u786e\u5b9a\u8981\u5220\u9664$app$?",
 		"placeholders":{
@@ -206,6 +224,21 @@
 	"ui_faw_get_more_widgets":{
 		"message":"\u83b7\u53d6\u66f4\u591a\u5c0f\u63d2\u4ef6"
 	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"\u83b7\u53d6\u66f4\u591a\u5c0f\u5de5\u5177"
+	},
+	"ui_faw_pick":{
+		"message":"\u6311\u9009"
+	},
+	"ui_faw_pick_body":{
+		"message":"\u8bf7\u9009\u62e9\u4f60\u60f3\u5b89\u88c5\u7684\u5c0f\u5de5\u5177"
+	},
+	"ui_faw_install":{
+		"message":"\u5b89\u88c5"
+	},
+	"ui_faw_install_body":{
+		"message":"\u70b9\u51fb\u5b89\u88c5\u5c06\u5176\u6dfb\u52a0\u5230Chrome\u548c\u5c0f\u5de5\u5177\u7a97\u53e3\u3002"
+	},
 	"ui_bmb_ob":{
 		"message":"\u5176\u4ed6\u4e66\u7b7e"
 	},
@@ -232,6 +265,9 @@
 	},
 	"tutorial_2_title":{
 		"message":"\u4e0d\u4ec5\u662f<span class=\"ul\">\u56fe\u6807<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"\u56fe\u6807\u7684\u65b9\u5f0f\u5df2\u7ecf\u8fc7\u65f6\u4e86\u3002\u968f\u7740\u6781\u5176\u5f3a\u5927\u3001\u751f\u52a8\u548c\u7f8e\u89c2\u7684\u5c0f\u5de5\u5177\u53ef\u4ee5\u5728\u5b89\u5353\u3001WP7\u4ee5\u53caWin8\u4e0a\u4f7f\u7528\uff0c\u6211\u7684\u4eec\u4ea7\u54c1\u4e00\u76f4\u5728\u4e0d\u65ad\u8fdb\u6b65\u3002"
 	},
 	"tutorial_2_desc2":{
 		"message":"\u8fd9\u4e2a\u6269\u5c55\u7a0b\u5e8f\u662f\u4e3aChrome\u7684\u65b0\u6807\u7b7e\u9875\u5e26\u6765\u540c\u6837\u529f\u80fd\u7684\u4e00\u4e2a\u5f00\u59cb."
@@ -361,5 +397,14 @@
 	},
 	"ui_import_export_btn_restore":{
 		"message":"\u8fd8\u539f"
+	},
+	"ui_drag_widget_message":{
+		"message":"\u70b9\u51fb\u5e76\u62d6\u52a8\u5c0f\u90e8\u4ef6\u5230\u7a7a\u7684\u683c\u5b50\u6765\u6dfb\u52a0\u5c0f\u90e8\u4ef6\u3002"
+	},
+	"ui_apps_tip_message_title":{
+		"message":"\u65b0\u7684\u5e94\u7528\u5b89\u88c5\u5b8c\u6bd5"
+	},
+	"ui_apps_tip_message":{
+		"message":"\u5f88\u597d\uff01\u4f60\u521a\u5b89\u88c5\u4e86\u4e00\u4e2a\u5e94\u7528\u3002\u4f60\u53ef\u4ee5\u5728\u8fd9\u627e\u5230\u6240\u6709\u5df2\u5b89\u88c5\u7684\u5e94\u7528\u3002"
 	}
 }

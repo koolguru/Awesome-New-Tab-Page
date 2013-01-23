@@ -319,5 +319,8 @@
 	},
 	"ui_import_export_msg_header":{
 		"message":"Import\u00e1l\u00e1s\/Export\u00e1l\u00e1s"
+	},
+	"ui_apps_tip_message":{
+		"message":"Remek! Telep\u00edtett\u00e9l egy alkalmaz\u00e1st. Az \u00f6sszes telep\u00edtett alkalmaz\u00e1st itt megtal\u00e1lhatod."
 	}
 }

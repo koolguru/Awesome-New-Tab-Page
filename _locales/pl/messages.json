@@ -5,6 +5,9 @@
 	"ui_button_widgets":{
 		"message":"Wid\u017cety"
 	},
+	"ui_button_widget_browser":{
+		"message":"Przegl\u0105darka widget\u00f3w"
+	},
 	"ui_button_unlock":{
 		"message":"Odblokuj"
 	},
@@ -22,6 +25,9 @@
 	},
 	"ui_config":{
 		"message":"Konfiguracja"
+	},
+	"ui_button_help":{
+		"message":"Pomoc & Opinie"
 	},
 	"ui_c_learnmore":{
 		"message":"Dowiedz si\u0119 wi\u0119cej"
@@ -58,6 +64,12 @@
 	},
 	"ui_te_shfavicon":{
 		"message":"Poka\u017c \/ ukryj favicon"
+	},
+	"ui_te_search":{
+		"message":"Szukaj"
+	},
+	"ui_te_search_desc":{
+		"message":"Wprowad\u017a adres URL wyszukiwania na tej stronie. Na przyk\u0142ad:"
 	},
 	"ui_te_bg_colorpicker":{
 		"message":"Otw\u00f3rz Pr\u00f3bnik kolor\u00f3w"
@@ -179,6 +191,12 @@
 	"ui_about_rate_desc":{
 		"message":"Lubisz to rozszerzenie? Po\u015bwi\u0119\u0107 chwil\u0119 i dodaj pozytywn\u0105 ocen\u0119 w Chrome Web Store."
 	},
+	"ui_install":{
+		"message":"Instaluj"
+	},
+	"ui_uninstall":{
+		"message":"Odinstaluj"
+	},
 	"ui_confirm_uninstall":{
 		"message":"Czy na pewno chcesz odinstalowa\u0107 dodatek $app$?",
 		"placeholders":{
@@ -206,6 +224,21 @@
 	"ui_faw_get_more_widgets":{
 		"message":"Pobierz wi\u0119cej gad\u017cet\u00f3w"
 	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Znajd\u017a wi\u0119cej widget\u00f3w."
+	},
+	"ui_faw_pick":{
+		"message":"Wybierz"
+	},
+	"ui_faw_pick_body":{
+		"message":"Wybierz widgety poni\u017cej, kt\u00f3re chcia\u0142by\u015b zainstalowa\u0107."
+	},
+	"ui_faw_install":{
+		"message":"Instaluj"
+	},
+	"ui_faw_install_body":{
+		"message":"Naci\u015bnij przycisk Instaluj aby doda\u0107 do Chrome'a i do okna widget\u00f3w."
+	},
 	"ui_bmb_ob":{
 		"message":"Inne zak\u0142adki"
 	},
@@ -232,6 +265,9 @@
 	},
 	"tutorial_2_title":{
 		"message":"To ju\u017c nie tylko <span class=\"ul\">Ikonki<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"Ikonki s\u0105 przestarza\u0142e Technologia idzie do przodu, pojawiaj\u0105 si\u0119 nowe, pot\u0119\u017cne i dynamiczne widgety tj. te z Androida, Windows Phone 7 oraz Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"To rozszerzenie jest pocz\u0105tkiem w dostarczeniu podobnej mocy do nowej karty w Google Chrome."
@@ -361,5 +397,14 @@
 	},
 	"ui_import_export_btn_restore":{
 		"message":"Przywr\u00f3\u0107"
+	},
+	"ui_drag_widget_message":{
+		"message":"Aby umie\u015bci\u0107 widget, kliknij i przeci\u0105gnij go na wolny kafelek."
+	},
+	"ui_apps_tip_message_title":{
+		"message":"Nowa aplikacja zainstalowana"
+	},
+	"ui_apps_tip_message":{
+		"message":"Mi\u0142o! W\u0142a\u015bnie zainstalowa\u0142e\u015b aplikacj\u0119. Wszystkie zainstalowane aplikacje mo\u017cesz znale\u017a\u0107 tutaj."
 	}
 }
