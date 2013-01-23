@@ -5,6 +5,9 @@
 	"ui_button_widgets":{
 		"message":"Ara\u00e7lar"
 	},
+	"ui_button_widget_browser":{
+		"message":"Widget taray\u0131c\u0131s\u0131"
+	},
 	"ui_button_unlock":{
 		"message":"Kilitle"
 	},
@@ -22,6 +25,9 @@
 	},
 	"ui_config":{
 		"message":"Yap\u0131land\u0131r"
+	},
+	"ui_button_help":{
+		"message":"Yard\u0131m & Geribildirim"
 	},
 	"ui_c_learnmore":{
 		"message":"Daha fazla bilgi edinin"
@@ -58,6 +64,12 @@
 	},
 	"ui_te_shfavicon":{
 		"message":"S\u0131k Kullan\u0131lan Simge G\u00f6ster \/ Gizle"
+	},
+	"ui_te_search":{
+		"message":"Ara"
+	},
+	"ui_te_search_desc":{
+		"message":"Bu Web sitesi i\u00e7in bir arama URL'si girin. \u00d6rne\u011fin:"
 	},
 	"ui_te_bg_colorpicker":{
 		"message":"Renk Se\u00e7ici'yi A\u00e7"
@@ -179,6 +191,12 @@
 	"ui_about_rate_desc":{
 		"message":"Bu uygulamay\u0131 be\u011fendin mi? Chrome Uygulama Ma\u011fazas\u0131nda sadece 1 dakikada olumlu g\u00f6r\u00fc\u015f bildirebilirsin."
 	},
+	"ui_install":{
+		"message":"Y\u00fckle"
+	},
+	"ui_uninstall":{
+		"message":"Kald\u0131r"
+	},
 	"ui_confirm_uninstall":{
 		"message":"$app$ uygulamas\u0131n\u0131 kald\u0131rmak istedi\u011fine emin misin?",
 		"placeholders":{
@@ -205,6 +223,12 @@
 	},
 	"ui_faw_get_more_widgets":{
 		"message":"Daha Fazla Ara\u00e7 Al"
+	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Daha fazla widget bul."
+	},
+	"ui_faw_install":{
+		"message":"Y\u00fckle"
 	},
 	"ui_bmb_ob":{
 		"message":"Di\u011fer yer imleri"
@@ -361,5 +385,8 @@
 	},
 	"ui_import_export_btn_restore":{
 		"message":"S\u0131f\u0131rla"
+	},
+	"ui_apps_tip_message_title":{
+		"message":"Yeni Uygulama Y\u00fcklendi"
 	}
 }

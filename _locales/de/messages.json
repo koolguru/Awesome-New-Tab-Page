@@ -5,6 +5,9 @@
 	"ui_button_widgets":{
 		"message":"Erweiterungen"
 	},
+	"ui_button_widget_browser":{
+		"message":"Widget Browser"
+	},
 	"ui_button_unlock":{
 		"message":"Freigeben"
 	},
@@ -22,6 +25,9 @@
 	},
 	"ui_config":{
 		"message":"Einstellungen"
+	},
+	"ui_button_help":{
+		"message":"Hilfe & Feedback"
 	},
 	"ui_c_learnmore":{
 		"message":"Erfahren Sie mehr"
@@ -59,6 +65,12 @@
 	"ui_te_shfavicon":{
 		"message":"Icon Anzeigen\/Verbergen"
 	},
+	"ui_te_search":{
+		"message":"Suche"
+	},
+	"ui_te_search_desc":{
+		"message":"Geben Sie eine Such-URL f\u00fcr diese Website ein. Zum Beispiel:"
+	},
 	"ui_te_bg_colorpicker":{
 		"message":"\u00d6ffne den Farbausw\u00e4hler"
 	},
@@ -94,6 +106,9 @@
 	},
 	"ui_screenshot_permission_denied_title":{
 		"message":"Erlaubnis verweigert"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"du hast \"Awesome New Tab Page\" noch nicht die Berechtigung erteilt Bildschirmfotos aufzunehmen. Wenn du Bildschirmfotos aufnehmen m\u00f6chtest, versuche es bitte nochmal und gew\u00e4hre \"Awesome New Tab Page\" die erforderliche Berechtigung."
 	},
 	"ui_te_ib_tip":{
 		"message":"Tipp: Leer lassen, um kein Symbol anzuzeigen."
@@ -176,6 +191,12 @@
 	"ui_about_rate_desc":{
 		"message":"Gef\u00e4llt Ihnen diese Erweiterung? Nehmen Sie sich einen Augenblick Zeit und geben Sie ihr eine positive Bewertung im Chrome Web Store."
 	},
+	"ui_install":{
+		"message":"Installieren"
+	},
+	"ui_uninstall":{
+		"message":"Deinstallieren"
+	},
 	"ui_confirm_uninstall":{
 		"message":"Sind Sie sicher, dass Sie $app$ deinstallieren wollen?",
 		"placeholders":{
@@ -203,6 +224,21 @@
 	"ui_faw_get_more_widgets":{
 		"message":"Erhalten sie weitere Widgets"
 	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Finden Sie mehr widgets."
+	},
+	"ui_faw_pick":{
+		"message":"W\u00e4hlen Sie"
+	},
+	"ui_faw_pick_body":{
+		"message":"W\u00e4hlen Sie unten ein Widget aus das Sie installieren m\u00f6chten."
+	},
+	"ui_faw_install":{
+		"message":"Installieren"
+	},
+	"ui_faw_install_body":{
+		"message":"Klicken Sie den installieren Button um das Widget zu Chrome und dem Widget Fenster hinzuzuf\u00fcgen."
+	},
 	"ui_bmb_ob":{
 		"message":"Andere Lesezeichen"
 	},
@@ -229,6 +265,9 @@
 	},
 	"tutorial_2_title":{
 		"message":"Nicht l\u00e4nger nur <span class=\"ul\">Icons<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"Icons sind veraltet. Technologie schreitet voran mit extrem m\u00e4chtigen, dynamischen und sch\u00f6nen Widgets welche man in Android, Windows Phone 7 und Windows 8 findet."
 	},
 	"tutorial_2_desc2":{
 		"message":"Diese Erweiterung ist ein Start, um die selben F\u00e4higkeiten Chromes neuer Tab Seite zu geben."
@@ -296,8 +335,14 @@
 	"rctm_clear_all":{
 		"message":"Liste der k\u00fcrzlich geschlossenen Tabs l\u00f6schen"
 	},
+	"rctm_clear_all_confirm":{
+		"message":"Das \"L\u00f6schen der k\u00fcrzlich geschlossenen Tabs\"-Men\u00fc l\u00f6scht nicht die Chrome Historie. Dieses Feature l\u00f6scht nur diese Liste."
+	},
 	"ui_import_export_btn":{
 		"message":"Importieren\/Exportieren"
+	},
+	"ui_import_export_desc":{
+		"message":"\u00dcbernehmen Sie ihre Einstellungen in einen anderen Browser oder stellen Sie eine Sicherung wieder her."
 	},
 	"ui_import_export_btn2":{
 		"message":"Zur\u00fcck"
@@ -313,6 +358,12 @@
 	},
 	"ui_import_export_desc_export":{
 		"message":"Export: Erzeugt einen String, der alle ihre W\u00fcnsche enth\u00e4lt. Dieser String kann als Backup gespeichert werden oder auf andere Computer kopiert werden, um ihn dort so wie diesen zu nutzen. Hochgeladenen Bilder werden nicht exportiert; Bilder aus dem Internet werden exportiert."
+	},
+	"ui_import_export_desc_import":{
+		"message":"Importieren: \u00dcberschreibt deine aktuelle Konfiguration mit einer g\u00fcltigem Export-Zeichenkette. <b>WARNUNG<\/b>: all deine aktuellen Einstellungen werden unwiderruflich gel\u00f6scht, Es gibt keinen Weg diesen Vorgang r\u00fcckg\u00e4ngig zu machen. Hochgeladene Bilder werden nicht importiert; Bilder im Netz werden."
+	},
+	"ui_import_export_installed_warning":{
+		"message":"Installierte Apps, Erweterungen und Widgets werden nicht importiert oder exportiert. Erweiterungen k\u00f6nnen keine anderen Apps oder Erweiterungen installieren. Benutze  <a href='http:\/\/support.google.com\/chrome\/bin\/answer.py?answer=165139'>Chrome Sync<\/a> stad dessen."
 	},
 	"ui_import_export_desc_restore":{
 		"message":"Wiederherstellung: Hiermit k\u00f6nnen Sie den letzten Import r\u00fcckg\u00e4ngig machen. Ihr aktueller Stand wird trotzdem als ein weiteres Backup gespeichert."
@@ -346,5 +397,14 @@
 	},
 	"ui_import_export_btn_restore":{
 		"message":"Wiederherstellen"
+	},
+	"ui_drag_widget_message":{
+		"message":"Um ein Widget zu platzieren, klicke und ziehe es auf eine leere Kachel."
+	},
+	"ui_apps_tip_message_title":{
+		"message":"Neue App installiert"
+	},
+	"ui_apps_tip_message":{
+		"message":"Super! Sie haben gerade eine app installiert. Sie k\u00f6nnen alle installierte apps hier finden."
 	}
 }

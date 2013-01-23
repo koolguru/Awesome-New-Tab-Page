@@ -5,6 +5,9 @@
 	"ui_button_widgets":{
 		"message":"Widgets"
 	},
+	"ui_button_widget_browser":{
+		"message":"Widget navegador"
+	},
 	"ui_button_unlock":{
 		"message":"Desbloquear"
 	},
@@ -23,6 +26,9 @@
 	"ui_config":{
 		"message":"Configurar"
 	},
+	"ui_button_help":{
+		"message":"Ayuda y comentarios"
+	},
 	"ui_c_learnmore":{
 		"message":"Saber m\u00e1s"
 	},
@@ -30,7 +36,7 @@
 		"message":"Cambiar Color de Fondo"
 	},
 	"ui_te":{
-		"message":"Editor de Recuadro"
+		"message":"Editor del casillero"
 	},
 	"ui_te_general":{
 		"message":"General"
@@ -59,6 +65,12 @@
 	"ui_te_shfavicon":{
 		"message":"Mostrar\/Ocultar el favicon"
 	},
+	"ui_te_search":{
+		"message":"Buscar"
+	},
+	"ui_te_search_desc":{
+		"message":"Introduce una URL de b\u00fasqueda para esta web. Por ejemplo:"
+	},
 	"ui_te_bg_colorpicker":{
 		"message":"Abrir el selector de color"
 	},
@@ -72,7 +84,7 @@
 		"message":"Nota: Esta opci\u00f3n afecta sobre el \u00edcono y los ajustes del fondo."
 	},
 	"ui_te_app_tip":{
-		"message":"No todas las opciones est\u00e1n disponibles para las aplicaciones. Si desea obtener m\u00e1s opciones, cree un acceso directo personalizado. Simplemente haga click en un recuadro vac\u00edo con la grilla desbloqueada."
+		"message":"No todas las opciones est\u00e1n disponibles para las aplicaciones. Si quieres obtener m\u00e1s opciones, crea un acceso directo personalizado. Simplemente haz clic en una casilla vac\u00eda con la cuadr\u00edcula desbloqueada."
 	},
 	"ui_te_ib":{
 		"message":"Icono y Fondo"
@@ -102,7 +114,7 @@
 		"message":"Sugerencia: d\u00e9jalo en blanco si no quieres icono."
 	},
 	"ui_te_ib_advanced":{
-		"message":"Avanzado: ocultar el nombre y el favicon y usar una imagen de 200px por 200px para personalizar completamente un azulejo de 1x1."
+		"message":"Avanzado: oculta el nombre y el favicon y usa una imagen de 200px por 200px para personalizar completamente una casilla de 1x1."
 	},
 	"ui_config_general":{
 		"message":"General"
@@ -179,6 +191,12 @@
 	"ui_about_rate_desc":{
 		"message":"\u00bfTe gusta esta extensi\u00f3n? T\u00f3mese un minuto darnos una opini\u00f3n positiva en Chrome Web Store."
 	},
+	"ui_install":{
+		"message":"Instalar"
+	},
+	"ui_uninstall":{
+		"message":"Desinstalar"
+	},
 	"ui_confirm_uninstall":{
 		"message":"\u00bfSeguro que deseas desinstalar $app$?",
 		"placeholders":{
@@ -205,6 +223,21 @@
 	},
 	"ui_faw_get_more_widgets":{
 		"message":"Consiga M\u00e1s Widgets"
+	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Encontrar m\u00e1s widgets."
+	},
+	"ui_faw_pick":{
+		"message":"Escoger"
+	},
+	"ui_faw_pick_body":{
+		"message":"Escoge los widgets que quieras instalar a continuaci\u00f3n."
+	},
+	"ui_faw_install":{
+		"message":"Instalar"
+	},
+	"ui_faw_install_body":{
+		"message":"Pulsa el bot\u00f3n de instalar para a\u00f1adirlos a Chrome y a la ventana de widgets."
 	},
 	"ui_bmb_ob":{
 		"message":"Otros marcadores"
@@ -233,6 +266,9 @@
 	"tutorial_2_title":{
 		"message":"Ya no s\u00f3lo <span class=\"ul\"> iconos<\/span>"
 	},
+	"tutorial_2_desc1":{
+		"message":"Los iconos est\u00e1n desactualizados. La tecnolog\u00eda avanza continuamente, con poderosos, din\u00e1micos y maravillosos widgets disponibles para Android, Windows Phone 7 y pr\u00f3ximamente Windows 8."
+	},
 	"tutorial_2_desc2":{
 		"message":"Esta extensi\u00f3n trae las mismas posibilidades a la pagina de pesta\u00f1a nueva de Chrome."
 	},
@@ -252,7 +288,7 @@
 		"message":"No te preocupes, tus aplicaciones no se han perdido."
 	},
 	"tutorial_4_desc2":{
-		"message":"Si\u00e9ntase libre para desbloquear azulejos luego arrastre apps a tu pantalla de inicio."
+		"message":"Si\u00e9ntete libre de desbloquear casillas y luego arrastra las aplicaciones a tu pantalla de inicio."
 	},
 	"tutorial_4_desc3":{
 		"message":"Muestra lo que usas regularmente y esconde lo dem\u00e1s."
@@ -361,5 +397,14 @@
 	},
 	"ui_import_export_btn_restore":{
 		"message":"Restaurar"
+	},
+	"ui_drag_widget_message":{
+		"message":"Para colocar un widget, haz clic en \u00e9l y arr\u00e1stralo a una casilla vac\u00eda."
+	},
+	"ui_apps_tip_message_title":{
+		"message":"Nueva aplicaci\u00f3n instalada"
+	},
+	"ui_apps_tip_message":{
+		"message":"\u00a1Genial! Acabas de instalar una aplicaci\u00f3n. Aqu\u00ed puedes ver todas las aplicaciones instaladas."
 	}
 }

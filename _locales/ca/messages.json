@@ -5,6 +5,9 @@
 	"ui_button_widgets":{
 		"message":"Widgets"
 	},
+	"ui_button_widget_browser":{
+		"message":"Buscador de Widgets"
+	},
 	"ui_button_unlock":{
 		"message":"Desbloquejar"
 	},
@@ -22,6 +25,9 @@
 	},
 	"ui_config":{
 		"message":"Configura"
+	},
+	"ui_button_help":{
+		"message":"Ajuda\/Respostes"
 	},
 	"ui_c_learnmore":{
 		"message":"M\u00e9s informaci\u00f3"
@@ -59,6 +65,12 @@
 	"ui_te_shfavicon":{
 		"message":"Mostra \/ Amaga Favicon"
 	},
+	"ui_te_search":{
+		"message":"Cerca"
+	},
+	"ui_te_search_desc":{
+		"message":"Introdu\u00efu una adre\u00e7a URL per a aquest lloc web. Per exemple:"
+	},
 	"ui_te_bg_colorpicker":{
 		"message":"Obre el Selector de Color"
 	},
@@ -89,14 +101,41 @@
 	"ui_screenshot_confirm_title":{
 		"message":"Fent una Captura de Pantalla"
 	},
+	"ui_screenshot_confirm":{
+		"message":"Per tal de captar la imatge, el lloc web s'obrir\u00e0 en una nova pestanya. Un cop la p\u00e0gina hagi acabat de carregar-se, la pestanya es tancar\u00e0 automaticament i ser\u00e0s retornat a la p\u00e0gina de l'Awesome New Tab. Si us plau, no toqueu res mentre dura el proc\u00e9s. No hauria de durar m\u00e9s d'uns pocs segnos."
+	},
+	"ui_screenshot_permission_denied_title":{
+		"message":"Perm\u00eds denegat"
+	},
+	"ui_screenshot_permission_denied":{
+		"message":"Es va negar a la p\u00e0gina de l'Awesome New Tab els permisos necessaris per permetre la captura de pantalla. Si desitges fer una captura de pantalla, si us plau torna-ho a provar concedint els permisos necessaris."
+	},
+	"ui_te_ib_tip":{
+		"message":"Consell: Deixa-ho en blanc si no vols cap icona."
+	},
+	"ui_te_ib_advanced":{
+		"message":"Advanced: Amaga el nom i el favicon(la petita icona del costat de l'URL) i fes server una imatge de 200px per 200px per personalitzar completament la rajola d'1x1."
+	},
 	"ui_config_general":{
 		"message":"General"
+	},
+	"ui_config_shbmb":{
+		"message":"Mostra\/Amaga la barra d'adreces d'inter\u00e8s"
+	},
+	"ui_config_shtlb":{
+		"message":"Mostra els botons de l'esquerra superior nom\u00e9s a l'area flotant"
 	},
 	"ui_config_shgrid":{
 		"message":"Mostra \/ Amaga la quadr\u00edcula (quan esta desbloquejat)"
 	},
+	"ui_config_reset":{
+		"message":"Restablir"
+	},
 	"ui_config_bg":{
 		"message":"Fons"
+	},
+	"ui_config_bg_upload":{
+		"message":"Pujar imatge"
 	},
 	"ui_config_bgimg3":{
 		"message":"Esborrar la caixa per utilitzar el fons per defecte (color s\u00f2lid)."
@@ -107,6 +146,30 @@
 	"ui_about":{
 		"message":"Sobre"
 	},
+	"ui_about_contrib":{
+		"message":"Col\u00b7laboradors"
+	},
+	"ui_about_dev":{
+		"message":"Desenvolupadors"
+	},
+	"ui_about_contrib_translators":{
+		"message":"Traductors"
+	},
+	"ui_about_contrib_users":{
+		"message":"Usuaris"
+	},
+	"ui_about_share":{
+		"message":"Comparteix"
+	},
+	"ui_about_rate":{
+		"message":"Valora"
+	},
+	"ui_install":{
+		"message":"Instal lar"
+	},
+	"ui_uninstall":{
+		"message":"Desinstal lar"
+	},
 	"ui_confirm_uninstall":{
 		"message":"Este\u00e0s segur que vols desinstal\u00b7lar l'aplicaci\u00f3?",
 		"placeholders":{
@@ -115,6 +178,27 @@
 				"example":"Chrome Web Store"
 			}
 		}
+	},
+	"ui_faw_unlock_drag":{
+		"message":"Desbloquejar & Arrossegar"
+	},
+	"ui_faw_get_more_apps":{
+		"message":"Obtenir m\u00e9s Apps"
+	},
+	"ui_faw_get_more_apps_body":{
+		"message":"Obtenir m\u00e9s apps des de <a href='https:\/\/chrome.google.com\/webstore\/?utm_source=download-apps&utm_medium=awesome-new-tab-page'> Chrome Web Store<\/a>."
+	},
+	"ui_faw_get_more_widgets":{
+		"message":"Obtenir m\u00e9s Widgets"
+	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Trobar m\u00e9s Widgets."
+	},
+	"ui_faw_pick":{
+		"message":"Selecci\u00f3"
+	},
+	"ui_faw_install":{
+		"message":"Instal lar"
 	},
 	"ui_bmb_ob":{
 		"message":"Altres adreces d'inter\u00e8s"
@@ -164,7 +248,67 @@
 	"notepad_default":{
 		"message":"Escriviu qualsevol cosa aqu\u00ed. Tot el que escrigues es guardar\u00e0 en cada cop de teclat. Aneu amb compte , no hi ha c\u00f2pies de seguretat, i el bot\u00f3 de reinici restablir\u00e0 aquest Widget!"
 	},
+	"ui_resize_reset":{
+		"message":"Restablir"
+	},
+	"ui_resize_center":{
+		"message":"Centre"
+	},
+	"ui_resize_cover":{
+		"message":"Cobrir"
+	},
+	"ui_resize_contain":{
+		"message":"Contingut"
+	},
+	"ui_resize_zoom":{
+		"message":"Zoom"
+	},
+	"rctm_remove":{
+		"message":"Treure"
+	},
+	"rctm_clear_all":{
+		"message":"Neteja les pestanyes tancades recentment"
+	},
+	"ui_import_export_btn":{
+		"message":"Importar\/Exportar"
+	},
 	"ui_import_export_btn2":{
 		"message":"Tornar"
+	},
+	"ui_import_export_btn_import":{
+		"message":"Importar"
+	},
+	"ui_import_export_btn_export":{
+		"message":"Exportar"
+	},
+	"ui_import_export_btn_import_run":{
+		"message":"Aplicar"
+	},
+	"ui_import_export_header":{
+		"message":"Importar\/Exportar"
+	},
+	"ui_import_export_confirm_restore_title":{
+		"message":"Confirmaci\u00f3 de la restauraci\u00f3"
+	},
+	"ui_import_export_confirm_restore":{
+		"message":"Esteu segur que voleu restaurar? Les configuracions actuals es podrien perdre."
+	},
+	"ui_import_export_msg_header":{
+		"message":"Importar\/Exportar"
+	},
+	"ui_import_export_restore_complete_msg":{
+		"message":"Restauraci\u00f3 completa."
+	},
+	"ui_import_export_no_restore_msg":{
+		"message":"Res a restaurar!"
+	},
+	"ui_import_export_complete_msg":{
+		"message":"Importaci\u00f3 completada."
+	},
+	"ui_import_export_btn_restore":{
+		"message":"Restaurar"
+	},
+	"ui_apps_tip_message_title":{
+		"message":"Nova App instal\u00b7lada"
 	}
 }

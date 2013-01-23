@@ -23,6 +23,9 @@
 	"ui_config":{
 		"message":"Configurar"
 	},
+	"ui_button_help":{
+		"message":"Feedback & ajuda"
+	},
 	"ui_c_learnmore":{
 		"message":"Saber mais"
 	},
@@ -58,6 +61,12 @@
 	},
 	"ui_te_shfavicon":{
 		"message":"Mostrar \/ Ocultar Favicon"
+	},
+	"ui_te_search":{
+		"message":"Pesquisa"
+	},
+	"ui_te_search_desc":{
+		"message":"Insira um URL de pesquisa para este site. Por exemplo:"
 	},
 	"ui_te_bg_colorpicker":{
 		"message":"Abrir seletor de cores"
@@ -179,6 +188,12 @@
 	"ui_about_rate_desc":{
 		"message":"Gostas desta extens\u00e3o? Leva um minuto para escrever uma cr\u00edtica positiva na Web Store do Chrome."
 	},
+	"ui_install":{
+		"message":"Instalar"
+	},
+	"ui_uninstall":{
+		"message":"Desinstalar"
+	},
 	"ui_confirm_uninstall":{
 		"message":"\ufeffTem a certeza que quer desinstalar a Aplica\u00e7\u00e3o $app$?",
 		"placeholders":{
@@ -206,6 +221,18 @@
 	"ui_faw_get_more_widgets":{
 		"message":"Obter + widgets"
 	},
+	"ui_faw_get_more_widgets_body":{
+		"message":"Encontrar mais widgets."
+	},
+	"ui_faw_pick":{
+		"message":"Escolher"
+	},
+	"ui_faw_pick_body":{
+		"message":"Escolha os widgets que voc\u00ea gostaria de instalar."
+	},
+	"ui_faw_install":{
+		"message":"Instalar"
+	},
 	"ui_bmb_ob":{
 		"message":"Outros Marcadores"
 	},
@@ -232,6 +259,9 @@
 	},
 	"tutorial_2_title":{
 		"message":"N\u00e3o mais Apenas <span class=\"ul\">\u00edcones<\/span>"
+	},
+	"tutorial_2_desc1":{
+		"message":"Icons est\u00e3o desatualizados. A Tecnologia est\u00e1 a avan\u00e7ar, com uma for\u00e7a extrema. Widgets din\u00e2micos e bonitos encontrados em Androids, Windows Phone 7 e no novo Windows 8."
 	},
 	"tutorial_2_desc2":{
 		"message":"Esta extens\u00e3o \u00e9 um bom come\u00e7o de trazer o mesmo poder do \"Nova Separador\" do Chrome."
@@ -361,5 +391,14 @@
 	},
 	"ui_import_export_btn_restore":{
 		"message":"Restaurar"
+	},
+	"ui_drag_widget_message":{
+		"message":"Para colocar um widget, clique e arraste o widget para uma telha vazia."
+	},
+	"ui_apps_tip_message_title":{
+		"message":"Nova App instalada"
+	},
+	"ui_apps_tip_message":{
+		"message":"Boa! Voc\u00ea acabou de instalar um app. Voc\u00ea pode encontrar todos seus apps instalados aqui."
 	}
 }
