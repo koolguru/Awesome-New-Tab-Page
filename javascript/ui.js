@@ -316,9 +316,9 @@ $(".tile").bind({
         if (url !== null && url !== "") {
           required('/javascript/tile-editor.js?nocache=12', function() {  // ensure tile-editor.js is loaded
             createShortcut(e.srcElement);
-            $("[ng-model=appLaunchUrl]").val(url).change();
-            $("[ng-model=name]").val("").change();
-            $("[ng-model=name]").focus();
+            $("[ng-model='$parent.$parent.appLaunchUrl']").val(url).change();
+            $("[ng-model='$parent.$parent.name']").val("").change();
+            $("[ng-model='$parent.$parent.name']").focus();
           });
         }
       }

@@ -125,7 +125,7 @@ $("#filesystem_icon_screenshot_bt").click(function () {
 });
 
 function takeScreenshot() {
-  var shortcutURL = $("[ng-model=appLaunchUrl]").val();
+  var shortcutURL = $("[ng-model='$parent.$parent.appLaunchUrl']").val();
   chrome.tabs.create({ url: shortcutURL }, function (tab) {
     chrome.tabs.onUpdated.addListener(function (tabid, tabInfo, tabToCapture) {   // wait until page is completely loaded
       if (tabid == tab.id && tabInfo.status == "complete") {
@@ -308,7 +308,7 @@ function saveImage(dataURI, fileExtension, saveTo, setToCover) {
       fileWriter.onwriteend = function(e) {
         if (saveTo === "shortcut") {
           console.log(fileEntry.toURL());
-          $("[ng-model=img]").val(fileEntry.toURL()).trigger("change");
+          $("[ng-model='$parent.$parent.img']").val(fileEntry.toURL()).trigger("change");
           $("#preview-tile").css("background-size", "cover");
           if (setToCover) {
             IconResizing.resetTileIcon();
